@@ -15,6 +15,14 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
 
+	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/bootstrap/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/bootstrap/style.css" />
+
+	<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.min.js" ></script>
+	<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/bootstrap.min.js" ></script>
+	<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/script.js" ></script>
+
+
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
 
@@ -22,9 +30,15 @@
 
 <div class="container" id="page">
 
-	<div id="header">
-		<div id="logo"><?php echo CHtml::encode(Yii::app()->name); ?></div>
-	</div><!-- header -->
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<div class="page-header">
+			<div class="jumbotron">
+					<h2 class="text-center">Sistem Informasi Absensi dan Evaluasi Kegiatan</h2>
+			</div>
+		</div>
+		</div>
+	</div>
 
 	<div id="mainmenu">
 		<?php $this->widget('zii.widgets.CMenu',array(
@@ -45,13 +59,17 @@
 
 	<?php echo $content; ?>
 
-	<div class="clear"></div>
-
-	<div id="footer">
-		Copyright &copy; <?php echo date('Y'); ?> by My Company.<br/>
-		All Rights Reserved.<br/>
-		<?php echo Yii::powered(); ?>
-	</div><!-- footer -->
+	<!--footer-->
+	<div class="row clearfix">
+		<div class="col-md-12 column">
+			<div class="page-header">
+			</div>
+						<footer>
+				<h6 class="text-center">Copyrigth @ 2014 B10 SIAEK.</h6>
+			</footer>
+		</div>
+	</div>
+	<!--end footer-->
 
 </div><!-- page -->
 
