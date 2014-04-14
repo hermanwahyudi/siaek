@@ -40,7 +40,7 @@
 		</div>
 	</div>
 
-	<div id="mainmenu">
+	<!--div id="mainmenu">
 		<?php $this->widget('zii.widgets.CMenu',array(
 			'items'=>array(
 				array('label'=>'Home', 'url'=>array('/site/index')),
@@ -51,11 +51,11 @@
 			),
 		)); ?>
 	</div><!-- mainmenu -->
-	<?php if(isset($this->breadcrumbs)):?>
+	<!--?php if(isset($this->breadcrumbs)):?>
 		<?php $this->widget('zii.widgets.CBreadcrumbs', array(
 			'links'=>$this->breadcrumbs,
 		)); ?><!-- breadcrumbs -->
-	<?php endif?>
+	<!--?php endif?-->
 
 	<?php echo $content; ?>
 
@@ -65,7 +65,7 @@
 			<div class="page-header">
 			</div>
 						<footer>
-				<h6 class="text-center">Copyrigth @ 2014 B10 SIAEK.</h6>
+				<h6 class="text-center">Copyright @ 2014 B10 SIAEK.</h6>
 			</footer>
 		</div>
 	</div>
