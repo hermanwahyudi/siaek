@@ -1241,3 +1241,56 @@ Stack trace:
 REQUEST_URI=/siaek/js/script.js
 HTTP_REFERER=http://localhost:8888/siaek/site/contact
 ---
+2014/04/14 12:05:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/script.js".' in /Applications/MAMP/htdocs/siaek/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/siaek/framework/web/CWebApplication.php(141): CWebApplication->runController('js/script.js')
+#1 /Applications/MAMP/htdocs/siaek/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/siaek/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/siaek/js/script.js
+HTTP_REFERER=http://localhost:8888/siaek/
+---
+2014/04/14 12:05:59 [error] [exception.CException] exception 'CException' with message 'User and its behaviors do not have a method or closure named "validatePassword".' in /Applications/MAMP/htdocs/siaek/framework/base/CComponent.php:266
+Stack trace:
+#0 /Applications/MAMP/htdocs/siaek/framework/db/ar/CActiveRecord.php(227): CComponent->__call('validatePasswor...', Array)
+#1 /Applications/MAMP/htdocs/siaek/protected/components/UserIdentity.php(24): CActiveRecord->__call('validatePasswor...', Array)
+#2 /Applications/MAMP/htdocs/siaek/protected/components/UserIdentity.php(24): User->validatePassword('12345')
+#3 /Applications/MAMP/htdocs/siaek/protected/models/LoginForm.php(52): UserIdentity->authenticate()
+#4 /Applications/MAMP/htdocs/siaek/framework/validators/CInlineValidator.php(42): LoginForm->authenticate('password', Array)
+#5 /Applications/MAMP/htdocs/siaek/framework/validators/CValidator.php(213): CInlineValidator->validateAttribute(Object(LoginForm), 'password')
+#6 /Applications/MAMP/htdocs/siaek/framework/base/CModel.php(159): CValidator->validate(Object(LoginForm), NULL)
+#7 /Applications/MAMP/htdocs/siaek/protected/controllers/SiteController.php(97): CModel->validate()
+#8 /Applications/MAMP/htdocs/siaek/framework/web/actions/CInlineAction.php(49): SiteController->actionLogin()
+#9 /Applications/MAMP/htdocs/siaek/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#10 /Applications/MAMP/htdocs/siaek/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#11 /Applications/MAMP/htdocs/siaek/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /Applications/MAMP/htdocs/siaek/framework/web/CWebApplication.php(282): CController->run('login')
+#13 /Applications/MAMP/htdocs/siaek/framework/web/CWebApplication.php(141): CWebApplication->runController('site/login')
+#14 /Applications/MAMP/htdocs/siaek/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /Applications/MAMP/htdocs/siaek/index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/siaek/site/login
+HTTP_REFERER=http://localhost:8888/siaek/
+---
+2014/04/14 12:06:09 [error] [exception.CException] exception 'CException' with message 'User and its behaviors do not have a method or closure named "validatePassword".' in /Applications/MAMP/htdocs/siaek/framework/base/CComponent.php:266
+Stack trace:
+#0 /Applications/MAMP/htdocs/siaek/framework/db/ar/CActiveRecord.php(227): CComponent->__call('validatePasswor...', Array)
+#1 /Applications/MAMP/htdocs/siaek/protected/components/UserIdentity.php(24): CActiveRecord->__call('validatePasswor...', Array)
+#2 /Applications/MAMP/htdocs/siaek/protected/components/UserIdentity.php(24): User->validatePassword('12345')
+#3 /Applications/MAMP/htdocs/siaek/protected/models/LoginForm.php(52): UserIdentity->authenticate()
+#4 /Applications/MAMP/htdocs/siaek/framework/validators/CInlineValidator.php(42): LoginForm->authenticate('password', Array)
+#5 /Applications/MAMP/htdocs/siaek/framework/validators/CValidator.php(213): CInlineValidator->validateAttribute(Object(LoginForm), 'password')
+#6 /Applications/MAMP/htdocs/siaek/framework/base/CModel.php(159): CValidator->validate(Object(LoginForm), NULL)
+#7 /Applications/MAMP/htdocs/siaek/protected/controllers/SiteController.php(97): CModel->validate()
+#8 /Applications/MAMP/htdocs/siaek/framework/web/actions/CInlineAction.php(49): SiteController->actionLogin()
+#9 /Applications/MAMP/htdocs/siaek/framework/web/CController.php(308): CInlineAction->runWithParams(Array)
+#10 /Applications/MAMP/htdocs/siaek/framework/web/CController.php(286): CController->runAction(Object(CInlineAction))
+#11 /Applications/MAMP/htdocs/siaek/framework/web/CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#12 /Applications/MAMP/htdocs/siaek/framework/web/CWebApplication.php(282): CController->run('login')
+#13 /Applications/MAMP/htdocs/siaek/framework/web/CWebApplication.php(141): CWebApplication->runController('site/login')
+#14 /Applications/MAMP/htdocs/siaek/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#15 /Applications/MAMP/htdocs/siaek/index.php(13): CApplication->run()
+#16 {main}
+REQUEST_URI=/siaek/site/login
+HTTP_REFERER=http://localhost:8888/siaek/
+---
