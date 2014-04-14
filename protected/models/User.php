@@ -121,4 +121,9 @@ class User extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+	public function validatePassword($password) {
+        //return $password === $this->password;
+        //var_dump($this->hashPassword($password, $this->saltpassword));
+        return $this->$password === $this->password;
+    }
 }
