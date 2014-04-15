@@ -1782,3 +1782,138 @@ Stack trace:
 REQUEST_URI=/siaek/js/script.js
 HTTP_REFERER=http://localhost:8888/siaek/kegiatan/create
 ---
+2014/04/14 16:25:58 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/script.js".' in /Applications/MAMP/htdocs/siaek/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/siaek/framework/web/CWebApplication.php(141): CWebApplication->runController('js/script.js')
+#1 /Applications/MAMP/htdocs/siaek/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/siaek/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/siaek/js/script.js
+HTTP_REFERER=http://localhost:8888/siaek/regional
+---
+2014/04/14 16:26:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/script.js".' in /Applications/MAMP/htdocs/siaek/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/siaek/framework/web/CWebApplication.php(141): CWebApplication->runController('js/script.js')
+#1 /Applications/MAMP/htdocs/siaek/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/siaek/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/siaek/js/script.js
+HTTP_REFERER=http://localhost:8888/siaek/regional/1
+---
+2014/04/14 16:26:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/script.js".' in /Applications/MAMP/htdocs/siaek/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/siaek/framework/web/CWebApplication.php(141): CWebApplication->runController('js/script.js')
+#1 /Applications/MAMP/htdocs/siaek/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/siaek/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/siaek/js/script.js
+HTTP_REFERER=http://localhost:8888/siaek/regional/update/1
+---
+2014/04/14 16:26:17 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/script.js".' in /Applications/MAMP/htdocs/siaek/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/siaek/framework/web/CWebApplication.php(141): CWebApplication->runController('js/script.js')
+#1 /Applications/MAMP/htdocs/siaek/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/siaek/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/siaek/js/script.js
+HTTP_REFERER=http://localhost:8888/siaek/regional/1
+---
+2014/04/14 16:26:28 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/script.js".' in /Applications/MAMP/htdocs/siaek/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/siaek/framework/web/CWebApplication.php(141): CWebApplication->runController('js/script.js')
+#1 /Applications/MAMP/htdocs/siaek/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/siaek/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/siaek/js/script.js
+HTTP_REFERER=http://localhost:8888/siaek/regional/create
+---
+2014/04/14 16:26:50 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/script.js".' in /Applications/MAMP/htdocs/siaek/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/siaek/framework/web/CWebApplication.php(141): CWebApplication->runController('js/script.js')
+#1 /Applications/MAMP/htdocs/siaek/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/siaek/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/siaek/js/script.js
+HTTP_REFERER=http://localhost:8888/siaek/regional/2
+---
+2014/04/14 16:26:56 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/script.js".' in /Applications/MAMP/htdocs/siaek/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/siaek/framework/web/CWebApplication.php(141): CWebApplication->runController('js/script.js')
+#1 /Applications/MAMP/htdocs/siaek/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/siaek/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/siaek/js/script.js
+HTTP_REFERER=http://localhost:8888/siaek/regional/index
+---
+2014/04/14 16:27:02 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/script.js".' in /Applications/MAMP/htdocs/siaek/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/siaek/framework/web/CWebApplication.php(141): CWebApplication->runController('js/script.js')
+#1 /Applications/MAMP/htdocs/siaek/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/siaek/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/siaek/js/script.js
+HTTP_REFERER=http://localhost:8888/siaek/regional/create
+---
+2014/04/14 16:27:30 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/script.js".' in /Applications/MAMP/htdocs/siaek/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/siaek/framework/web/CWebApplication.php(141): CWebApplication->runController('js/script.js')
+#1 /Applications/MAMP/htdocs/siaek/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/siaek/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/siaek/js/script.js
+HTTP_REFERER=http://localhost:8888/siaek/regional/3
+---
+2014/04/14 16:27:38 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/script.js".' in /Applications/MAMP/htdocs/siaek/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/siaek/framework/web/CWebApplication.php(141): CWebApplication->runController('js/script.js')
+#1 /Applications/MAMP/htdocs/siaek/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/siaek/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/siaek/js/script.js
+HTTP_REFERER=http://localhost:8888/siaek/user
+---
+2014/04/14 16:27:41 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/script.js".' in /Applications/MAMP/htdocs/siaek/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/siaek/framework/web/CWebApplication.php(141): CWebApplication->runController('js/script.js')
+#1 /Applications/MAMP/htdocs/siaek/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/siaek/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/siaek/js/script.js
+HTTP_REFERER=http://localhost:8888/siaek/user/create
+---
+2014/04/14 16:28:46 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/script.js".' in /Applications/MAMP/htdocs/siaek/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/siaek/framework/web/CWebApplication.php(141): CWebApplication->runController('js/script.js')
+#1 /Applications/MAMP/htdocs/siaek/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/siaek/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/siaek/js/script.js
+HTTP_REFERER=http://localhost:8888/siaek/user/3
+---
+2014/04/14 16:28:49 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/script.js".' in /Applications/MAMP/htdocs/siaek/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/siaek/framework/web/CWebApplication.php(141): CWebApplication->runController('js/script.js')
+#1 /Applications/MAMP/htdocs/siaek/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/siaek/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/siaek/js/script.js
+HTTP_REFERER=http://localhost:8888/siaek/user/index
+---
+2014/04/14 16:29:14 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/script.js".' in /Applications/MAMP/htdocs/siaek/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/siaek/framework/web/CWebApplication.php(141): CWebApplication->runController('js/script.js')
+#1 /Applications/MAMP/htdocs/siaek/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/siaek/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/siaek/js/script.js
+HTTP_REFERER=http://localhost:8888/siaek/user/
+---
+2014/04/14 16:29:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/script.js".' in /Applications/MAMP/htdocs/siaek/framework/web/CWebApplication.php:286
+Stack trace:
+#0 /Applications/MAMP/htdocs/siaek/framework/web/CWebApplication.php(141): CWebApplication->runController('js/script.js')
+#1 /Applications/MAMP/htdocs/siaek/framework/base/CApplication.php(180): CWebApplication->processRequest()
+#2 /Applications/MAMP/htdocs/siaek/index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/siaek/js/script.js
+HTTP_REFERER=http://localhost:8888/siaek/user/create
+---
