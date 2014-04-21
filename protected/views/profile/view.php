@@ -10,7 +10,15 @@
 					<td align="left"><strong>ID User</strong></td><td align="left">: <?php echo $model->id_user; ?></td>
 				</tr>
 				<tr>
-					<td align="left"><strong>Role</strong></td><td align="left">: <?php echo $model->role; ?></td>
+					<td align="left"><strong>Role</strong><td align="left">:
+					<select class="selectpicker">
+   									 <option>Admin</option>
+   									 <option>Pengurus Pusat</option>
+   									 <option>Pengurus Regional</option>
+   									 
+  					</select></td>
+  					</td>
+					<!-- <td align="left"><strong>Role</strong></td><td align="left">: <?php echo $model->role; ?></td> -->
 				</tr>
 				<tr>
 					<td align="left"><strong>NIP<strong></td><td align="left">: <?php echo $model->nip; ?></td>
@@ -22,7 +30,14 @@
 					<td align="left"><strong>Nama</strong></td><td align="left">: <?php echo $model->nama; ?></td>
 				</tr>
 				<tr>
-					<td align="left"><strong>Jenis Kelamin</strong></td><td align="left">: <?php echo $model->jenis_kelamin; ?></td>
+					<td align="left"><strong> Jenis Kelamin </strong><td align="left">:
+					<select class="selectpicker">
+   									 <option>Pria</option>
+   									 <option>Wanita</option>
+   									 
+  						</select></td>
+  					</td>
+					<!-- <td align="left"><strong>Jenis Kelamin</strong></td><td align="left">: <?php echo $model->jenis_kelamin; ?></td> -->
 				</tr>
 				<tr>
 					<td align="left"><strong>Email</strong></td><td align="left">: <?php echo $model->email; ?></td>
@@ -57,6 +72,7 @@
 ?> -->
 <div style="float:left">
 <?php echo CHtml::button('Edit', array('class'=>'btn btn-default', 'submit' => array('profile/update', 'id' => $model->id_user))); ?>
+
 <?php echo CHtml::button('Edit Password', array('class'=>'btn btn-default', 'submit' => array('profile/password', 'id' => $model->id_user))); ?>
 <?php echo CHtml::link('Back', array('site/index')); ?>
 </div>

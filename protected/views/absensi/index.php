@@ -1,8 +1,8 @@
 			<div class="row clearfix">
 					<div class="headline"> <h1 class="text-justify">Isi Absensi</h1>  </div>
                     <div class="col-md-12 column">
-					<br><br>
-					<div class="btn-group">
+					<!-- <br><br> -->
+					<!-- <div class="btn-group">
 						 <a class="btn btn-primary" data-toggle="dropdown" href="#">  Pekanan  <span class ="caret"> </a> 
 						 <ul class="dropdown-menu">
 							<li>
@@ -87,7 +87,7 @@
 								<a href="#">PL4</a>
 							</li>
 						</ul>
-					</div>
+					</div> -->
 				
 					<div class="row clearfix">
 						<div class="col-md-12 column">
@@ -98,102 +98,129 @@
 						<br>
 						
 					<div class="btn-group">
-						<button class="btn btn-default">Periode</button> 
-						<button data-toggle="dropdown" class="btn btn-default dropdown-toggle"><span class="caret"></span></button>
-						<ul class="dropdown-menu">
-							<li>
-								<a href="#">Januari 2014</a>
-							</li>
-							<li>
-								<a href="#">Februari 2014</a>
-							</li>
-							<li>
-								<a href="#">Maret 2014</a>
-							</li>
-							<li>
-								<a href="#">April 2014</a>
-							</li>
-							<li>
-								<a href="#">Mei 2014</a>
-							</li>
-							<li>
-								<a href="#">Juni 2014</a>
-							</li>
-							<li>
-								<a href="#">Juli 2014</a>
-							</li>
-							<li>
-								<a href="#">Agustus 2014</a>
-							</li>
-							<li>
-								<a href="#">September 2014</a>
-							</li>
-							<li>
-								<a href="#">Oktober 2014</a>
-							</li>
-							<li>
-								<a href="#">November 2014</a>
-							</li>
-							<li>
-								<a href="#">Desember 2014</a>
-							</li>
-						</ul>
+						<select class="selectpicker">
+   									 <option>Januari</option>
+   									 <option>Februari</option>
+   									 <option>Maret</option>
+   									 <option>April</option>
+   									 <option>Mei</option>
+   									 <option>Juni</option>
+   									 <option>Juli</option>
+   									 <option>Agustus</option>
+   									 <option>September</option>
+   									 <option>Oktober</option>
+   									 <option>November</option>
+   									 <option>Desember</option>
+  						</select>
+						
+					</div>
+
+					<div class="btn-group">
+						<select class="selectpicker">
+   									 <option>2014</option>
+   									 <option>2015</option>
+   									 
+  						</select>
 					</div>
 							
-					<div class="btn-group">
-						<button class="btn btn-default">Kategori</button> 
-						<button data-toggle="dropdown" class="btn btn-default dropdown-toggle"><span class="caret"></span></button> 
-						<ul class="dropdown-menu">
-							<li>
-								<a href="#">Putra</a>
-							</li>
-							<li>
-								<a href="#">Putri</a>
-							</li>
-						</ul>
-					</div>
+					
 							
 					<br><br>
+
+					<div class="col-md-6 column">
 						
-					<table class="table">
+						<form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label for="" class="col-sm-3 control-label">Nama</label>
+                                <div class="col-sm-6">
+                                    <input type="email" class="form-control" id="inputEmail3" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="" class="col-sm-3 control-label">Pembicara</label>
+                                <div class="col-sm-6">
+                                    <input type="password" class="form-control" id="inputPassword3" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="" class="col-sm-3 control-label">Materi</label>
+                                <div class="col-sm-6">
+                                    <input type="email" class="form-control" id="inputEmail3" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="" class="col-sm-3 control-label">Hari</label>
+                                <div class="col-sm-6">
+                                    <input type="email" class="form-control" id="inputEmail3" />
+                                </div>
+                            </div>
+                         <form>	
+					</div>
+						
+					<div class="col-md-6 column">
+							<form class="form-horizontal" role="form">
+                            <div class="form-group">
+                                <label for="" class="col-sm-4 control-label">Tanggal</label>
+                                <div class="col-sm-6">
+                                    <input type="email" class="form-control" id="inputEmail3" />
+                                </div>
+                            </div>
+                            <br><br>
+                            <div class="form-group">
+                                <label for="" class="col-sm-4 control-label">Waktu Mulai</label>
+                                <div class="col-sm-6">
+                                    <input type="password" class="form-control" id="inputPassword3" />
+                                </div>
+                            </div>
+                            <br><br>
+                            <div class="form-group">
+                                <label for="" class="col-sm-4 control-label">Waktu Selesai</label>
+                                <div class="col-sm-6">
+                                    <input type="email" class="form-control" id="inputEmail3" />
+                                </div>
+                            </div>
+                        </form>
+					</div>
+
+					<!-- <table class="table">
 						<tbody>
 							<tr>
 								<td>
-								<Strong>Nama   :</Strong> kajian Islam Kontemporer
+								<Strong>Nama:</Strong> <textarea class="form-control" rows="1" placeholder="Message"></textarea>
 								</td>
 								<td>
-								<Strong>Tanggal  :</Strong>12-03-2014
-								</td>
-							</tr>
-									
-							<tr>
-								<td>
-								<Strong>Pembicara  :</Strong> Ika Malika
-								</td>
-								<td>
-								<Strong>Waktu Mulai  :</Strong>16:00 WIB
+								<Strong>Tanggal  :</Strong> <textarea class="form-control" rows="1" placeholder="Message"></textarea>
 								</td>
 							</tr>
 									
 							<tr>
 								<td>
-								<Strong>Materi  :</Strong> Karakteristik Dakwah
+								<Strong>Pembicara  :</Strong> <textarea class="form-control" rows="1" placeholder="Message"></textarea>
 								</td>
 								<td>
-								<Strong>Waktu Selesai  :</Strong>18.00 WIB
+								<Strong>Waktu Mulai  :</Strong> <textarea class="form-control" rows=1" placeholder="Message"></textarea>
 								</td>
 							</tr>
 									
 							<tr>
 								<td>
-								<Strong>Hari  :</Strong>Selasa
+								<Strong>Materi  :</Strong> <textarea class="form-control" rows="1" placeholder="Message"></textarea>
+								</td>
+								<td>
+								<Strong>Waktu Selesai  :</Strong> <textarea class="form-control" rows="1" placeholder="Message"></textarea>
+								</td>
+							</tr>
+									
+							<tr>
+								<td>
+								<Strong>Hari  :</Strong> <textarea class="form-control" rows="1" placeholder="Message"></textarea>
 								</td>
 								<td>
 									
 								</td>
 							</tr>
 						</tbody>
-					</table>
+					</table> -->
 							
 					<table class="table table-bordered">
 						<thead>
@@ -229,14 +256,21 @@
 								<td>
 									Malika
 								</td>
-								<td>
-									Hadir
+								<td >
+								<select class="selectpicker">
+   									 <option>Hadir</option>
+   									 <option>Tidak Hadir</option>
+  								</select>
+								</td>
+								<td >
+								<select class="selectpicker">
+   									 <option>H</option>
+   									 <option>TI</option>
+    								 <option>TTI</option>
+  								</select>
 								</td>
 								<td>
-									H
-								</td>
-								<td>
-									tidak ada
+									<textarea class="form-control" rows="1" placeholder="Message"> ket</textarea>
 								</td>
 							</tr>
 							<tr>
@@ -250,12 +284,19 @@
 									Ani
 								</td>
 								<td>
-									Hadir
+									<select class="selectpicker">
+   									 <option>Hadir</option>
+   									 <option>Tidak Hadir</option>
+  									</select>
 								</td>
 								<td>
-									TI
+									<select class="selectpicker">
+   									 <option>H</option>
+   									 <option>TI</option>
+    								 <option>TTI</option>
+  									</select>
 								</td>
-								<td>
+								<td >
 									
 								</td>
 							</tr>
@@ -270,10 +311,17 @@
 									Sarah
 								</td>
 								<td>
-									Hadir
+									<select class="selectpicker">
+   									 <option>Hadir</option>
+   									 <option>Tidak Hadir</option>
+  									</select>
 								</td>
 								<td>
-									TTI
+									<select class="selectpicker">
+   									 <option>H</option>
+   									 <option>TI</option>
+    								 <option>TTI</option>
+  									</select>
 								</td>
 								<td>
 									tidak ada
@@ -290,10 +338,17 @@
 									Munawaroh
 								</td>
 								<td>
-									Tidak Hadir
+									<select class="selectpicker">
+   									 <option>Hadir</option>
+   									 <option>Tidak Hadir</option>
+  									</select>
 								</td>
 								<td>
-									S
+									<select class="selectpicker">
+   									 <option>H</option>
+   									 <option>TI</option>
+    								 <option>TTI</option>
+  									</select>
 								</td>
 								<td>
 									
@@ -310,10 +365,17 @@
 									Munaroh
 								</td>
 								<td>
-									Tidak Hadir
+									<select class="selectpicker">
+   									 <option>Hadir</option>
+   									 <option>Tidak Hadir</option>
+  									</select>
 								</td>
 								<td>
-									I
+									<select class="selectpicker">
+   									 <option>H</option>
+   									 <option>TI</option>
+    								 <option>TTI</option>
+  									</select>
 								</td>
 								<td>
 									
@@ -325,12 +387,8 @@
 				
 					</div>
 					<div class="row clearfix">
-						<div class="col-md-2 column">
-							 <a href="#" class="btn btn-primary" type="button">Simpan kegiatan per program</a>
-							
-						</div><br><br><br><br>
 						<div class="col-md-12 column">
-						<button type="button" class="btn btn-sm btn-success">SimpanSemua</button>
+						<button type="button" class="btn btn-sm btn-success">Simpan</button>
 						</div><br><?php echo CHtml::link('Back', array('site/index'));?>
 					</div> 
                     </div>
