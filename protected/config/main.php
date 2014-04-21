@@ -37,6 +37,11 @@ return array(
 			'class'=>'application.components.RoleWebUser',
 			'allowAutoLogin'=>true,
 		),
+		'mailer' => array(
+      		'class' => 'application.extensions.mailer.EMailer',
+      		'pathViews' => 'application.views.email',
+      		'pathLayouts' => 'application.views.email.layouts'
+   		),
 		// uncomment the following to enable URLs in path-format
 		
 		'urlManager'=>array(
@@ -60,7 +65,7 @@ return array(
 			'connectionString' => 'mysql:host=localhost;dbname=siaek',
 			'emulatePrepare' => true,
 			'username' => 'root',
-			'password' => '',
+			'password' => 'root',
 			'charset' => 'utf8',
 		),
 		
