@@ -29,10 +29,12 @@ class SiteController extends Controller
 	{
 		// renders the view file 'protected/views/site/index.php'
 		// using the default layout 'protected/views/layouts/main.php'
-		//$this->render('index');
-		$model=new LoginForm;
-		$this->render('login',array('model'=>$model));
-
+		$model = new User;
+		if(Yii::app()->user->isGuest) {
+			$this->actionLogin();
+		} else {
+			$this->render('index', array("model" => $model));
+		}
 	}
 
 	/**
@@ -74,7 +76,44 @@ class SiteController extends Controller
 		}
 		$this->render('contact',array('model'=>$model));
 	}
-
+	public function actionForget() {
+		$model = new LoginForm;
+		
+        if (isset($_POST['ajax']) && $_POST['ajax'] === 'login-form') {
+            echo CActiveForm::validate($model);
+            Yii::app()->end();
+        }
+		if (isset($_POST['LoginForm'])) {
+            $username = $_POST['LoginForm']['username'];
+	     
+            $user = User::model()->findByAttributes(array("username" => $username));
+			if ($user === null)
+                throw new CHttpException(404, 'The username '.$username.' does not exist.');
+			$this->actionReset($user);
+        } else
+			$this->render('forget', array('model' => $model));
+	}
+	public function actionReset($model) {
+		$password = "" . rand(1000000, 10000000);
+		$model->password = $password;
+		
+		if($model->save()) {
+			$message = "Hi " . $model->nama . ", this is your new password. " .
+						"Your Username : " . $model->username .
+						"Your New Password : " . $model->password;
+			$headers = 'MIME-Version: 1.0' . "\r\n";
+            $headers .= 'Contact-type: text/html; charset=iso-8859-1' . "\r\n";
+            $headers .= 'From: no-reply <no-reply@siaek.ppsdms.org>' . "\r\n";
+			
+			mail($model->email,
+				 "Reset Password",
+				 $message,
+				 $headers
+			);
+		}
+		$this->render('confirm', array('email' => $model->email));
+	}
+	
 	/**
 	 * Displays the login page
 	 */

@@ -3,10 +3,7 @@
 /* @var $model LoginForm */
 /* @var $form CActiveForm  */
 
-$this->pageTitle=Yii::app()->name . ' - Login';
- 	$this->breadcrumbs=array(
-	'Login',
-);
+
 
 ?>
 
@@ -34,26 +31,20 @@ $this->pageTitle=Yii::app()->name . ' - Login';
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'username'); ?>
 		<?php echo $form->textField($model,'username'); ?>
-		<?php echo $form->error($model,'username'); ?>
+		<span style="color:red"><?php echo $form->error($model,'username'); ?></span>
 	</div>
 
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'password'); ?>
 		<?php echo $form->passwordField($model,'password'); ?>
-		<?php echo $form->error($model,'password'); ?>
-		<p class="hint">
-			Hint: You may login with <kbd>demo</kbd>/<kbd>demo</kbd> or <kbd>admin</kbd>/<kbd>admin</kbd>.
-		</p>
+		<span style="color:red"><?php echo $form->error($model,'password'); ?><span style="color:red">
+		
 	</div>
 
-	<div class="form-group">
-		<?php echo $form->checkBox($model,'rememberMe'); ?>
-		<?php echo $form->label($model,'rememberMe'); ?>
-		<?php echo $form->error($model,'rememberMe'); ?>
-	</div>
 
 	<div class="form-group">
 		<?php echo CHtml::submitButton('Login'); ?>
+		<?php echo Chtml::link("Forgot Password?", array('site/forget')); ?>
 	</div>
 </div>
 </form>

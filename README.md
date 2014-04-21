@@ -5,7 +5,7 @@ tambahkan baris dibawah ini ya setelah clone
 +Collaborator
 	+1. [hallo choirudin disini](https://twitter.com/choirudin22)
 
-	+2. [hallo herman :DD]
+	+2. [hallo herman :DD] 
 
 	+3. [halllo jihan]
 

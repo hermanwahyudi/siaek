@@ -16,8 +16,26 @@ $this->menu=array(
 );
 ?>
 
-<h1>View Regional #<?php echo $model->id_regional; ?></h1>
+<div class="headline"> <h1 class="text-justify"><?php echo $model->nama; ?></h1>  </div>
 
+<div class="row clearfix">
+    <div class="col-md-12 column"> <br>
+		<table class="table">
+            <tbody>
+                <tr>
+					<td align="left"><strong>ID Regional</strong></td><td align="left">: <?php echo $model->id_regional; ?></td>
+				</tr>
+				<tr>
+					<td align="left"><strong>Nama</strong></td><td align="left">: <?php echo $model->nama; ?></td>
+				</tr>
+				<tr>
+					<td align="left"><strong>Alamat</strong></td><td align="left">: <?php echo $model->alamat; ?></td>
+				</tr>
+			</tbody>
+        </table>
+	</div>
+</div>
+<!--
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
 	'attributes'=>array(
@@ -26,4 +44,7 @@ $this->menu=array(
 		'alamat',
 		'id_user',
 	),
-)); ?>
+)); ?> -->
+<div style="float:left">
+<?php echo CHtml::link('Back', array('regional/index')); ?>
+</div>

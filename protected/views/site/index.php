@@ -1,20 +1,157 @@
 <?php
 /* @var $this SiteController */
 
-$this->pageTitle=Yii::app()->name;
-?>
+$this->pageTitle=Yii::app()->name;?>
 
-<h1>Welcome to <i><?php echo CHtml::encode(Yii::app()->name); ?></i></h1>
+<!--kolom 2-->
+                
+                    <div class="row clearfix">
+						<?php if(Yii::app()->user->getLevel() == "2") { ?>
+						<!-- Menu Pengurus Pusat -->
+                        <div class="col-md-3 column">
+                            <div class="panel panel-primary">
+                                <div class="panel-body">
+                                    <p class="text-center">
+                                        <img src="<?php echo Yii::app()->request->baseUrl; ?>/assets/images/Feedback.png" width="100" height="100"  alt="b10" class="img-circle"></p>
+									<a href="/siaek/feedback/index"><p class="text-center">
+                                            Feedback  
+                                        </p></a>
+                                    
 
-<p>Congratulations! You have successfully created your Yii application.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-3 column">
+                            
+                            <div class="panel panel-primary">
+                                <div class="panel-body">
+                                    <p class="text-center">
+                                        <img src="<?php echo Yii::app()->request->baseUrl; ?>/assets/images/Rekapan.png" width="100" height="100"  alt="b10" class="img-circle"></p>
+										<a href="/siaek/rekapan/index"><p class="text-center">
+                                            Rekapan  
+                                        </p></a>
+                                </div>
+                            </div>
+                        </div> 
+                        <div class="col-md-3 column">
+                            <div class="panel panel-primary">
+                                <div class="panel-body">
+                                    <p class="text-center">
+                                        <img src="<?php echo Yii::app()->request->baseUrl; ?>/assets/images/Perbandingan Rekapan.png" width="100" height="100"  alt="b10" class="img-circle"></p>
+										<a href="/siaek/rekapan/comparerekapan"><p class="text-center">
+                                          Perbandingan Rekapan  
+                                        </p></a>
 
-<p>You may change the content of this page by modifying the following two files:</p>
-<ul>
-	<li>View file: <code><?php echo __FILE__; ?></code></li>
-	<li>Layout file: <code><?php echo $this->getLayoutFile('main'); ?></code></li>
-</ul>
+                                </div>
+                            </div>
+                        </div>
+                         <div class="col-md-3 column">
+                            <div class="panel panel-primary">
+                                <div class="panel-body">
+                                    <p class="text-center">
+                                        <img src="<?php echo Yii::app()->request->baseUrl; ?>/assets/images/deadline.png" width="100" height="100"  alt="b10" class="img-circle"></p>
+										<a href="/siaek/kegiatan/deadline"><p class="text-center">
+                                        Menentukan Deadline    
+                                        </p></a>
+                                </div>
+                            </div>
+                        </div>
+						<?php } else if(Yii::app()->user->getLevel() == "1") { ?>
+						<!-- Menu Admin -->
+						<div class="col-md-4 column">
+                            <div class="panel panel-primary">
+                                <div class="panel-body">
+                                    <p class="text-center">
+                                        <img src="<?php echo Yii::app()->request->baseUrl; ?>/assets/images/pengurus.png" width="100" height="100"  alt="b10" class="img-circle"></p>
 
-<p>For more details on how to further develop this application, please read
-the <a href="http://www.yiiframework.com/doc/">documentation</a>.
-Feel free to ask in the <a href="http://www.yiiframework.com/forum/">forum</a>,
-should you have any questions.</p>
+                                    <a href="/siaek/user/index"><p class="text-center">
+                                            Pengurus   
+
+                                        </p></a>
+
+                                </div>
+                            </div>
+                        </div>
+						<div class="col-md-4 column">
+                            <div class="panel panel-primary">
+                                <div class="panel-body">
+                                    <p class="text-center">
+                                        <img src="<?php echo Yii::app()->request->baseUrl; ?>/assets/images/regional.png" width="100" height="100"  alt="b10" class="img-circle"></p>
+
+                                    <a href="/siaek/regional/index"><p class="text-center">
+                                            Regional  
+                                        </p></a>
+
+                                </div>
+                            </div>
+                        </div>
+						<div class="col-md-4 column">
+                            <div class="panel panel-primary">
+                                <div class="panel-body">
+                                    <p class="text-center">
+                                        <img src="<?php echo Yii::app()->request->baseUrl; ?>/assets/images/kegiatan.png" width="100" height="100"  alt="b10" class="img-circle"></p>
+
+                                    <a href="/siaek/kegiatan/index"><p class="text-center">
+                                            Kegiatan 
+
+                                        </p></a>
+
+                                </div>
+                            </div>
+                        </div>
+						<?php } else { ?>
+						<div class="col-md-4 column">
+                            <div class="panel panel-primary">
+                                <div class="panel-body">
+                                    <p class="text-center">
+                                        <img src="<?php echo Yii::app()->request->baseUrl; ?>/assets/images/isi_absensi.png" width="100" height="100"  alt="b10" class="img-circle"></p>
+
+                                    <a href="/siaek/absensi/index"><p class="text-center">
+                                            Isi Absensi 
+
+                                        </p></a>
+
+                                </div>
+                            </div>
+                        </div>
+						<div class="col-md-4 column">
+                            <div class="panel panel-primary">
+                                <div class="panel-body">
+                                    <p class="text-center">
+                                        <img src="<?php echo Yii::app()->request->baseUrl; ?>/assets/images/peserta_didik.png" width="100" height="100"  alt="b10" class="img-circle"></p>
+
+                                    <a href="/siaek/peserta/index"><p class="text-center">
+                                            Peserta Didik 
+
+                                        </p></a>
+
+                                </div>
+                            </div>
+                        </div>
+						
+						<div class="col-md-4 column">
+                            <div class="panel panel-primary">
+                                <div class="panel-body">
+                                    <p class="text-center">
+                                        <img src="<?php echo Yii::app()->request->baseUrl; ?>/assets/images/Feedback.png" width="100" height="100"  alt="b10" class="img-circle"></p>
+									<a href="/siaek/feedback/view"><p class="text-center">
+                                            Melihat Feedback  
+                                        </p></a>
+                                    
+
+                                </div>
+                            </div>
+                        </div>
+						<?php } ?>
+                    </div>
+                    
+                <div class="row clearfix">
+                    <div class="col-md-3 column"></div>
+                </div>
+                
+
+               
+                <!--end kolom 2-->
+            
+

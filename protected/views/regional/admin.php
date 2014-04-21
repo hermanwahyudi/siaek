@@ -7,10 +7,7 @@ $this->breadcrumbs=array(
 	'Manage',
 );
 
-$this->menu=array(
-	array('label'=>'List Regional', 'url'=>array('index')),
-	array('label'=>'Create Regional', 'url'=>array('create')),
-);
+
 
 Yii::app()->clientScript->registerScript('search', "
 $('.search-button').click(function(){
@@ -26,19 +23,10 @@ $('.search-form form').submit(function(){
 ");
 ?>
 
-<h1>Manage Regionals</h1>
+<div class="headline"> <h1 class="text-justify">List Regional</h1>  </div>
 
-<p>
-You may optionally enter a comparison operator (<b>&lt;</b>, <b>&lt;=</b>, <b>&gt;</b>, <b>&gt;=</b>, <b>&lt;&gt;</b>
-or <b>=</b>) at the beginning of each of your search values to specify how the comparison should be done.
-</p>
 
-<?php echo CHtml::link('Advanced Search','#',array('class'=>'search-button')); ?>
-<div class="search-form" style="display:none">
-<?php $this->renderPartial('_search',array(
-	'model'=>$model,
-)); ?>
-</div><!-- search-form -->
+<?php echo CHtml::link('Create New Regional', array('regional/create', 'class'=>'col-sm-1')); ?>
 
 <?php $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'regional-grid',
@@ -48,9 +36,9 @@ or <b>=</b>) at the beginning of each of your search values to specify how the c
 		'id_regional',
 		'nama',
 		'alamat',
-		'id_user',
 		array(
 			'class'=>'CButtonColumn',
 		),
 	),
 )); ?>
+<?php echo CHtml::link('Back', array('site/index')); ?>

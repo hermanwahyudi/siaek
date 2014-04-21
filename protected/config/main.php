@@ -7,7 +7,7 @@
 // CWebApplication properties can be configured here.
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	'name'=>'My Web Application',
+	'name'=>'Sistem Informasi Absensi dan Evaluasi Kegiatan',
 
 	// preloading 'log' component
 	'preload'=>array('log'),
@@ -34,6 +34,7 @@ return array(
 	'components'=>array(
 		'user'=>array(
 			// enable cookie-based authentication
+			'class'=>'application.components.RoleWebUser',
 			'allowAutoLogin'=>true,
 		),
 		// uncomment the following to enable URLs in path-format
@@ -59,7 +60,7 @@ return array(
 			'connectionString' => 'mysql:host=localhost;dbname=siaek',
 			'emulatePrepare' => true,
 			'username' => 'root',
-			'password' => 'root',
+			'password' => '',
 			'charset' => 'utf8',
 		),
 		

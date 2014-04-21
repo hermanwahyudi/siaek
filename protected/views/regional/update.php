@@ -16,6 +16,6 @@ $this->menu=array(
 );
 ?>
 
-<h1>Update Regional <?php echo $model->id_regional; ?></h1>
+<div class="headline"> <h1 class="text-justify">Form Update Regional</h1>  </div>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

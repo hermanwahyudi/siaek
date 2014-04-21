@@ -39,6 +39,7 @@ class User extends CActiveRecord
 			array('username, password, nama, email, nip, url_image', 'length', 'max'=>64),
 			array('jenis_kelamin', 'length', 'max'=>12),
 			array('no_telp', 'length', 'max'=>20),
+			array('url_image', 'file', 'types' => 'jpg, gif, png'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id_user, role, username, password, nama, jenis_kelamin, email, nip, no_telp, alamat, url_image', 'safe', 'on'=>'search'),
@@ -72,7 +73,7 @@ class User extends CActiveRecord
 			'nip' => 'Nip',
 			'no_telp' => 'No Telp',
 			'alamat' => 'Alamat',
-			'url_image' => 'Url Image',
+			'url_image' => 'Foto',
 		);
 	}
 
