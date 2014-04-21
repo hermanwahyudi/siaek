@@ -91,6 +91,19 @@ class SiteController extends Controller
                 throw new CHttpException(404, 'The username '.$username.' does not exist.');
 			$this->actionReset($user);
         } else
+        	
+			Yii::app()->mailer->Host = 'ssl://smtp.gmail.com';
+			Yii::app()->mailer->Port = 465; 
+			Yii::app()->mailer->IsSMTP();
+			Yii::app()->mailer->From = 'siaekb10@gmail.com';
+			Yii::app()->mailer->FromName = 'Wei';
+			Yii::app()->mailer->AddReplyTo('siaekb10@gmail.com');
+			Yii::app()->mailer->AddAddress('choirudin@gmail.com');
+			Yii::app()->mailer->Username='siaekb10@gmail.com';
+			Yii::app()->mailer->Password='bismillahsukses';
+			Yii::app()->mailer->Subject = 'Yii rulez!';
+			Yii::app()->mailer->Body = 'asik nih guwe bisa kirim email';
+			Yii::app()->mailer->Send();
 			$this->render('forget', array('model' => $model));
 	}
 	public function actionReset($model) {
