@@ -37,11 +37,16 @@ return array(
 			'class'=>'application.components.RoleWebUser',
 			'allowAutoLogin'=>true,
 		),
-		'mailer' => array(
-      		'class' => 'application.extensions.mailer.EMailer',
-      		'pathViews' => 'application.views.email',
-      		'pathLayouts' => 'application.views.email.layouts'
-   		),
+		'Smtpmail'=>array(
+            'class'=>'application.extensions.smtpmail.PHPMailer',
+            'Host'=>"smtp.gmail.com",
+            'Username'=>'siaekb10@gmail.com',
+            'Password'=>'bismillahsukses',
+            'Mailer'=>'smtp',
+            'Port'=>587,
+            'SMTPAuth'=>true, 
+            'SMTPSecure' => 'tls',
+        ),
 		// uncomment the following to enable URLs in path-format
 		
 		'urlManager'=>array(

@@ -92,38 +92,47 @@ class SiteController extends Controller
 			$this->actionReset($user);
         } else
         	
-			Yii::app()->mailer->Host = 'ssl://smtp.gmail.com';
-			Yii::app()->mailer->Port = 465; 
-			Yii::app()->mailer->IsSMTP();
-			Yii::app()->mailer->From = 'siaekb10@gmail.com';
-			Yii::app()->mailer->FromName = 'Wei';
-			Yii::app()->mailer->AddReplyTo('siaekb10@gmail.com');
-			Yii::app()->mailer->AddAddress('choirudin@gmail.com');
-			Yii::app()->mailer->Username='siaekb10@gmail.com';
-			Yii::app()->mailer->Password='bismillahsukses';
-			Yii::app()->mailer->Subject = 'Yii rulez!';
-			Yii::app()->mailer->Body = 'asik nih guwe bisa kirim email';
-			Yii::app()->mailer->Send();
 			$this->render('forget', array('model' => $model));
 	}
-	public function actionReset($model) {
+	
+	public function actionReset($username) {
+		//$model = User::::model()->find('LOWER(username)=?', array($model->username));
 		$password = "" . rand(1000000, 10000000);
-		$model->password = $password;
-		
-		if($model->save()) {
-			$message = "Hi " . $model->nama . ", this is your new password. " .
-						"Your Username : " . $model->username .
-						"Your New Password : " . $model->password;
-			$headers = 'MIME-Version: 1.0' . "\r\n";
-            $headers .= 'Contact-type: text/html; charset=iso-8859-1' . "\r\n";
-            $headers .= 'From: no-reply <no-reply@siaek.ppsdms.org>' . "\r\n";
-			
-			mail($model->email,
-				 "Reset Password",
-				 $message,
-				 $headers
-			);
+		//$model->password = $password;
+
+
+		$model=new User;
+		if(isset($_POST['User']))
+		{
+			$model->attributes=$_POST['User'];
+			$user = User::model()->find('LOWER(username)=?', array($model->username));
+
+		if($user!==null){
+		//make a verifed code
+			//$verCode = $user->hashPassword($user->password);
+		//save to database
+			$connection=Yii::app()->db;
+			$sql = "REPLACE INTO user (id_user, password) VALUES ('$user->id' ,'$password);";
+			$command=$connection->createCommand($sql);
+			$rowCount=$command->execute();
+		//send to email
+			$user->sendMail($model->email, $password);
 		}
+		}
+
+
+		
+		//if($model->save()) {
+		//	$message = "Hi " . $model->nama . ", this is your new password. " .
+		//				"Your Username : " . $model->username .
+		//				"Your New Password : " . $model->password;
+			//$headers = 'MIME-Version: 1.0' . "\r\n";
+            //$headers .= 'Contact-type: text/html; charset=iso-8859-1' . "\r\n";
+            //$headers .= 'From: no-reply <no-reply@siaek.ppsdms.org>' . "\r\n";
+			
+			//mail($model->email,"Reset Password",$message,$headers);
+
+		//}
 		$this->render('confirm', array('email' => $model->email));
 	}
 	

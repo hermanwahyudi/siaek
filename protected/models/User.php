@@ -127,4 +127,17 @@ class User extends CActiveRecord
         //var_dump($this->hashPassword($password, $this->saltpassword));
         return $password === $this->password;
     }
+    public function sendMail($to, $message){
+		$info = "Please click here to reset your password ".Yii::app()->getBaseUrl(true)."/site/login".$message;
+		$from = "siaekb10@gmail.com";
+		$subject ="Reset Your Password";
+        $mail=Yii::app()->Smtpmail;
+        $mail->SetFrom($from, 'Admin Siaek');
+        $mail->Subject = $subject;
+        $mail->MsgHTML($info);
+        $mail->AddAddress($to, "");
+        if(!$mail->Send()) {
+            echo "Mailer Error: " . $mail->ErrorInfo;
+        }
+    }
 }

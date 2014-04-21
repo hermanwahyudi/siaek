@@ -2,7 +2,7 @@
 <div class="col-md-4 column">
 </div>
 <div class="col-md-4 column">
-
+<form role="form" action="/siaek/site/reset" method="post">
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'login-form',
 	'enableClientValidation'=>true,
@@ -26,6 +26,7 @@
         </div>
 		</div>
 	</div>
+</div>
 <?php $this->endWidget(); ?>
 </div>
 </div>
