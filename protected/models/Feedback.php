@@ -98,5 +98,4 @@ class Feedback extends CActiveRecord
 	{
 		return parent::model($className);
 	}
-	
 }

@@ -29,17 +29,19 @@ class FeedbackController extends Controller
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
 				'actions'=>array('index','view'),
-				//'expression'=>Yii::app()->$user->getLevel()=3,
-				'users'=>array('*'),
+				'expression'=>'Yii::app()->user->getLevel() >= "2"',
+				//'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
-				'users'=>array('@'),
+				'actions'=>array('create'),
+				'expression'=>'Yii::app()->user->getLevel() = "2"',
+				//'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
-			),
+			 	'actions'=>array('delete'),
+			 	'expression'=>'Yii::app()->user->getLevel() = "3"',
+			 	//'users'=>array('admin'),
+			 ),
 			array('deny',  // deny all users
 				'users'=>array('*'),
 			),
@@ -123,13 +125,7 @@ class FeedbackController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$criteria = new CDbCriteria();
-		$criteria->condition = 'id_regional=:id_regional';
-		$criteria->params = array(':id_regional'=>1);
-		$dataProvider = Feedback::model()->find($criteria);
-		$dataProvider->getData();
-
-		//$dataProvider=new CActiveDataProvider('Feedback');
+		$dataProvider=new CActiveDataProvider('Feedback');
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));

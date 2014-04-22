@@ -107,17 +107,17 @@ class SiteController extends Controller
 			$model->attributes=$_POST['User'];
 			$user = User::model()->find('LOWER(username)=?', array($model->username));
 
-		if($user!==null){
-		//make a verifed code
-			//$verCode = $user->hashPassword($user->password);
-		//save to database
-			$connection=Yii::app()->db;
-			$sql = "REPLACE INTO user (id_user, password) VALUES ('$user->id' ,'$password);";
-			$command=$connection->createCommand($sql);
-			$rowCount=$command->execute();
-		//send to email
-			$user->sendMail($model->email, $password);
-		}
+			if($user!==null){
+			//make a verifed code
+				//$verCode = $user->hashPassword($user->password);
+			//save to database
+				$connection=Yii::app()->db;
+				$sql = "REPLACE INTO user (id_user, password) VALUES ('$user->id' ,'$password);";
+				$command=$connection->createCommand($sql);
+				$rowCount=$command->execute();
+			//send to email
+				$user->sendMail($model->email, $password);
+			}
 		}
 
 

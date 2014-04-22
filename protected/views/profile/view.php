@@ -11,12 +11,13 @@
 				</tr>
 				<tr>
 					<td align="left"><strong>Role</strong><td align="left">:
-					<select class="selectpicker">
-   									 <option>Admin</option>
-   									 <option>Pengurus Pusat</option>
-   									 <option>Pengurus Regional</option>
+						<select class="selectpicker">
+   							 <option>Admin</option>
+   							 <option>Pengurus Pusat</option>
+   							<option>Pengurus Regional</option>
    									 
-  					</select></td>
+  						</select>
+  				</td>
   					</td>
 					<!-- <td align="left"><strong>Role</strong></td><td align="left">: <?php echo $model->role; ?></td> -->
 				</tr>
