@@ -33,7 +33,7 @@
 
 	<div class="row">
 		<?php echo $form->label($model,'no_handphone'); ?>
-		<?php echo $form->textField($model,'no_handphone',array('size'=>15,'maxlength'=>15)); ?>
+		<?php echo $form->textField($model,'no_handphone',array('size'=>20,'maxlength'=>20)); ?>
 	</div>
 
 	<div class="row">
@@ -43,7 +43,7 @@
 
 	<div class="row">
 		<?php echo $form->label($model,'jenis_kelamin'); ?>
-		<?php echo $form->textField($model,'jenis_kelamin'); ?>
+		<?php echo $form->textField($model,'jenis_kelamin',array('size'=>1,'maxlength'=>1)); ?>
 	</div>
 
 	<div class="row">
