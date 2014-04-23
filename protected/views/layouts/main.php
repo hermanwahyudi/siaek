@@ -90,8 +90,9 @@
 
                             </div>
                             <div class="panel-body">
-                                <p class="text-center">
-                                    <img src="<?php echo Yii::app()->request->baseUrl; ?>/assets/images/calendar.jpg" width="100" height="100"  alt="b10" class="img-rounded"></p> 
+                                <?php
+                                    $this->widget('ext.simple-calendar.SimpleCalendarWidget');
+                                ?> 
                             </div>
                         </div>
                     </div>
