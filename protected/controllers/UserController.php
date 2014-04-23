@@ -65,21 +65,44 @@ class UserController extends Controller
 	 */
 	public function actionCreate()
 	{
-		$model=new User;
 
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
+		$model=new User;  // this is my model related to table
+        if(isset($_POST['User']))
+        {
+            $rnd = rand(0,9999);  // generate random number between 0-9999
+            $model->attributes=$_POST['User'];
+ 
+            $uploadedFile=CUploadedFile::getInstance($model,'url_image');
+            $fileName = "{$rnd}-{$uploadedFile}";  // random number + file name
+            $model->url_image = $fileName;
+ 
+            if($model->save())
+            {
+                $uploadedFile->saveAs(Yii::app()->basePath.'/../images/'.$fileName);  // image will uplode to rootDirectory/banner/
+                $this->redirect(array('admin'));
+            }
+        }
+        $this->render('create',array(
+            'model'=>$model,
+        ));
 
-		if(isset($_POST['User']))
-		{
-			$model->attributes=$_POST['User'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id_user));
-		}
 
-		$this->render('create',array(
-			'model'=>$model,
-		));
+
+		// $model=new User;
+
+		// // Uncomment the following line if AJAX validation is needed
+		// // $this->performAjaxValidation($model);
+
+		// if(isset($_POST['User']))
+		// {
+		// 	$model->attributes=$_POST['User'];
+		// 	if($model->save())
+		// 		$this->redirect(array('view','id'=>$model->id_user));
+		// }
+
+		// $this->render('create',array(
+		// 	'model'=>$model,
+		// ));
 	}
 
 	/**
@@ -89,21 +112,50 @@ class UserController extends Controller
 	 */
 	public function actionUpdate($id)
 	{
+
 		$model=$this->loadModel($id);
+ 
+        if(isset($_POST['User']))
+        {
+            $_POST['user']['url_image'] = $model->url_image;
+            $model->attributes=$_POST['User'];
+ 
+            $uploadedFile=CUploadedFile::getInstance($model,'url_image');
+ 
+            if($model->save())
+            {
+                if(!empty($uploadedFile))  // check if uploaded file is set or not
+                {
+                    $uploadedFile->saveAs(Yii::app()->basePath.'/../images/'.$model->url_image);
+                }
+                $this->redirect(array('admin'));
+            }
+ 
+        }
+ 
+        $this->render('update',array(
+            'model'=>$model,
+        ));
 
-		// Uncomment the following line if AJAX validation is needed
-		// $this->performAjaxValidation($model);
 
-		if(isset($_POST['User']))
-		{
-			$model->attributes=$_POST['User'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id_user));
-		}
 
-		$this->render('update',array(
-			'model'=>$model,
-		));
+
+
+		// $model=$this->loadModel($id);
+
+		// // Uncomment the following line if AJAX validation is needed
+		// // $this->performAjaxValidation($model);
+
+		// if(isset($_POST['User']))
+		// {
+		// 	$model->attributes=$_POST['User'];
+		// 	if($model->save())
+		// 		$this->redirect(array('view','id'=>$model->id_user));
+		// }
+
+		// $this->render('update',array(
+		// 	'model'=>$model,
+		// ));
 	}
 
 	/**

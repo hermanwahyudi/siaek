@@ -51,14 +51,14 @@ class User extends CActiveRecord
 		return array(
 			array('role, username, password, nama, jenis_kelamin, email, nip, no_telp, alamat, url_image', 'required'),
 			array('role', 'numerical', 'integerOnly'=>true),
-			array('username, password, nama, email, nip, url_image', 'length', 'max'=>64),
+			array('username, password, nama, email, nip, url_image', 'length', 'max'=>255),
 			array('jenis_kelamin', 'length', 'max'=>12),
 			array('no_telp', 'length', 'max'=>20),
 			array('url_image', 'file', 'types' => 'jpg, gif, png'),
 			
-			//Edit Password
-			array('password_sekarang, password_baru, password_baru_repeat', 'required'),
-			array('password_baru', 'compare'),
+			//Edit Password saya komen kak soalnya jadi kagak bisa kalau create and update
+			//array('password_sekarang, password_baru, password_baru_repeat', 'required'),
+			//array('password_baru', 'compare','on'=>'methodnya kak http://www.yiiframework.com/doc/api/1.1/CModel#rules-detail'),
 			
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
@@ -100,9 +100,10 @@ class User extends CActiveRecord
 			'no_telp' => 'No Telp',
 			'alamat' => 'Alamat',
 			'url_image' => 'Foto',
-			'password_sekarang' => 'Password Sekarang',
-			'password_baru' => 'Password Baru',
-			'password_baru_repeat' => 'Konfirmasi Password',
+			//kak yang dibawah ini kan kagak dimasukkin database ya jadi jangan taruh ini kalau saya mau create/update profile jadi kagak bisa
+			//'password_sekarang' => 'Password Sekarang',
+			//'password_baru' => 'Password Baru',
+			//'password_baru_repeat' => 'Konfirmasi Password',
 		);
 	}
 
