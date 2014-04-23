@@ -49,6 +49,11 @@ $this->menu=array(
 				<tr>
 					<td align="left"><strong>Alamat</strong></td><td align="left">: <?php echo $model->alamat; ?></td>
 				</tr>
+				<tr>
+					<td align="left"><strong>Fotot</strong></td><td align="left">: 
+					<?php echo CHtml::image(Yii::app()->request->baseUrl.'/images/'.$model->url_image,"image",array("width"=>200)); ?>
+				</td>
+				</tr>
 			</tbody>
         </table>
 	</div>
