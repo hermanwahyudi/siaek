@@ -18,6 +18,21 @@
  */
 class User extends CActiveRecord
 {
+	public $password_sekarang;
+	public $password_baru;
+	public $password_baru_repeat;
+	
+	/**
+	 * Returns the static model of the specified AR class.
+	 * Please note that you should have this exact method in all your CActiveRecord descendants!
+	 * @param string $className active record class name.
+	 * @return User the static model class
+	 */
+	public static function model($className=__CLASS__)
+	{
+		return parent::model($className);
+	}
+	
 	/**
 	 * @return string the associated database table name
 	 */
@@ -40,12 +55,23 @@ class User extends CActiveRecord
 			array('jenis_kelamin', 'length', 'max'=>12),
 			array('no_telp', 'length', 'max'=>20),
 			array('url_image', 'file', 'types' => 'jpg, gif, png'),
+			
+			//Edit Password
+			array('password_sekarang, password_baru, password_baru_repeat', 'required'),
+			array('password_baru', 'compare'),
+			
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id_user, role, username, password, nama, jenis_kelamin, email, nip, no_telp, alamat, url_image', 'safe', 'on'=>'search'),
 		);
 	}
-
+	
+	public function validateCurrentPassword() {
+		$valid = $this->password_sekarang === $this->password;
+		
+		return $valid;
+	}
+	
 	/**
 	 * @return array relational rules.
 	 */
@@ -74,6 +100,9 @@ class User extends CActiveRecord
 			'no_telp' => 'No Telp',
 			'alamat' => 'Alamat',
 			'url_image' => 'Foto',
+			'password_sekarang' => 'Password Sekarang',
+			'password_baru' => 'Password Baru',
+			'password_baru_repeat' => 'Konfirmasi Password',
 		);
 	}
 
@@ -112,16 +141,7 @@ class User extends CActiveRecord
 		));
 	}
 
-	/**
-	 * Returns the static model of the specified AR class.
-	 * Please note that you should have this exact method in all your CActiveRecord descendants!
-	 * @param string $className active record class name.
-	 * @return User the static model class
-	 */
-	public static function model($className=__CLASS__)
-	{
-		return parent::model($className);
-	}
+
 	public function validatePassword($password) {
         //return $password === $this->password;
         //var_dump($this->hashPassword($password, $this->saltpassword));

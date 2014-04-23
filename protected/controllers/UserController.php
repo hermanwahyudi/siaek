@@ -28,7 +28,7 @@ class UserController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+				'actions'=>array('index', 'view', 'profile', 'password'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -54,6 +54,9 @@ class UserController extends Controller
 		$this->render('view',array(
 			'model'=>$this->loadModel($id),
 		));
+	}
+	public function actionProfile($id) {
+		$this->render('viewProfile', array('model' => $this->loadModel($id)));
 	}
 
 	/**
@@ -125,7 +128,42 @@ class UserController extends Controller
 		if(Yii::app()->user->getLevel() == '1') 
 			$this->actionAdmin();
 	}
-
+	
+	public function actionPassword($id) {
+		$model = $this->loadModel($id);
+		
+		$this->performAjaxValidation($model);
+		
+		if(isset($_POST['User'])) {
+			$model->attributes = $_POST['User'];
+			
+			if($model->validateCurrentPassword()) {
+				$model->setScenario('changePassword');
+				if($model->password_baru_repeat !== '') {
+					$password_baru = "" . $_POST['User']['password_baru'];
+					$password_baru_repeat = "" . $_POST['User']['password_baru_repeat'];
+					if($password_baru === $password_baru_repeat) {
+						$model->password = $password_baru_repeat;
+						if($model->save(false)) {
+							Yii::app()->user->setFlash('passChanged', 'Password Anda telah berhasil diubah.');
+							$this->redirect(array('profile', 'id' => $model->id_user));
+						}
+					} else {
+						Yii::app()->user->setFlash('errorNewPass', 'Password baru tidak sama dengan password konfirmasi.');
+                        $this->redirect(array('password', 'id' => $model->id_user));
+					}
+				} else {
+					Yii::app()->user->setFlash('errorPassConfirm', 'Konfirmasi password harus diisi.');
+                    $this->redirect(array('password', 'id' => $model->id_user));
+				} 
+			} else {
+				Yii::app()->user->setFlash('errorCurrentPass', 'Password sekarang tidak sama dengan di sistem.');
+                $this->redirect(array('password', 'id' => $model->id_user));
+			}
+		} 
+			$this->render('password', array('model' => $model));
+		
+	}
 	/**
 	 * Manages all models.
 	 */

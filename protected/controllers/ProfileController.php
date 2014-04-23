@@ -18,8 +18,15 @@
 						array('model' => $model));
 		}
 		public function actionPassword($id) {
-			$model = User::model()->findByPk($id);
-			$this->render('password', array('model' => $model));
+			$model = $this->loadModel($id);
+			
+			$this->performAjaxValidation($model);
+			
+			if(isset($_POST['User'])) {
+				
+			} else {
+				$this->render('password', array('model' => $model));
+			}
 		}
 		/**
 		 * Returns the data model based on the primary key given in the GET variable.

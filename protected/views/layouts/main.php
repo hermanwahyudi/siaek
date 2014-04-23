@@ -53,7 +53,7 @@
 			
 		</div>
 		<?php if(!Yii::app()->user->isGuest) { ?>
-				<p><div class="login-as"><i>Logged in as <?php echo CHtml::link(Yii::app()->user->name, array('profile/view', 'id' => Yii::app()->user->id)); ?></i> <?php echo CHtml::link('Logout', array('site/logout')); ?></div></p>
+				<p><div class="login-as"><i>Logged in as <?php echo CHtml::link(Yii::app()->user->name, array('user/view', 'id' => Yii::app()->user->id)); ?></i> <?php echo CHtml::link('Logout', array('site/logout')); ?></div></p>
 			<?php }?>
 	</div>
 
@@ -78,7 +78,7 @@
                             </div>
                             <div class="panel-body">
                                 <div class="alert alert-info">
-                                    <?php echo CHtml::link('<h4>Profile</h4>',array('profile/view', 'id'=> Yii::app()->user->id)); ?></div>
+                                    <?php echo CHtml::link('<h4>Profile</h4>',array('user/profile', 'id'=> Yii::app()->user->id)); ?></div>
                             </div>
                         </div>
                     </div>
