@@ -11,3 +11,5 @@ tambahkan baris dibawah ini ya setelah clone
 	+3. [halllo jihan]
 
 	+4. [hallo ini yane]
+
+	+5. [clone ya ....]
