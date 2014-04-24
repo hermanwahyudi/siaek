@@ -12,4 +12,4 @@ tambahkan baris dibawah ini ya setelah clone
 
 	+4. [hallo ini yane]
 
-	+5. [clone ya ....]
+	+5. [hallo kak coba masukin nama kak giri di sini]
