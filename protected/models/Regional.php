@@ -98,4 +98,7 @@ class Regional extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+	public function users(){
+		return CHtml::listData(User::model()->findAll(), 'id_user', 'nama');
+	}
 }
