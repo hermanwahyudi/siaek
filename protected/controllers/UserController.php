@@ -28,7 +28,7 @@ class UserController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index', 'view', 'profile', 'password'),
+				'actions'=>array('index', 'view', 'profile', 'password', 'updateprofile'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -157,7 +157,32 @@ class UserController extends Controller
 		// 	'model'=>$model,
 		// ));
 	}
-
+	
+	public function actionUpdateProfile($id) {
+		$model=$this->loadModel($id);
+ 
+        if(isset($_POST['User']))
+        {
+            $model->attributes=$_POST['User'];
+ 
+            $uploadedFile=CUploadedFile::getInstance($model,'url_image');
+ 
+            if($model->save())
+            {
+                if(!empty($uploadedFile))  // check if uploaded file is set or not
+                {
+                    $uploadedFile->saveAs(Yii::app()->basePath.'/../images/'.$model->url_image);
+                }
+				Yii::app()->user->setFlash('successProfile', 'Profile telah berhasil diubah.');
+                $this->redirect(array('profile', 'id' => $model->id_user));
+            }
+ 
+        }
+ 
+        $this->render('updateProfile',array(
+            'model'=>$model,
+        ));
+	}
 	/**
 	 * Deletes a particular model.
 	 * If deletion is successful, the browser will be redirected to the 'admin' page.
@@ -189,8 +214,8 @@ class UserController extends Controller
 		if(isset($_POST['User'])) {
 			$model->attributes = $_POST['User'];
 			
-			if($model->validateCurrentPassword()) {
-				$model->setScenario('changePassword');
+			if($model->password === $_POST['User']['password_sekarang']) {
+				
 				if($model->password_baru_repeat !== '') {
 					$password_baru = "" . $_POST['User']['password_baru'];
 					$password_baru_repeat = "" . $_POST['User']['password_baru_repeat'];

@@ -54,11 +54,11 @@ class User extends CActiveRecord
 			array('username, password, nama, email, nip, url_image', 'length', 'max'=>255),
 			array('jenis_kelamin', 'length', 'max'=>12),
 			array('no_telp', 'length', 'max'=>20),
-			array('url_image', 'file', 'types' => 'jpg, gif, png'),
+			array('url_image', 'file', 'types' => 'jpg, jpeg, gif, png'),
 			
 			//Edit Password saya komen kak soalnya jadi kagak bisa kalau create and update
 			//array('password_sekarang, password_baru, password_baru_repeat', 'required'),
-			//array('password_baru', 'compare','on'=>'methodnya kak http://www.yiiframework.com/doc/api/1.1/CModel#rules-detail'),
+			array('password_baru', 'compare','on'=>'changePassword'),
 			
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.

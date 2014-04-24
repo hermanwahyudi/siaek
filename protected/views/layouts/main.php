@@ -19,7 +19,7 @@
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/bootstrap/bootstrap.min.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/bootstrap/style.css" />
 	
-	<link rel="shortcut icon" href="<?php echo Yii::app()->request->baseUrl; ?>/assets/images/p.gif">
+	<link rel="shortcut icon" href="<?php echo Yii::app()->request->baseUrl; ?>/images/p.gif">
 	 
 	<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.min.js" ></script>
 	<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/bootstrap.min.js" ></script>
@@ -47,7 +47,7 @@
 			<div class="page-header">
 					<!--h2 class="text-center">Sistem Informasi Absensi dan Evaluasi Kegiatan</h2-->
                     <p class="text-center">
-					<img src="<?php echo Yii::app()->request->baseUrl; ?>/assets/images/logo1.jpg" width="1140" height="200" alt="" />
+					<img src="<?php echo Yii::app()->request->baseUrl; ?>/images/logo1.jpg" width="1140" height="200" alt="" />
 					 </p>
 			</div>
 			
@@ -74,7 +74,9 @@
                         <div class="panel panel-primary">
                             <div class="panel-body">
                                 <p class="text-center">
-                                    <img src="<?php echo Yii::app()->request->baseUrl; ?>/assets/images/Photo.jpg" width="100" height="100"  alt="b10" class="img-rounded"></p>
+									<?php $model = User::model()->findByPk(Yii::app()->user->id); ?>
+									
+                                    <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/<?php echo $model->url_image; ?>" width="100" height="100"  alt="b10" class="img-rounded"></p>
                             </div>
                             <div class="panel-body">
                                 <div class="alert alert-info">

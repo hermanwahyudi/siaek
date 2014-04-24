@@ -5,7 +5,12 @@
 if(Yii::app()->user->hasFlash('passChanged')):
     echo "<div style='color:green'>".Yii::app()->user->getFlash('passChanged')."</div>";
 endif;
-?><br>
+?>
+<?php if(Yii::app()->user->hasFlash('successProfile')):
+    echo "<div style='color:green'>".Yii::app()->user->getFlash('successProfile')."</div>";
+endif;
+?>
+<br>
 <div class="row clearfix">
     <div class="col-md-12 column"> <br>
 		<table class="table">
@@ -14,13 +19,8 @@ endif;
 					<td align="left"><strong>ID User</strong></td><td align="left">: <?php echo $model->id_user; ?></td>
 				</tr>
 				<tr>
-					<td align="left"><strong>Role</strong><td align="left">:
-						<select class="selectpicker">
-   							 <option>Admin</option>
-   							 <option>Pengurus Pusat</option>
-   							<option>Pengurus Regional</option>
-   									 
-  						</select>
+					<td align="left"><strong>Role</strong></td><td align="left">:
+						<?php echo $model->role; ?>
   				</td>
   					</td>
 					<!-- <td align="left"><strong>Role</strong></td><td align="left">: <?php echo $model->role; ?></td> -->
@@ -35,12 +35,8 @@ endif;
 					<td align="left"><strong>Nama</strong></td><td align="left">: <?php echo $model->nama; ?></td>
 				</tr>
 				<tr>
-					<td align="left"><strong> Jenis Kelamin </strong><td align="left">:
-					<select class="selectpicker">
-   									 <option>Pria</option>
-   									 <option>Wanita</option>
-   									 
-  						</select></td>
+					<td align="left"><strong> Jenis Kelamin </strong></td><td align="left">:
+					<?php echo $model->jenis_kelamin; ?>
   					</td>
 					<!-- <td align="left"><strong>Jenis Kelamin</strong></td><td align="left">: <?php echo $model->jenis_kelamin; ?></td> -->
 				</tr>
@@ -76,7 +72,7 @@ endif;
 )); 
 ?> -->
 <div style="float:left">
-<?php echo CHtml::button('Edit', array('class'=>'btn btn-default', 'submit' => array('user/update', 'id' => $model->id_user))); ?>
+<?php echo CHtml::button('Edit', array('class'=>'btn btn-default', 'submit' => array('user/updateprofile', 'id' => $model->id_user))); ?>
 
 <?php echo CHtml::button('Edit Password', array('class'=>'btn btn-default', 'submit' => array('user/password', 'id' => $model->id_user))); ?>
 <?php echo CHtml::link('Back', array('site/index')); ?>

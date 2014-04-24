@@ -12,7 +12,7 @@ $this->pageTitle=Yii::app()->name;?>
     <div class="panel panel-primary">
         <div class="panel-body">
             <p class="text-center">
-                <img src="<?php echo Yii::app()->request->baseUrl; ?>/assets/images/Feedback.png" width="100" height="100"  alt="b10" class="img-circle">
+                <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/Feedback.png" width="100" height="100"  alt="b10" class="img-circle">
             </p>
                 <a href="/siaek/feedback/index">
                     <p class="text-center">
@@ -26,7 +26,7 @@ $this->pageTitle=Yii::app()->name;?>
         <div class="panel panel-primary">
             <div class="panel-body">
                 <p class="text-center">
-                    <img src="<?php echo Yii::app()->request->baseUrl; ?>/assets/images/Rekapan.png" width="100" height="100"  alt="b10" class="img-circle">
+                    <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/Rekapan.png" width="100" height="100"  alt="b10" class="img-circle">
                 </p>
                 <a href="/siaek/rekapan/index">
                     <p class="text-center">
@@ -40,7 +40,7 @@ $this->pageTitle=Yii::app()->name;?>
         <div class="panel panel-primary">
             <div class="panel-body">
                 <p class="text-center">
-                        <img src="<?php echo Yii::app()->request->baseUrl; ?>/assets/images/Perbandingan Rekapan.png" width="100" height="100"  alt="b10" class="img-circle">
+                        <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/Perbandingan Rekapan.png" width="100" height="100"  alt="b10" class="img-circle">
                     </p>
                         <a href="/siaek/rekapan/comparerekapan">
                             <p class="text-center">
@@ -54,7 +54,7 @@ $this->pageTitle=Yii::app()->name;?>
         <div class="panel panel-primary">
             <div class="panel-body">
                <p class="text-center">
-                        <img src="<?php echo Yii::app()->request->baseUrl; ?>/assets/images/deadline.png" width="100" height="100"  alt="b10" class="img-circle">
+                        <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/deadline.png" width="100" height="100"  alt="b10" class="img-circle">
                     </p>
                         <a href="/siaek/kegiatan/deadline">
                             <p class="text-center">
@@ -68,7 +68,7 @@ $this->pageTitle=Yii::app()->name;?>
          <div class="panel panel-primary">
             <div class="panel-body">
                 <p class="text-center">
-                    <img src="<?php echo Yii::app()->request->baseUrl; ?>/assets/images/kegiatan.png" width="100" height="100"  alt="b10" class="img-circle">
+                    <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/kegiatan.png" width="100" height="100"  alt="b10" class="img-circle">
                 </p>
                 <a href="/siaek/kegiatan/index">
                     <p class="text-center">
@@ -84,7 +84,7 @@ $this->pageTitle=Yii::app()->name;?>
         <div class="panel panel-primary">
             <div class="panel-body">
                 <p class="text-center">
-                         <img src="<?php echo Yii::app()->request->baseUrl; ?>/assets/images/pengurus.png" width="100" height="100"  alt="b10" class="img-circle">
+                         <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/pengurus.png" width="100" height="100"  alt="b10" class="img-circle">
                 </p>
                 <a href="/siaek/user/index">
                     <p class="text-center">
@@ -98,7 +98,7 @@ $this->pageTitle=Yii::app()->name;?>
         <div class="panel panel-primary">
             <div class="panel-body">
                 <p class="text-center">
-                    <img src="<?php echo Yii::app()->request->baseUrl; ?>/assets/images/regional.png" width="100" height="100"  alt="b10" class="img-circle">
+                    <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/regional.png" width="100" height="100"  alt="b10" class="img-circle">
                 </p>
                 <a href="/siaek/regional/index">
                     <p class="text-center">
@@ -114,7 +114,7 @@ $this->pageTitle=Yii::app()->name;?>
         <div class="panel panel-primary">
             <div class="panel-body">
                  <p class="text-center">
-                    <img src="<?php echo Yii::app()->request->baseUrl; ?>/assets/images/isi_absensi.png" width="100" height="100"  alt="b10" class="img-circle">
+                    <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/isi_absensi.png" width="100" height="100"  alt="b10" class="img-circle">
                 </p>
                     <a href="/siaek/absensi/index">
                         <p class="text-center">
@@ -128,7 +128,7 @@ $this->pageTitle=Yii::app()->name;?>
         <div class="panel panel-primary">
             <div class="panel-body">
                 <p class="text-center">
-                    <img src="<?php echo Yii::app()->request->baseUrl; ?>/assets/images/peserta_didik.png" width="100" height="100"  alt="b10" class="img-circle">
+                    <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/peserta_didik.png" width="100" height="100"  alt="b10" class="img-circle">
                 </p>
                         <a href="/siaek/peserta/index">
                             <p class="text-center">
@@ -142,7 +142,7 @@ $this->pageTitle=Yii::app()->name;?>
         <div class="panel panel-primary">
             <div class="panel-body">
                 <p class="text-center">
-                    <img src="<?php echo Yii::app()->request->baseUrl; ?>/assets/images/Feedback.png" width="100" height="100"  alt="b10" class="img-circle">
+                    <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/Feedback.png" width="100" height="100"  alt="b10" class="img-circle">
                 </p>
                 <a href="/siaek/feedback/index">
                     <p class="text-center">

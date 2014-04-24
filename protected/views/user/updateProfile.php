@@ -28,6 +28,9 @@ $this->menu=array(
 	// There is a call to performAjaxValidation() commented in generated controller code.
 	// See class documentation of CActiveForm for details on this.
 	'enableAjaxValidation'=>false,
+	'htmlOptions' => array(
+        'enctype' => 'multipart/form-data',
+    ),
 )); ?>
 	<div class="form-group">
 		<label for="" class="col-sm-2 control-label"><?php echo $form->labelEx($model,'nip'); ?></label>
