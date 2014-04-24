@@ -11,11 +11,18 @@ return array(
 
 	// preloading 'log' component
 	'preload'=>array('log'),
+	'aliases' => array(
+        'bootstrap' => realpath(__DIR__ . '/../extensions/bootstrap'), // change this if necessary
+    ),
 
 	// autoloading model and component classes
 	'import'=>array(
 		'application.models.*',
 		'application.components.*',
+		'bootstrap.helpers.TbHtml',
+        'bootstrap.helpers.TbArray',
+        'bootstrap.behaviors.TbWidget',
+        'bootstrap.widgets.TbDataColumn',
 	),
 
 	'modules'=>array(
@@ -23,6 +30,7 @@ return array(
 		
 		'gii'=>array(
 			'class'=>'system.gii.GiiModule',
+			'generatorPaths' => array('bootstrap.gii'),
 			'password'=>'B10',
 			// If removed, Gii defaults to localhost only. Edit carefully to taste.
 			'ipFilters'=>array('127.0.0.1','::1'),
@@ -37,6 +45,9 @@ return array(
 			'class'=>'application.components.RoleWebUser',
 			'allowAutoLogin'=>true,
 		),
+		'bootstrap' => array(
+            'class' => 'bootstrap.components.TbApi',   
+        ),
 		'Smtpmail'=>array(
             'class'=>'application.extensions.smtpmail.PHPMailer',
             'Host'=>"smtp.gmail.com",

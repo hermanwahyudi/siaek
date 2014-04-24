@@ -34,6 +34,8 @@
     <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/date/eye.js"></script>
     <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/date/utils.js"></script>
     <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/date/layout.js?ver=1.0.2"></script>
+    <?php Yii::app()->bootstrap->register(); ?>
+
 	
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
