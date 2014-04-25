@@ -33,16 +33,16 @@ class FeedbackController extends Controller
 				//'users'=>array('@'),
 			),
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
-				'expression'=>'Yii::app()->user->getLevel() >= "2"',
+				'actions'=>array('index','view','delete','admin'),
+				'expression'=>'Yii::app()->user->getLevel() > "2"',
 				//'users'=>array('*'),
 			),
 			
-			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-			 	'actions'=>array('delete','admin'),
-			 	'expression'=>'Yii::app()->user->getLevel() = "3"',
-			 	//'users'=>array('admin'),
-			 ),
+			// array('allow', // allow admin user to perform 'admin' and 'delete' actions
+			//  	'actions'=>array('delete','admin'),
+			//  	'expression'=>'Yii::app()->user->getLevel() = "3"',
+			//  	//'users'=>array('admin'),
+			//  ),
 			array('deny',  // deny all users
 				'users'=>array('*'),
 			),
