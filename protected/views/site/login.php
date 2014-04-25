@@ -47,6 +47,7 @@
 		<?php echo Chtml::link("Forgot Password?", array('site/forget')); ?>
 	</div>
 </div>
+</div>
 </form>
 </div>
 		<div class="col-md-4 column">
