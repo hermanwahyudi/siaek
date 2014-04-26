@@ -127,10 +127,10 @@ class KegiatanController extends Controller
 	}
 	
 	public function actionDeadline() {
-		$model = new Feedback;
+		$model = Kegiatan::model()->findAll();
 		
 		if(isset($_POST['Feedback'])) {
-		
+			
 		} else {
 			$this->render("deadline", 
 				array('model'=>$model));

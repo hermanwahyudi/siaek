@@ -1,5 +1,18 @@
+<div class="form-horizontal" role="form">
+
+<?php $form=$this->beginWidget('CActiveForm', array(
+	'id'=>'user-form',
+	// Please note: When you enable ajax validation, make sure the corresponding
+	// controller action is handling ajax validation correctly.
+	// There is a call to performAjaxValidation() commented in generated controller code.
+	// See class documentation of CActiveForm for details on this.
+	'enableAjaxValidation'=>false,
+)); ?>
+
 <div class="row clearfix">
 			<div class="headline"> <h1 class="text-justify">Menentukan Deadline</h1>  </div>
+			
+			
 				<div class="col-md-12 column">	
 				<!--</div>-->
 				<!--</div>-->
@@ -9,52 +22,39 @@
 						<thead>
 							<tr>
 								<th>
-									Nama Kegiatan
+									No.
 								</th>
 								<th>
-									Nama Regional
+									Nama Kegiatan
 								</th>
 								<th>
 									Pembicara
 								</th>
 								<th>
-									NIP
+									Jenis Kegiatan
+								</th>
+								<th>
+									ID Regional
 								</th>
 								<th>
 									Tanggal Deadline
 								</th>
-								<th>
-									Actions
-								</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr>
-								<td>
-									KIK
-								</td>
-								<td>
-									Regional Jakarta 1- Putra
-								</td>
-								<td>
-									Hafiz
-								</td>
-								<td>
-									11003003
-								</td>
-								<td>
-									<a class="btn btn-default" data-toggle="dropdown" href="#">  2-03-2014  <span class ="caret"> </a>	
-									
-								</td>
-								<td>
-									<a href=#> Edit view </a>
-								</td>
-							</tr>
+						<?php $i=0;foreach($model as $x=>$y) { ?>
+						<?php echo "<tr><td>". ++$i ."</td><td>". $y->nama_kegiatan ."</td>";?>
+						<?php echo "<td>". $y->pembicara . "</td><td>". $y->jenis_kegiatan ."</td>"; ?>
+						<?php echo "<td>". $y->id_regional ."</td><td>". $form->textField($y,'deadline', array('class'=>'form-control')) ."</td></tr>"; ?> 
+						<?php } ?>
+							
 						</tbody>
-					</table> <button type="button" class="btn btn-default">Submit</button><br>
-					<?php echo CHtml::link('Back', array('site/index')); ?>
-					<br><br>
+					</table> 
 				</div>
+				<button type="button" class="btn btn-default">Submit</button><br>
+				<?php echo CHtml::link('Back', array('site/index')); ?>
+				<br><br>
 				
 			</div>
 		</div>
+<?php $this->endWidget(); ?>
