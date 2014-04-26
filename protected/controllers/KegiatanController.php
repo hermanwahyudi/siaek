@@ -122,12 +122,19 @@ class KegiatanController extends Controller
 	 */
 	public function actionIndex()
 	{
-		if(Yii::app()->user->getLevel() == '1') 
+		if(Yii::app()->user->getLevel() == '2') 
 			$this->actionAdmin();
 	}
 	
 	public function actionDeadline() {
-		$this->render("deadline");
+		$model = new Feedback;
+		
+		if(isset($_POST['Feedback'])) {
+		
+		} else {
+			$this->render("deadline", 
+				array('model'=>$model));
+		}
 	}
 
 	/**
