@@ -8,6 +8,10 @@
     <meta name="description" content="">
     <meta name="author" content="">
 	
+	<!-- DateTimePicker -->
+	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/jquery.datetimepicker.css"/ >
+	
+	
 	<!-- Datepicker CSS -->
 	<link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/date/datepicker.css" type="text/css" />
     <link rel="stylesheet" media="screen" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/date/layout.css" />
@@ -147,4 +151,10 @@
 </div><!-- page -->
 
 </body>
+<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.js"></script>
+<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.datetimepicker.js"></script>
+
+<script type="text/javascript"> 
+$('.datetimepicker').datetimepicker();
+</script>
 </html>

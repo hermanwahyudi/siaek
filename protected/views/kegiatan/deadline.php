@@ -45,7 +45,7 @@
 						<?php $i=0;foreach($model as $x=>$y) { ?>
 						<?php echo "<tr><td>". ++$i ."</td><td>". $y->nama_kegiatan ."</td>";?>
 						<?php echo "<td>". $y->pembicara . "</td><td>". $y->jenis_kegiatan ."</td>"; ?>
-						<?php echo "<td>". $y->id_regional ."</td><td>". $form->textField($y,'deadline', array('class'=>'form-control')) ."</td></tr>"; ?> 
+						<?php echo "<td>". $y->id_regional ."</td><td>". $form->textField($y,'deadline', array('class'=>'form-control', 'class'=>'datetimepicker')) ."</td></tr>"; ?> 
 						<?php } ?>
 							
 						</tbody>
