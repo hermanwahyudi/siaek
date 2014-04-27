@@ -28,7 +28,7 @@ class KegiatanController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+				'actions'=>array('index','view', 'UpdateDeadline'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
@@ -129,10 +129,19 @@ class KegiatanController extends Controller
 	public function actionDeadline() {
 		$model = Kegiatan::model()->findAll();
 		
-		if(isset($_POST['Feedback'])) {
-			
+		$this->render("deadline", 
+				array('model'=>$model));
+	}
+	public function actionUpdateDeadline($id) {
+		$model=$this->loadModel($id);
+		
+		if(isset($_POST['Kegiatan'])) {
+			$model->deadline = $_POST['Kegiatan']['deadline'];
+			$model->save();
+			Yii::app()->user->setFlash('successDeadline', 'Deadline telah berhasil diubah.');
+			$this->redirect(array('deadline'));
 		} else {
-			$this->render("deadline", 
+			$this->render("formDeadline", 
 				array('model'=>$model));
 		}
 	}

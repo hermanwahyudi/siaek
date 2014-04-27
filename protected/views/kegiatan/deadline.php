@@ -17,7 +17,11 @@ $this->breadcrumbs=array(
 
 <div class="row clearfix">
 			<div class="headline"> <h1 class="text-justify">Menentukan Deadline</h1>  </div>
-			
+			<?php 
+				if(Yii::app()->user->hasFlash('successDeadline')):
+					echo "<div style='color:green'>".Yii::app()->user->getFlash('successDeadline')."</div>";
+				endif;
+			?><br>
 			
 				<div class="col-md-12 column">	
 				<!--</div>-->
@@ -45,19 +49,22 @@ $this->breadcrumbs=array(
 								<th>
 									Tanggal Deadline
 								</th>
+								<th>Action</th>
 							</tr>
 						</thead>
 						<tbody>
 						<?php $i=0;foreach($model as $x=>$y) { ?>
 						<?php echo "<tr><td>". ++$i ."</td><td>". $y->nama_kegiatan ."</td>";?>
 						<?php echo "<td>". $y->pembicara . "</td><td>". $y->jenis_kegiatan ."</td>"; ?>
-						<?php echo "<td>". $y->id_regional ."</td><td>". $form->textField($y,'deadline', array('class'=>'form-control', 'class'=>'datetimepicker')) ."</td></tr>"; ?> 
+						<?php echo "<td>". $y->id_regional ."</td><td>". $y->deadline ."</td>"; ?>
+						<?php echo "<td>". CHtml::link('Edit', array('kegiatan/UpdateDeadline', 'id'=>$y->id_kegiatan)) ."</td></tr>"; ?>
+						
 						<?php } ?>
 							
 						</tbody>
 					</table> 
 				</div>
-				<button type="button" class="btn btn-default">Submit</button><br>
+				<br>
 				<?php echo CHtml::link('Back', array('site/index')); ?>
 				<br><br>
 				
