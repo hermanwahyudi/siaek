@@ -20,10 +20,10 @@ $this->breadcrumbs=array(
 					<td align="center"><strong>No.</strong></td>
 				
 				
-					<td align="center"><strong>Id Regional</strong></td>
+					<td align="center"><strong>Nama Kegiatan</strong></td>
 				
 			
-					<td align="center"><strong>Nama Kegiatan</strong></td>
+					<td align="center"><strong>Komentar</strong></td>
 				
 			</thead>
             <tbody>
