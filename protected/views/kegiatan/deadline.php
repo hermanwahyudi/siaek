@@ -1,3 +1,9 @@
+<?php
+
+$this->breadcrumbs=array(
+	'Deadline',
+	
+);?>
 <div class="form-horizontal" role="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(

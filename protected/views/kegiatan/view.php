@@ -3,8 +3,8 @@
 /* @var $model Kegiatan */
 
 $this->breadcrumbs=array(
-	'Kegiatans'=>array('index'),
-	$model->id_kegiatan,
+	'Kegiatan'=>array('index'),
+	$model->nama_kegiatan,
 );
 
 $this->menu=array(

@@ -3,8 +3,7 @@
 /* @var $model Regional */
 
 $this->breadcrumbs=array(
-	'Regionals'=>array('index'),
-	'Manage',
+	'Regional',
 );
 
 
@@ -26,7 +25,7 @@ $('.search-form form').submit(function(){
 <div class="headline"> <h1 class="text-justify">List Regional</h1>  </div>
 
 
-<?php echo CHtml::link('Create New Regional', array('regional/create', 'class'=>'col-sm-1')); ?>
+<?php echo CHtml::link('Tambah Regional', array('regional/create', 'class'=>'col-sm-1')); ?>
 
 <?php $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'regional-grid',

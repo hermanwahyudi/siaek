@@ -3,8 +3,7 @@
 /* @var $model User */
 
 $this->breadcrumbs=array(
-	'Users'=>array('index'),
-	'Manage',
+	'Pengurus',
 );
 
 
@@ -25,7 +24,7 @@ $('.search-form form').submit(function(){
 
 <div class="headline"> <h1 class="text-justify">List Pengurus</h1>  </div>
 
-<?php echo CHtml::link('Create New Pengurus', array('user/create')); ?>
+<?php echo CHtml::link('Tambah Pengurus', array('user/create')); ?>
 
 <?php $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'user-grid',

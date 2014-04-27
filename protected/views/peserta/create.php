@@ -3,16 +3,11 @@
 /* @var $model Peserta */
 
 $this->breadcrumbs=array(
-	'Pesertas'=>array('index'),
-	'Create',
-);
-
-$this->menu=array(
-	array('label'=>'List Peserta', 'url'=>array('index')),
-	array('label'=>'Manage Peserta', 'url'=>array('admin')),
+	'Peserta'=>array('index'),
+	'Tambah',
 );
 ?>
 
-<h1>Create Peserta</h1>
+<div class="headline"> <h1 class="text-justify">Tambah Peserta</h1>  </div>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

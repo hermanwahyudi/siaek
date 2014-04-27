@@ -3,8 +3,8 @@
 /* @var $model Regional */
 
 $this->breadcrumbs=array(
-	'Regionals'=>array('index'),
-	'Create',
+	'Regional'=>array('index'),
+	'Tambah Regional',
 );
 
 $this->menu=array(

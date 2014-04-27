@@ -1,3 +1,10 @@
+<?php
+ 
+$this->breadcrumbs=array(
+	'Isi Absensi',
+	);
+
+?>
 			<div class="row clearfix">
 					<div class="headline"> <h1 class="text-justify">Isi Absensi</h1>  </div>
                     <div class="col-md-12 column">

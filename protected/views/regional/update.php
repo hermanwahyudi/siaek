@@ -3,9 +3,9 @@
 /* @var $model Regional */
 
 $this->breadcrumbs=array(
-	'Regionals'=>array('index'),
-	$model->id_regional=>array('view','id'=>$model->id_regional),
-	'Update',
+	'Regional'=>array('index'),
+	$model->nama=>array('view','id'=>$model->id_regional),
+	'Ubah',
 );
 
 $this->menu=array(
@@ -16,6 +16,6 @@ $this->menu=array(
 );
 ?>
 
-<div class="headline"> <h1 class="text-justify">Form Update Regional</h1>  </div>
+<div class="headline"> <h1 class="text-justify">Form Ubah Regional</h1>  </div>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

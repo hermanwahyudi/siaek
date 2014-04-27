@@ -3,8 +3,8 @@
 /* @var $model User */
 
 $this->breadcrumbs=array(
-	'Users'=>array('index'),
-	'Create',
+	'Pengurus'=>array('index'),
+	'Tambah Pengurus',
 );
 
 $this->menu=array(
@@ -13,6 +13,6 @@ $this->menu=array(
 );
 ?>
 
-<div class="headline"> <h1 class="text-justify">Create Pengurus</h1>  </div>
+<div class="headline"> <h1 class="text-justify">Tambah Pengurus</h1>  </div>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

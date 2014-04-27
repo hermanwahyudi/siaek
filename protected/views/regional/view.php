@@ -3,8 +3,8 @@
 /* @var $model Regional */
 
 $this->breadcrumbs=array(
-	'Regionals'=>array('index'),
-	$model->id_regional,
+	'Regional'=>array('index'),
+	$model->nama,
 );
 
 $this->menu=array(

@@ -1,4 +1,9 @@
-<?php ?>
+<?php 
+$this->breadcrumbs=array(
+	'Profil',
+	
+);
+?>
 
 <div class="headline"> <h1 class="text-justify"><?php echo $model->nama; ?></h1>  </div>
 <?php 

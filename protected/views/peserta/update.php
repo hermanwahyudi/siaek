@@ -4,18 +4,12 @@
 
 $this->breadcrumbs=array(
 	'Pesertas'=>array('index'),
-	$model->id_peserta=>array('view','id'=>$model->id_peserta),
-	'Update',
+	$model->nama=>array('view','id'=>$model->id_peserta),
+	'Ubah',
 );
 
-$this->menu=array(
-	array('label'=>'List Peserta', 'url'=>array('index')),
-	array('label'=>'Create Peserta', 'url'=>array('create')),
-	array('label'=>'View Peserta', 'url'=>array('view', 'id'=>$model->id_peserta)),
-	array('label'=>'Manage Peserta', 'url'=>array('admin')),
-);
 ?>
 
-<h1>Update Peserta <?php echo $model->id_peserta; ?></h1>
+<div class="headline"> <h1 class="text-justify">Ubah Peserta <?php echo $model->nama; ?></h1>  </div>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

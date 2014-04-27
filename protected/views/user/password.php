@@ -1,4 +1,11 @@
+<?php
+ 
+$this->breadcrumbs=array(
+	'Profil'=>array('profile', 'id'=>$model->id_user),
+	'Ubah Password',
+);
 
+?>
 <div class="headline"> <h1 class="text-justify">Edit Password</h1>  </div>
 
 <?php 

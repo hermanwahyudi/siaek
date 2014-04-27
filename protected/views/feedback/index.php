@@ -3,18 +3,42 @@
 /* @var $dataProvider CActiveDataProvider */
 
 $this->breadcrumbs=array(
-	'Feedbacks',
+	'Feedback',
 );
 
-$this->menu=array(
-	array('label'=>'Create Feedback', 'url'=>array('create')),
-	array('label'=>'Manage Feedback', 'url'=>array('admin')),
-);
 ?>
 
-<h1>Feedbacks</h1>
 
-<?php $this->widget('zii.widgets.CListView', array(
-	'dataProvider'=>$dataProvider,
-	'itemView'=>'_view',
-)); ?>
+<div class="headline"><h1>Feedback</h1></div>
+<div align = "center">
+
+<div class="row clearfix">
+    <div class="col-md-11 column"> <br>
+		<table class="table" aling="center">
+			<thead>
+				
+					<td align="center"><strong>No.</strong></td>
+				
+				
+					<td align="center"><strong>Id Regional</strong></td>
+				
+			
+					<td align="center"><strong>Nama Kegiatan</strong></td>
+				
+			</thead>
+            <tbody>
+            	<?php
+               $i=0;
+	foreach($dataFeedback as $x=>$y) {
+		
+		echo "<tr><td>".++$i."</td><td align='left'>". $y->nama_kegiatan . "</td>";
+		echo "<td align='left'>".$y->komentar . "</td><td>". CHtml::link('Detail', array('feedback/view', 'id'=>$y->id_feedback)) ."</td></tr>";
+	} ?>
+			</tbody>
+        </table>
+        <p align="left">
+<?php echo CHtml::link('Back', array('site/index')); ?></p>
+	</div>
+</div>
+
+</div>

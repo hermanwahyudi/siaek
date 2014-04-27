@@ -3,9 +3,9 @@
 /* @var $model User */
 
 $this->breadcrumbs=array(
-	'Users'=>array('index'),
-	$model->id_user=>array('view','id'=>$model->id_user),
-	'Update',
+	'Pengurus'=>array('index'),
+	$model->nama=>array('view','id'=>$model->id_user),
+	'Ubah',
 );
 
 $this->menu=array(
@@ -16,6 +16,6 @@ $this->menu=array(
 );
 ?>
 
-<div class="headline"> <h1 class="text-justify">Update  <?php echo $model->nama; ?></h1></div>
+<div class="headline"> <h1 class="text-justify">Ubah  <?php echo $model->nama; ?></h1></div>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

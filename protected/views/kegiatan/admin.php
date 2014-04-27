@@ -3,8 +3,7 @@
 /* @var $model Kegiatan */
 
 $this->breadcrumbs=array(
-	'Kegiatans'=>array('index'),
-	'Manage',
+	'Kegiatan',
 );
 
 
@@ -24,7 +23,7 @@ $('.search-form form').submit(function(){
 
 <div class="headline"> <h1 class="text-justify">List Kegiatan</h1>  </div>
 
-<?php echo CHtml::link('Create New Kegiatan', array('kegiatan/create')); ?>
+<?php echo CHtml::link('Tambah Kegiatan', array('kegiatan/create')); ?>
 
 <?php $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'kegiatan-grid',

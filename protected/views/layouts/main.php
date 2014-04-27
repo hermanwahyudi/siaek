@@ -63,12 +63,12 @@
 			<?php }?>
 	</div>
 
-	
-	<!--?php if(isset($this->breadcrumbs)):?>
+	<div align="left">
+	<?php if(isset($this->breadcrumbs)):?>
 		<?php $this->widget('zii.widgets.CBreadcrumbs', array(
 			'links'=>$this->breadcrumbs,
 		)); ?><!-- breadcrumbs -->
-	<!--?php endif?-->
+	<?php endif?></div>
 	<?php if(!Yii::app()->user->isGuest) { ?>
 	<!--contain-->
             <div class="row clearfix">

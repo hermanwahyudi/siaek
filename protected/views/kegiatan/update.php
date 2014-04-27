@@ -3,9 +3,9 @@
 /* @var $model Kegiatan */
 
 $this->breadcrumbs=array(
-	'Kegiatans'=>array('index'),
-	$model->id_kegiatan=>array('view','id'=>$model->id_kegiatan),
-	'Update',
+	'Kegiatan'=>array('index'),
+	$model->nama_kegiatan=>array('view','id'=>$model->id_kegiatan),
+	'Ubah',
 );
 
 $this->menu=array(
@@ -16,6 +16,6 @@ $this->menu=array(
 );
 ?>
 
-<div class="headline"> <h1 class="text-justify">Create Kegiatan <?php echo $model->nama_kegiatan; ?></h1>  </div> 
+<div class="headline"> <h1 class="text-justify">Ubah Kegiatan <?php echo $model->nama_kegiatan; ?></h1>  </div> 
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

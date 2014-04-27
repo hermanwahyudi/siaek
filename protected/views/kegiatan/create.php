@@ -3,8 +3,8 @@
 /* @var $model Kegiatan */
 
 $this->breadcrumbs=array(
-	'Kegiatans'=>array('index'),
-	'Create',
+	'Kegiatan'=>array('index'),
+	'Tambah',
 );
 
 $this->menu=array(
@@ -13,6 +13,6 @@ $this->menu=array(
 );
 ?>
 
-<div class="headline"> <h1 class="text-justify">Create Kegiatan</h1>  </div>
+<div class="headline"> <h1 class="text-justify">Tambah Kegiatan</h1>  </div>
 
 <?php $this->renderPartial('_form', array('model'=>$model)); ?>

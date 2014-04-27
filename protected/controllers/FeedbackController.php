@@ -28,9 +28,9 @@ class FeedbackController extends Controller
 	{
 		return array(
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create'),
-				'expression'=>'Yii::app()->user->getLevel() = "2"',
-				//'users'=>array('@'),
+				'actions'=>array('index', 'create'),
+				//'expression'=>'Yii::app()->user->getLevel() = "2"',
+				'users'=>array('@'),
 			),
 			array('allow',  // allow all users to perform 'index' and 'view' actions
 				'actions'=>array('index','view','delete','admin'),
@@ -131,11 +131,19 @@ class FeedbackController extends Controller
 			$this->actionCreate();
 		}
 		else{
-			$dataProvider=new CActiveDataProvider('Feedback');
-			$this->render('index',array(
-				'dataProvider'=>$dataProvider,
-			));
+			$dataProvider =new CActiveDataProvider('Feedback');
+			//$model = new Feedback;
 
+			$id_user = Yii::app()->user->id;
+			$objRegional = Regional::model()->findByAttributes(array('id_user'=>$id_user));
+
+
+			$id_regional = $objRegional->id_regional;
+			$dataFeedback = Feedback::model()->findAllByAttributes(array('id_regional'=>$id_regional));
+
+			$this->render('index',array(
+				'dataFeedback'=>$dataFeedback,
+			));
 		}
 		
 	}

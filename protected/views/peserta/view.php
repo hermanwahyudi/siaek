@@ -3,20 +3,14 @@
 /* @var $model Peserta */
 
 $this->breadcrumbs=array(
-	'Pesertas'=>array('index'),
-	$model->id_peserta,
+	'Peserta'=>array('index'),
+	$model->nama,
 );
 
-$this->menu=array(
-	array('label'=>'List Peserta', 'url'=>array('index')),
-	array('label'=>'Create Peserta', 'url'=>array('create')),
-	array('label'=>'Update Peserta', 'url'=>array('update', 'id'=>$model->id_peserta)),
-	array('label'=>'Delete Peserta', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id_peserta),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Peserta', 'url'=>array('admin')),
-);
 ?>
 
-<h1>View Peserta #<?php echo $model->id_peserta; ?></h1>
+<div class="headline"> <h1 class="text-justify">Peserta <?php echo $model->nama; ?></h1>  </div>
+
 
 <?php $this->widget('zii.widgets.CDetailView', array(
 	'data'=>$model,
