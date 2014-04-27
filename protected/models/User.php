@@ -49,12 +49,12 @@ class User extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('role, username, password, nama, jenis_kelamin, email, nip, no_telp, alamat, url_image', 'required'),
+			array('role, username, password, nama, jenis_kelamin, email, nip, no_telp, alamat', 'required'),
 			array('role', 'numerical', 'integerOnly'=>true),
-			array('username, password, nama, email, nip, url_image', 'length', 'max'=>255),
+			array('username, password, nama, email, nip', 'length', 'max'=>255),
 			array('jenis_kelamin', 'length', 'max'=>12),
 			array('no_telp', 'length', 'max'=>20),
-			array('url_image', 'file', 'types' => 'jpg, jpeg, gif, png'),
+			//array('url_image', 'file', 'types' => 'jpg, jpeg, gif, png'),
 			
 			//Edit Password saya komen kak soalnya jadi kagak bisa kalau create and update
 			//array('password_sekarang, password_baru, password_baru_repeat', 'required'),
