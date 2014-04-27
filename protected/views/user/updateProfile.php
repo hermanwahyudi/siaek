@@ -39,13 +39,7 @@ $this->menu=array(
 			<span class="error-label"><?php echo $form->error($model,'nip'); ?></span>
 			</div>
 	</div>
-	<div class="form-group">
-		<label for="" class="col-sm-2 control-label"><?php echo $form->labelEx($model,'role'); ?></label>
-			<div class="col-sm-4">
-				<?php echo $form->textField($model,'role', array('class'=>'form-control')); ?>
-			<span class="error-label"><?php echo $form->error($model,'role'); ?></span>
-			</div>
-	</div>
+	
 	<div class="form-group">
 		<label for="" class="col-sm-2 control-label"><?php echo $form->labelEx($model,'username'); ?></label>
 			<div class="col-sm-4">
@@ -64,7 +58,9 @@ $this->menu=array(
 	<div class="form-group">
 		<label for="" class="col-sm-2 control-label"><?php echo $form->labelEx($model,'jenis_kelamin'); ?></label>
 			<div class="col-sm-4">
-				<?php echo $form->textField($model,'jenis_kelamin', array('class'=>'form-control')); ?>
+				<?php echo "Laki-laki  " . $form->radioButton($model,'jenis_kelamin', array('value'=>'L', 'uncheckValue'=>null)); 
+					  echo "  Perempuan  " . $form->radioButton($model,'jenis_kelamin', array('value'=>'P', 'uncheckValue'=>null)); 
+				?>
 			<span class="error-label"><?php echo $form->error($model,'jenis_kelamin'); ?></span>
 			</div>
 	</div>

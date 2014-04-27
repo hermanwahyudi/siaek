@@ -58,7 +58,7 @@ class User extends CActiveRecord
 			
 			//Edit Password saya komen kak soalnya jadi kagak bisa kalau create and update
 			//array('password_sekarang, password_baru, password_baru_repeat', 'required'),
-			array('password_baru', 'compare','on'=>'changePassword'),
+			//array('password_baru', 'compare','on'=>'changePassword'),
 			
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.

@@ -10,6 +10,17 @@ endif;
     echo "<div style='color:green'>".Yii::app()->user->getFlash('successProfile')."</div>";
 endif;
 ?>
+<div class="form-horizontal" role="form">
+
+<?php $form=$this->beginWidget('CActiveForm', array(
+	'id'=>'user-form',
+	// Please note: When you enable ajax validation, make sure the corresponding
+	// controller action is handling ajax validation correctly.
+	// There is a call to performAjaxValidation() commented in generated controller code.
+	// See class documentation of CActiveForm for details on this.
+	'enableAjaxValidation'=>false,
+
+)); ?>
 <br>
 <div class="row clearfix">
     <div class="col-md-12 column"> <br>
@@ -72,9 +83,12 @@ endif;
 )); 
 ?> -->
 <div style="float:left">
-<?php echo CHtml::button('Edit', array('class'=>'btn btn-default', 'submit' => array('user/updateprofile', 'id' => $model->id_user))); ?>
+<?php echo CHtml::link('Edit', array('user/updateprofile', 'id' => $model->id_user)); ?><br>
 
-<?php echo CHtml::button('Edit Password', array('class'=>'btn btn-default', 'submit' => array('user/password', 'id' => $model->id_user))); ?>
+<?php echo CHtml::link('Edit Password', array('user/password', 'id' => $model->id_user)); ?><br>
 <?php echo CHtml::link('Back', array('site/index')); ?>
 </div>
+<?php $this->endWidget(); ?>
 </div>
+
+

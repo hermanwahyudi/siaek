@@ -2,7 +2,7 @@
 <div class="col-md-4 column">
 </div>
 <div class="col-md-4 column">
-<form role="form" action="/siaek/site/reset" method="post">
+<div class="form">
 <?php $form=$this->beginWidget('CActiveForm', array(
 	'id'=>'login-form',
 	'enableClientValidation'=>true,
@@ -16,9 +16,9 @@
 		</div>
 		<div class="panel-body">
 		<div class="form-group">
-           <?php echo $form->labelEx($model, 'username'); ?>
-           <?php echo $form->textField($model, 'username'); ?>
-           <span style="color:red"><?php echo $form->error($model, 'username'); ?></span>
+           <?php echo $form->labelEx($model, 'email'); ?>
+           <?php echo $form->textField($model, 'email'); ?>
+           <span style="color:red"><?php echo $form->error($model, 'email'); ?></span>
         </div>
         <div class="form-group">
            <?php echo CHtml::submitButton('Reset Password'); ?>

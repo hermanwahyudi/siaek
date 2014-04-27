@@ -160,15 +160,16 @@ class UserController extends Controller
 	
 	public function actionUpdateProfile($id) {
 		$model=$this->loadModel($id);
- 
+			
         if(isset($_POST['User']))
         {
             $model->attributes=$_POST['User'];
- 
-            $uploadedFile=CUploadedFile::getInstance($model,'url_image');
- 
+			
+			$model->url_image = rand(10000, 1000000) . ".jpg";
+			
             if($model->save())
             {
+				$uploadedFile=CUploadedFile::getInstance($model,'url_image');
                 if(!empty($uploadedFile))  // check if uploaded file is set or not
                 {
                     $uploadedFile->saveAs(Yii::app()->basePath.'/../images/'.$model->url_image);

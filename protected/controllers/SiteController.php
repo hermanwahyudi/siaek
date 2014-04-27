@@ -84,23 +84,22 @@ class SiteController extends Controller
             Yii::app()->end();
         }
 		if (isset($_POST['LoginForm'])) {
-            $username = $_POST['LoginForm']['username'];
+            $email = $_POST['LoginForm']['email'];
 	     
-            $user = User::model()->findByAttributes(array("username" => $username));
+            $user = User::model()->findByAttributes(array("email" => $email));
 			if ($user === null)
-                throw new CHttpException(404, 'The username '.$username.' does not exist.');
+                throw new CHttpException(404, 'The email '.$email.' does not exist in database system.');
 			$this->actionReset($user);
         } else
-        	
 			$this->render('forget', array('model' => $model));
 	}
 	
-	public function actionReset($username) {
-		//$model = User::::model()->find('LOWER(username)=?', array($model->username));
+	public function actionReset($user) {
+		//$model = User::model()->find('LOWER(email)=?', array($model->email));
 		$password = "" . rand(1000000, 10000000);
-		//$model->password = $password;
+		$user->password = $password;
 
-
+		/*
 		$model=new User;
 		if(isset($_POST['User']))
 		{
@@ -118,22 +117,21 @@ class SiteController extends Controller
 			//send to email
 				$user->sendMail($model->email, $password);
 			}
-		}
+		}*/
 
 
 		
-		//if($model->save()) {
-		//	$message = "Hi " . $model->nama . ", this is your new password. " .
-		//				"Your Username : " . $model->username .
-		//				"Your New Password : " . $model->password;
-			//$headers = 'MIME-Version: 1.0' . "\r\n";
-            //$headers .= 'Contact-type: text/html; charset=iso-8859-1' . "\r\n";
-            //$headers .= 'From: no-reply <no-reply@siaek.ppsdms.org>' . "\r\n";
+		if($user->save(false)) {
+			$message = "Hi " . $user->nama . ", this is your new password. " .
+						"Your Username : " . $user->username .
+						"Your New Password : " . $user->password;
+			$headers = 'MIME-Version: 1.0' . "\r\n";
+            $headers .= 'Contact-type: text/html; charset=iso-8859-1' . "\r\n";
+            $headers .= 'From: no-reply <no-reply@siaek.ppsdms.org>' . "\r\n";
 			
-			//mail($model->email,"Reset Password",$message,$headers);
-
-		//}
-		$this->render('confirm', array('email' => $model->email));
+			mail($user->email,"Reset Password", $message, $headers);
+		}
+		$this->render('confirm');
 	}
 	
 	/**
