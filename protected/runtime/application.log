@@ -41768,3 +41768,12 @@ Stack trace:
 REQUEST_URI=/siaek/js/script.js
 HTTP_REFERER=http://localhost/siaek/user/updateprofile/1
 ---
+2014/04/27 09:00:29 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "js/script.js".' in C:\xampp\htdocs\siaek\framework\web\CWebApplication.php:286
+Stack trace:
+#0 C:\xampp\htdocs\siaek\framework\web\CWebApplication.php(141): CWebApplication->runController('js/script.js')
+#1 C:\xampp\htdocs\siaek\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 C:\xampp\htdocs\siaek\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/siaek/js/script.js
+HTTP_REFERER=http://localhost/siaek/user/updateprofile/1
+---
