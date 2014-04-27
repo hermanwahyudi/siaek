@@ -88,9 +88,9 @@ endif;
 )); 
 ?> -->
 <div style="float:left">
-<?php echo CHtml::link('Edit', array('user/updateprofile', 'id' => $model->id_user)); ?><br>
+<button type="button" class="btn btn-alert active"><?php echo CHtml::link('Edit', array('user/updateprofile', 'id' => $model->id_user)); ?></button>
 
-<?php echo CHtml::link('Edit Password', array('user/password', 'id' => $model->id_user)); ?><br>
+<button type="button" class="btn btn-alert active"><?php echo CHtml::link('Edit Password', array('user/password', 'id' => $model->id_user)); ?></button>
 <?php echo CHtml::link('Back', array('site/index')); ?>
 </div>
 <?php $this->endWidget(); ?>
