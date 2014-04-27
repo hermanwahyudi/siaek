@@ -131,11 +131,21 @@ class PesertaController extends Controller
 	 */
 	public function actionAdmin()
 	{
+		
+		$id_user = Yii::app()->user->id;
+		$objRegional = Regional::model()->findByAttributes(array('id_user'=>$id_user));
+
+
+		$id_regional = $objRegional->id_regional;
+		$dataPeserta = Peserta::model()->findAllByAttributes(array('id_regional'=>$id_regional));
+		
+		
 		$model=new Peserta('search');
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['Peserta']))
 			$model->attributes=$_GET['Peserta'];
 
+		$model->id_regional = $id_regional;
 		$this->render('admin',array(
 			'model'=>$model,
 		));
