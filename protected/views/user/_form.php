@@ -24,12 +24,13 @@
 
 	<?php echo $form->errorSummary($model); ?>
 
+
 	<div class="form-group">
 		<label for="" class="col-sm-2 control-label">
 		<?php echo $form->labelEx($model,'role'); ?>
 		</label>
 			<div class="col-sm-4">
-		<?php echo $form->textField($model,'role'); ?>
+		<?php echo $form->textField($model,'role',array('class'=>'form-control')); ?>
 			<span class="error-label">
 		<?php echo $form->error($model,'role'); ?>
 		</span>
@@ -41,7 +42,7 @@
 		<?php echo $form->labelEx($model,'username'); ?>
 		</label>
 			<div class="col-sm-4">
-		<?php echo $form->textField($model,'username',array('size'=>60,'maxlength'=>64)); ?>
+		<?php echo $form->textField($model,'username',array('class'=>'form-control')); ?>
 			<span class="error-label">
 		<?php echo $form->error($model,'username'); ?>
 		</span>
@@ -53,7 +54,7 @@
 		<?php echo $form->labelEx($model,'password'); ?>
 		</label>
 			<div class="col-sm-4">
-		<?php echo $form->passwordField($model,'password',array('size'=>60,'maxlength'=>64)); ?>
+		<?php echo $form->passwordField($model,'password',array('class'=>'form-control')); ?>
 			<span class="error-label">
 		<?php echo $form->error($model,'password'); ?>
 		</span>
@@ -65,7 +66,7 @@
 		<?php echo $form->labelEx($model,'nama'); ?>
 		</label>
 			<div class="col-sm-4">
-		<?php echo $form->textField($model,'nama',array('size'=>60,'maxlength'=>64)); ?>
+		<?php echo $form->textField($model,'nama',array('class'=>'form-control')); ?>
 			<span class="error-label">
 		<?php echo $form->error($model,'nama'); ?>
 		</span>
@@ -77,7 +78,7 @@
 		<?php echo $form->labelEx($model,'jenis_kelamin'); ?>
 		</label>
 			<div class="col-sm-4">
-		<?php echo $form->textField($model,'jenis_kelamin',array('size'=>1,'maxlength'=>1)); ?>
+		<?php echo $form->textField($model,'jenis_kelamin',array('class'=>'form-control')); ?>
 			<span class="error-label">
 		<?php echo $form->error($model,'jenis_kelamin'); ?>
 		</span>
@@ -89,7 +90,7 @@
 		<?php echo $form->labelEx($model,'email'); ?>
 		</label>
 			<div class="col-sm-4">
-		<?php echo $form->textField($model,'email',array('size'=>60,'maxlength'=>64)); ?>
+		<?php echo $form->textField($model,'email',array('class'=>'form-control')); ?>
 			<span class="error-label">
 		<?php echo $form->error($model,'email'); ?>
 		</span>
@@ -101,7 +102,7 @@
 		<?php echo $form->labelEx($model,'nip'); ?>
 		</label>
 			<div class="col-sm-4">
-		<?php echo $form->textField($model,'nip',array('size'=>60,'maxlength'=>64)); ?>
+		<?php echo $form->textField($model,'nip',array('class'=>'form-control')); ?>
 			<span class="error-label">
 		<?php echo $form->error($model,'nip'); ?>
 		</span>
@@ -113,7 +114,7 @@
 		<?php echo $form->labelEx($model,'no_telp'); ?>
 		</label>
 			<div class="col-sm-4">
-		<?php echo $form->textField($model,'no_telp',array('size'=>20,'maxlength'=>20)); ?>
+		<?php echo $form->textField($model,'no_telp',array('class'=>'form-control')); ?>
 			<span class="error-label">
 		<?php echo $form->error($model,'no_telp'); ?>
 		</span>
@@ -125,7 +126,7 @@
 		<?php echo $form->labelEx($model,'alamat'); ?>
 		</label>
 			<div class="col-sm-4">
-		<?php echo $form->textArea($model,'alamat',array('rows'=>6, 'cols'=>50)); ?>
+		<?php echo $form->textArea($model,'alamat',array('class'=>'form-control')); ?>
 			<span class="error-label">
 		<?php echo $form->error($model,'alamat'); ?>
 		</span>
@@ -145,10 +146,10 @@
 	</div>
 
 	<div class="form-group">
-		<div class="col-sm-3">
-		<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>
-		<?php echo CHtml::link('Back', array('user/index')); ?>
+		<div class="col-sm-5">
+		<?php echo CHtml::submitButton($model->isNewRecord ? 'Tambah' : 'Save'); ?>
 		</div>
+		<div class="col-sm-1"><?php echo CHtml::link('Back', array('user/index')); ?></div>
 	</div>
 
 <?php $this->endWidget(); ?>
