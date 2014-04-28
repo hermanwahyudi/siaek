@@ -126,7 +126,7 @@ class KegiatanController extends Controller
 			$this->actionAdmin();
 	}
 	
-	public function actionDeadline() {
+	public function actionDeadline() { // Nampilin list kegiatan
 		$model = Kegiatan::model()->findAll();
 		
 		$this->render("deadline", 
@@ -135,7 +135,7 @@ class KegiatanController extends Controller
 	public function actionUpdateDeadline($id) {
 		$model=$this->loadModel($id);
 		
-		if(isset($_POST['Kegiatan'])) {
+		if(isset($_POST['Kegiatan'])) { // Klik submit save
 			$model->deadline = $_POST['Kegiatan']['deadline'];
 			if(!empty($model->deadline)) { 
 				$model->save();
@@ -145,7 +145,7 @@ class KegiatanController extends Controller
 				Yii::app()->user->setFlash('errorDeadline', 'Salah masukan deadline.');
 				$this->redirect(array('UpdateDeadline', 'id'=>$id));
 			}
-		} else {
+		} else  { // Klik Edit di list
 			$this->render("formDeadline", 
 				array('model'=>$model));
 		}

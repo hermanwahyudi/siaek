@@ -87,8 +87,10 @@ class SiteController extends Controller
             $email = $_POST['LoginForm']['email'];
 	     
             $user = User::model()->findByAttributes(array("email" => $email));
-			if ($user === null)
-                throw new CHttpException(404, 'The email '.$email.' does not exist in database system.');
+			if ($user === null) {
+                Yii::app()->user->setFlash('errorForgot', 'Salah masukan email.');
+				$this->redirect(array('forget'));
+			} 
 			$this->actionReset($user);
         } else
 			$this->render('forget', array('model' => $model));

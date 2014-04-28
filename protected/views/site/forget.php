@@ -1,4 +1,9 @@
-<div class="row clearfix">
+
+<?php 
+	if(Yii::app()->user->hasFlash('errorForgot')):
+		echo "<div style='color:red'>".Yii::app()->user->getFlash('errorForgot')."</div>";
+	endif;
+?><br><div class="row clearfix">
 <div class="col-md-4 column">
 </div>
 <div class="col-md-4 column">
@@ -16,7 +21,7 @@
 		</div>
 		<div class="panel-body">
 		<div class="form-group">
-           <?php echo $form->labelEx($model, 'email'); ?>
+           <?php echo $form->labelEx($model, 'email') . "*"; ?>
            <?php echo $form->textField($model, 'email'); ?>
            <span style="color:red"><?php echo $form->error($model, 'email'); ?></span>
         </div>
