@@ -7,6 +7,11 @@ $this->breadcrumbs=array(
 
 ?>
 <div class="headline"> <h1 class="text-justify">Ubah Deadline</h1>  </div>
+	<?php 
+	if(Yii::app()->user->hasFlash('errorDeadline')):
+		echo "<div style='color:red'>".Yii::app()->user->getFlash('errorDeadline')."</div>";
+	endif;
+	?><br>
 <div class="form-horizontal" role="form">
 
 <?php $form=$this->beginWidget('CActiveForm', array(

@@ -111,8 +111,14 @@
                             </div>
                             <div class="panel-body">
                                 <p class="text-center">
-                                    Senin, 16 April 2014
-                                    <br>11:55 am
+                                   <?php
+									$dt = new DateTime();
+									echo $dt->format("Y-m-d");
+								   ?><br>
+								   <?php 
+								    date_default_timezone_set("Asia/Jakarta");
+									echo $TIME = date('G:ia');
+								   ?>
                                 </p>
 
                             </div>

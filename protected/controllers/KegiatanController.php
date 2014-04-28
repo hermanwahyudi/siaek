@@ -137,9 +137,14 @@ class KegiatanController extends Controller
 		
 		if(isset($_POST['Kegiatan'])) {
 			$model->deadline = $_POST['Kegiatan']['deadline'];
-			$model->save();
-			Yii::app()->user->setFlash('successDeadline', 'Deadline telah berhasil diubah.');
-			$this->redirect(array('deadline'));
+			if(!empty($model->deadline)) { 
+				$model->save();
+				Yii::app()->user->setFlash('successDeadline', 'Deadline telah berhasil diubah.');
+				$this->redirect(array('deadline'));
+			} else {
+				Yii::app()->user->setFlash('errorDeadline', 'Salah masukan deadline.');
+				$this->redirect(array('UpdateDeadline', 'id'=>$id));
+			}
 		} else {
 			$this->render("formDeadline", 
 				array('model'=>$model));

@@ -166,13 +166,16 @@ class UserController extends Controller
         {
             $model->attributes=$_POST['User'];
 			
-			if(empty($_POST['User']['url_image'])) {
-				$model->url_image = $old_image;
+			if(!empty($_POST['User']['url_image'])) {
+				echo $model->nip;
+				/*$model->url_image = $old_image;
 				$model->save();
 				
 				Yii::app()->user->setFlash('successProfile', 'Profile telah berhasil diubah.');
-				$this->redirect(array('profile', 'id' => $model->id_user));
+				$this->redirect(array('profile', 'id' => $model->id_user));*/
 			} else {
+				echo "k";
+			
 				$model->url_image = rand(10000, 1000000) . ".jpg";
 				
 				if($model->save()) {
@@ -187,7 +190,7 @@ class UserController extends Controller
 			}
  
         }
- 
+		
         $this->render('updateProfile',array(
             'model'=>$model,
         ));

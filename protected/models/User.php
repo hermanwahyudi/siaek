@@ -54,7 +54,7 @@ class User extends CActiveRecord
 			array('username, password, nama, email, nip', 'length', 'max'=>255),
 			array('jenis_kelamin', 'length', 'max'=>12),
 			array('no_telp', 'length', 'max'=>20),
-			//array('url_image', 'file', 'types' => 'jpg, jpeg, gif, png'),
+			array('url_image', 'file', 'types' => 'jpg, jpeg, gif, png'),
 			
 			//Edit Password saya komen kak soalnya jadi kagak bisa kalau create and update
 			//array('password_sekarang, password_baru, password_baru_repeat', 'required'),
