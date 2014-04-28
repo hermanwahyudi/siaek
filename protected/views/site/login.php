@@ -30,13 +30,13 @@
 
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'username'); ?>
-		<?php echo $form->textField($model,'username'); ?>
+		<?php echo $form->textField($model,'username', array('placeholder'=>'Username')); ?>
 		<span style="color:red"><?php echo $form->error($model,'username'); ?></span>
 	</div>
 
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'password'); ?>
-		<?php echo $form->passwordField($model,'password'); ?>
+		<?php echo $form->passwordField($model,'password', array('placeholder'=>'Password')); ?>
 		<span style="color:red"><?php echo $form->error($model,'password'); ?><span style="color:red">
 		
 	</div>
