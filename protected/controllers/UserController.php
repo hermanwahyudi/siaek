@@ -159,35 +159,57 @@ class UserController extends Controller
 	}
 	
 	public function actionUpdateProfile($id) {
-		$model=$this->loadModel($id);
-		$old_image = $model->url_image;
-		
+             $model=$this->loadModel($id);
+ 
         if(isset($_POST['User']))
         {
+            $_POST['user']['url_image'] = $model->url_image;
             $model->attributes=$_POST['User'];
-			
-			if(!empty($_POST['User']['url_image'])) {
-				$model->url_image = $old_image;
-				$model->save();
-				
-				Yii::app()->user->setFlash('successProfile', 'Profile telah berhasil diubah.');
-				$this->redirect(array('profile', 'id' => $model->id_user));
-			} else {
-			
-				$model->url_image = rand(10000, 1000000) . ".jpg";
-				
-				if($model->save()) {
-					$uploadedFile=CUploadedFile::getInstance($model,'url_image');
-					if(!empty($uploadedFile))  { // check if uploaded file is set or not 
-						$uploadedFile->saveAs(Yii::app()->basePath.'/../images/'.$model->url_image);
-						Yii::app()->user->setFlash('successProfile', 'Profile telah berhasil diubah.');
-						$this->redirect(array('profile', 'id' => $model->id_user));
-					}
-					
-				}
-			}
+ 
+            $uploadedFile=CUploadedFile::getInstance($model,'url_image');
+ 
+            if($model->save())
+            {
+                if(!empty($uploadedFile))  // check if uploaded file is set or not
+                {
+                    $uploadedFile->saveAs(Yii::app()->basePath.'/../images/'.$model->url_image);
+                }
+                //$this->redirect(array('admin'));
+            }
  
         }
+            
+            
+//            
+//		$model=$this->loadModel($id);
+//		$old_image = $model->url_image;
+//		
+//        if(isset($_POST['User']))
+//        {
+//                         $model->attributes=$_POST['User'];
+//			
+//			if(!empty($_POST['User']['url_image'])) {
+//				$model->url_image = $old_image;
+//				$model->save();
+//				
+//				Yii::app()->user->setFlash('successProfile', 'Profile telah berhasil diubah.');
+//				$this->redirect(array('profile', 'id' => $model->id_user));
+//			} else {
+//			
+//				$model->url_image = rand(10000, 1000000) . ".jpg";
+//				
+//				if($model->save()) {
+//					$uploadedFile=CUploadedFile::getInstance($model,'url_image');
+//					if(!empty($uploadedFile))  { // check if uploaded file is set or not 
+//						$uploadedFile->saveAs(Yii::app()->basePath.'/../images/'.$model->url_image);
+//						Yii::app()->user->setFlash('successProfile', 'Profile telah berhasil diubah.');
+//						$this->redirect(array('profile', 'id' => $model->id_user));
+//					}
+//					
+//				}
+//			}
+// 
+//        }
 		
         $this->render('updateProfile',array(
             'model'=>$model,
