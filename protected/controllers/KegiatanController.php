@@ -189,10 +189,10 @@ class KegiatanController extends Controller
 	 */
 	protected function performAjaxValidation($model)
 	{
-		if(isset($_POST['ajax']) && $_POST['ajax']==='kegiatan-form')
-		{
-			echo CActiveForm::validate($model);
-			Yii::app()->end();
-		}
+            if(isset($_POST['ajax']) && $_POST['ajax']==='kegiatan-form')
+            {
+                echo CActiveForm::validate($model);
+                Yii::app()->end();
+            }
 	}
 }

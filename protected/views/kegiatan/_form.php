@@ -45,14 +45,14 @@
 	<div class="form-group">
 		<label for="" class="col-sm-2 control-label"><?php echo $form->labelEx($model,'hari'); ?></label>
 			<div class="col-sm-4">
-				<?php echo $form->textField($model,'hari', array('class'=>'form-control')); ?>
+				<?php echo CHtml::activeDropDownList($model, 'hari', $model->getDayOption()); ?>
 			<span class="error-label"><?php echo $form->error($model,'hari'); ?></span>
 			</div>
 	</div>
 	<div class="form-group">
 		<label for="" class="col-sm-2 control-label"><?php echo $form->labelEx($model,'tanggal'); ?></label>
 			<div class="col-sm-4">
-				<?php echo $form->textField($model,'tanggal', array('class'=>'form-control')); ?>
+				<?php echo $form->textField($model,'tanggal', array('class'=>'form-control', 'class'=>'datetimepicker')); ?>
 			<span class="error-label"><?php echo $form->error($model,'tanggal'); ?></span>
 			</div>
 	</div>
@@ -73,7 +73,7 @@
 	<div class="form-group">
 		<label for="" class="col-sm-2 control-label"><?php echo $form->labelEx($model,'jenis_kegiatan'); ?></label>
 			<div class="col-sm-4">
-				<?php echo $form->textField($model,'jenis_kegiatan', array('class'=>'form-control')); ?>
+				<?php echo CHtml::activeDropDownList($model, 'jenis_kegiatan', $model->getTipeOption()); ?>
 			<span class="error-label"><?php echo $form->error($model,'jenis_kegiatam'); ?></span>
 			</div>
 	</div>

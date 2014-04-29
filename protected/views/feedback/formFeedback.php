@@ -40,7 +40,7 @@
                 <?php echo $form->labelEx($model, 'id_regional'); ?>
             </label>
             <div align ="left" class="col-sm-5">
-<?php echo CHtml::activeDropDownList($model, 'id_regional', $model->Regionals()); ?>
+                <?php echo CHtml::activeDropDownList($model, 'id_regional', $model->Regionals()); ?>
                 <span class="error-label">
                     <?php echo $form->error($model, 'id_regional'); ?>
                 </span>

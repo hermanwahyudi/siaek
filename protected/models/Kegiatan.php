@@ -117,4 +117,10 @@ class Kegiatan extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+        public function getTipeOption() {
+            return array('1' => 'Bulanan', '2' => 'Pekanan', '3' => 'Lokal', '4' => 'Khusus');
+        }
+        public function getDayOption() {
+            return array('Senin' => 'Senin', 'Selasa' => 'Selasa', 'Rabu' => 'Rabu', 'Kamis' => 'Kamis','Jumat' => 'Jumat','Sabtu' => 'Sabtu','Minggu'=>'Minggu');
+        }
 }
