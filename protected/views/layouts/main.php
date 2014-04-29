@@ -68,6 +68,8 @@
 		<?php $this->widget('zii.widgets.CBreadcrumbs', array(
 			'links'=>$this->breadcrumbs,
 		)); ?><!-- breadcrumbs -->
+		<br>
+		<br>
 	<?php endif?></div>
 	<?php if(!Yii::app()->user->isGuest) { ?>
 	<!--contain-->
