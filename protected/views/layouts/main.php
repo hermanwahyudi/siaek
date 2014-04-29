@@ -23,7 +23,7 @@
 	<!--script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-1.4.js"></script-->
 	
 	<!-- Javascript Datepicker -->
-	<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/date/jquery.js"></script>
+	<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/date/jquery.js"></script >
 	<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/date/datepicker.js"></script>
     <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/date/eye.js"></script>
     <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/date/utils.js"></script>
@@ -34,7 +34,7 @@
 	<!-- DateTimePicker -->
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/jquery.datetimepicker.css"/ >
 	
-	<!-- Datepicker CSS -->
+	<!-- Datepicker CSS --> 
 	<link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/date/datepicker.css" type="text/css" />
     <link rel="stylesheet" media="screen" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/date/layout.css" />
 	
@@ -98,9 +98,16 @@
 
                             </div>
                             <div class="panel-body">
-                                <?php
-                                    $this->widget('ext.simple-calendar.SimpleCalendarWidget');
-                                ?> 
+                            	<div class="container">
+
+                            		<div class="row">
+                            			
+	                                <?php
+	                                    $this->widget('ext.simple-calendar.SimpleCalendarWidget');
+	                                ?> 
+	                            	
+	                            	</div>
+                            	</div>
                             </div>
                         </div>
                     </div>
