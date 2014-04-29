@@ -15,7 +15,7 @@ class KegiatanController extends Controller
 	{
 		return array(
 			'accessControl', // perform access control for CRUD operations
-			'postOnly + delete', // we only allow deletion via POST request
+			//'postOnly + delete', // we only allow deletion via POST request
 		);
 	}
 
@@ -33,7 +33,7 @@ class KegiatanController extends Controller
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
 				'actions'=>array('create','update', 'admin', 'delete', 'deadline'),
-				'expression'=>'Yii::app()->user->getLevel() = "2"',
+				'expression'=>'Yii::app()->user->getLevel() == "2"',
 				//'users'=>array('@'),
 			),
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -111,6 +111,7 @@ class KegiatanController extends Controller
 	 */
 	public function actionDelete($id)
 	{
+            
 		$this->loadModel($id)->delete();
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
