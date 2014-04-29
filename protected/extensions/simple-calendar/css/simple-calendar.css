@@ -1,5 +1,6 @@
 #calendar th, #calendar td{
     text-align: center;
+    border-spacing:10px;
 }
 
 #calendar .weekdays-row th {
