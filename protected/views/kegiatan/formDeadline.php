@@ -47,7 +47,7 @@ $this->breadcrumbs=array(
 	<div class="form-group">
 		<label for="" class="col-sm-2 control-label"><?php echo $form->labelEx($model, 'deadline'); ?></label>
 			<div class="col-sm-4">
-				<?php echo $form->textField($model,'deadline', array('class'=>'form-control', 'class'=>'datetimepicker')); ?>
+				<?php echo $form->textField($model,'deadline', array('class'=>'form-control datetimepicker')); ?>
 			<span class="error-label"><?php echo $form->error($model,'deadline'); ?></span>
 			</div>
 	</div>

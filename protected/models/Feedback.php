@@ -98,7 +98,7 @@ class Feedback extends CActiveRecord
 	{
 		return parent::model($className);
 	}
-	public function regionals(){
+	public function getRegionalOption(){
 		return CHtml::listData(Regional::model()->findAll(), 'id_regional', 'nama');
 	}
 }

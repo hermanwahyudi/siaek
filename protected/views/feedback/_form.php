@@ -27,7 +27,10 @@
 
 	<div class="row">
 		<?php echo $form->labelEx($model,'id_regional'); ?>
-		 <?php echo CHtml::activeDropDownList($model,'id_regional', $model->Regionals()); ?>
+                <div class="controls">
+				   <?php echo CHtml::activeDropDownList($model,'id_regional', $model->getRegionalOption(),array('class'=>'form-control')); ?>
+                </div>
+		 
 		<!--?php echo $form->textField($model,'id_regional'); ?-->
 		<?php echo $form->error($model,'id_regional'); ?>
 	</div>

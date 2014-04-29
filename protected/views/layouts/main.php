@@ -52,9 +52,9 @@
 		<div class="col-md-12 column">
 			<div class="page-header">
 					<!--h2 class="text-center">Sistem Informasi Absensi dan Evaluasi Kegiatan</h2-->
-                    <p class="text-center">
-					<img src="<?php echo Yii::app()->request->baseUrl; ?>/images/logo1.jpg" width="1140" height="200" alt="" />
-					 </p>
+                                        <div class="row">
+					<img class="col-md-12 column" src="<?php echo Yii::app()->request->baseUrl; ?>/images/logo1.jpg" width="100%" height="200" alt="" />
+					</div> 
 			</div>
 			
 		</div>
@@ -67,6 +67,7 @@
 	<?php if(isset($this->breadcrumbs)):?>
 		<?php $this->widget('zii.widgets.CBreadcrumbs', array(
 			'links'=>$this->breadcrumbs,
+                        'htmlOptions' => array('class' => 'breadcrumb'),
 		)); ?><!-- breadcrumbs -->
 		<br>
 		<br>

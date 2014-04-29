@@ -161,4 +161,10 @@ class User extends CActiveRecord
             echo "Mailer Error: " . $mail->ErrorInfo;
         }
     }
+    public function getRoleOption() {
+            return array('1' => 'Administrator', '2' => 'Pengurus Pusat', '3' => 'Regional');
+        }
+    public function getGenderOption() {
+            return array('L' => 'Laki-Laki', '2' => 'Perempuan');
+        }
 }

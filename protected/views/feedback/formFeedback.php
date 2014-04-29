@@ -25,14 +25,14 @@
                 <?php echo $form->labelEx($model, 'nama_kegiatan'); ?>
             </label>
             <div class="col-md-5">
-<?php echo $form->textField($model, 'nama_kegiatan', array('rows' => 6, 'cols' => 50, 'class' => 'form-control')); ?>
+                <?php echo $form->textField($model, 'nama_kegiatan', array('rows' => 6, 'cols' => 50, 'class' => 'form-control')); ?>
                 <span class="error-label">
                     <?php echo $form->error($model, 'nama_kegiatan'); ?>
                 </span>
             </div>
         </div>
     </div>
-        <br>
+    <br>
 
     <div class="row">
         <div class="form-group">
@@ -40,20 +40,23 @@
                 <?php echo $form->labelEx($model, 'id_regional'); ?>
             </label>
             <div align ="left" class="col-sm-5">
-                <?php echo CHtml::activeDropDownList($model, 'id_regional', $model->Regionals()); ?>
+                <div class="controls">
+                    <?php echo CHtml::activeDropDownList($model, 'id_regional', $model->getRegionalOption(), array('class' => 'form-control')); ?>
+                </div>
                 <span class="error-label">
                     <?php echo $form->error($model, 'id_regional'); ?>
                 </span>
             </div>
         </div>
     </div>
+    <br>
     <div class="row">
         <div class="form-group">
             <label for="" class="col-md-3 control-label">
                 <?php echo $form->labelEx($model, 'komentar'); ?>
             </label>
             <div class="col-md-5">
-<?php echo $form->textArea($model, 'komentar', array('class' => 'form-control')); ?>
+                <?php echo $form->textArea($model, 'komentar', array('class' => 'form-control')); ?>
                 <span class="error-label">
                     <?php echo $form->error($model, 'komentar'); ?>
                 </span>
@@ -61,21 +64,21 @@
         </div>
     </div>
     <br>
-    
-    
+
+
     <br>
 
     <div class="col-sm-7">
         <!-- <button type="submit" class="btn btn-default">Tambah</button> -->
-<?php echo CHtml::submitButton($model->isNewRecord ? 'Kirim' : 'Save', array('class' => 'btn btn-default')); ?>
-<?php echo CHtml::link('Back', array('site/index')); ?>
+        <?php echo CHtml::submitButton($model->isNewRecord ? 'Kirim' : 'Save', array('class' => 'btn btn-default')); ?>
+        <?php echo CHtml::link('Back', array('site/index')); ?>
 
     </div>
     <div class="col-sm-1">
         <div align="right">
-            
+
         </div>
     </div>
-<?php $this->endWidget(); ?>
+    <?php $this->endWidget(); ?>
 
 </div><!-- form -->
