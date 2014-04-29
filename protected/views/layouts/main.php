@@ -27,7 +27,6 @@
 	 
 	<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.min.js" ></script>
 	<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/bootstrap.min.js" ></script>
-	<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/script.js" ></script>
 	
 	<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.fusioncharts.js"></script>
 	<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-1.4.js"></script>
