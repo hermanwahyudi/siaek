@@ -8,28 +8,19 @@
     <meta name="description" content="">
     <meta name="author" content="">
 	
-	<!-- DateTimePicker -->
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/jquery.datetimepicker.css"/ >
-	
-	
-	<!-- Datepicker CSS -->
-	<link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/date/datepicker.css" type="text/css" />
-    <link rel="stylesheet" media="screen" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/date/layout.css" />
 	
 	<!--[if lt IE 8]>
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/ie.css" media="screen, projection" />
 	<![endif]-->
 	
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/bootstrap/bootstrap.min.css" />
-	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/bootstrap/style.css" />
-	
+		
 	<link rel="shortcut icon" href="<?php echo Yii::app()->request->baseUrl; ?>/images/p.gif">
 	 
 	<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.min.js" ></script>
 	<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/bootstrap.min.js" ></script>
 	
 	<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.fusioncharts.js"></script>
-	<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-1.4.js"></script>
+	<!--script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-1.4.js"></script-->
 	
 	<!-- Javascript Datepicker -->
 	<script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/date/jquery.js"></script>
@@ -38,6 +29,16 @@
     <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/date/utils.js"></script>
     <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/date/layout.js?ver=1.0.2"></script>
     <!--?php Yii::app()->bootstrap->register(); ?-->
+    <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/bootstrap/bootstrap.min.css" />
+	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/bootstrap/style.css" />
+	<!-- DateTimePicker -->
+	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/jquery.datetimepicker.css"/ >
+	
+	<!-- Datepicker CSS -->
+	<link rel="stylesheet" href="<?php echo Yii::app()->request->baseUrl; ?>/css/date/datepicker.css" type="text/css" />
+    <link rel="stylesheet" media="screen" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/date/layout.css" />
+	
+
 
 	
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>

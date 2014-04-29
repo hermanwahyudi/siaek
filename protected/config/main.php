@@ -20,10 +20,10 @@ return array(
 		'application.models.*',
 		'application.components.*',
 		'bootstrap.helpers.TbHtml',
-        'bootstrap.helpers.TbArray',
-        'bootstrap.behaviors.TbWidget',
-        'bootstrap.widgets.TbDataColumn',
-        'bootstrap.widgets.TbActiveForm',
+                'bootstrap.helpers.TbArray',
+                'bootstrap.behaviors.TbWidget',
+                'bootstrap.widgets.TbDataColumn',
+                'bootstrap.widgets.TbActiveForm',
 	),
 
 	'modules'=>array(
@@ -82,7 +82,7 @@ return array(
 			'connectionString' => 'mysql:host=localhost;dbname=siaek',
 			'emulatePrepare' => true,
 			'username' => 'root',
-			'password' => '',
+			'password' => 'root',
 			'charset' => 'utf8',
 		),
 		
@@ -98,11 +98,11 @@ return array(
 					'levels'=>'error, warning',
 				),
 				// uncomment the following to show log messages on web pages
-				/*
+				
 				array(
 					'class'=>'CWebLogRoute',
 				),
-				*/
+				
 			),
 		),
 	),

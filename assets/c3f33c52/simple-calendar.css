@@ -1,0 +1,16 @@
+#calendar th, #calendar td{
+    text-align: center;
+<<<<<<< HEAD
+    padding-left: 20px;
+=======
+    border-spacing:10px;
+>>>>>>> 3e3fe79d0d467879bd952031f396b3f6f3da532a
+}
+
+#calendar .weekdays-row th {
+    background-color: #fff;
+}
+
+#calendar .calendar-selected-day {
+    font-weight: bold;
+}
