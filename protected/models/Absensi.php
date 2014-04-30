@@ -43,6 +43,9 @@ class Absensi extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+                    'peserta'    => array(self::BELONGS_TO, 'Peserta',    'id_peserta'),
+                    'kegiatan'    => array(self::BELONGS_TO, 'Kegiatan',    'id_kegiatan'),
+                    'status'    => array(self::BELONGS_TO, 'Status',    'id_status'),
 		);
 	}
 
