@@ -5,5 +5,9 @@
 $this->breadcrumbs=array(
 	'Kirim Feedback',
 ); ?>
-
-<?php $this->renderPartial('formFeedback', array('model'=>$model)); ?>
+	<?php 
+	if(Yii::app()->user->hasFlash('notifFeedback')) {
+		echo "<div style='color:green'>".Yii::app()->user->getFlash('notifFeedback')."</div><br>";
+		echo CHtml::link('Back', array('feedback/create'));
+	} else { $this->renderPartial('formFeedback', array('model'=>$model)); } 
+	?>

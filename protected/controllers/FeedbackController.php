@@ -76,13 +76,13 @@ class FeedbackController extends Controller
 		{
 			$model->attributes=$_POST['Feedback'];
 			if($model->save()){
-                            if (Yii::app()->user->getLevel() == 3) {
-                                $this->redirect(array('view','id'=>$model->id_feedback));
-                            }     
-                        }
+                    if (Yii::app()->user->getLevel() == 3) {
+                       $this->redirect(array('view','id'=>$model->id_feedback));
+                    }     
+            }
+			Yii::app()->user->setFlash('notifFeedback', 'Feedback telah dikirim.');
+            $this->redirect(array('create'));
 		}
-                $model=new Feedback;
-                
 		$this->render('create',array(
 			'model'=>$model,
 		));
