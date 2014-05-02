@@ -23,7 +23,7 @@ return array(
         'bootstrap.helpers.TbArray',
         'bootstrap.behaviors.TbWidget',
         'bootstrap.widgets.TbDataColumn',
-        'bootstrap.widgets.TbActiveForm',
+		'bootstrap.widgets.TbActiveForm',
 	),
 
 	'modules'=>array(
@@ -98,11 +98,11 @@ return array(
 					'levels'=>'error, warning',
 				),
 				// uncomment the following to show log messages on web pages
-				/*
+				
 				array(
 					'class'=>'CWebLogRoute',
 				),
-				*/
+				
 			),
 		),
 	),

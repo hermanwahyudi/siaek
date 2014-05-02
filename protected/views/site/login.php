@@ -30,20 +30,20 @@
 
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'username'); ?>
-		<?php echo $form->textField($model,'username', array('placeholder'=>'Username')); ?>
+		<?php echo $form->textField($model,'username', array('placeholder'=>'Username','class'=>'form-control')); ?>
 		<span style="color:red"><?php echo $form->error($model,'username'); ?></span>
 	</div>
 
 	<div class="form-group">
 		<?php echo $form->labelEx($model,'password'); ?>
-		<?php echo $form->passwordField($model,'password', array('placeholder'=>'Password')); ?>
+		<?php echo $form->passwordField($model,'password', array('placeholder'=>'Password','class'=>'form-control')); ?>
 		<span style="color:red"><?php echo $form->error($model,'password'); ?><span style="color:red">
 		
 	</div>
 
 
 	<div class="form-group">
-		<?php echo CHtml::submitButton('Login'); ?>
+		<?php echo CHtml::submitButton('Login',  array('class'=>'btn btn-primary')); ?>
 		<?php echo Chtml::link("Forgot Password?", array('site/forget')); ?>
 	</div>
 </div>

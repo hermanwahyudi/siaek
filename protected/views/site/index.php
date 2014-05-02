@@ -11,6 +11,7 @@ $this->breadcrumbs=array(
 <div class="row clearfix">
   <?php if(Yii::app()->user->getLevel() == "2") { ?>
   <!-- Menu Pengurus Pusat -->
+  <div class="row clearfix">
   <div class="col-md-3 column">
     <div class="panel panel-primary">
         <div class="panel-body">
@@ -67,6 +68,8 @@ $this->breadcrumbs=array(
             </div>
         </div>
     </div>
+      </div>
+  <div class="row clearfix">
     <div class="col-md-3 column">
          <div class="panel panel-primary">
             <div class="panel-body">
@@ -81,6 +84,7 @@ $this->breadcrumbs=array(
              </div>
         </div>
     </div>
+      </div>
     <?php } else if(Yii::app()->user->getLevel() == "1") { ?>
             <!-- Menu Admin -->
     <div class="col-md-4 column">

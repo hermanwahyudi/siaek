@@ -29,12 +29,12 @@ class FeedbackController extends Controller
 		return array(
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
 				'actions'=>array('index', 'create'),
-				//'expression'=>'Yii::app()->user->getLevel() = "2"',
-				'users'=>array('@'),
+				'expression'=>'Yii::app()->user->getLevel() == "2"',
+				//'users'=>array('@'),
 			),
 			array('allow',  // allow all users to perform 'index' and 'view' actions
 				'actions'=>array('index','view','delete','admin'),
-				'expression'=>'Yii::app()->user->getLevel() > "2"',
+				'expression'=>'Yii::app()->user->getLevel() == "3"',
 				//'users'=>array('*'),
 			),
 			
@@ -70,17 +70,24 @@ class FeedbackController extends Controller
 
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
+                
 
 		if(isset($_POST['Feedback']))
 		{
 			$model->attributes=$_POST['Feedback'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id_feedback));
+			if($model->save()){
+                            if (Yii::app()->user->getLevel() == 3) {
+                                $this->redirect(array('view','id'=>$model->id_feedback));
+                            }     
+                        }
 		}
-
+                $model=new Feedback;
+                
 		$this->render('create',array(
 			'model'=>$model,
 		));
+                
+                
 	}
 
 	/**

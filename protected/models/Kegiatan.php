@@ -51,6 +51,7 @@ class Kegiatan extends CActiveRecord
 		// NOTE: you may need to adjust the relation name and the related
 		// class name for the relations automatically generated below.
 		return array(
+                    'absensi'   => array(self::HAS_MANY,'Absensi','id_kegiatan'),
 		);
 	}
 
@@ -121,4 +122,10 @@ class Kegiatan extends CActiveRecord
 	public function Regionals(){
 		return CHtml::listData(Regional::model()->findAll(), 'id_regional', 'nama');
 	}
+        public function getTipeOption() {
+            return array('1' => 'Bulanan', '2' => 'Pekanan', '3' => 'Lokal', '4' => 'Khusus');
+        }
+        public function getDayOption() {
+            return array('Senin' => 'Senin', 'Selasa' => 'Selasa', 'Rabu' => 'Rabu', 'Kamis' => 'Kamis','Jumat' => 'Jumat','Sabtu' => 'Sabtu','Minggu'=>'Minggu');
+        }
 }

@@ -30,7 +30,9 @@
 		<?php echo $form->labelEx($model,'role'); ?>
 		</label>
 			<div class="col-sm-4">
-		<?php echo $form->textField($model,'role',array('class'=>'form-control')); ?>
+		 <div class="controls">
+				    <?php echo CHtml::activeDropDownList($model,'role', $model->getRoleOption(),array('class'=>'form-control')); ?>
+                                       </div>
 			<span class="error-label">
 		<?php echo $form->error($model,'role'); ?>
 		</span>
@@ -78,7 +80,9 @@
 		<?php echo $form->labelEx($model,'jenis_kelamin'); ?>
 		</label>
 			<div class="col-sm-4">
-		<?php echo $form->textField($model,'jenis_kelamin',array('class'=>'form-control')); ?>
+		<div class="controls">
+				    <?php echo CHtml::activeDropDownList($model,'jenis_kelamin', $model->getGenderOption(),array('class'=>'form-control')); ?>
+                                       </div>
 			<span class="error-label">
 		<?php echo $form->error($model,'jenis_kelamin'); ?>
 		</span>
