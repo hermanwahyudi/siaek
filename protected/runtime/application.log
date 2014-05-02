@@ -53235,3 +53235,77 @@ Stack trace:
 REQUEST_URI=/siaek/js/script.js
 HTTP_REFERER=http://localhost/siaek/
 ---
+2014/05/02 09:57:47 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\xampp\htdocs\siaek\framework\web\CController.php:1118
+Stack trace:
+#0 C:\xampp\htdocs\siaek\framework\web\filters\CInlineFilter.php(58): CController->filterPostOnly(Object(CFilterChain))
+#1 C:\xampp\htdocs\siaek\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#2 C:\xampp\htdocs\siaek\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\xampp\htdocs\siaek\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 C:\xampp\htdocs\siaek\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\xampp\htdocs\siaek\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\xampp\htdocs\siaek\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\xampp\htdocs\siaek\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\xampp\htdocs\siaek\framework\web\CWebApplication.php(282): CController->run('delete')
+#9 C:\xampp\htdocs\siaek\framework\web\CWebApplication.php(141): CWebApplication->runController('peserta/delete')
+#10 C:\xampp\htdocs\siaek\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#11 C:\xampp\htdocs\siaek\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/siaek/peserta/delete/7
+HTTP_REFERER=http://localhost/siaek/peserta/index
+---
+2014/05/02 09:58:22 [warning] [application] Failed to set unsafe attribute "url_image" of "User".
+in C:\xampp\htdocs\siaek\protected\controllers\UserController.php (167)
+in C:\xampp\htdocs\siaek\index.php (13)
+2014/05/02 09:59:43 [error] [exception.CHttpException.400] exception 'CHttpException' with message 'Your request is invalid.' in C:\xampp\htdocs\siaek\framework\web\CController.php:1118
+Stack trace:
+#0 C:\xampp\htdocs\siaek\framework\web\filters\CInlineFilter.php(58): CController->filterPostOnly(Object(CFilterChain))
+#1 C:\xampp\htdocs\siaek\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#2 C:\xampp\htdocs\siaek\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#3 C:\xampp\htdocs\siaek\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#4 C:\xampp\htdocs\siaek\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#5 C:\xampp\htdocs\siaek\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#6 C:\xampp\htdocs\siaek\framework\web\CController.php(291): CFilterChain->run()
+#7 C:\xampp\htdocs\siaek\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#8 C:\xampp\htdocs\siaek\framework\web\CWebApplication.php(282): CController->run('delete')
+#9 C:\xampp\htdocs\siaek\framework\web\CWebApplication.php(141): CWebApplication->runController('regional/delete')
+#10 C:\xampp\htdocs\siaek\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#11 C:\xampp\htdocs\siaek\index.php(13): CApplication->run()
+#12 {main}
+REQUEST_URI=/siaek/regional/delete/4
+HTTP_REFERER=http://localhost/siaek/regional/index
+---
+2014/05/02 05:06:22 [error] [exception.CException] exception 'CException' with message 'KegiatanController contains improperly nested widget tags in its view "C:\xampp\htdocs\siaek\protected\views\kegiatan\_form.php". A CActiveForm widget does not have an endWidget() call.' in C:\xampp\htdocs\siaek\framework\web\CBaseController.php:101
+Stack trace:
+#0 C:\xampp\htdocs\siaek\framework\web\CController.php(869): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
+#1 C:\xampp\htdocs\siaek\protected\views\kegiatan\create.php(18): CController->renderPartial('_form', Array)
+#2 C:\xampp\htdocs\siaek\framework\web\CBaseController.php(126): require('C:\xampp\htdocs...')
+#3 C:\xampp\htdocs\siaek\framework\web\CBaseController.php(95): CBaseController->renderInternal('C:\xampp\htdocs...', Array, true)
+#4 C:\xampp\htdocs\siaek\framework\web\CController.php(869): CBaseController->renderFile('C:\xampp\htdocs...', Array, true)
+#5 C:\xampp\htdocs\siaek\framework\web\CController.php(782): CController->renderPartial('create', Array, true)
+#6 C:\xampp\htdocs\siaek\protected\controllers\KegiatanController.php(80): CController->render('create', Array)
+#7 C:\xampp\htdocs\siaek\framework\web\actions\CInlineAction.php(49): KegiatanController->actionCreate()
+#8 C:\xampp\htdocs\siaek\framework\web\CController.php(308): CInlineAction->runWithParams(Array)
+#9 C:\xampp\htdocs\siaek\framework\web\filters\CFilterChain.php(133): CController->runAction(Object(CInlineAction))
+#10 C:\xampp\htdocs\siaek\framework\web\filters\CFilter.php(40): CFilterChain->run()
+#11 C:\xampp\htdocs\siaek\framework\web\CController.php(1145): CFilter->filter(Object(CFilterChain))
+#12 C:\xampp\htdocs\siaek\framework\web\filters\CInlineFilter.php(58): CController->filterAccessControl(Object(CFilterChain))
+#13 C:\xampp\htdocs\siaek\framework\web\filters\CFilterChain.php(130): CInlineFilter->filter(Object(CFilterChain))
+#14 C:\xampp\htdocs\siaek\framework\web\CController.php(291): CFilterChain->run()
+#15 C:\xampp\htdocs\siaek\framework\web\CController.php(265): CController->runActionWithFilters(Object(CInlineAction), Array)
+#16 C:\xampp\htdocs\siaek\framework\web\CWebApplication.php(282): CController->run('create')
+#17 C:\xampp\htdocs\siaek\framework\web\CWebApplication.php(141): CWebApplication->runController('kegiatan/create')
+#18 C:\xampp\htdocs\siaek\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#19 C:\xampp\htdocs\siaek\index.php(13): CApplication->run()
+#20 {main}
+REQUEST_URI=/siaek/kegiatan/create
+HTTP_REFERER=http://localhost/siaek/kegiatan/index
+---
+2014/05/02 05:11:12 [warning] [application] Failed to set unsafe attribute "password_sekarang" of "User".
+in C:\xampp\htdocs\siaek\protected\controllers\UserController.php (247)
+in C:\xampp\htdocs\siaek\index.php (13)
+2014/05/02 05:11:12 [warning] [application] Failed to set unsafe attribute "password_baru" of "User".
+in C:\xampp\htdocs\siaek\protected\controllers\UserController.php (247)
+in C:\xampp\htdocs\siaek\index.php (13)
+2014/05/02 05:11:12 [warning] [application] Failed to set unsafe attribute "password_baru_repeat" of "User".
+in C:\xampp\htdocs\siaek\protected\controllers\UserController.php (247)
+in C:\xampp\htdocs\siaek\index.php (13)

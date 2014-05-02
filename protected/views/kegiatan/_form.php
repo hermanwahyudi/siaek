@@ -6,80 +6,7 @@
 
 <div class="form-horizontal" role="form">
 
-<<<<<<< HEAD
-<?php $form=$this->beginWidget('CActiveForm', array(
-	'id'=>'kegiatan-form',
-	// Please note: When you enable ajax validation, make sure the corresponding
-	// controller action is handling ajax validation correctly.
-	// There is a call to performAjaxValidation() commented in generated controller code.
-	// See class documentation of CActiveForm for details on this.
-	'enableAjaxValidation'=>false,
-)); ?>
-	<div class="form-group">
-		<label for="" class="col-sm-2 control-label"><?php echo $form->labelEx($model,'id_regional'); ?></label>
-			<div class="col-sm-4">
-				<!--?php echo $form->textField($model,'id_regional', array('class'=>'form-control')); ?-->
-				<?php echo CHtml::activeDropDownList($model,'id_regional', $model->Regionals()); ?>
-			<span class="error-label"><?php echo $form->error($model,'id_regional'); ?></span>
-			</div>
-	</div>
-	<div class="form-group">
-		<label for="" class="col-sm-2 control-label"><?php echo $form->labelEx($model,'nama_kegiatan'); ?></label>
-			<div class="col-sm-4">
-				<?php echo $form->textField($model,'nama_kegiatan', array('class'=>'form-control')); ?>
-			<span class="error-label"><?php echo $form->error($model,'nama_kegiatan'); ?></span>
-			</div>
-	</div>
-	<div class="form-group">
-		<label for="" class="col-sm-2 control-label"><?php echo $form->labelEx($model,'pembicara'); ?></label>
-			<div class="col-sm-4">
-				<?php echo $form->textField($model,'pembicara', array('class'=>'form-control')); ?>
-			<span class="error-label"><?php echo $form->error($model,'pembicara'); ?></span>
-			</div>
-	</div>
-	<div class="form-group">
-		<label for="" class="col-sm-2 control-label"><?php echo $form->labelEx($model,'materi'); ?></label>
-			<div class="col-sm-4">
-				<?php echo $form->textArea($model,'materi', array('class'=>'form-control', 'rows'=>6, 'cols'=>50)); ?>
-			<span class="error-label"><?php echo $form->error($model,'materi'); ?></span>
-			</div>
-	</div>
-	<div class="form-group">
-		<label for="" class="col-sm-2 control-label"><?php echo $form->labelEx($model,'hari'); ?></label>
-			<div class="col-sm-4">
-				<?php echo $form->textField($model,'hari', array('class'=>'form-control')); ?>
-			<span class="error-label"><?php echo $form->error($model,'hari'); ?></span>
-			</div>
-	</div>
-	<div class="form-group">
-		<label for="" class="col-sm-2 control-label"><?php echo $form->labelEx($model,'tanggal'); ?></label>
-			<div class="col-sm-4">
-				<?php echo $form->textField($model,'tanggal', array('class'=>'form-control', 'id'=>'date2')); ?>
-			<span class="error-label"><?php echo $form->error($model,'tanggal'); ?></span>
-			</div>
-	</div>
-	<div class="form-group">
-		<label for="" class="col-sm-2 control-label"><?php echo $form->labelEx($model,'waktu_mulai'); ?></label>
-			<div class="col-sm-4">
-				<?php echo $form->textField($model,'waktu_mulai', array('class'=>'form-control')); ?>
-			<span class="error-label"><?php echo $form->error($model,'waktu_mulai'); ?></span>
-			</div>
-	</div>
-	<div class="form-group">
-		<label for="" class="col-sm-2 control-label"><?php echo $form->labelEx($model,'waktu_selesai'); ?></label>
-			<div class="col-sm-4">
-				<?php echo $form->textField($model,'waktu_selesai', array('class'=>'form-control')); ?>
-			<span class="error-label"><?php echo $form->error($model,'waktu_selesai'); ?></span>
-			</div>
-	</div>
-	<div class="form-group">
-		<label for="" class="col-sm-2 control-label"><?php echo $form->labelEx($model,'jenis_kegiatan'); ?></label>
-			<div class="col-sm-4">
-				<?php echo $form->textField($model,'jenis_kegiatan', array('class'=>'form-control')); ?>
-			<span class="error-label"><?php echo $form->error($model,'jenis_kegiatam'); ?></span>
-			</div>
-	</div>
-=======
+
     <?php
     $form = $this->beginWidget('CActiveForm', array(
         'id' => 'kegiatan-form',
@@ -121,7 +48,6 @@
     <div class="form-group">
         <label for="" class="col-sm-2 control-label"><?php echo $form->labelEx($model, 'hari'); ?></label>
         <div class="col-sm-4">
->>>>>>> 024191735153acc6df4c42ecd25c208b2da6d593
 
             <div class="controls">
 <?php echo CHtml::activeDropDownList($model, 'hari', $model->getDayOption(), array('class' => 'form-control')); ?>
