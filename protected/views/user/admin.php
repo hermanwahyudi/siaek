@@ -47,4 +47,5 @@ $('.search-form form').submit(function(){
 		),
 	),
 )); ?>
+
 <?php echo CHtml::link('Back', array('site/index')); ?>

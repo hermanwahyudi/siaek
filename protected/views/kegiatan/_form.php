@@ -17,7 +17,8 @@
 	<div class="form-group">
 		<label for="" class="col-sm-2 control-label"><?php echo $form->labelEx($model,'id_regional'); ?></label>
 			<div class="col-sm-4">
-				<?php echo $form->textField($model,'id_regional', array('class'=>'form-control')); ?>
+				<!--?php echo $form->textField($model,'id_regional', array('class'=>'form-control')); ?-->
+				<?php echo CHtml::activeDropDownList($model,'id_regional', $model->Regionals()); ?>
 			<span class="error-label"><?php echo $form->error($model,'id_regional'); ?></span>
 			</div>
 	</div>
@@ -52,7 +53,7 @@
 	<div class="form-group">
 		<label for="" class="col-sm-2 control-label"><?php echo $form->labelEx($model,'tanggal'); ?></label>
 			<div class="col-sm-4">
-				<?php echo $form->textField($model,'tanggal', array('class'=>'form-control')); ?>
+				<?php echo $form->textField($model,'tanggal', array('class'=>'form-control', 'id'=>'date2')); ?>
 			<span class="error-label"><?php echo $form->error($model,'tanggal'); ?></span>
 			</div>
 	</div>

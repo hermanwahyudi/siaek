@@ -116,5 +116,9 @@ class Kegiatan extends CActiveRecord
 	public static function model($className=__CLASS__)
 	{
 		return parent::model($className);
+		}
+	
+	public function Regionals(){
+		return CHtml::listData(Regional::model()->findAll(), 'id_regional', 'nama');
 	}
 }

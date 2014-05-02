@@ -64,15 +64,20 @@ class PesertaController extends Controller
 	public function actionCreate()
 	{
 		$model=new Peserta;
+		
+		$id_user = Yii::app()->user->id;
+		$objRegional = Regional::model()->findByAttributes(array('id_user'=>$id_user));
 
+		$id_regional = $objRegional->id_regional;
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
-
+		
+		$model->id_regional = $id_regional;
 		if(isset($_POST['Peserta']))
 		{
 			$model->attributes=$_POST['Peserta'];
 			if($model->save())
-				$this->redirect(array('view','id'=>$model->id_peserta));
+				$this->redirect(array('index','id'=>$model->id_peserta));
 		}
 
 		$this->render('create',array(
