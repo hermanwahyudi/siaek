@@ -29,6 +29,7 @@ class Absensi extends CActiveRecord
 		return array(
 			array('id_peserta, id_kegiatan, id_status, alasan', 'required'),
 			array('id_peserta, id_kegiatan, id_status', 'numerical', 'integerOnly'=>true),
+                        array('alasan','allowEmpty'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id_peserta, id_kegiatan, id_status, alasan', 'safe', 'on'=>'search'),
@@ -100,4 +101,7 @@ class Absensi extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+        public function getStatusOption() {
+            return CHtml::listData(Status::model()->findAll(), 'id_status', 'status_kehadiran');
+        }
 }

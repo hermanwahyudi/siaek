@@ -40,22 +40,22 @@ class AbsensiController extends Controller {
         $absensi = new Absensi;
         if (isset($_POST['Absensi'])) {
             $model->attributes = $_POST['Kegiatan'];
-
-            //the value for the foreign key 'groupid'
-            $masterValues = array('id_kegiatan' => $model->id_kegiatan);
-
-            if (//Save the master model after saving valid members
-                    MultiModelForm::save($absensi, $validatedMembers, $deleteMembers, $masterValues) &&
-                    $model->save()
-            )
+            if ($model->save()) {
+                foreach ($_POST['status'] as $id_peserta=>$status){
+                    $absensi= new Absensi;
+                    $absensi->id_peserta=$id_peserta;
+                    $absensi->id_kegiatan=$model->id_kegiatan;
+                    $absensi->id_status=$status;
+                    $absensi->save();
+                }
+            }
                 $this->redirect(array('view', 'id' => $model->id));
         }
-
+        //$peserta=Peserta::model()->findByAttributes(array('id_regional'=>$model->id_regional));
         $this->render('absensi', array(
             'model' => $model,
-            //submit the member and validatedItems to the widget in the edit form
             'absensi' => $absensi,
-            //'validatedMembers' => $validatedMembers,
+            //'peserta'=>$peserta,
         ));
     }
 

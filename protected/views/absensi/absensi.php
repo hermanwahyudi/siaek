@@ -98,149 +98,39 @@ $this->breadcrumbs = array(
                                                 Absensi
                                             </th>
                                             <th>
-                                                Keterangan
-                                            </th>
-                                            <th>
                                                 Alasan
                                             </th>
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <?php
+                                        $sql = "SELECT * FROM peserta WHERE id_regional = '" . $model->id_regional. "'";
+                                        $dbCommand = Yii::app()->db->createCommand($sql);
+                                        $data = $dbCommand->queryAll();
+                                        
+                                        
+                                        ?>
+                                        <?php foreach ($data as $itemPeserta): ?>
                                         <tr>
                                             <td>
                                                 1
                                             </td>
                                             <td>
-                                                00000001
+                                               <?php echo $itemPeserta['id_peserta'] ?>
                                             </td>
                                             <td>
-                                                Malika
+                                                <?php echo $itemPeserta['nama']; ?>
                                             </td>
                                             <td >
-                                                <select class="selectpicker">
-                                                    <option>Hadir</option>
-                                                    <option>Tidak Hadir</option>
-                                                </select>
+                                                <?php echo CHtml::activeDropDownList($absensi,'id_status', $absensi->getStatusOption(),array('class'=>'form-control')); ?>
                                             </td>
-                                            <td >
-                                                <select class="selectpicker">
-                                                    <option>H</option>
-                                                    <option>TI</option>
-                                                    <option>TTI</option>
-                                                </select>
-                                            </td>
+                                            
                                             <td>
                                                 <textarea class="form-control" rows="1" placeholder="Message"> ket</textarea>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td>
-                                                2
-                                            </td>
-                                            <td>
-                                                00000002
-                                            </td>
-                                            <td>
-                                                Ani
-                                            </td>
-                                            <td>
-                                                <select class="selectpicker">
-                                                    <option>Hadir</option>
-                                                    <option>Tidak Hadir</option>
-                                                </select>
-                                            </td>
-                                            <td>
-                                                <select class="selectpicker">
-                                                    <option>H</option>
-                                                    <option>TI</option>
-                                                    <option>TTI</option>
-                                                </select>
-                                            </td>
-                                            <td >
-
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                3
-                                            </td>
-                                            <td>
-                                                00000003
-                                            </td>
-                                            <td>
-                                                Sarah
-                                            </td>
-                                            <td>
-                                                <select class="selectpicker">
-                                                    <option>Hadir</option>
-                                                    <option>Tidak Hadir</option>
-                                                </select>
-                                            </td>
-                                            <td>
-                                                <select class="selectpicker">
-                                                    <option>H</option>
-                                                    <option>TI</option>
-                                                    <option>TTI</option>
-                                                </select>
-                                            </td>
-                                            <td>
-                                                tidak ada
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                4
-                                            </td>
-                                            <td>
-                                                00000004
-                                            </td>
-                                            <td>
-                                                Munawaroh
-                                            </td>
-                                            <td>
-                                                <select class="selectpicker">
-                                                    <option>Hadir</option>
-                                                    <option>Tidak Hadir</option>
-                                                </select>
-                                            </td>
-                                            <td>
-                                                <select class="selectpicker">
-                                                    <option>H</option>
-                                                    <option>TI</option>
-                                                    <option>TTI</option>
-                                                </select>
-                                            </td>
-                                            <td>
-
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                5
-                                            </td>
-                                            <td>
-                                                00000005
-                                            </td>
-                                            <td>
-                                                Munaroh
-                                            </td>
-                                            <td>
-                                                <select class="selectpicker">
-                                                    <option>Hadir</option>
-                                                    <option>Tidak Hadir</option>
-                                                </select>
-                                            </td>
-                                            <td>
-                                                <select class="selectpicker">
-                                                    <option>H</option>
-                                                    <option>TI</option>
-                                                    <option>TTI</option>
-                                                </select>
-                                            </td>
-                                            <td>
-
-                                            </td>
-                                        </tr>
+                                        <?php endforeach; ?>
+                                        
                                     </tbody>
                                 </table>
                                 </div>
