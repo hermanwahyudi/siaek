@@ -51,11 +51,11 @@ class AbsensiController extends Controller {
             }
                 $this->redirect(array('view', 'id' => $model->id));
         }
-        //$peserta=Peserta::model()->findByAttributes(array('id_regional'=>$model->id_regional));
+        
         $this->render('absensi', array(
             'model' => $model,
             'absensi' => $absensi,
-            //'peserta'=>$peserta,
+        
         ));
     }
 

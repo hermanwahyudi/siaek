@@ -7,12 +7,10 @@ $this->breadcrumbs = array(
 
     <?php
     $form = $this->beginWidget('CActiveForm', array(
-        'id' => 'kegiatan-form',
+        'id' => 'absensi-form',
         'enableAjaxValidation' => false,
     ));
     ?>
-
-    <p class="note">Fields with <span class="required">*</span> are required.</p>
 
     
     <div class="row clearfix">
@@ -21,9 +19,9 @@ $this->breadcrumbs = array(
             <div class="row clearfix">
                 <div class="col-md-12 column">
                     <br>
-                    <h2>
-                        <u><?php echo $model->nama_kegiatan; ?></u>
-                    </h2>
+                    <h1>
+                        <?php echo $model->nama_kegiatan; ?>
+                    </h1>
                     <br>
 
                     <br>
@@ -31,29 +29,21 @@ $this->breadcrumbs = array(
                     <div class="col-md-6 column">
 
                         <form class="form-horizontal" role="form">
+                            
                             <div class="form-group">
-                                <label for="" class="col-sm-3 control-label">Nama</label>
-                                <div class="col-sm-6">
-<?php echo $form->textField($model, 'nama_kegiatan'); ?>
-                                </div>
+                                <?php echo $form->labelEx($model,'pembicara'); ?>
+                                <?php echo $form->textField($model, 'pembicara',array('class'=>'form-control')); ?>
+                               
                             </div>
                             <div class="form-group">
-                                <label for="" class="col-sm-3 control-label">Pembicara</label>
-                                <div class="col-sm-6">
-<?php echo $form->textField($model, 'pembicara'); ?>
-                                </div>
+                                 <?php echo $form->labelEx($model,'materi'); ?>
+                                <?php echo $form->textField($model, 'materi',array('class'=>'form-control')); ?>
+                                
                             </div>
                             <div class="form-group">
-                                <label for="" class="col-sm-3 control-label">Materi</label>
-                                <div class="col-sm-6">
-<?php echo $form->textField($model, 'materi'); ?>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label for="" class="col-sm-3 control-label">Hari</label>
-                                <div class="col-sm-6">
-<?php echo $form->textField($model, 'hari'); ?>
-                                </div>
+                                 <?php echo $form->labelEx($model,'hari'); ?>
+                                <?php echo $form->textField($model, 'hari',array('class'=>'form-control')); ?>
+                                
                             </div>
                             <form>	
                                 </div>
@@ -61,41 +51,36 @@ $this->breadcrumbs = array(
                                 <div class="col-md-6 column">
                                     <form class="form-horizontal" role="form">
                                         <div class="form-group">
-                                            <label for="" class="col-sm-4 control-label">Tanggal</label>
-                                            <div class="col-sm-6">
+                                            <?php echo $form->labelEx($model,'tanggal'); ?>
                                                 <?php echo $form->textField($model, 'tanggal', array('class' => 'form-control datetimepicker')); ?>
-                                            </div>
+                                            
                                         </div>
-                                        <br><br>
+                                        
                                         <div class="form-group">
-                                            <label for="" class="col-sm-4 control-label">Waktu Mulai</label>
-                                            <div class="col-sm-6">
+                                            <?php echo $form->labelEx($model,'waktu_mulai'); ?>
                                                 <?php echo $form->textField($model, 'waktu_mulai', array('class' => 'form-control')); ?>
-                                            </div>
+                                           
                                         </div>
-                                        <br><br>
+                                        
                                         <div class="form-group">
-                                            <label for="" class="col-sm-4 control-label">Waktu Selesai</label>
-                                            <div class="col-sm-6">
+                                            <?php echo $form->labelEx($model,'waktu_selesai'); ?>
                                                 <?php echo $form->textField($model, 'waktu_selesai', array('class' => 'form-control')); ?>
-                                            </div>
+                                           
                                         </div>
                                     </form>
                                 </div>
                                 <table class="table table-bordered">
                                     <thead>
                                         <tr class="active">
+                                            
                                             <th>
-                                                NO.
+                                                No Peserta
                                             </th>
                                             <th>
-                                                Id Peserta
+                                                Nama Peserta
                                             </th>
                                             <th>
-                                                Nama
-                                            </th>
-                                            <th>
-                                                Absensi
+                                                Keterangan
                                             </th>
                                             <th>
                                                 Alasan
@@ -104,7 +89,7 @@ $this->breadcrumbs = array(
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $sql = "SELECT * FROM peserta WHERE id_regional = '" . $model->id_regional. "'";
+                                        $sql = "SELECT * FROM peserta WHERE status_aktif=1 and id_regional = '" . $model->id_regional. "'";
                                         $dbCommand = Yii::app()->db->createCommand($sql);
                                         $data = $dbCommand->queryAll();
                                         
@@ -113,11 +98,9 @@ $this->breadcrumbs = array(
                                         <?php foreach ($data as $itemPeserta): ?>
                                         <tr>
                                             <td>
-                                                1
+                                               <?php echo $itemPeserta['nomor_peserta'] ?>
                                             </td>
-                                            <td>
-                                               <?php echo $itemPeserta['id_peserta'] ?>
-                                            </td>
+                                           
                                             <td>
                                                 <?php echo $itemPeserta['nama']; ?>
                                             </td>
@@ -126,7 +109,7 @@ $this->breadcrumbs = array(
                                             </td>
                                             
                                             <td>
-                                                <textarea class="form-control" rows="1" placeholder="Message"> ket</textarea>
+                                                <textarea nama="absensi[$itemPeserta['id_peserta']][alasan]" class="form-control" rows="1" placeholder="Message"> ket</textarea>
                                             </td>
                                         </tr>
                                         <?php endforeach; ?>
