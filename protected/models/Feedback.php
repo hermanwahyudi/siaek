@@ -101,4 +101,8 @@ class Feedback extends CActiveRecord
 	public function getRegionalOption(){
 		return CHtml::listData(Regional::model()->findAll(), 'id_regional', 'nama');
 	}
+	/*
+	public function getKegiatanOption(){
+		return CHtml::listData(Kegiatan::model()->findAll(), 'id_kegiatan', 'nama_kegiatan');
+	}*/
 }
