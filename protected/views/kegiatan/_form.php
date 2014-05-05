@@ -20,15 +20,19 @@
     <div class="form-group">
         <label for="" class="col-sm-2 control-label"><?php echo $form->labelEx($model, 'id_regional'); ?></label>
         <div class="col-sm-4">
-<?php echo $form->textField($model, 'id_regional', array('class' => 'form-control')); ?>
-            <span class="error-label"><?php echo $form->error($model, 'id_regional'); ?></span>
+            <?php echo $form->textField($model, 'id_regional', array('class' => 'form-control')); ?>
+            <span class="error-label">
+                <?php echo $form->error($model, 'id_regional'); ?>
+            </span>
         </div>
     </div>
     <div class="form-group">
         <label for="" class="col-sm-2 control-label"><?php echo $form->labelEx($model, 'nama_kegiatan'); ?></label>
         <div class="col-sm-4">
-<?php echo $form->textField($model, 'nama_kegiatan', array('class' => 'form-control')); ?>
-            <span class="error-label"><?php echo $form->error($model, 'nama_kegiatan'); ?></span>
+            <?php echo $form->textField($model, 'nama_kegiatan', array('class' => 'form-control')); ?>
+            <span class="error-label">
+                <?php echo $form->error($model, 'nama_kegiatan'); ?>
+            </span>
         </div>
     </div>
     <div class="form-group">
