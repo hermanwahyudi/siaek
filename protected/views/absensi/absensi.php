@@ -98,6 +98,7 @@ $this->breadcrumbs = array(
                                         <?php foreach ($data as $itemPeserta): ?>
                                         <tr>
                                             <td>
+                                                <!--input class="form-control" readonly="readonly" name="absensi['$id_peserta']" type="text" value=".$itemPeserta['nomor_peserta']." /--> 
                                                <?php echo $itemPeserta['nomor_peserta'] ?>
                                             </td>
                                            
