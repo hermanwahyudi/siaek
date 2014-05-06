@@ -180,9 +180,10 @@ class UserController extends Controller
 				}
             } else {
 				$model->url_image = $old_image;
-				$model->save();
-				Yii::app()->user->setFlash('successProfile', 'Profile telah berhasil diubah.');
-				$this->redirect(array('profile', 'id' => $model->id_user));
+				if($model->save()) {
+					Yii::app()->user->setFlash('successProfile', 'Profile telah berhasil diubah.');
+					$this->redirect(array('profile', 'id' => $model->id_user));
+				}
 			}
             
  
@@ -256,24 +257,28 @@ class UserController extends Controller
 			$model->attributes = $_POST['User'];
 			
 			if($model->password === $_POST['User']['password_sekarang']) {
-				
-				if($model->password_baru_repeat !== '') {
-					$password_baru = "" . $_POST['User']['password_baru'];
-					$password_baru_repeat = "" . $_POST['User']['password_baru_repeat'];
-					if($password_baru === $password_baru_repeat) {
-						$model->password = $password_baru_repeat;
-						if($model->save(false)) {
-							Yii::app()->user->setFlash('passChanged', 'Password Anda telah berhasil diubah.');
-							$this->redirect(array('profile', 'id' => $model->id_user));
+				if($_POST['User']['password_baru'] !== '') {
+					if($model->password_baru_repeat !== '') {
+						$password_baru = "" . $_POST['User']['password_baru'];
+						$password_baru_repeat = "" . $_POST['User']['password_baru_repeat'];
+						if($password_baru === $password_baru_repeat) {
+							$model->password = $password_baru_repeat;
+							if($model->save(false)) {
+								Yii::app()->user->setFlash('passChanged', 'Password Anda telah berhasil diubah.');
+								$this->redirect(array('profile', 'id' => $model->id_user));
+							}
+						} else {
+							Yii::app()->user->setFlash('errorNewPass', 'Password baru tidak sama dengan password baru repeat.');
+							$this->redirect(array('password', 'id' => $model->id_user));
 						}
 					} else {
-						Yii::app()->user->setFlash('errorNewPass', 'Password baru tidak sama dengan password konfirmasi.');
-                        $this->redirect(array('password', 'id' => $model->id_user));
-					}
+						Yii::app()->user->setFlash('errorPassConfirm', 'Konfirmasi password harus diisi.');
+						$this->redirect(array('password', 'id' => $model->id_user));
+					} 
 				} else {
-					Yii::app()->user->setFlash('errorPassConfirm', 'Konfirmasi password harus diisi.');
-                    $this->redirect(array('password', 'id' => $model->id_user));
-				} 
+					Yii::app()->user->setFlash('errorPassConfirm', 'Password baru password harus diisi.');
+					$this->redirect(array('password', 'id' => $model->id_user));
+				}
 			} else {
 				Yii::app()->user->setFlash('errorCurrentPass', 'Password sekarang tidak sama dengan di sistem.');
                 $this->redirect(array('password', 'id' => $model->id_user));

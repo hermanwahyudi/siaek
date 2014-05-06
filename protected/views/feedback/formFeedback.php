@@ -37,7 +37,7 @@
     <div class="row">
         <div class="form-group">
             <label for="" class="col-sm-3 control-label">
-                <?php echo $form->labelEx($model, 'id_regional'); ?>
+                <?php echo "Regional *"; ?>
             </label>
             <div align ="left" class="col-sm-5">
                 <div class="controls">

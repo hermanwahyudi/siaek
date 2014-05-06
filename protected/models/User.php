@@ -52,6 +52,8 @@ class User extends CActiveRecord
 			array('role, username, password, nama, jenis_kelamin, email, nip, no_telp, alamat', 'required'),
 			array('role', 'numerical', 'integerOnly'=>true),
 			array('username, password, nama, email, nip', 'length', 'max'=>255),
+			array('email', 'email'),
+			array('no_telp', 'numerical'),
 			array('jenis_kelamin', 'length', 'max'=>12),
 			array('no_telp', 'length', 'max'=>20),
 			array('url_image', 'file', 'types' => 'jpg, jpeg, gif, png','allowEmpty'=>true),
