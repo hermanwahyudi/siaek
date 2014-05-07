@@ -101,7 +101,36 @@ class Absensi extends CActiveRecord
 	{
 		return parent::model($className);
 	}
-        public function getStatusOption() {
-            return CHtml::listData(Status::model()->findAll(), 'id_status', 'status_kehadiran');
-        }
+    public function getStatusOption() {
+        return CHtml::listData(Status::model()->findAll(), 'id_status', 'status_kehadiran');
+    }
+	public function getBulan() {
+		return array(	
+					  "1"=>"Januari", 
+					  "2"=>"Februari",
+					  "3"=>"Maret", 
+					  "4"=>"April",
+					  "5"=>"Mei", 
+					  "6"=>"Juni",
+					  "7"=>"Juli", 
+					  "8"=>"Agustus",
+					  "9"=>"September", 
+					  "10"=>"Oktober",
+					  "11"=>"November", 
+					  "12"=>"Desember",
+					  );
+	}
+	public function getTahun() {
+			return array(	
+						"2010"=>"2010", 
+						"2011"=>"2011",
+						"2012"=>"2012", 
+						"2013"=>"2013",
+						"2014"=>"2014",
+						"2015"=>"2015", 
+						"2016"=>"2016",
+						"2017"=>"2017", 
+						"2018"=>"2018",
+			);
+	}
 }
