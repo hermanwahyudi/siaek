@@ -42,7 +42,22 @@
 
 
 
-
+							<script type="text/javascript"> 
+								// 1 detik = 1000 
+								window.setTimeout("waktu()",1000); 
+								var jam = 0;
+								var menit = 0;
+								var detik = 0;
+								function waktu() { 
+									var tanggal = new Date(); 
+									setTimeout("waktu()",1000); 
+									jam = (tanggal.getHours() < 10) ? "0"+tanggal.getHours() : tanggal.getHours();
+									menit = (tanggal.getMinutes() < 10) ? "0"+tanggal.getMinutes() : tanggal.getMinutes();
+									detik = (tanggal.getSeconds() < 10) ? "0"+tanggal.getSeconds() : tanggal.getSeconds();
+									
+									document.getElementById("output").innerHTML = jam+":"+menit+":"+detik; 
+								} 
+							</script>
                                 <title><?php echo CHtml::encode($this->pageTitle); ?></title>
                                 </head>
 
@@ -126,13 +141,10 @@
                                                                         <div class="panel-body">
                                                                             <p class="text-center">
                                                                                 <?php
-                                                                                $dt = new DateTime();
-                                                                                echo $dt->format("Y-m-d");
+                                                                                $mydate=getdate(date("U"));
+																				echo "<h2>$mydate[weekday], $mydate[month] $mydate[mday], $mydate[year]</h2>";
                                                                                 ?><br>
-                                                                                    <?php
-                                                                                    date_default_timezone_set("Asia/Jakarta");
-                                                                                    echo $TIME = date('G:ia');
-                                                                                    ?>
+																				<h1><div id="output"></div></h1>
                                                                             </p>
 
                                                                         </div>
