@@ -31,15 +31,11 @@ endif;
     <div class="col-md-12 column"> <br>
 		<table class="table">
             <tbody>
-                <tr>
-					<td align="left"><strong>ID User</strong></td><td align="left">: <?php echo $model->id_user; ?></td>
-				</tr>
 				<tr>
 					<td align="left"><strong>Role</strong></td><td align="left">:
 						<?php echo $model->role; ?>
   				</td>
-  					</td>
-					<!-- <td align="left"><strong>Role</strong></td><td align="left">: <?php echo $model->role; ?></td> -->
+  					
 				</tr>
 				<tr>
 					<td align="left"><strong>NIP<strong></td><td align="left">: <?php echo $model->nip; ?></td>

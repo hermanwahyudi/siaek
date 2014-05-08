@@ -54,9 +54,9 @@ class Regional extends CActiveRecord
 	{
 		return array(
 			'id_regional' => 'Id Regional',
-			'nama' => 'Nama',
+			'nama' => 'Nama Regional',
 			'alamat' => 'Alamat',
-			'id_user' => 'Id User',
+			'id_user' => 'Hak Pengurus',
 		);
 	}
 

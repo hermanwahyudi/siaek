@@ -7,13 +7,6 @@ $this->breadcrumbs=array(
 	$model->nama,
 );
 
-$this->menu=array(
-	array('label'=>'List User', 'url'=>array('index')),
-	array('label'=>'Create User', 'url'=>array('create')),
-	array('label'=>'Update User', 'url'=>array('update', 'id'=>$model->id_user)),
-	array('label'=>'Delete User', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id_user),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage User', 'url'=>array('admin')),
-);
 ?>
 
 <div class="headline"> <h1 class="text-justify"><?php echo $model->nama; ?></h1>  </div>
@@ -22,9 +15,6 @@ $this->menu=array(
     <div class="col-md-12 column"> <br>
 		<table class="table">
             <tbody>
-                <tr>
-					<td align="left"><strong>ID User</strong></td><td align="left">: <?php echo $model->id_user; ?></td>
-				</tr>
 				<tr>
 					<td align="left"><strong>Role</strong></td><td align="left">: <?php echo $model->role; ?></td>
 				</tr>

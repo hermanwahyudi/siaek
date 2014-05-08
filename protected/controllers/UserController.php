@@ -51,12 +51,20 @@ class UserController extends Controller
 	 */
 	public function actionView($id)
 	{
+		$model = $this->loadModel($id);
+		if($model->role === '1') $model->role = 'Administrator';
+		else if($model->role === '2') $model->role = 'Pengurus Pusat';
+		else $model->role = 'Pengurus Regional';
 		$this->render('view',array(
-			'model'=>$this->loadModel($id),
+			'model'=>$model,
 		));
 	}
 	public function actionProfile($id) {
-		$this->render('viewProfile', array('model' => $this->loadModel($id)));
+		$model = $this->loadModel($id);
+		if($model->role === '1') $model->role = 'Administrator';
+		else if($model->role === '2') $model->role = 'Pengurus Pusat';
+		else $model->role = 'Pengurus Regional';
+		$this->render('viewProfile', array('model' => $model));
 	}
 
 	/**
@@ -296,6 +304,8 @@ class UserController extends Controller
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['User']))
 			$model->attributes=$_GET['User'];
+		
+		
 
 		$this->render('admin',array(
 			'model'=>$model,
