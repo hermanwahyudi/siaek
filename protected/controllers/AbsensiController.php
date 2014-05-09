@@ -37,33 +37,39 @@ class AbsensiController extends Controller {
 
     public function actionIsiAbsensi($id) {
         $model = $this->loadKegiatan($id);
-        $absensi = new Absensi;
-        if (isset($_POST['Absensi'])) {
+        $absensi= new Absensi;
+
+        if (isset($_POST['Kegiatan'])) {
             $model->attributes = $_POST['Kegiatan'];
             if ($model->save()) {
-                foreach ($_POST['status'] as $id_peserta=>$status){
-                    $absensi= new Absensi;
-                    $absensi->id_peserta=$id_peserta;
-                    $absensi->id_kegiatan=$model->id_kegiatan;
-                    $absensi->id_status=$status;
-                    $absensi->save();
+                if (isset($_POST['Absensi'])) {
+                    $total = count($_POST['Absensi']);
+                    for ($i = 0; $i <= $total; $i++) {
+                        if (isset($_POST['Absensi'][$i])) {
+                            $absensi = new Absensi;
+                            $absensi->id_peserta = $_POST['Absensi'][$i]['id_peserta'];
+                            $absensi->id_status = $_POST['Absensi'][$i]['id_status'];
+                            $absensi->id_kegiatan = $model->id_kegiatan;
+
+                            $absensi->save();
+                        }
+                    }
+                    $this->redirect(array('view', 'id' => $model->id_kegiatan));
                 }
             }
-                $this->redirect(array('view', 'id' => $model->id));
         }
-        
+         
         $this->render('absensi', array(
             'model' => $model,
             'absensi' => $absensi,
-        
         ));
     }
 
     public function loadKegiatan($id) {
-        $model=Kegiatan::model()->findByPk($id);
-		if($model===null)
-			throw new CHttpException(404,'The requested page does not exist.');
-		return $model;
+        $model = Kegiatan::model()->findByPk($id);
+        if ($model === null)
+            throw new CHttpException(404, 'The requested page does not exist.');
+        return $model;
     }
 
     // Uncomment the following methods and override them if needed
@@ -92,5 +98,4 @@ class AbsensiController extends Controller {
       );
       }
      */
-	
 }

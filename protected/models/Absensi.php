@@ -27,7 +27,7 @@ class Absensi extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('id_peserta, id_kegiatan, id_status, alasan', 'required'),
+			array('id_peserta, id_kegiatan, id_status', 'required'),
 			array('id_peserta, id_kegiatan, id_status', 'numerical', 'integerOnly'=>true),
                         array('alasan','allowEmpty'=>true),
 			// The following rule is used by search().

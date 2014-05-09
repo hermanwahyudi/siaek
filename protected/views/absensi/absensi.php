@@ -12,7 +12,7 @@ $this->breadcrumbs = array(
     ));
     ?>
 
-    
+
     <div class="row clearfix">
         <div class="headline"> <h1 class="text-justify">Isi Absensi</h1>  </div>
         <div class="col-md-12 column">
@@ -29,21 +29,21 @@ $this->breadcrumbs = array(
                     <div class="col-md-6 column">
 
                         <form class="form-horizontal" role="form">
-                            
+
                             <div class="form-group">
-                                <?php echo $form->labelEx($model,'pembicara'); ?>
-                                <?php echo $form->textField($model, 'pembicara',array('class'=>'form-control')); ?>
-                               
+                                <?php echo $form->labelEx($model, 'pembicara'); ?>
+                                <?php echo $form->textField($model, 'pembicara', array('class' => 'form-control')); ?>
+
                             </div>
                             <div class="form-group">
-                                 <?php echo $form->labelEx($model,'materi'); ?>
-                                <?php echo $form->textField($model, 'materi',array('class'=>'form-control')); ?>
-                                
+                                <?php echo $form->labelEx($model, 'materi'); ?>
+                                <?php echo $form->textField($model, 'materi', array('class' => 'form-control')); ?>
+
                             </div>
                             <div class="form-group">
-                                 <?php echo $form->labelEx($model,'hari'); ?>
-                                <?php echo $form->textField($model, 'hari',array('class'=>'form-control')); ?>
-                                
+                                <?php echo $form->labelEx($model, 'hari'); ?>
+                                <?php echo $form->textField($model, 'hari', array('class' => 'form-control')); ?>
+
                             </div>
                             <form>	
                                 </div>
@@ -51,28 +51,28 @@ $this->breadcrumbs = array(
                                 <div class="col-md-6 column">
                                     <form class="form-horizontal" role="form">
                                         <div class="form-group">
-                                            <?php echo $form->labelEx($model,'tanggal'); ?>
-                                                <?php echo $form->textField($model, 'tanggal', array('class' => 'form-control datetimepicker')); ?>
-                                            
+                                            <?php echo $form->labelEx($model, 'tanggal'); ?>
+                                            <?php echo $form->textField($model, 'tanggal', array('class' => 'form-control datetimepicker')); ?>
+
                                         </div>
-                                        
+
                                         <div class="form-group">
-                                            <?php echo $form->labelEx($model,'waktu_mulai'); ?>
-                                                <?php echo $form->textField($model, 'waktu_mulai', array('class' => 'form-control')); ?>
-                                           
+                                            <?php echo $form->labelEx($model, 'waktu_mulai'); ?>
+                                            <?php echo $form->textField($model, 'waktu_mulai', array('class' => 'form-control')); ?>
+
                                         </div>
-                                        
+
                                         <div class="form-group">
-                                            <?php echo $form->labelEx($model,'waktu_selesai'); ?>
-                                                <?php echo $form->textField($model, 'waktu_selesai', array('class' => 'form-control')); ?>
-                                           
+                                            <?php echo $form->labelEx($model, 'waktu_selesai'); ?>
+                                            <?php echo $form->textField($model, 'waktu_selesai', array('class' => 'form-control')); ?>
+
                                         </div>
                                     </form>
                                 </div>
                                 <table class="table table-bordered">
                                     <thead>
                                         <tr class="active">
-                                            
+
                                             <th>
                                                 No Peserta
                                             </th>
@@ -89,32 +89,29 @@ $this->breadcrumbs = array(
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $sql = "SELECT * FROM peserta WHERE status_aktif=1 and id_regional = '" . $model->id_regional. "'";
+                                        $sql = "SELECT * FROM peserta WHERE status_aktif=1 and id_regional = '" . $model->id_regional . "'";
                                         $dbCommand = Yii::app()->db->createCommand($sql);
                                         $data = $dbCommand->queryAll();
-                                        
-                                        
                                         ?>
                                         <?php foreach ($data as $itemPeserta): ?>
-                                        <tr>
-                                            <td>
-                                                <!--input class="form-control" readonly="readonly" name="absensi['$id_peserta']" type="text" value=".$itemPeserta['nomor_peserta']." /--> 
-                                               <?php echo $itemPeserta['nomor_peserta'] ?>
-                                            </td>
-                                           
-                                            <td>
-                                                <?php echo $itemPeserta['nama']; ?>
-                                            </td>
-                                            <td >
-                                                <?php echo CHtml::activeDropDownList($absensi,'id_status', $absensi->getStatusOption(),array('class'=>'form-control')); ?>
-                                            </td>
-                                            
-                                            <td>
-                                                <textarea nama="absensi[$itemPeserta['id_peserta']][alasan]" class="form-control" rows="1" placeholder="Message"> ket</textarea>
-                                            </td>
-                                        </tr>
+                                            <tr>
+                                                <td>
+                                                    <!--input class="form-control" readonly="readonly" name="absensi['$id_peserta']" type="text" value=".$itemPeserta['nomor_peserta']." /--> 
+                                                    <?php echo $itemPeserta['nomor_peserta'] ?>
+                                                </td>
+
+                                                <td>
+                                                    <?php echo $itemPeserta['nama']; ?>
+                                                </td>
+                                                <td >
+                                                    <?php echo CHtml::activeDropDownList($absensi, 'id_status', $absensi->getStatusOption(), array('class' => 'form-control')); ?>
+                                                </td>
+
+                                                <td>
+                                                    <?php echo CHtml::activeTextArea($absensi, 'alasan',array('class' => 'form-control')); ?>
+                                                </td>
+                                            </tr>
                                         <?php endforeach; ?>
-                                        
                                     </tbody>
                                 </table>
                                 </div>
@@ -122,12 +119,13 @@ $this->breadcrumbs = array(
                                 </div>
                                 <div class="row clearfix">
                                     <div class="col-md-12 column">
-                                        <button type="button" class="btn btn-sm btn-success">Simpan</button>
-                                    </div><br><?php echo CHtml::link('Back', array('site/index')); ?>
+                                       <?php echo CHtml::submitButton($absensi->isNewRecord ? '' : 'isiAbsensi',array('class'=>'btn btn-default')); ?>
+                                    </div>
+                                    <br>
+                                        <?php echo CHtml::link('Back', array('site/index')); ?>
                                 </div> 
                                 </div>
                                 </div>
-    <?php $this->endWidget(); ?>
- 
-    </div><!-- form -->
-                                
+<?php $this->endWidget(); ?>
+
+                                </div><!-- form -->
