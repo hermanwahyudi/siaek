@@ -2,6 +2,13 @@
 
 class AbsensiController extends Controller {
 
+    public function filters() {
+        return array(
+            //'accessControl', // perform access control for CRUD operations
+                //'postOnly + delete', // we only allow deletion via POST request
+        );
+    }
+
     public function accessRules() {
         return array(
             array('allow', // allow all users to perform 'index' and 'view' actions
@@ -9,7 +16,7 @@ class AbsensiController extends Controller {
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('create', 'update', 'admin', 'delete', 'deadline', 'listKegiatan'),
+                'actions' => array('create', 'update', 'admin', 'delete', 'deadline', 'listKegiatan','isiAbsensi'),
                 'expression' => 'Yii::app()->user->getLevel() == "3"',
             //'users'=>array('@'),
             ),
@@ -36,20 +43,27 @@ class AbsensiController extends Controller {
     }
 
     public function actionIsiAbsensi($id) {
+        $this->layout="main";
         $model = $this->loadKegiatan($id);
-        $absensi= new Absensi;
+        $absensi = array();
+        $i = 0;
+        while ($i < 1) {
+            $absensi[$i] = Absensi::model();
+            $i++;
+        }
 
         if (isset($_POST['Kegiatan'])) {
             $model->attributes = $_POST['Kegiatan'];
             if ($model->save()) {
                 if (isset($_POST['Absensi'])) {
-                    $total = count($_POST['Absensi']);
-                    for ($i = 0; $i <= $total; $i++) {
-                        if (isset($_POST['Absensi'][$i])) {
-                            $absensi = new Absensi;
-                            $absensi->id_peserta = $_POST['Absensi'][$i]['id_peserta'];
-                            $absensi->id_status = $_POST['Absensi'][$i]['id_status'];
-                            $absensi->id_kegiatan = $model->id_kegiatan;
+
+
+                    foreach ($_POST['Absensi'] as $j => $modelp) {
+                        if (isset($_POST['Absensi'][$j])) {
+                            $absensi[$j] = new Absensi;
+
+                            $absensi[$j]->attributes = $modelp;
+                            $absensi[$j]->id_kegiatan = $model->id_kegiatan;
 
                             $absensi->save();
                         }
@@ -58,7 +72,7 @@ class AbsensiController extends Controller {
                 }
             }
         }
-         
+
         $this->render('absensi', array(
             'model' => $model,
             'absensi' => $absensi,
