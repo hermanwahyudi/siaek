@@ -139,12 +139,38 @@ class KegiatanController extends Controller
 		
 		if(isset($_POST['Kegiatan'])) { // Klik submit save
 			$model->deadline = $_POST['Kegiatan']['deadline'];
-			if(!empty($model->deadline)) { 
-				$model->save();
-				Yii::app()->user->setFlash('successDeadline', 'Deadline telah berhasil diubah.');
-				$this->redirect(array('deadline'));
+			$arrDeadline01 = explode(" ", $model->deadline);
+			if(preg_match("/-/", $arrDeadline01[0])) $arrDeadline02 = explode("-", $arrDeadline01[0]);
+			else $arrDeadline02 = explode("/", $arrDeadline01[0]);
+			
+			date_default_timezone_set("Asia/Jakarta");
+			$arrDeadline03 = explode(":", $arrDeadline01[1]);
+			$arrDatenow = explode("-", date("Y-m-d"));
+			$arrTimenow = explode(":", date("H:i"));
+			
+			$sumDatenow = $arrDatenow[0]+$arrDatenow[1]+$arrDatenow[2];
+			$sumDeadline = $arrDeadline02[0]+$arrDeadline02[1]+$arrDeadline02[2];
+			if($sumDatenow <= $sumDeadline) {
+				if($arrTimenow[0] < $arrDeadline03[0]) {
+					if($arrTimenow[1] < $arrDeadline03[1]) {
+						Yii::app()->user->setFlash('errorDeadline', 'Waktu menit deadline tidak boleh masa lalu.');
+						$this->redirect(array('UpdateDeadline', 'id'=>$id));
+					} else {
+						if(!empty($model->deadline)) { 
+							$model->save();
+							Yii::app()->user->setFlash('successDeadline', 'Deadline telah berhasil diubah.');
+							$this->redirect(array('deadline'));
+						} else {
+							Yii::app()->user->setFlash('errorDeadline', 'Salah masukan deadline.');
+							$this->redirect(array('UpdateDeadline', 'id'=>$id));
+						}
+					}
+				} else {
+					Yii::app()->user->setFlash('errorDeadline', 'Waktu jam deadline tidak boleh masa lalu.');
+					$this->redirect(array('UpdateDeadline', 'id'=>$id));
+				}
 			} else {
-				Yii::app()->user->setFlash('errorDeadline', 'Salah masukan deadline.');
+				Yii::app()->user->setFlash('errorDeadline', 'Tanggal deadline tidak boleh masa lalu.');
 				$this->redirect(array('UpdateDeadline', 'id'=>$id));
 			}
 		} else  { // Klik Edit di list

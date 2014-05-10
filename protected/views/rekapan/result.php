@@ -21,8 +21,7 @@
 						 'title' => array('text' => 'Persentase')
 					  ),
 					  'credits' => array('enabled' => false),
-					  'series' => 
-							$temp
+					  'series' => $temp
 				   )
 				));
 				?>
