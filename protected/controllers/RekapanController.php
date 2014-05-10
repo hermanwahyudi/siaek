@@ -22,14 +22,68 @@
 				
 				$bulan2 = $_POST['Absensi']['bulan2'];
 				$tahun2 = $_POST['Absensi']['tahun2'];
-				
-				$this->render('result', array('modelKegiatan' => $modelKegiatan));
+				if(!($bulan2-$bulan1 <= 0)) {
+					$arrBulan = $this->getArrayBulan($bulan1, $bulan2);
+					$sumBulan = $bulan2-$bulan1;
+					
+					$dataDummyRandom[][] = array();
+					$sumRegional = count(Regional::model()->findAll());
+					for($j=0;$j<$sumRegional;$j++) {
+						for($i=0;$i<=$sumBulan;$i++) {
+							$dataDummyRandom[$j][$i] = rand(10, 100);
+						}
+					}
+					//Bikin query disini terus di-assign ke $modelKegiatan
+					
+					$this->render('result', array('modelKegiatan' => $modelKegiatan, 
+												  'bulan1' => $this->getBulan($bulan1), 'bulan2' => $this->getBulan($bulan2), 
+												  'tahun1' => $tahun1, 'tahun2' => $tahun2,
+												  'arrBulan' => $arrBulan,
+												  'dataDummyRandom' => $dataDummyRandom,
+												  'nameRegional' => $this->getNameRegional(),
+												  'sumRegional' => $sumRegional)
+								);
+				} else {
+					Yii::app()->user->setFlash('errorPeriode', 'Error masukan periode!');
+					$this->redirect(array('comparerekapan'));
+				}
 			} else {
 				$this->render('compare', array('modelAbsensi' => $modelAbsensi));
 			}
 		}
-		public function actionResult() {
-			$this->render('result');
+		//fungsi getNameRegional isinya ganti pake Query ngambil nama regional
+		public function getNameRegional() {
+			$arrRegional = array();
+			$dataReader = Regional::model()->getRegional();
+			$i=0;
+			while(($row=$dataReader->read())!==false) {
+				$arrRegional[$i++] = $row['nama'];
+			}
+			return $arrRegional;
+		}
+		public function getArrayBulan($bulan1, $bulan2) {
+			$arrBulan = array();
+			$j=0;
+			for($i = $bulan1; $i <= $bulan2; $i++) {
+				$arrBulan[$j++] = $this->getBulan($i);
+			}
+			return $arrBulan;
+		}
+		public function getBulan($i) {
+			switch ($i) {
+				case 1 : return 'Januari'; break;
+				case 2 : return 'Februari'; break;
+				case 3 : return 'Maret'; break;
+				case 4 : return 'April'; break;
+				case 5 : return 'Mei'; break;
+				case 6 : return 'Juni'; break;
+				case 7 : return 'Juli'; break;
+				case 8 : return 'Agustus'; break;
+				case 9 : return 'September'; break;
+				case 10 : return 'Oktober'; break;
+				case 11 : return 'November'; break;
+				case 12 : return 'Desember'; break;
+			}
 		}
 		public function actionGeneratePdf($bulan, $tahun) {
 		

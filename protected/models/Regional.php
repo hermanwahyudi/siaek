@@ -46,6 +46,11 @@ class Regional extends CActiveRecord
 		return array(
 		);
 	}
+	
+	public function getRegional() {
+		$sql = "SELECT nama FROM REGIONAL";
+		return Yii::app()->db->createCommand($sql)->query();
+	}
 
 	/**
 	 * @return array customized attribute labels (name=>label)

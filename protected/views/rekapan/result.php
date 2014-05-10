@@ -2,26 +2,27 @@
 	'Perbandingan Rekapan'=>array('compareRekapan'),
 	'Hasil',
 ); ?>
-
+	<?php
+		$temp = array();
+		for($i=0; $i<$sumRegional; $i++) {
+			$temp[$i] = array('name' => $nameRegional[$i] , 'data' => $dataDummyRandom[$i]);
+		}
+	?>
 <div class="tag-box tag-box-v3">
               <div class="headline"><h1 class="text-center">Perbandingan Rekapan</h1></div>
 			  <?php
 				 $this->Widget('ext.highcharts.HighchartsWidget', array(
 				   'options'=>array(
-					  'title' => array('text' => 'Rekapan Kegiatan Antar Regional PPSDMS <br><br><br>Agustus - Desember 2013'),
+					  'title' => array('text' => 'Rekapan Kegiatan Antar Regional PPSDMS <br><br><br>'. $bulan1 . ' - ' . $bulan2 . ' '. $tahun1 . '/'.$tahun2),
 					  'xAxis' => array(
-						 'categories' => array('Agustus', 'September', 'Oktober', 'November', 'Desember')
+						 'categories' => $arrBulan
 					  ),
 					  'yAxis' => array(
 						 'title' => array('text' => 'Persentase')
 					  ),
 					  'credits' => array('enabled' => false),
-					  'series' => array(
-						 array('name' => 'Regional 1 Putra Jakarta', 'data' => array(25, 26,27,28,33)),
-						 array('name' => 'Regional 1 Putri Jakarta', 'data' => array(30, 28, 25, 36,40)),
-						 array('name' => 'Regional Bandung', 'data' => array(17, 14,15,16,18)),
-						 array('name' => 'Regional Jogjakarta', 'data' => array(30, 28, 25, 26,28)),
-					  )
+					  'series' => 
+							$temp
 				   )
 				));
 				?>

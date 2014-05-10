@@ -12,10 +12,16 @@
 		// See class documentation of CActiveForm for details on this.
 		'enableAjaxValidation'=>false,
 	)); ?>
+	
 <div class="tag-box tag-box-v3">
+			<?php if(Yii::app()->user->hasFlash('errorPeriode')):
+						echo "<div style='color:red'>".Yii::app()->user->getFlash('errorPeriode')."</div>";
+					endif;
+			?>
                        <div class="headline"> <h1 class="text-justify">Perbandingan Rekapan</h1>  </div>  
                         <div class="row clearfix">
                             <div class="col-md-6 column">
+								
                                 <h1 >Periode Awal </h1>
                                 <div class="btn-group">
                                      <?php echo  CHtml::activeDropDownList($modelAbsensi, 'bulan1', $modelAbsensi->getBulan(), array('class' => 'form-control')); ?>
