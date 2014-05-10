@@ -33,7 +33,7 @@ class Kegiatan extends CActiveRecord
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('materi, waktu_mulai, waktu_selesai, pembicara, hari, tanggal, jenis_kegiatan, id_regional, nama_kegiatan', 'required'),
+			array('materi, waktu_mulai, waktu_selesai, pembicara, hari, tanggal, jenis_kegiatan, id_regional, nama_kegiatan, deadline', 'required'),
 			array('jenis_kegiatan, id_regional', 'numerical', 'integerOnly'=>true),
 			array('pembicara', 'length', 'max'=>64),
 			array('hari', 'length', 'max'=>12),
@@ -122,10 +122,10 @@ class Kegiatan extends CActiveRecord
 	public function Regionals(){
 		return CHtml::listData(Regional::model()->findAll(), 'id_regional', 'nama');
 	}
-        public function getTipeOption() {
-            return array('1' => 'Bulanan', '2' => 'Pekanan', '3' => 'Lokal', '4' => 'Khusus');
-        }
-        public function getDayOption() {
-            return array('Senin' => 'Senin', 'Selasa' => 'Selasa', 'Rabu' => 'Rabu', 'Kamis' => 'Kamis','Jumat' => 'Jumat','Sabtu' => 'Sabtu','Minggu'=>'Minggu');
-        }
+    public function getTipeOption() {
+        return array('1' => 'Bulanan', '2' => 'Pekanan', '3' => 'Lokal', '4' => 'Khusus');
+    }
+    public function getDayOption() {
+       return array('Senin' => 'Senin', 'Selasa' => 'Selasa', 'Rabu' => 'Rabu', 'Kamis' => 'Kamis','Jumat' => 'Jumat','Sabtu' => 'Sabtu','Minggu'=>'Minggu');
+    }
 }
