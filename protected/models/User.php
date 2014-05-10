@@ -157,7 +157,7 @@ class User extends CActiveRecord {
     }
 
     public function getRoleOption() {
-        return array('1' => 'Administrator', '2' => 'Pengurus Pusat', '3' => 'Regional');
+        return array( '3' => 'Pengurus Regional', '2' => 'Pengurus Pusat','1' => 'Administrator',);
     }
 
     public function getGenderOption() {
