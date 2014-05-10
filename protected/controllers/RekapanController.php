@@ -13,7 +13,20 @@
 			}
 		}
 		public function actionCompareRekapan() {
-			$this->render('compare');
+			$modelAbsensi = new Absensi;
+			$modelKegiatan = new Kegiatan;
+			
+			if(isset($_POST['Absensi'])) {
+				$bulan1 = $_POST['Absensi']['bulan1'];
+				$tahun1 = $_POST['Absensi']['tahun1'];
+				
+				$bulan2 = $_POST['Absensi']['bulan2'];
+				$tahun2 = $_POST['Absensi']['tahun2'];
+				
+				$this->render('result', array('modelKegiatan' => $modelKegiatan));
+			} else {
+				$this->render('compare', array('modelAbsensi' => $modelAbsensi));
+			}
 		}
 		public function actionResult() {
 			$this->render('result');

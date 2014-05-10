@@ -11,6 +11,9 @@
  */
 class Absensi extends CActiveRecord
 {
+	public $bulan1, $bulan2;
+	public $tahun1, $tahun2;
+	
 	/**
 	 * @return string the associated database table name
 	 */
