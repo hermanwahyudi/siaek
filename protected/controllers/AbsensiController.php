@@ -4,7 +4,7 @@ class AbsensiController extends Controller {
 
     public function filters() {
         return array(
-            //'accessControl', // perform access control for CRUD operations
+                //'accessControl', // perform access control for CRUD operations
                 //'postOnly + delete', // we only allow deletion via POST request
         );
     }
@@ -16,7 +16,7 @@ class AbsensiController extends Controller {
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('create', 'update', 'admin', 'delete', 'deadline', 'listKegiatan','isiAbsensi'),
+                'actions' => array('create', 'update', 'admin', 'delete', 'deadline', 'listKegiatan', 'isiAbsensi'),
                 'expression' => 'Yii::app()->user->getLevel() == "3"',
             //'users'=>array('@'),
             ),
@@ -43,39 +43,44 @@ class AbsensiController extends Controller {
     }
 
     public function actionIsiAbsensi($id) {
-        $this->layout="main";
+
         $model = $this->loadKegiatan($id);
-        $absensi = array();
-        $i = 0;
-        while ($i < 1) {
-            $absensi[$i] = Absensi::model();
-            $i++;
-        }
-
-        if (isset($_POST['Kegiatan'])) {
-            $model->attributes = $_POST['Kegiatan'];
-            if ($model->save()) {
-                if (isset($_POST['Absensi'])) {
+       
+        
 
 
-                    foreach ($_POST['Absensi'] as $j => $modelp) {
-                        if (isset($_POST['Absensi'][$j])) {
-                            $absensi[$j] = new Absensi;
-
-                            $absensi[$j]->attributes = $modelp;
-                            $absensi[$j]->id_kegiatan = $model->id_kegiatan;
-
-                            $absensi->save();
-                        }
+        $id_regional = $model->id_regional;
+        $sql = "SELECT id_peserta,nama FROM peserta WHERE status_aktif=1 and id_regional = '" . $model->id_regional . "'";
+        $dbCommand = Yii::app()->db->createCommand($sql);
+        $peserta = $dbCommand->queryAll();
+        if (isset($_POST['Absensi'])){
+            $absensi = $_POST['Absensi'];
+            //print_r($absensi);
+            $valid=true;
+             foreach ($_POST['Absensi'] as $j => $modelp) {
+                 if (isset($_POST['Absensi'][$j])) {
+                        //inisialisasi
+                        $absensi[$j] = new Absensi; // if you had static model only
+                        $absensi[$j]->alasan = $_POST['Absensi'][$j]['alasan'];
+                        $absensi[$j]->id_status = (int)$_POST['Absensi'][$j]['id_status'];
+                        $absensi[$j]->id_kegiatan = $model->id_kegiatan;
+                        $absensi[$j]->id_peserta=(int)$peserta[$j]['id_peserta'];
+                        $absensi[$j]->save();
+                       
                     }
-                    $this->redirect(array('view', 'id' => $model->id_kegiatan));
-                }
-            }
+             }
+             print_r($absensi);
+             
+             
+             $this->actionListKegiatan();
+            
         }
-
+        $absensi = Absensi::model();
+        
         $this->render('absensi', array(
             'model' => $model,
             'absensi' => $absensi,
+            'peserta' => $peserta,
         ));
     }
 
@@ -112,4 +117,13 @@ class AbsensiController extends Controller {
       );
       }
      */
+    public function actionApa() {
+        $absensi = array();
+        $absensi['1'] = '1';
+        $absensi['2'] = 'b';
+        $absensi['3'] = ' z';
+        $absensi['4'] = 'a';
+        print_r($absensi);
+    }
+
 }
