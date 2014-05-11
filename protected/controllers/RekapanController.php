@@ -12,6 +12,8 @@
 				$this->render('index', array('model' => $model));
 			}
 		}
+		
+		//Silahkan otak-atik fungsi ini buat dapet data dari kegiatan
 		public function actionCompareRekapan() {
 			$modelAbsensi = new Absensi;
 			$modelKegiatan = new Kegiatan;
@@ -33,7 +35,6 @@
 							$dataDummyRandom[$j][$i] = rand(10, 100);
 						}
 					}
-					//Bikin query disini terus di-assign ke $modelKegiatan
 					
 					$this->render('result', array('modelKegiatan' => $modelKegiatan, 
 												  'bulan1' => $this->getBulan($bulan1), 'bulan2' => $this->getBulan($bulan2), 

@@ -18,9 +18,11 @@
     ));
     ?>
     <div class="form-group">
-        <label for="" class="col-sm-2 control-label"><?php echo $form->labelEx($model, 'id_regional'); ?></label>
+        <label for="" class="col-sm-2 control-label"><?php echo "Regional *"; ?></label>
         <div class="col-sm-4">
-            <?php echo $form->textField($model, 'id_regional', array('class' => 'form-control')); ?>
+            <div class="controls">
+			<?php echo CHtml::activeDropDownList($model, 'id_regional', $model->Regionals(), array('class' => 'form-control')); ?>
+            </div>
             <span class="error-label">
                 <?php echo $form->error($model, 'id_regional'); ?>
             </span>
@@ -91,6 +93,13 @@
             <span class="error-label"><?php echo $form->error($model, 'jenis_kegiatam'); ?></span>
         </div>
     </div>
+	<div class="form-group">
+		<label for="" class="col-sm-2 control-label"><?php echo $form->labelEx($model, 'deadline'); ?></label>
+			<div class="col-sm-4">
+				<?php echo $form->textField($model,'deadline', array('class'=>'form-control datetimepicker')); ?>
+			<span class="error-label"><?php echo $form->error($model,'deadline'); ?></span>
+			</div>
+	</div>
 
     <div class="form-group">
         <div class="col-sm-3">
