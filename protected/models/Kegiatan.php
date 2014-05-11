@@ -52,6 +52,7 @@ class Kegiatan extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
                     'absensi'   => array(self::HAS_MANY,'Absensi','id_kegiatan'),
+                    'regional'   => array(self::BELONGS_TO,'Regional','id_regional'),
 		);
 	}
 

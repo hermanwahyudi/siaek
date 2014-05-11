@@ -39,7 +39,10 @@ $('.search-form form').submit(function(){
 		'tanggal',
 		'waktu_mulai',
 		'waktu_selesai',
-		'id_regional',
+		array(
+                 'name'=>'regional',
+                   'value'=>'$data->regional->nama',
+                ),
 		array(
 			'class'=>'CButtonColumn',
 		),
