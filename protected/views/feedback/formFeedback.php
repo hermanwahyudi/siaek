@@ -41,7 +41,7 @@
             </label>
             <div align ="left" class="col-sm-5">
                 <div class="controls">
-                    <?php echo CHtml::activeDropDownList($model, 'id_regional', $model->getRegionalOption(), array('class' => 'form-control')); ?>
+                    <?php echo CHtml::activeDropDownList($model, 'id_regional', $model->getRegionalOption(), array('class' => 'form-control','prompt' => 'Select a Regional')); ?>
                 </div>
                 <span class="error-label">
                     <?php echo $form->error($model, 'id_regional'); ?>

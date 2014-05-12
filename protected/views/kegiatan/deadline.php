@@ -44,7 +44,7 @@ $this->breadcrumbs=array(
 									Jenis Kegiatan
 								</th>
 								<th>
-									ID Regional
+									Nama Regional
 								</th>
 								<th>
 									Tanggal Deadline
@@ -56,7 +56,7 @@ $this->breadcrumbs=array(
 						<?php $i=0;foreach($model as $x=>$y) { ?>
 						<?php echo "<tr><td>". ++$i ."</td><td>". $y->nama_kegiatan ."</td>";?>
 						<?php echo "<td>". $y->pembicara . "</td><td>". $y->jenis_kegiatan ."</td>"; ?>
-						<?php echo "<td>". $y->id_regional ."</td><td>". $y->deadline ."</td>"; ?>
+						<?php echo "<td>". $y->regional->nama ."</td><td>". $y->deadline ."</td>"; ?>
 						<?php echo "<td>". CHtml::link('Edit', array('kegiatan/UpdateDeadline', 'id'=>$y->id_kegiatan)) ."</td></tr>"; ?>
 						
 						<?php } ?>
