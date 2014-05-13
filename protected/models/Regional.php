@@ -48,7 +48,7 @@ class Regional extends CActiveRecord
 	}
 	
 	public function getRegional() {
-		$sql = "SELECT nama FROM REGIONAL";
+		$sql = "SELECT id_regional, nama FROM REGIONAL";
 		return Yii::app()->db->createCommand($sql)->query();
 	}
 

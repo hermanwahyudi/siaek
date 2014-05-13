@@ -31,8 +31,10 @@
 					
 					$dataJumlahKegiatan[][] = array();
 					$sumRegional = count(Regional::model()->findAll());
-					for($j=0;$j<$sumRegional;$j++) {
-						$id_regional = $j+1;
+					$dataReader1 = Regional::model()->getRegional();
+					$j=0;
+					while(($row1=$dataReader1->read())!==false) { 
+						$id_regional = $row1['id_regional'];
 						for($i=0;$i<=$sumBulan;$i++) {
 							$dataReader = Kegiatan::model()->getAktifKegiatan($id_regional, '0'. $startBulan);
 							$row = $dataReader->read();
@@ -40,6 +42,7 @@
 							
 							$startBulan++;
 						}
+						$j++;
 					}
 					
 					$this->render('result', array('modelKegiatan' => $modelKegiatan, 
