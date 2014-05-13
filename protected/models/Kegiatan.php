@@ -107,6 +107,7 @@ class Kegiatan extends CActiveRecord
 			'jenis_kegiatan' => 'Jenis Kegiatan',
 			'id_regional' => 'Id Regional',
 			'nama_kegiatan' => 'Nama Kegiatan',
+                    'status_isi' => 'status',
 		);
 	}
 
