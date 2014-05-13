@@ -14,8 +14,6 @@ tambahkan baris dibawah ini ya setelah clone
 
 	+5. [hallo kak coba masukin nama kak giri di sini]
 
-buat kak herman isiAbsensi http://www.yiiframework.com/extension/multimodelform/
-
 Peserat Didik
 ------------
 list Peserta:
