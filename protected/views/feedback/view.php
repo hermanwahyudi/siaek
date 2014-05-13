@@ -23,14 +23,13 @@ $this->menu=array(
 		<table class="table">
             <tbody>
                 <tr>
-					<td align="left"><strong>Komentar</strong></td><td align="left">: <?php echo $model->komentar; ?></td>
-				</tr>
-				<tr>
-					<td align="left"><strong>Id Regional</strong></td><td align="left">: <?php echo $model->id_regional; ?></td>
-				</tr>
-				<tr>
 					<td align="left"><strong>Nama Kegiatan</strong></td><td align="left">: <?php echo $model->nama_kegiatan; ?></td>
 				</tr>
+                                <tr>
+					<td align="left"><strong>Komentar</strong></td><td align="left">: <?php echo $model->komentar; ?></td>
+				</tr>
+				
+				
 			</tbody>
         </table>
 	</div>

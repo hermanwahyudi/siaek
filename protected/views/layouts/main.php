@@ -42,22 +42,22 @@
 
 
 
-							<script type="text/javascript"> 
-								// 1 detik = 1000 
-								window.setTimeout("waktu()",1000); 
-								var jam = 0;
-								var menit = 0;
-								var detik = 0;
-								function waktu() { 
-									var tanggal = new Date(); 
-									setTimeout("waktu()",1000); 
-									jam = (tanggal.getHours() < 10) ? "0"+tanggal.getHours() : tanggal.getHours();
-									menit = (tanggal.getMinutes() < 10) ? "0"+tanggal.getMinutes() : tanggal.getMinutes();
-									detik = (tanggal.getSeconds() < 10) ? "0"+tanggal.getSeconds() : tanggal.getSeconds();
-									
-									document.getElementById("output").innerHTML = jam+":"+menit+":"+detik; 
-								} 
-							</script>
+                                <script type="text/javascript">
+                                            // 1 detik = 1000 
+                                            window.setTimeout("waktu()", 1000);
+                                            var jam = 0;
+                                            var menit = 0;
+                                            var detik = 0;
+                                            function waktu() {
+                                                var tanggal = new Date();
+                                                setTimeout("waktu()", 1000);
+                                                jam = (tanggal.getHours() < 10) ? "0" + tanggal.getHours() : tanggal.getHours();
+                                                menit = (tanggal.getMinutes() < 10) ? "0" + tanggal.getMinutes() : tanggal.getMinutes();
+                                                detik = (tanggal.getSeconds() < 10) ? "0" + tanggal.getSeconds() : tanggal.getSeconds();
+
+                                                document.getElementById("output").innerHTML = jam + ":" + menit + ":" + detik;
+                                            }
+                                </script>
                                 <title><?php echo CHtml::encode($this->pageTitle); ?></title>
                                 </head>
 
@@ -90,8 +90,8 @@
                                                 ?><!-- breadcrumbs -->
                                                 <br>
                                                     <br>
-<?php endif ?></div>
-<?php if (!Yii::app()->user->isGuest) { ?>
+                                                    <?php endif ?></div>
+                                                    <?php if (!Yii::app()->user->isGuest) { ?>
                                                         <!--contain-->
                                                         <div class="row clearfix">
                                                             <!--kolom 1-->
@@ -102,13 +102,13 @@
                                                                     <div class="panel panel-primary">
                                                                         <div class="panel-body">
                                                                             <p class="text-center">
-    <?php $model = User::model()->findByPk(Yii::app()->user->id); ?>
+                                                                                <?php $model = User::model()->findByPk(Yii::app()->user->id); ?>
 
                                                                                 <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/<?php echo $model->url_image; ?>" width="100" height="100"  alt="b10" class="img-rounded"></p>
                                                                         </div>
                                                                         <div class="panel-body">
                                                                             <div class="alert alert-info">
-    <?php echo CHtml::link('<h4>Profile</h4>', array('user/profile', 'id' => Yii::app()->user->id)); ?></div>
+                                                                                <?php echo CHtml::link('<h4>Profile</h4>', array('user/profile', 'id' => Yii::app()->user->id)); ?></div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -141,10 +141,10 @@
                                                                         <div class="panel-body">
                                                                             <p class="text-center">
                                                                                 <?php
-                                                                                $mydate=getdate(date("U"));
-																				echo "<h2>$mydate[weekday], $mydate[month] $mydate[mday], $mydate[year]</h2>";
+                                                                                $mydate = getdate(date("U"));
+                                                                                echo "<h2>$mydate[weekday], $mydate[month] $mydate[mday], $mydate[year]</h2>";
                                                                                 ?><br>
-																				<h1><div id="output"></div></h1>
+                                                                                    <h1><div id="output"></div></h1>
                                                                             </p>
 
                                                                         </div>
@@ -162,11 +162,11 @@
                                                                 <?php } ?>
                                                                 <?php echo $content; ?>
 
-<?php if (!Yii::app()->user->isGuest) { ?>
+                                                                <?php if (!Yii::app()->user->isGuest) { ?>
                                                             </div>
 
                                                         </div>
-<?php } ?>
+                                                    <?php } ?>
                                                     <!--end contain-->
                                                     <!--footer-->
                                                     <div class="row clearfix">
@@ -187,16 +187,16 @@
                                                                         <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery.datetimepicker.js"></script>
 
                                                                         <script type="text/javascript">
-                                                                            $('.datetimepicker').datetimepicker();
+                                            $('.datetimepicker').datetimepicker();
                                                                         </script>
                                                                         <script>
-                                                                        jQuery('#Kegiatan_waktu_mulai').datetimepicker({
-                                                                            datepicker:false,
-                                                                            format:'H:i'
-                                                                          });
-                                                                          jQuery('#Kegiatan_waktu_selesai').datetimepicker({
-                                                                            datepicker:false,
-                                                                            format:'H:i'
-                                                                          });
+                                                                            jQuery('#Kegiatan_waktu_mulai').datetimepicker({
+                                                                                datepicker: false,
+                                                                                format: 'H:i'
+                                                                            });
+                                                                            jQuery('#Kegiatan_waktu_selesai').datetimepicker({
+                                                                                datepicker: false,
+                                                                                format: 'H:i'
+                                                                            });
                                                                         </script>
                                                                         </html>

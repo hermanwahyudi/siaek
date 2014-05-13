@@ -54,7 +54,8 @@ $this->breadcrumbs=array(
 		<div class="col-sm-3">
 			<!-- <button type="submit" class="btn btn-default">Tambah</button> -->
 			<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save', array('class'=>'btn btn-default')); ?>
-			<?php echo CHtml::link('Back', array('user/profile', 'id' => $model->id_user)); ?>
+			<br>
+                        <?php echo CHtml::link('Back', array('user/profile', 'id' => $model->id_user)); ?>
 		</div>
 	</div>
 
