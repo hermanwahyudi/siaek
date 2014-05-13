@@ -36,6 +36,15 @@ $this->breadcrumbs=array(
 	} ?>
 			</tbody>
         </table>
+
+        <?php foreach($dataFeedback as $model): ?>
+    
+		<?php endforeach; ?>
+
+		<?php $this->widget('CLinkPager', array(
+    	'pages' => $pages,
+		)) ?>
+
         <p align="left">
 <?php echo CHtml::link('Back', array('site/index')); ?></p>
 	</div>

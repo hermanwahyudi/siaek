@@ -147,10 +147,19 @@ class FeedbackController extends Controller
 
 
 			$id_regional = $objRegional->id_regional;
-			$dataFeedback = Feedback::model()->findAllByAttributes(array('id_regional'=>$id_regional));
+
+			$criteria=new CDbCriteria();
+    		$count=Feedback::model()->count($criteria);
+    		$pages=new CPagination($count);
+
+    			// results per page
+   			$pages->pageSize=2;
+    		$pages->applyLimit($criteria);
+
+			$dataFeedback = Feedback::model()->findAllByAttributes(array('id_regional'=>$id_regional), $criteria);
 
 			$this->render('index',array(
-				'dataFeedback'=>$dataFeedback,
+				'dataFeedback'=>$dataFeedback, 'pages' => $pages
 			));
 		}
 		
