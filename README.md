@@ -38,3 +38,10 @@ Feedback di pengurus pusat ditambah kata memberi
 Admin - Pengurus
 kode-kode role diganti makna dari kode tersebut
 password kagak usah ditampilin
+
+update pengurus password jangan ditampilin
+
+search -- belum bisa dilakuin semua
+
+Daftar kegiatan
+id_regional jangan ditampilin
