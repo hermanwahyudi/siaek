@@ -29,7 +29,13 @@ endif;
                     </div>
                     <div class="form-group">
                         <?php echo CHtml::submitButton('Reset Password'); ?>
-                        <?php echo CHtml::link("Back", array("site/index")); ?>
+                        <br>
+                        <?php
+                        echo TbHtml::pager(array(
+                            array('label' => 'Back', 'url' => '../site/index'),
+                        ));
+                        ?>
+
                     </div>
                 </div>
             </div>

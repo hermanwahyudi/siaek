@@ -30,7 +30,6 @@ $('.search-form form').submit(function(){
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
-		'id_kegiatan',
 		'nama_kegiatan',
 		'pembicara',
 		'materi',
@@ -53,5 +52,6 @@ $('.search-form form').submit(function(){
 		),
 	),
 )); ?> 
-
-<?php echo CHtml::link('Back', array('site/index')); ?>
+<?php echo TbHtml::pager(array(
+    array('label' => 'Back', 'url' => '../site/index'),
+)); ?>

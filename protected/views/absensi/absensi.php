@@ -124,7 +124,9 @@ $this->breadcrumbs = array(
                                        <?php echo CHtml::submitButton($absensi->isNewRecord ? 'IsiAbsensi' : 'Save',array('class'=>'btn btn-default')); ?>
                                     </div>
                                     <br>
-                                        <?php echo CHtml::link('Back', array('site/index')); ?>
+                                       <?php echo TbHtml::pager(array(
+    array('label' => 'Back', 'url' => '../site/index'),
+)); ?>
                                 </div> 
                                 </div>
                                 </div>

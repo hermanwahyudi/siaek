@@ -19,14 +19,7 @@
 
     
 <div class="form-horizontal" role="form">
-        <div class="form-group">
-            <label for="" class="col-sm-2 control-label"><?php echo $form->labelEx($model,'id_regional'); ?></label>
-                <div class="col-sm-4">
-                    <?php echo $form->textField($model,'id_regional', array('class'=>'form-control', 'readonly' => true)); ?>
-                    <span class="error-label"><?php echo $form->error($model,'id_regional'); ?></span>
-                </div>
-        </div>
-
+        
         <div class="form-group">
             <label for="" class="col-sm-2 control-label"><?php echo $form->labelEx($model,'nomor_peserta'); ?></label>
                 <div class="col-sm-4">
@@ -87,7 +80,9 @@
 		    'color'=>TbHtml::BUTTON_COLOR_PRIMARY,
 		    'size'=>TbHtml::BUTTON_SIZE_LARGE,
 		)); ?><br>
-<br>		<?php echo CHtml::link('Back', array('peserta/index')); ?>
+<br>		<?php echo TbHtml::pager(array(
+    array('label' => 'Back', 'url' => '../site/index'),
+)); ?>
     </div>
 </div>
 
