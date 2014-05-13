@@ -33,13 +33,22 @@ class AbsensiController extends Controller {
     public function actionIndex() {
         //$this->render('index2');
         $this->actionListKegiatan();
+
     }
 
     public function actionListKegiatan() {
+        $criteria=new CDbCriteria();
+        $count=Kegiatan::model()->count($criteria);
+        $pages=new CPagination($count);
+
+        // results per page
+        $pages->pageSize=10;
+        $pages->applyLimit($criteria);
+
         //dapetin daftar kegiatan pada bulan ini
-        $model = Kegiatan::model()->findAll();
+        $model = Kegiatan::model()->findAll($criteria);
         //$this->render('index2');
-        $this->render("listKegiatan", array('model' => $model));
+        $this->render("listKegiatan", array('model' => $model, 'pages' => $pages));
     }
 
     public function actionIsiAbsensi($id) {

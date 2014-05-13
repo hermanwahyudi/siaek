@@ -32,7 +32,7 @@ class Absensi extends CActiveRecord
 		return array(
 			array('id_peserta, id_kegiatan, id_status', 'required'),
 			array('id_peserta, id_kegiatan, id_status', 'numerical', 'integerOnly'=>true),
-                        
+                        array('alasan','allowEmpty'=>true),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('id_peserta, id_kegiatan, id_status, alasan', 'safe', 'on'=>'search'),
@@ -91,6 +91,10 @@ class Absensi extends CActiveRecord
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
+			'pagination'=> array(
+                'pageSize'=> 5,
+                ),
+
 		));
 	}
 
@@ -135,5 +139,9 @@ class Absensi extends CActiveRecord
 						"2017"=>"2017", 
 						"2018"=>"2018",
 			);
+	}
+
+	public function getAbsen{
+		
 	}
 }

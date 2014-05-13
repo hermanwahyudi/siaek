@@ -132,10 +132,18 @@ class KegiatanController extends Controller
 	}
 	
 	public function actionDeadline() { // Nampilin list kegiatan
-		$model = Kegiatan::model()->findAll();
+		$criteria=new CDbCriteria();
+   		$count=Kegiatan::model()->count($criteria);
+    	$pages=new CPagination($count);
+
+    	// results per page
+    	$pages->pageSize=10;
+    	$pages->applyLimit($criteria);
+
+		$model = Kegiatan::model()->findAll($criteria);
 		
 		$this->render("deadline", 
-				array('model'=>$model));
+				array('model'=>$model, 'pages' => $pages));
 	}
 	public function actionUpdateDeadline($id) {
 		$model=$this->loadModel($id);
@@ -192,16 +200,16 @@ class KegiatanController extends Controller
 		if(isset($_GET['Kegiatan']))
 			$model->attributes=$_GET['Kegiatan'];
 
-		/*$this->render('admin',array(
+		$this->render('admin',array(
 			'model'=>$model,
-		));*/
-		 $params =array(
+		));
+		/*$params =array(
         'model'=>$model,
     	);
 		 if(!isset($_GET['ajax'])) $this->render('admin', $params);
-    	else  $this->renderPartial('admin', $params);
+    	else  $this->renderPartial('admin', $params);*/
 
-    	
+
 	}
 
 	/**
