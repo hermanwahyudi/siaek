@@ -140,8 +140,9 @@ class Absensi extends CActiveRecord
 						"2018"=>"2018",
 			);
 	}
-
+	
+	/*
 	public function getAbsen{
 		
-	}
+	}*/
 }
