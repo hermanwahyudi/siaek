@@ -44,4 +44,6 @@ $('.search-form form').submit(function(){
 		),
 	),
 )); ?>
-<?php echo CHtml::link('Back', array('site/index')); ?>
+<?php echo TbHtml::pager(array(
+    array('label' => 'Back', 'url' => '../site/index'),
+)); ?>

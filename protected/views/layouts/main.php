@@ -25,8 +25,8 @@
                             <!--script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/jquery-1.4.js"></script-->
 
                             <!-- Javascript Datepicker -->
-                            <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/date/jquery.js">< /script >
-                            < script type = "text/javascript" src = "<?php echo Yii::app()->request->baseUrl; ?>/js/date/datepicker.js" ></script>
+                            <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/date/jquery.js"></script>
+                            <script type = "text/javascript" src ="<?php echo Yii::app()->request->baseUrl; ?>/js/date/datepicker.js"></script>
                             <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/date/eye.js"></script>
                             <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/date/utils.js"></script>
                             <script type="text/javascript" src="<?php echo Yii::app()->request->baseUrl; ?>/js/date/layout.js?ver=1.0.2"></script>
