@@ -15,3 +15,26 @@ tambahkan baris dibawah ini ya setelah clone
 	+5. [hallo kak coba masukin nama kak giri di sini]
 
 buat kak herman isiAbsensi http://www.yiiframework.com/extension/multimodelform/
+
+Peserat Didik:
+list Peserta
+id_peserta kagak usah di tampilin
+id_regional kagak usah di tampilin
+status aktif diganti aktif atau kagak jangan angka
+Tambah Peserta:
+id_regional kagak usah di tampilin
+
+Melihat Feedback:
+Tampilan No kurang di tengah
+
+Isi Absensi
+Id regional kagak usah ditampilin
+
+delete Peserta:
+pake lazy deletion flag
+
+Feedback di pengurus pusat ditambah kata memberi
+
+Admin - Pengurus
+kode-kode role diganti makna dari kode tersebut
+password kagak usah ditampilin
