@@ -24,10 +24,10 @@
 								
                                 <h1 >Periode Awal </h1>
                                 <div class="btn-group">
-                                     <?php echo  CHtml::activeDropDownList($modelAbsensi, 'bulan1', $modelAbsensi->getBulan(), array('class' => 'form-control')); ?>
+                                     <?php echo  CHtml::activeDropDownList($modelKegiatan, 'bulan1', $modelKegiatan->getBulan(), array('class' => 'form-control')); ?>
                                 </div>
                                 <div class="btn-group">
-                                    <?php echo  CHtml::activeDropDownList($modelAbsensi, 'tahun1', $modelAbsensi->getTahun(), array('class' => 'form-control')); ?>
+                                    <?php echo  CHtml::activeDropDownList($modelKegiatan, 'tahun1', $modelKegiatan->getTahun(), array('class' => 'form-control')); ?>
                              
                                 </div>
                             </div>
@@ -35,10 +35,10 @@
                             <div class="col-md-6 column">
                                 <h1>Periode Akhir </h1>
                                 <div class="btn-group">
-                                     <?php echo  CHtml::activeDropDownList($modelAbsensi, 'bulan2', $modelAbsensi->getBulan(), array('class' => 'form-control')); ?>
+                                     <?php echo  CHtml::activeDropDownList($modelKegiatan, 'bulan2', $modelKegiatan->getBulan(), array('class' => 'form-control')); ?>
                                 </div>
                                 <div class="btn-group">
-                                    <?php echo  CHtml::activeDropDownList($modelAbsensi, 'tahun2', $modelAbsensi->getTahun(), array('class' => 'form-control')); ?>
+                                    <?php echo  CHtml::activeDropDownList($modelKegiatan, 'tahun2', $modelKegiatan->getTahun(), array('class' => 'form-control')); ?>
                              
                                 </div>
                             </div>

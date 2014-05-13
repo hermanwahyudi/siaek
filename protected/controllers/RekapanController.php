@@ -9,6 +9,8 @@
 				$tahun = $_POST['Absensi']['tahun'];
 				$this->actionGeneratePdf($bulan, $tahun);
 			} else {
+				
+				//echo Regional::model()->findAll();
 				$this->render('index', array('model' => $model));
 			}
 		}
@@ -18,21 +20,28 @@
 			$modelAbsensi = new Absensi;
 			$modelKegiatan = new Kegiatan;
 			
-			if(isset($_POST['Absensi'])) {
-				$bulan1 = $_POST['Absensi']['bulan1'];
-				$tahun1 = $_POST['Absensi']['tahun1'];
+			if(isset($_POST['Kegiatan'])) {
+				$bulan1 = $_POST['Kegiatan']['bulan1'];
+				$tahun1 = $_POST['Kegiatan']['tahun1'];
 				
-				$bulan2 = $_POST['Absensi']['bulan2'];
-				$tahun2 = $_POST['Absensi']['tahun2'];
+				$bulan2 = $_POST['Kegiatan']['bulan2'];
+				$tahun2 = $_POST['Kegiatan']['tahun2'];
 				if(!($bulan2-$bulan1 <= 0)) {
 					$arrBulan = $this->getArrayBulan($bulan1, $bulan2);
 					$sumBulan = $bulan2-$bulan1;
 					
+					$startBulan = $bulan1;
+					
 					$dataDummyRandom[][] = array();
 					$sumRegional = count(Regional::model()->findAll());
 					for($j=0;$j<$sumRegional;$j++) {
+						$id_regional = $j+1;
 						for($i=0;$i<=$sumBulan;$i++) {
-							$dataDummyRandom[$j][$i] = rand(10, 100);
+							$dataReader = Kegiatan::model()->getAktifKegiatan($id_regional, '0'. $startBulan);
+							$row = $dataReader->read();
+							$dataDummyRandom[$j][$i] = ($row['jumlah'] + 1) * 10;
+							
+							$startBulan++;
 						}
 					}
 					
@@ -49,7 +58,7 @@
 					$this->redirect(array('comparerekapan'));
 				}
 			} else {
-				$this->render('compare', array('modelAbsensi' => $modelAbsensi));
+				$this->render('compare', array('modelKegiatan' => $modelKegiatan));
 			}
 		}
 		//fungsi getNameRegional isinya ganti pake Query ngambil nama regional
