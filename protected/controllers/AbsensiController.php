@@ -99,6 +99,25 @@ class AbsensiController extends Controller {
             throw new CHttpException(404, 'The requested page does not exist.');
         return $model;
     }
+    public function actionEditAbsensi($id) {
+       
+        $model = $this->loadKegiatan($id);
+        $absensi = $this->loadModelAbsensi($model->id_kegiatan);
+        
+        $this->render('edit', array(
+            'model' => $model,
+            'absensi' => $absensi,
+        ));
+        
+        
+    }
+     public function loadModelAbsensi($id) {
+        $model = Absensi::model()->findAllByAttributes(array('id_kegiatan' => $id));
+        if ($model === null)
+            throw new CHttpException(404, 'The requested Absensi does not exist.');
+        return $model;
+    }
+
 
     // Uncomment the following methods and override them if needed
     /*
