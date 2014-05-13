@@ -101,6 +101,9 @@ class Peserta extends CActiveRecord
 
 		return new CActiveDataProvider($this, array(
 			'criteria'=>$criteria,
+			'pagination'=> array(
+				'pageSize'=> 5,
+				),
 		));
 	}
 

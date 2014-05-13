@@ -126,6 +126,9 @@ class KegiatanController extends Controller
 	{
 		if(Yii::app()->user->getLevel() == '2') 
 			$this->actionAdmin();
+	
+
+
 	}
 	
 	public function actionDeadline() { // Nampilin list kegiatan
@@ -189,9 +192,16 @@ class KegiatanController extends Controller
 		if(isset($_GET['Kegiatan']))
 			$model->attributes=$_GET['Kegiatan'];
 
-		$this->render('admin',array(
+		/*$this->render('admin',array(
 			'model'=>$model,
-		));
+		));*/
+		 $params =array(
+        'model'=>$model,
+    	);
+		 if(!isset($_GET['ajax'])) $this->render('admin', $params);
+    	else  $this->renderPartial('admin', $params);
+
+    	
 	}
 
 	/**

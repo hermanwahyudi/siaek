@@ -40,6 +40,11 @@ $('.search-form form').submit(function(){
 		'waktu_mulai',
 		'waktu_selesai',
 		array(
+                 'name'=>'nama_kegiatan',
+                 'type'=>'raw',
+                   'value'=> 'CHtml::encode($data->nama_kegiatan)'
+                ),
+		array(
                  'name'=>'regional',
                    'value'=>'$data->regional->nama',
                 ),
@@ -47,6 +52,6 @@ $('.search-form form').submit(function(){
 			'class'=>'CButtonColumn',
 		),
 	),
-)); ?>
- 
+)); ?> 
+
 <?php echo CHtml::link('Back', array('site/index')); ?>
