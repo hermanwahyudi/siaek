@@ -5,7 +5,7 @@
 	<?php
 		$temp = array();
 		for($i=0; $i<$sumRegional; $i++) {
-			$temp[$i] = array('name' => $nameRegional[$i] , 'data' => $dataDummyRandom[$i]);
+			$temp[$i] = array('name' => $nameRegional[$i] , 'data' => $dataJumlahKegiatan[$i]);
 		}
 	?>
 <div class="tag-box tag-box-v3">

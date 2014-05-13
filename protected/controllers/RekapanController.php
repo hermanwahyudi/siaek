@@ -29,14 +29,14 @@
 					
 					$startBulan = $bulan1;
 					
-					$dataDummyRandom[][] = array();
+					$dataJumlahKegiatan[][] = array();
 					$sumRegional = count(Regional::model()->findAll());
 					for($j=0;$j<$sumRegional;$j++) {
 						$id_regional = $j+1;
 						for($i=0;$i<=$sumBulan;$i++) {
 							$dataReader = Kegiatan::model()->getAktifKegiatan($id_regional, '0'. $startBulan);
 							$row = $dataReader->read();
-							$dataDummyRandom[$j][$i] = ($row['jumlah'] + 1) * 10;
+							$dataJumlahKegiatan[$j][$i] = ($row['jumlah'] + 1) * 10;
 							
 							$startBulan++;
 						}
@@ -46,7 +46,7 @@
 												  'bulan1' => $this->getBulan($bulan1), 'bulan2' => $this->getBulan($bulan2), 
 												  'tahun1' => $tahun1, 'tahun2' => $tahun2,
 												  'arrBulan' => $arrBulan,
-												  'dataDummyRandom' => $dataDummyRandom,
+												  'dataJumlahKegiatan' => $dataJumlahKegiatan,
 												  'nameRegional' => $this->getNameRegional(),
 												  'sumRegional' => $sumRegional)
 								);
