@@ -9,15 +9,12 @@
 				$tahun = $_POST['Absensi']['tahun'];
 				$this->actionGeneratePdf($bulan, $tahun);
 			} else {
-				
-				//echo Regional::model()->findAll();
 				$this->render('index', array('model' => $model));
 			}
 		}
 		
 		//Silahkan otak-atik fungsi ini buat dapet data dari kegiatan
 		public function actionCompareRekapan() {
-			$modelAbsensi = new Absensi;
 			$modelKegiatan = new Kegiatan;
 			
 			if(isset($_POST['Kegiatan'])) {

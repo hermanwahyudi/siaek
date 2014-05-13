@@ -58,7 +58,8 @@ class Kegiatan extends CActiveRecord
 		);
 	}
 	function getAktifKegiatan($id_regional, $exp_bulan) {
-		$sql = "SELECT COUNT(*) AS jumlah FROM KEGIATAN WHERE id_regional = '". $id_regional ."' AND tanggal LIKE '%-". $exp_bulan ."-%' AND is_absen = '1'";
+		$sql = "SELECT COUNT(*) AS jumlah FROM KEGIATAN WHERE id_regional = '". 
+										$id_regional ."' AND tanggal LIKE '%-". $exp_bulan ."-%' AND status_isi = '1'";
 		return Yii::app()->db->createCommand($sql)->query();
 	}
 	public function getBulan() {
