@@ -16,13 +16,14 @@ tambahkan baris dibawah ini ya setelah clone
 
 buat kak herman isiAbsensi http://www.yiiframework.com/extension/multimodelform/
 
-Peserat Didik:
+Peserat Didik
+-------------
 list Peserta
-id_peserta kagak usah di tampilin
-id_regional kagak usah di tampilin
-status aktif diganti aktif atau kagak jangan angka
-Tambah Peserta:
-id_regional kagak usah di tampilin
++id_peserta kagak usah di tampilin
++id_regional kagak usah di tampilin
++status aktif diganti aktif atau kagak jangan angka
++Tambah Peserta:
++id_regional kagak usah di tampilin
 
 Melihat Feedback:
 Tampilan No kurang di tengah
