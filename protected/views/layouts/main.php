@@ -120,7 +120,7 @@
 
                                                                         </div>
                                                                         <div class="panel-body">
-                                                                            <div>
+                                                                            <div class="container">
 
                                                                                 <div class="row">
 
