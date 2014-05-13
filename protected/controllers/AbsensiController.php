@@ -16,7 +16,7 @@ class AbsensiController extends Controller {
                 'users' => array('*'),
             ),
             array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('create', 'update', 'admin', 'delete', 'deadline', 'listKegiatan', 'isiAbsensi'),
+                'actions' => array('create', 'update', 'admin', 'delete', 'deadline', 'listKegiatan', 'isiAbsensi','editAbsensi'),
                 'expression' => 'Yii::app()->user->getLevel() == "3"',
             //'users'=>array('@'),
             ),
