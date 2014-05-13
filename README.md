@@ -22,21 +22,27 @@ list Peserta:
 ------------
 	id_peserta kagak usah di tampilin
 	id_regional kagak usah di tampilin
-	status aktif diganti aktif atau kagak jangan angka
+	status_aktif diganti aktif atau kagak jangan angka
+
 Tambah Peserta:
 ------------
 	id_regional kagak usah di tampilin
 
 Melihat Feedback:
-Tampilan No kurang di tengah
+------------
+	Tampilan No kurang di tengah
 
-Isi Absensi
-Id regional kagak usah ditampilin
+Isi Absensi:
+------------
+	Id_regional kagak usah ditampilin
 
-delete Peserta:
-pake lazy deletion flag
+Delete Peserta:
+------------
+	pake lazy deletion flag
 
-Feedback di pengurus pusat ditambah kata memberi
+Feedback:
+--------
+	pengurus pusat ditambah kata memberi
 
 Admin - Pengurus
 kode-kode role diganti makna dari kode tersebut
