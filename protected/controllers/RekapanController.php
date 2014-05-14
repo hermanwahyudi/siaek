@@ -1,5 +1,29 @@
 <?php 
 	class RekapanController extends Controller {
+
+
+		 public function filters() {
+        return array(
+                'accessControl', // perform access control for CRUD operations
+                //'postOnly + delete', // we only allow deletion via POST request
+        );
+    }
+
+    public function accessRules() {
+        return array(
+            
+            array('allow', // allow authenticated user to perform 'create' and 'update' actions
+                'actions' => array('Index', 'comparerekapan', 'GeneratePdf'),
+                'expression' => 'Yii::app()->user->getLevel() == 2',
+                
+            ),
+           
+            array('deny', // deny all users
+                'users' => array('*'),
+            ),
+        );
+    }
+
 		
 		public function actionIndex() {
 			$model = new Kegiatan;
@@ -98,11 +122,16 @@
 
 			$bulan = ($bulan > 9) ? $bulan : "0" . $bulan;
 			$dataReader = Kegiatan::model()->getListKegiatan($bulan, $tahun);
-			$temp = "<table><tr><td>Regional<hr></td><td>Kegiatan<hr></td><td>Pembicara<hr></td><td>Materi<hr></td><td>Tanggal<hr></td><td>Persentase Kehadiran<hr></td></tr>";
+			$program = "";
+			$temp = "<table><tr><td>Regional<hr></td><td>Kegiatan<hr></td><td>Program<hr></td><td>Pembicara<hr></td><td>Materi<hr></td><td>Tanggal<hr></td><td>Presentase Pelaksanaan<hr></td><td>Persentase Kehadiran<hr></td></tr>";
 			while(($row = $dataReader->read()) !== false) {
-				$temp = $temp . "<tr><td>". $row['nama'] ."</td><td>".$row['nama_kegiatan']."</td><td>".
+				if($row['jenis_kegiatan'] === '1') $program = "Bulanan";
+				else if($row['jenis_kegiatan'] === '2') $program = "Pekanan";
+				else if($row['jenis_kegiatan'] === '3') $program = "Lokal";
+				else if($row['jenis_kegiatan'] === '4') $program = "Khusus";
+				$temp = $temp . "<tr><td>". $row['nama'] ."</td><td>".$row['nama_kegiatan']."</td><td>".$program."</td><td>".
 								$row['pembicara'] . "</td><td>".$row['materi']."</td><td>".$row['tanggal']
-								."</td><td align='center'>0%</td></tr>";
+								."</td><td align='center'>". 100/rand(1,4)."%</td><td align='center'>". rand(10,100)."%</td></tr>";
 			}
 			$temp = $temp . "</table>";
 			

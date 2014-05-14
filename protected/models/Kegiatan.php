@@ -87,7 +87,7 @@ class Kegiatan extends CActiveRecord
 			);
 	}
 	public function getListKegiatan($bulan, $tahun) {
-		$sql = "SELECT nama, nama_kegiatan, pembicara, materi, tanggal FROM Regional, Kegiatan 
+		$sql = "SELECT nama, nama_kegiatan, pembicara, materi, tanggal, jenis_kegiatan FROM Regional, Kegiatan 
 						WHERE tanggal LIKE '%".$tahun."-".$bulan."-%'";
 						
 		return Yii::app()->db->createCommand($sql)->query();
