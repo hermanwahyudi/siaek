@@ -125,10 +125,10 @@
 			$program = "";
 			$temp = "<table><tr><td>Regional<hr></td><td>Kegiatan<hr></td><td>Program<hr></td><td>Pembicara<hr></td><td>Materi<hr></td><td>Tanggal<hr></td><td>Presentase Pelaksanaan<hr></td><td>Persentase Kehadiran<hr></td></tr>";
 			while(($row = $dataReader->read()) !== false) {
-				if($row['jenis_kegiatan'] === 1) $program = "Bulanan";
-				else if($row['jenis_kegiatan'] === 2) $program = "Pekanan";
-				else if($row['jenis_kegiatan'] === 3) $program = "Lokal";
-				else $program = "Khusus";
+				if($row['jenis_kegiatan'] === '1') $program = "Bulanan";
+				else if($row['jenis_kegiatan'] === '2') $program = "Pekanan";
+				else if($row['jenis_kegiatan'] === '3') $program = "Lokal";
+				else if($row['jenis_kegiatan'] === '4') $program = "Khusus";
 				$temp = $temp . "<tr><td>". $row['nama'] ."</td><td>".$row['nama_kegiatan']."</td><td>".$program."</td><td>".
 								$row['pembicara'] . "</td><td>".$row['materi']."</td><td>".$row['tanggal']
 								."</td><td align='center'>". 100/rand(1,4)."%</td><td align='center'>". rand(10,100)."%</td></tr>";
