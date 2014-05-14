@@ -57,9 +57,9 @@ class Kegiatan extends CActiveRecord
                     'regional'   => array(self::BELONGS_TO,'Regional','id_regional'),
 		);
 	}
-	function getAktifKegiatan($id_regional, $exp_bulan) {
+	function getAktifKegiatan($id_regional, $exp_bulan, $tahun) {
 		$sql = "SELECT COUNT(*) AS jumlah FROM KEGIATAN WHERE id_regional = '". 
-										$id_regional ."' AND tanggal LIKE '%-". $exp_bulan ."-%' AND status_isi = '1'";
+										$id_regional ."' AND tanggal LIKE '%". $tahun ."-". $exp_bulan ."-%' AND status_isi = '1'";
 		return Yii::app()->db->createCommand($sql)->query();
 	}
 	public function getBulan() {
@@ -80,15 +80,9 @@ class Kegiatan extends CActiveRecord
 	}
 	public function getTahun() {
 			return array(	
-						"2010"=>"2010", 
-						"2011"=>"2011",
-						"2012"=>"2012", 
 						"2013"=>"2013",
 						"2014"=>"2014",
 						"2015"=>"2015", 
-						"2016"=>"2016",
-						"2017"=>"2017", 
-						"2018"=>"2018",
 			);
 	}
 	/**

@@ -19,15 +19,14 @@
 			
 			if(isset($_POST['Kegiatan'])) {
 				$bulan1 = $_POST['Kegiatan']['bulan1'];
-				$tahun1 = $_POST['Kegiatan']['tahun1'];
-				
 				$bulan2 = $_POST['Kegiatan']['bulan2'];
-				$tahun2 = $_POST['Kegiatan']['tahun2'];
-				if(!($bulan2-$bulan1 <= 0)) {
+				$tahun1 = $_POST['Kegiatan']['tahun1'];
+		
+				if(!($bulan2-$bulan1 < 0)) {
 					$arrBulan = $this->getArrayBulan($bulan1, $bulan2);
 					$sumBulan = $bulan2-$bulan1;
 					
-					$startBulan = $bulan1;
+					$bulan_idx = $bulan1;
 					
 					$dataJumlahKegiatan[][] = array();
 					$sumRegional = count(Regional::model()->findAll());
@@ -36,25 +35,25 @@
 					while(($row1=$dataReader1->read())!==false) { 
 						$id_regional = $row1['id_regional'];
 						for($i=0;$i<=$sumBulan;$i++) {
-							$dataReader = Kegiatan::model()->getAktifKegiatan($id_regional, '0'. $startBulan);
+							$dataReader = Kegiatan::model()->getAktifKegiatan($id_regional, '0'. $bulan_idx, $tahun1);
 							$row = $dataReader->read();
 							$dataJumlahKegiatan[$j][$i] = ($row['jumlah'] + 1) * 10;
 							
-							$startBulan++;
+							$bulan_idx++;
 						}
 						$j++;
 					}
 					
 					$this->render('result', array('modelKegiatan' => $modelKegiatan, 
 												  'bulan1' => $this->getBulan($bulan1), 'bulan2' => $this->getBulan($bulan2), 
-												  'tahun1' => $tahun1, 'tahun2' => $tahun2,
+												  'tahun1' => $tahun1, 
 												  'arrBulan' => $arrBulan,
 												  'dataJumlahKegiatan' => $dataJumlahKegiatan,
 												  'nameRegional' => $this->getNameRegional(),
 												  'sumRegional' => $sumRegional)
 								);
 				} else {
-					Yii::app()->user->setFlash('errorPeriode', 'Error masukan periode!');
+					Yii::app()->user->setFlash('errorPeriode', 'Salah masukan periode!');
 					$this->redirect(array('comparerekapan'));
 				}
 			} else {

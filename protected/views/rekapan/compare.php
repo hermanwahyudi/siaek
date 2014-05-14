@@ -20,35 +20,31 @@
 			?>
                        <div class="headline"> <h1 class="text-justify">Perbandingan Rekapan</h1>  </div>  
                         <div class="row clearfix">
-                            <div class="col-md-6 column">
+                            <div class="col-md-4 column">
 								
-                                <h1 >Periode Awal </h1>
+                                <h1>Bulan Awal </h1>
                                 <div class="btn-group">
                                      <?php echo  CHtml::activeDropDownList($modelKegiatan, 'bulan1', $modelKegiatan->getBulan(), array('class' => 'form-control')); ?>
                                 </div>
+                            </div>
+							<div class="col-md-4 column">
+							<h1>Bulan Akhir </h1>
+                               <div class="btn-group">
+                                    <?php echo  CHtml::activeDropDownList($modelKegiatan, 'bulan2', $modelKegiatan->getBulan(), array('class' => 'form-control')); ?>
+                               </div>
+							</div>
+							<div class="col-md-4 column">
+							<h1>Tahun</h1>
                                 <div class="btn-group">
                                     <?php echo  CHtml::activeDropDownList($modelKegiatan, 'tahun1', $modelKegiatan->getTahun(), array('class' => 'form-control')); ?>
                              
                                 </div>
-                            </div>
-
-                            <div class="col-md-6 column">
-                                <h1>Periode Akhir </h1>
-                                <div class="btn-group">
-                                     <?php echo  CHtml::activeDropDownList($modelKegiatan, 'bulan2', $modelKegiatan->getBulan(), array('class' => 'form-control')); ?>
-                                </div>
-                                <div class="btn-group">
-                                    <?php echo  CHtml::activeDropDownList($modelKegiatan, 'tahun2', $modelKegiatan->getTahun(), array('class' => 'form-control')); ?>
-                             
-                                </div>
-                            </div>
-
-
+                           </div>
                         </div>
 
                         <div class="row clearfix">
                             <br>
-                            <div class="col-md-10 column">
+                            <div class="col-md-11 column">
                                 <br>
                                 <br>
                                 <br>

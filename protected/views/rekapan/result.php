@@ -13,7 +13,7 @@
 			  <?php
 				 $this->Widget('ext.highcharts.HighchartsWidget', array(
 				   'options'=>array(
-					  'title' => array('text' => 'Rekapan Kegiatan Antar Regional PPSDMS <br><br><br>'. $bulan1 . ' - ' . $bulan2 . ' '. $tahun1 . '/'.$tahun2),
+					  'title' => array('text' => 'Rekapan Kegiatan Antar Regional PPSDMS <br><br><br>'. $bulan1 . ' - ' . $bulan2 . ' '. $tahun1),
 					  'xAxis' => array(
 						 'categories' => $arrBulan
 					  ),
