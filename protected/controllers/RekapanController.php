@@ -2,11 +2,11 @@
 	class RekapanController extends Controller {
 		
 		public function actionIndex() {
-			$model = new Absensi;
+			$model = new Kegiatan;
 			
-			if(isset($_POST['Absensi'])) {
-				$bulan = $_POST['Absensi']['bulan'];
-				$tahun = $_POST['Absensi']['tahun'];
+			if(isset($_POST['Kegiatan'])) {
+				$bulan = $_POST['Kegiatan']['bulan'];
+				$tahun = $_POST['Kegiatan']['tahun'];
 				$this->actionGeneratePdf($bulan, $tahun);
 			} else {
 				$this->render('index', array('model' => $model));
@@ -96,10 +96,7 @@
 		}
 		public function actionGeneratePdf($bulan, $tahun) {
 		
-			$model = array(
-						'bulan'=>$bulan,
-						'tahun'=>$tahun,
-					);
+			
 			
 		   # mPDF
 			$mPDF1 = Yii::app()->ePdf->mpdf();
@@ -115,7 +112,11 @@
 			# $mPDF1->WriteHTML($stylesheet, 1);
 	 
 			# renderPartial (only 'view' of current controller)
-			$mPDF1->WriteHTML($this->renderPartial('view', array('model'=>$model), true));
+			$mPDF1->WriteHTML($this->renderPartial('view', array(
+													'bulan' => $this->getBulan($bulan),
+													'tahun' => $tahun,
+													),
+													true));
 	 
 			# Renders image
 			# $mPDF1->WriteHTML(CHtml::image(Yii::getPathOfAlias('webroot.css') . '/bg.gif' ));
