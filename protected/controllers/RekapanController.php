@@ -95,7 +95,14 @@
 			}
 		}
 		public function actionGeneratePdf($bulan, $tahun) {
-		
+
+			$bulan = ($bulan > 9) ? $bulan : "0" . $bulan;
+			$dataReader = Kegiatan::model()->getListKegiatan($bulan, $tahun);
+			$temp = "<table><tr><td>Regional<hr></td><td>Kegiatan<hr></td></tr>";
+			while(($row = $dataReader->read()) !== false) {
+				$temp = $temp . "<tr><td>". $row['nama'] ."</td><td>".$row['nama_kegiatan']."</td></tr>";
+			}
+			$temp = $temp . "</table>";
 			
 			
 		   # mPDF
@@ -115,6 +122,7 @@
 			$mPDF1->WriteHTML($this->renderPartial('view', array(
 													'bulan' => $this->getBulan($bulan),
 													'tahun' => $tahun,
+													'data' => $temp,
 													),
 													true));
 	 

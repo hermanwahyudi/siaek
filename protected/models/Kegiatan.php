@@ -85,6 +85,12 @@ class Kegiatan extends CActiveRecord
 						"2015"=>"2015", 
 			);
 	}
+	public function getListKegiatan($bulan, $tahun) {
+		$sql = "SELECT nama, nama_kegiatan FROM Regional, Kegiatan 
+						WHERE tanggal LIKE '%".$tahun."-".$bulan."-%'";
+						
+		return Yii::app()->db->createCommand($sql)->query();
+	}
 	/**
 	 * @return array customized attribute labels (name=>label)
 	 */
