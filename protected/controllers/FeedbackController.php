@@ -28,7 +28,7 @@ class FeedbackController extends Controller
 	{
 		return array(
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('index', 'create'),
+				'actions'=>array('index','create'),
 				'expression'=>'Yii::app()->user->getLevel() == "2"',
 				//'users'=>array('@'),
 			),
