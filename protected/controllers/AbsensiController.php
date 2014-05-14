@@ -78,7 +78,8 @@ class AbsensiController extends Controller {
                        
                     }
              }
-             print_r($absensi);
+        $model->status_isi=1;
+        $model->save();
              
              
              $this->actionListKegiatan();
@@ -111,7 +112,17 @@ class AbsensiController extends Controller {
         
         
     }
-     public function loadModelAbsensi($id) {
+    public function actionView($id){
+        $model = $this->loadKegiatan($id);
+        $absensi = $this->loadModelAbsensi($model->id_kegiatan);
+        $this->render('view', array(
+            'model' => $model,
+            'absensi' => $absensi,
+        ));
+        
+    }
+
+    public function loadModelAbsensi($id) {
         $model = Absensi::model()->findAllByAttributes(array('id_kegiatan' => $id));
         if ($model === null)
             throw new CHttpException(404, 'The requested Absensi does not exist.');
