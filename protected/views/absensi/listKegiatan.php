@@ -29,6 +29,7 @@ $this->breadcrumbs = array(
             <!--</div>-->
             <!--<div class="row clearfix">-->
             <!--<div class="col-md-12 column">-->
+            <?php echo CHtml::link('Tambah Absensi', array('absensi/create')); ?>
             <table class="table">
                 <thead>
                     <tr>

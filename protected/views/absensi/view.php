@@ -3,7 +3,7 @@
 /* @var $model Feedback */
 
 $this->breadcrumbs = array(
-   'Absensi'=>array('index'),
+    'Absensi' => array('index'),
     $model->nama_kegiatan,
 );
 
@@ -23,53 +23,54 @@ $this->menu = array(
                 <tr>
                     <td align="left"><strong>Komentar</strong></td><td align="left">: <?php echo $model->status_isi; ?></td>
                 </tr>
-                 
+
             </tbody>
         </table>
         <table class="table table-bordered">
-                                    <thead>
-                                        <tr class="active">
+            <thead>
+                <tr class="active">
 
-                                            <th>
-                                                <p class="text-center">Nomor Peserta</p>
-                                            </th>
-                                            <th>
-                                                Nama Peserta
-                                            </th>
-                                            <th>
-                                                Keterangan
-                                            </th>
-                                            <th>
-                                                Alasan
-                                            </th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        
-                                        <?php for ($i=0;$i<count($absensi);$i++){ ?>
-                                            <tr>
-                                                <td>
-                                                   
-                                                    <?php echo $absensi[$i]['id_peserta']; ?>
-                                                </td>
+                    <th>
+            <p class="text-center">Nomor Peserta</p>
+            </th>
+            <th>
+                Nama Peserta
+            </th>
+            <th>
+                Keterangan
+            </th>
+            <th>
+                Alasan
+            </th>
+            </tr>
+            </thead>
+            <tbody>
 
-                                                <td>
-                                                    <?php 
-                                                    $id_peserta =$absensi[$i]['id_peserta'];
-                                                    $peserta=  Peserta::model()->findByPk($id_peserta);
-                                                    print_r($peserta['nama']) ; ?>
-                                                </td>
-                                                <td >
-                                                    <?php echo $absensi[$i]['id_status']; ?>
-                                                </td>
-                                                    
-                                                <td>
-                                                    <?php echo $absensi[$i]['alasan'] ;?>
-                                                </td>
-                                            </tr>
-                                        <?php } ?>
-                                    </tbody>
-                                </table>
+                <?php for ($i = 0; $i < count($absensi); $i++) { ?>
+                    <tr>
+                        <td>
+
+                            <?php echo $absensi[$i]['id_peserta']; ?>
+                        </td>
+
+                        <td>
+                            <?php
+                            $id_peserta = $absensi[$i]['id_peserta'];
+                            $peserta = Peserta::model()->findByPk($id_peserta);
+                            print_r($peserta['nama']);
+                            ?>
+                        </td>
+                        <td >
+    <?php echo $absensi[$i]['id_status']; ?>
+                        </td>
+
+                        <td>
+    <?php echo $absensi[$i]['alasan']; ?>
+                        </td>
+                    </tr>
+<?php } ?>
+            </tbody>
+        </table>
     </div>
 </div>
 <p align="left">
