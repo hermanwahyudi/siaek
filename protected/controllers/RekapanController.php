@@ -98,9 +98,11 @@
 
 			$bulan = ($bulan > 9) ? $bulan : "0" . $bulan;
 			$dataReader = Kegiatan::model()->getListKegiatan($bulan, $tahun);
-			$temp = "<table><tr><td>Regional<hr></td><td>Kegiatan<hr></td></tr>";
+			$temp = "<table><tr><td>Regional<hr></td><td>Kegiatan<hr></td><td>Pembicara<hr></td><td>Materi<hr></td><td>Tanggal<hr></td><td>Persentase Kehadiran<hr></td></tr>";
 			while(($row = $dataReader->read()) !== false) {
-				$temp = $temp . "<tr><td>". $row['nama'] ."</td><td>".$row['nama_kegiatan']."</td></tr>";
+				$temp = $temp . "<tr><td>". $row['nama'] ."</td><td>".$row['nama_kegiatan']."</td><td>".
+								$row['pembicara'] . "</td><td>".$row['materi']."</td><td>".$row['tanggal']
+								."</td><td align='center'>0%</td></tr>";
 			}
 			$temp = $temp . "</table>";
 			
