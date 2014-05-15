@@ -141,46 +141,51 @@ class AbsensiController extends Controller {
 
     public function actionCreate() {
         $model = new Kegiatan;
-        $absensi = array();
-        $i = 0;
-        while ($i < 1) {
-            $absensi[$i] = Absensi::model();
-            $i++;
-        }
-        if (isset($_POST['Kegiatan'], $_POST['Absensi'])) {
-            $model->attributes = $_POST['Kegiatan'];
-            if ($model->save()) {
-                $valid = true;
-                foreach ($_POST['Absensi'] as $j => $item) {
-                    if (isset($_POST['Absensi'][$j])) {
-                        //inisialisasi
-                        $absensi[$j] = new Absensi;
-                        $absensi[$j]->attributes = $modelp;
-                        $absensi[$j]->id_kegiatan = $model->id_kegiatan;
-                        $valid = $absensi[$j]->validate() && $valid;
-                    }
-                }
-                if ($valid) {
-                    $i = 0;
-                    while (isset($absensi[$i])) {
-                        $absensi[$i++]->save(false);
-                    }
-                }
-                $this->redirect(array('view', 'id' => $model->id_kegiatan));
-            }
-        }
+        
         $id_user = Yii::app()->user->id;
         $objRegional = Regional::model()->findByAttributes(array('id_user'=>$id_user));
 
 	$id_regional = $objRegional->id_regional;
+        
+        if (isset($_POST['Absensi'])) {
+            $model->attributes = $_POST['Kegiatan'];
+            $model->id_regional=$id_regional;
+           Yii::log("errors saving SomeModel: " . var_export($model->getErrors(), true), CLogger::LEVEL_WARNING, __METHOD__);
+            if ($model->save()) {
+                print_r("Save");    
+                foreach ($_POST['Absensi'] as $j => $item) {
+                    if (isset($_POST['Absensi'][$j])) {
+        
+                        $absensi[$j] = new Absensi;
+                        $absensi[$j]->attributes = $modelp;
+                        $absensi[$j]->id_kegiatan = $model->id_kegiatan;
+                        $absensi[$j]->save();
+                        
+                    }
+                }
+                
+            }
+            //var_dump($model);
+            $this->redirect(array('view', 'id' => $model->id_kegiatan));
+        }
+        
         $sql = "SELECT id_peserta,nama FROM peserta WHERE status_aktif=1 and id_regional = '" . $id_regional . "'";
         $dbCommand = Yii::app()->db->createCommand($sql);
         $peserta = $dbCommand->queryAll();
-        var_dump($peserta);
+        
+        $absensi = array();
+       
+        foreach($peserta as $i => $item){
+            $id=$item['id_peserta'];
+            $absensi[$id]= Absensi::model();
+            $absensi[$id]->id_peserta=$id;
+            
+        }
+       
          $this->render('create', array(
             'model' => $model, 
-             'absensi' => $absensi,
-             'peserta'=>$peserta,
+            
+             'absensi'=>$absensi,
         ));
     }
 
