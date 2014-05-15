@@ -95,27 +95,22 @@ class AbsensiController extends Controller {
     public function actionEditAbsensi($id) {
 
         $model = $this->loadKegiatan($id);
-
-        //print_r($absensi);
+        $absensi = $this->loadModelAbsensi($model->id_kegiatan);
+        
         if (isset($_POST['Absensi'])) {
             //var_dump($_POST['Absensi']);
-            foreach ($_POST['Absensi'] as $j => $modelp) {
-
-                //inisialisasi
-                // if you had static model only
-                $status = $_POST['Absensi'][$j]['id_status'];
-                $alasan = $_POST['Absensi'][$j]['alasan'];
-                $id_peserta = $j;
-                //print_r($alasan);
-                Absensi::model()->updateByPk(array('id_kegiatan' => $id, 'id_peserta' => $j), array('id_status' => $status, 'alasan' => $alasan));
-                //$absensi[$j]->alasan = $_POST['Absensi'][$j]['alasan'];
-                //$absensi[$j]->id_status =$_POST['Absensi'][$j]['id_status'];
-                //$absensi[$j]->save();
+            foreach ($_POST['Absensi'] as $j => $item) {
+              $id_peserta =$absensi[$j]['id_peserta'];
+              $ab= Absensi::model()->findByAttributes(array('id_peserta'=>$id_peserta,'id_kegiatan'=>$id));
+              $ab->alasan = $_POST['Absensi'][$j]['alasan'];
+              $ab->id_status = $_POST['Absensi'][$j]['id_status'];
+              $ab->update();
             }
 
             $this->actionView($id);
         }
         $absensi = $this->loadModelAbsensi($model->id_kegiatan);
+       // var_dump($absensi);
         $this->render('edit', array(
             'model' => $model,
             'absensi' => $absensi,
@@ -150,14 +145,17 @@ class AbsensiController extends Controller {
         if (isset($_POST['Absensi'])) {
             $model->attributes = $_POST['Kegiatan'];
             $model->id_regional=$id_regional;
-           Yii::log("errors saving SomeModel: " . var_export($model->getErrors(), true), CLogger::LEVEL_WARNING, __METHOD__);
+            $model->status_isi = 1;
+           
             if ($model->save()) {
-                print_r("Save");    
+                
                 foreach ($_POST['Absensi'] as $j => $item) {
                     if (isset($_POST['Absensi'][$j])) {
-        
+                        
                         $absensi[$j] = new Absensi;
-                        $absensi[$j]->attributes = $modelp;
+                        $absensi[$j]->id_peserta =$j ;
+                        $absensi[$j]->id_status=$_POST['Absensi'][$j]['id_status'];
+                        $absensi[$j]->alasan=$_POST['Absensi'][$j]['alasan'];
                         $absensi[$j]->id_kegiatan = $model->id_kegiatan;
                         $absensi[$j]->save();
                         
@@ -165,7 +163,8 @@ class AbsensiController extends Controller {
                 }
                 
             }
-            //var_dump($model);
+            
+            
             $this->redirect(array('view', 'id' => $model->id_kegiatan));
         }
         
@@ -181,10 +180,10 @@ class AbsensiController extends Controller {
             $absensi[$id]->id_peserta=$id;
             
         }
-       
+       $dummi= Absensi::model();
          $this->render('create', array(
             'model' => $model, 
-            
+            'dummi'=>$dummi,
              'absensi'=>$absensi,
         ));
     }

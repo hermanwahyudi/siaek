@@ -71,6 +71,7 @@ class KegiatanController extends Controller
 		if(isset($_POST['Kegiatan']))
 		{
 			$model->attributes=$_POST['Kegiatan'];
+                        $model->status_isi=0;
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->id_kegiatan));
 		}

@@ -21,7 +21,7 @@
         <label for="" class="col-sm-2 control-label"><?php echo "Regional *"; ?></label>
         <div class="col-sm-4">
             <div class="controls">
-			<?php echo CHtml::activeDropDownList($model, 'id_regional', $model->Regionals(), array('class' => 'form-control')); ?>
+                <?php echo CHtml::activeDropDownList($model, 'id_regional', $model->Regionals(), array('class' => 'form-control')); ?>
             </div>
             <span class="error-label">
                 <?php echo $form->error($model, 'id_regional'); ?>
@@ -29,7 +29,9 @@
         </div>
     </div>
     <div class="form-group">
-        <label for="" class="col-sm-2 control-label"><?php echo $form->labelEx($model, 'nama_kegiatan'); ?></label>
+        <label for="" class="col-sm-2 control-label">
+            <?php echo $form->labelEx($model, 'nama_kegiatan'); ?>
+        </label>
         <div class="col-sm-4">
             <?php echo $form->textField($model, 'nama_kegiatan', array('class' => 'form-control')); ?>
             <span class="error-label">
@@ -38,17 +40,25 @@
         </div>
     </div>
     <div class="form-group">
-        <label for="" class="col-sm-2 control-label"><?php echo $form->labelEx($model, 'pembicara'); ?></label>
+        <label for="" class="col-sm-2 control-label">
+            <?php echo $form->labelEx($model, 'pembicara'); ?>
+        </label>
         <div class="col-sm-4">
-<?php echo $form->textField($model, 'pembicara', array('class' => 'form-control')); ?>
-            <span class="error-label"><?php echo $form->error($model, 'pembicara'); ?></span>
+            <?php echo $form->textField($model, 'pembicara', array('class' => 'form-control')); ?>
+            <span class="error-label">
+                <?php echo $form->error($model, 'pembicara'); ?>
+            </span>
         </div>
     </div>
     <div class="form-group">
-        <label for="" class="col-sm-2 control-label"><?php echo $form->labelEx($model, 'materi'); ?></label>
+        <label for="" class="col-sm-2 control-label">
+            <?php echo $form->labelEx($model, 'materi'); ?>
+        </label>
         <div class="col-sm-4">
-<?php echo $form->textArea($model, 'materi', array('class' => 'form-control', 'rows' => 6, 'cols' => 50)); ?>
-            <span class="error-label"><?php echo $form->error($model, 'materi'); ?></span>
+            <?php echo $form->textArea($model, 'materi', array('class' => 'form-control', 'rows' => 6, 'cols' => 50)); ?>
+            <span class="error-label">
+                <?php echo $form->error($model, 'materi'); ?>
+            </span>
         </div>
     </div>
     <div class="form-group">
@@ -56,7 +66,7 @@
         <div class="col-sm-4">
 
             <div class="controls">
-<?php echo CHtml::activeDropDownList($model, 'hari', $model->getDayOption(), array('class' => 'form-control')); ?>
+                <?php echo CHtml::activeDropDownList($model, 'hari', $model->getDayOption(), array('class' => 'form-control')); ?>
             </div>
             <span class="error-label"><?php echo $form->error($model, 'hari'); ?></span>
         </div>
@@ -64,51 +74,51 @@
     <div class="form-group">
         <label for="" class="col-sm-2 control-label"><?php echo $form->labelEx($model, 'tanggal'); ?></label>
         <div class="col-sm-4">
-<?php echo $form->textField($model, 'tanggal', array('class' => 'form-control datetimepicker')); ?>
+            <?php echo $form->textField($model, 'tanggal', array('class' => 'form-control datetimepicker')); ?>
             <span class="error-label"><?php echo $form->error($model, 'tanggal'); ?></span>
         </div>
     </div>
     <div class="form-group">
         <label for="" class="col-sm-2 control-label"><?php echo $form->labelEx($model, 'waktu_mulai'); ?></label>
         <div class="col-sm-4">
-<?php echo $form->textField($model, 'waktu_mulai', array('class' => 'form-control')); ?>
+            <?php echo $form->textField($model, 'waktu_mulai', array('class' => 'form-control')); ?>
             <span class="error-label"><?php echo $form->error($model, 'waktu_mulai'); ?></span>
         </div>
     </div>
     <div class="form-group">
         <label for="" class="col-sm-2 control-label"><?php echo $form->labelEx($model, 'waktu_selesai'); ?></label>
         <div class="col-sm-4">
-<?php echo $form->textField($model, 'waktu_selesai', array('class' => 'form-control')); ?>
+            <?php echo $form->textField($model, 'waktu_selesai', array('class' => 'form-control')); ?>
             <span class="error-label"><?php echo $form->error($model, 'waktu_selesai'); ?></span>
         </div>
     </div>
     <div class="form-group">
         <label for="" class="col-sm-2 control-label"><?php echo $form->labelEx($model, 'jenis_kegiatan'); ?></label>
         <div class="col-sm-4">
-            
-            
+
+
             <div class="controls">
-<?php echo CHtml::activeDropDownList($model, 'jenis_kegiatan', $model->getTipeOption(),array('class'=>'form-control')); ?>
-                </div>
+                <?php echo CHtml::activeDropDownList($model, 'jenis_kegiatan', $model->getTipeOption(), array('class' => 'form-control')); ?>
+            </div>
             <span class="error-label"><?php echo $form->error($model, 'jenis_kegiatam'); ?></span>
         </div>
     </div>
-	<div class="form-group">
-		<label for="" class="col-sm-2 control-label"><?php echo $form->labelEx($model, 'deadline'); ?></label>
-			<div class="col-sm-4">
-				<?php echo $form->textField($model,'deadline', array('class'=>'form-control datetimepicker')); ?>
-			<span class="error-label"><?php echo $form->error($model,'deadline'); ?></span>
-			</div>
-	</div>
+    <div class="form-group">
+        <label for="" class="col-sm-2 control-label"><?php echo $form->labelEx($model, 'deadline'); ?></label>
+        <div class="col-sm-4">
+            <?php echo $form->textField($model, 'deadline', array('class' => 'form-control datetimepicker')); ?>
+            <span class="error-label"><?php echo $form->error($model, 'deadline'); ?></span>
+        </div>
+    </div>
 
     <div class="form-group">
         <div class="col-sm-3">
             <!-- <button type="submit" class="btn btn-default">Tambah</button> -->
-<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save', array('class' => 'btn btn-default')); ?>
-<?php echo CHtml::link('Back', array('kegiatan/index')); ?>
+            <?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save', array('class' => 'btn btn-default')); ?>
+            <?php echo CHtml::link('Back', array('kegiatan/index')); ?>
         </div>
     </div>
 
-<?php $this->endWidget(); ?>
+    <?php $this->endWidget(); ?>
 
 </div><!-- form -->

@@ -101,22 +101,21 @@ $this->breadcrumbs = array(
                                             ?>
                                             <tr>
                                                 <td>
-                                                    <?php $id_peserta = $item->id_peserta;
-                                                    $peserta = Peserta::model()->findByPk($id_peserta);
-                                                     echo $peserta->nomor_peserta; ?>
+                                                    <?php echo $item['id_peserta'];?>
                                                 </td>
 
                                                 <td>
-                                                    <?php
-                                                    print_r($peserta->nama);
+                                                    <?php $id_peserta =$item['id_peserta'];
+                                                        $peserta = Peserta::model()->findByPk($id_peserta);
+                                                        echo $peserta->nama;
                                                     ?>
                                                 </td>
                                                 <td>
-    <?php echo CHtml::activeDropDownList($item, "[$id_peserta]id_status", $item->getStatusOption(), array('class' => 'form-control')); ?>
+    <?php echo CHtml::activeDropDownList($item, "[$i]id_status", $item->getStatusOption(), array('class' => 'form-control')); ?>
                                                 </td>
 
                                                 <td>
-    <?php echo CHtml::activeTextField($item, "[$id_peserta]alasan", array('class' => 'form-control')); ?>
+    <?php echo CHtml::activeTextField($item, "[$i]alasan", array('class' => 'form-control')); ?>
                                                 </td>
                                             </tr>
 <?php } ?>
