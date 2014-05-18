@@ -96,7 +96,7 @@ class SiteController extends Controller {
         //$model = User::model()->find('LOWER(email)=?', array($model->email));
        //print_r($user);
         $password = "" . rand(1000000, 10000000);
-        $user->password = $password;
+        $user->password = md5($password);
 
         /*
           $model=new User;

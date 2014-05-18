@@ -142,7 +142,7 @@ class User extends CActiveRecord {
     public function validatePassword($password) {
         //return $password === $this->password;
         //var_dump($this->hashPassword($password, $this->saltpassword));
-        return $password === $this->password;
+        return md5($password) === $this->password;
     }
 
     public function sendMail($to, $message) {

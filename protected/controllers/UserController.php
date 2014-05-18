@@ -79,6 +79,8 @@ class UserController extends Controller
         {
             $rnd = rand(0,9999);  // generate random number between 0-9999
             $model->attributes=$_POST['User'];
+			if(!empty($_POST['User']['password'])) 
+				$model->password = md5($_POST['User']['password']);
  
             $uploadedFile=CUploadedFile::getInstance($model,'url_image');
             $fileName = "{$rnd}-{$uploadedFile}";  // random number + file name
@@ -122,7 +124,7 @@ class UserController extends Controller
 	{
 
 		$model=$this->loadModel($id);
- 
+		
         if(isset($_POST['User']))
         {
             $_POST['user']['url_image'] = $model->url_image;
@@ -264,13 +266,13 @@ class UserController extends Controller
 		if(isset($_POST['User'])) {
 			$model->attributes = $_POST['User'];
 			
-			if($model->password === $_POST['User']['password_sekarang']) {
+			if($model->password === md5($_POST['User']['password_sekarang'])) {
 				if($_POST['User']['password_baru'] !== '') {
 					if($model->password_baru_repeat !== '') {
 						$password_baru = "" . $_POST['User']['password_baru'];
 						$password_baru_repeat = "" . $_POST['User']['password_baru_repeat'];
 						if($password_baru === $password_baru_repeat) {
-							$model->password = $password_baru_repeat;
+							$model->password = md5($password_baru_repeat);
 							if($model->save(false)) {
 								Yii::app()->user->setFlash('passChanged', 'Password Anda telah berhasil diubah.');
 								$this->redirect(array('profile', 'id' => $model->id_user));

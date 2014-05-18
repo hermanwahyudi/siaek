@@ -20,9 +20,7 @@
 
 )); ?>
 
-	<p class="note">Fields with <span class="required">*</span> are required.</p>
-
-	<?php echo $form->errorSummary($model); ?>
+	<p class="note">Fields with <span class="required">*</span> are required.</p><br>
 
 
 	<div class="form-group">
@@ -50,7 +48,7 @@
 		</span>
 			</div>
 	</div>
-
+	<?php if($model->isNewRecord) { ?>
 	<div class="form-group">
 		<label for="" class="col-sm-2 control-label">
 		<?php echo $form->labelEx($model,'password'); ?>
@@ -62,6 +60,7 @@
 		</span>
 			</div>
 	</div>
+	<?php } ?>
 
 	<div class="form-group">
 		<label for="" class="col-sm-2 control-label">
