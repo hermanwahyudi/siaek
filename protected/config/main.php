@@ -82,7 +82,7 @@ return array(
 			'connectionString' => 'mysql:host=localhost;dbname=siaek',
 			'emulatePrepare' => true,
 			'username' => 'root',
-			'password' => 'root',
+			'password' => '',
 			'charset' => 'utf8',
 		),
 		
