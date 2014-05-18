@@ -67,7 +67,8 @@ $this->breadcrumbs = array(
                                 <?php echo $form->textField($model, 'waktu_selesai', array('class' => 'form-control')); ?>
                             </div>
                             <div class="form-group">
-                            <?php echo $form->textField($model, 'deadline', array('class' => 'form-control datetimepicker')); ?>
+                                <?php echo $form->labelEx($model, 'deadline'); ?>
+                                <?php echo $form->textField($model, 'deadline', array('class' => 'form-control datetimepicker')); ?>
                             </div>
                         </form>
                     </div>
@@ -96,13 +97,17 @@ $this->breadcrumbs = array(
                                     <?php echo $i; ?>
                                 </td>
                                 <td>
-                                   <?php echo $form->textField($item,"[$i]id_status"); ?>
+                                    <?php $id_peserta =$i;
+                                    $peserta = Peserta::model()->findByPk($id_peserta);
+                                    echo $peserta->nama;
+                                    ?>
+                                   
+                                </td>
+                                <td>
+                                   <?php echo CHtml::activeDropDownList($item,"[$i]id_status",$item->getStatusOption(), array('class' => 'form-control')); ?> 
                                 </td>
                                 <td>
                                     <?php echo $form->textField($item,"[$i]alasan"); ?>
-                                </td>
-                                <td>
-                                    
                                 </td>
                                 </tr>
                             <?php } ?>
