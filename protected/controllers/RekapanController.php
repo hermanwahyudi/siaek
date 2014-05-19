@@ -146,7 +146,7 @@
 			# $mPDF1->WriteHTML($this->render('view', array(), true));
 	 
 			# Load a stylesheet
-			# $stylesheet = file_get_contents(Yii::getPathOfAlias('webroot.css') . '/main.css');
+			# $stylesheet = file_get_contents(Yii::getPathOfAlias('webroot.css') . '/main.css');																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																
 			# $mPDF1->WriteHTML($stylesheet, 1);
 	 
 			# renderPartial (only 'view' of current controller)

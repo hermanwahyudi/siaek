@@ -87,22 +87,25 @@ class Kegiatan extends CActiveRecord
 			);
 	}
 	public function getListKegiatan($bulan, $tahun) {
-		$sql = "SELECT nama, nama_kegiatan, pembicara, materi, tanggal, jenis_kegiatan FROM Regional, Kegiatan 
+		$sql = "SELECT Regional.id_regional, nama, nama_kegiatan, pembicara, materi, tanggal, jenis_kegiatan FROM Regional, Kegiatan 
 						WHERE tanggal LIKE '%".$tahun."-".$bulan."-%'";
 						
 		return Yii::app()->db->createCommand($sql)->query();
 	}
-	public function getCountPeserta($id_regional, $) {
+	public function getCountPeserta($id_regional, $id_kegiatan) {
 		$sql = "SELECT count(*) AS jumlah_peserta FROM Peserta, Regional, Kegiatan 
 					WHERE Regional.id_regional = '".$id_regional."'
 					AND Peserta.id_regional = '".$id_regional."'
-					AND Kegiatan.id_
+					AND Kegiatan.id_kegiatan = '".$id_kegiatan."'
 					";
 						
 		return Yii::app()->db->createCommand($sql)->query();
 	}
-	public function getCountHadir() {
-		$sql = "";
+	public function getCountHadir($id_peserta, $id_kegiatan) {
+		$sql = "SELECT count(*) AS hadir FROM Absensi
+					WHERE id_peserta = '".$id_peserta."' 
+					AND id_status < '4' AND id_kegiatan = '".$id_kegiatan."'
+				";
 						
 		return Yii::app()->db->createCommand($sql)->query();
 	}
