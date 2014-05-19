@@ -1,12 +1,12 @@
 <?php
  
 $this->breadcrumbs=array(
-	'Profil'=>array('profile', 'id'=>$model->id_user),
+	'Profil'=>array('profile'),
 	'Ubah Password',
 );
 
 ?>
-<div class="headline"> <h1 class="text-justify">Edit Password</h1>  </div>
+<div class="headline"> <h1 class="text-justify">Ubah Password</h1>  </div>
 
 <?php 
 	if(Yii::app()->user->hasFlash('errorNewPass')) {
@@ -54,7 +54,7 @@ $this->breadcrumbs=array(
 		<div class="col-sm-3">
 			<!-- <button type="submit" class="btn btn-default">Tambah</button> -->
 			<?php echo CHtml::submitButton($model->isNewRecord ? 'Create' : 'Save', array('class'=>'btn btn-default')); ?>
-			<br>
+			
                         <?php echo CHtml::link('Back', array('user/profile', 'id' => $model->id_user)); ?>
 		</div>
 	</div>
