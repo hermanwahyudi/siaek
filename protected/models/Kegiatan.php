@@ -92,6 +92,20 @@ class Kegiatan extends CActiveRecord
 						
 		return Yii::app()->db->createCommand($sql)->query();
 	}
+	public function getCountPeserta($id_regional, $) {
+		$sql = "SELECT count(*) AS jumlah_peserta FROM Peserta, Regional, Kegiatan 
+					WHERE Regional.id_regional = '".$id_regional."'
+					AND Peserta.id_regional = '".$id_regional."'
+					AND Kegiatan.id_
+					";
+						
+		return Yii::app()->db->createCommand($sql)->query();
+	}
+	public function getCountHadir() {
+		$sql = "";
+						
+		return Yii::app()->db->createCommand($sql)->query();
+	}
 	/**
 	 * @return array customized attribute labels (name=>label)
 	 */

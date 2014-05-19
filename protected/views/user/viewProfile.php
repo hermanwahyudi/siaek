@@ -65,26 +65,9 @@ endif;
         </table>
 	</div>
 </div>
-<!-- 
-<?php $this->widget('zii.widgets.CDetailView', array(
-	'data'=>$model,
-	'attributes'=>array(
-		'id_user',
-		'role',
-		'username',
-		'password',
-		'nama',
-		'jenis_kelamin',
-		'email',
-		'nip',
-		'no_telp',
-		'alamat',
-		'url_image',
-	),
-)); 
-?> -->
+
 <div style="float:left">
-<button type="button" class="btn btn-alert active"><?php echo CHtml::link('Edit', array('user/updateprofile', 'id' => $model->id_user)); ?></button>
+<button type="button" class="btn btn-alert active"><?php echo CHtml::link('Edit', array('user/updateprofile')); ?></button>
 
 <button type="button" class="btn btn-alert active"><?php echo CHtml::link('Edit Password', array('user/password', 'id' => $model->id_user)); ?></button>
 <br>

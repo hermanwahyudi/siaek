@@ -59,8 +59,8 @@ class UserController extends Controller
 			'model'=>$model,
 		));
 	}
-	public function actionProfile($id) {
-		$model = $this->loadModel($id);
+	public function actionProfile() {
+		$model = $this->loadModel(Yii::app()->user->id);
 		if($model->role === '1') $model->role = 'Administrator';
 		else if($model->role === '2') $model->role = 'Pengurus Pusat';
 		else $model->role = 'Pengurus Regional';
@@ -168,8 +168,8 @@ class UserController extends Controller
 		// ));
 	}
 	
-	public function actionUpdateProfile($id) {
-        $model = $this->loadModel($id);
+	public function actionUpdateProfile() {
+        $model = $this->loadModel(Yii::app()->user->id);
 		$old_image = $model->url_image;
 		
         if(isset($_POST['User']))

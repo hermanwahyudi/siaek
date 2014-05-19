@@ -32,7 +32,7 @@
                             <br>
                             <div class="col-md-13 column">
                                 <br>
-									<p class="text-center"><?php echo CHtml::submitButton('Export to PDF', array('class' => 'btn btn-default')); ?></p>
+									<p class="text-center"><?php echo CHtml::submitButton('Rekap', array('class' => 'btn btn-default')); ?></p>
 									<br>	
 									<?php echo CHtml::link('Back', array('site/index')); ?>
 									
