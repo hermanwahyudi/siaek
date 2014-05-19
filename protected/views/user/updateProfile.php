@@ -38,7 +38,7 @@ $this->breadcrumbs=array(
 			<div class="col-sm-4">
 				<?php echo $form->textField($model,'username', array('class'=>'form-control')); ?>
 			<span class="error-label">
-				<?php echo $form->error($model,'username'); } ?>
+				<?php echo $form->error($model,'username');  ?>
 			</span>
 			</div>
 	</div>
