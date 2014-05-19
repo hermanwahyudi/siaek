@@ -69,7 +69,7 @@ endif;
 <div style="float:left">
 <button type="button" class="btn btn-alert active"><?php echo CHtml::link('Edit', array('user/updateprofile')); ?></button>
 
-<button type="button" class="btn btn-alert active"><?php echo CHtml::link('Edit Password', array('user/password', 'id' => $model->id_user)); ?></button>
+<button type="button" class="btn btn-alert active"><?php echo CHtml::link('Edit Password', array('user/password')); ?></button>
 <br>
 <?php echo CHtml::link('Back', array('site/index')); ?>
 </div>

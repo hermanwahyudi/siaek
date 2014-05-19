@@ -176,26 +176,28 @@ class UserController extends Controller
         {
             //$_POST['user']['url_image'] = $model->url_image;
             $model->attributes=$_POST['User'];
- 
-            $uploadedFile=CUploadedFile::getInstance($model,'url_image');
+			if($model->username === $_POST['User']['username']) {
 			
-			if(!empty($uploadedFile))  // check if uploaded file is set or not
-            {
-				$model->url_image = rand(10000, 1000000) . ".jpg";
-				if($model->save()) {
-					//$this->redirect(array('admin'));
-					$uploadedFile->saveAs(Yii::app()->basePath.'/../images/'.$model->url_image);
-					Yii::app()->user->setFlash('successProfile', 'Profile telah berhasil diubah.');
-					$this->redirect(array('profile', 'id' => $model->id_user));
+			} {
+				$uploadedFile=CUploadedFile::getInstance($model,'url_image');
+				
+				if(!empty($uploadedFile))  // check if uploaded file is set or not
+				{
+					$model->url_image = rand(10000, 1000000) . ".jpg";
+					if($model->save()) {
+						//$this->redirect(array('admin'));
+						$uploadedFile->saveAs(Yii::app()->basePath.'/../images/'.$model->url_image);
+						Yii::app()->user->setFlash('successProfile', 'Profile telah berhasil diubah.');
+						$this->redirect(array('profile', 'id' => $model->id_user));
+					}
+				} else {
+					$model->url_image = $old_image;
+					if($model->save()) {
+						Yii::app()->user->setFlash('successProfile', 'Profile telah berhasil diubah.');
+						$this->redirect(array('profile', 'id' => $model->id_user));
+					}
 				}
-            } else {
-				$model->url_image = $old_image;
-				if($model->save()) {
-					Yii::app()->user->setFlash('successProfile', 'Profile telah berhasil diubah.');
-					$this->redirect(array('profile', 'id' => $model->id_user));
-				}
-			}
-            
+            }
  
         }
             
@@ -258,8 +260,8 @@ class UserController extends Controller
 			$this->actionAdmin();
 	}
 	
-	public function actionPassword($id) {
-		$model = $this->loadModel($id);
+	public function actionPassword() {
+		$model = $this->loadModel(Yii::app()->user->id);
 		
 		$this->performAjaxValidation($model);
 		
@@ -275,23 +277,23 @@ class UserController extends Controller
 							$model->password = md5($password_baru_repeat);
 							if($model->save(false)) {
 								Yii::app()->user->setFlash('passChanged', 'Password Anda telah berhasil diubah.');
-								$this->redirect(array('profile', 'id' => $model->id_user));
+								$this->redirect(array('profile'));
 							}
 						} else {
 							Yii::app()->user->setFlash('errorNewPass', 'Password baru tidak sama dengan password baru repeat.');
-							$this->redirect(array('password', 'id' => $model->id_user));
+							$this->redirect(array('password'));
 						}
 					} else {
 						Yii::app()->user->setFlash('errorPassConfirm', 'Konfirmasi password harus diisi.');
-						$this->redirect(array('password', 'id' => $model->id_user));
+						$this->redirect(array('password'));
 					} 
 				} else {
 					Yii::app()->user->setFlash('errorPassConfirm', 'Password baru password harus diisi.');
-					$this->redirect(array('password', 'id' => $model->id_user));
+					$this->redirect(array('password'));
 				}
 			} else {
 				Yii::app()->user->setFlash('errorCurrentPass', 'Password sekarang tidak sama dengan di sistem.');
-                $this->redirect(array('password', 'id' => $model->id_user));
+                $this->redirect(array('password'));
 			}
 		} 
 			$this->render('password', array('model' => $model));

@@ -28,7 +28,7 @@ $this->breadcrumbs=array(
 	<div class="form-group">
 		<label for="" class="col-sm-2 control-label"><?php echo $form->labelEx($model,'nip'); ?></label>
 			<div class="col-sm-4">
-				<?php echo $form->textField($model,'nip', array('class'=>'form-control')); ?>
+				<?php echo $form->textField($model,'nip', array('class'=>'form-control', 'readonly'=>true)); ?>
 			<span class="error-label"><?php echo $form->error($model,'nip'); ?></span>
 			</div>
 	</div>
@@ -37,7 +37,9 @@ $this->breadcrumbs=array(
 		<label for="" class="col-sm-2 control-label"><?php echo $form->labelEx($model,'username'); ?></label>
 			<div class="col-sm-4">
 				<?php echo $form->textField($model,'username', array('class'=>'form-control')); ?>
-			<span class="error-label"><?php echo $form->error($model,'username'); ?></span>
+			<span class="error-label">
+				<?php echo $form->error($model,'username'); } ?>
+			</span>
 			</div>
 	</div>
 	
