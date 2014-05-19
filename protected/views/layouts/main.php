@@ -108,7 +108,7 @@
                                                                         </div>
                                                                         <div class="panel-body">
                                                                             <div class="alert alert-info">
-                                                                                <?php echo CHtml::link('<h4>Profile</h4>', array('user/profile')); ?></div>
+                                                                                <?php echo CHtml::link('<h4>Profil</h4>', array('user/profile')); ?></div>
                                                                         </div>
                                                                     </div>
                                                                 </div>

@@ -28,9 +28,9 @@ class UserController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index', 'view', 'profile', 'password', 'updateprofile', 'delete'),
-				'users'=>array('*'),
-			),
+				'actions'=>array('index', 'view', 'profile', 'password', 'updateprofile', 'delete', 'create','update', 'admin'),
+				'expression' => 'Yii::app()->user->getLevel() == 1',
+			),/*
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
 				'actions'=>array('create','update', 'admin'),
 				'users'=>array('@'),
@@ -38,7 +38,7 @@ class UserController extends Controller
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
 				'actions'=>array('admin'),
 				'users'=>array('*'),
-			),
+			),*/
 			array('deny',  // deny all users
 				'users'=>array('*'),
 			),
@@ -188,13 +188,13 @@ class UserController extends Controller
 						//$this->redirect(array('admin'));
 						$uploadedFile->saveAs(Yii::app()->basePath.'/../images/'.$model->url_image);
 						Yii::app()->user->setFlash('successProfile', 'Profile telah berhasil diubah.');
-						$this->redirect(array('profile', 'id' => $model->id_user));
+						$this->redirect(array('profile'));
 					}
 				} else {
 					$model->url_image = $old_image;
 					if($model->save()) {
 						Yii::app()->user->setFlash('successProfile', 'Profile telah berhasil diubah.');
-						$this->redirect(array('profile', 'id' => $model->id_user));
+						$this->redirect(array('profile'));
 					}
 				}
             }
