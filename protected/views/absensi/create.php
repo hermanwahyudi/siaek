@@ -97,10 +97,10 @@ $this->breadcrumbs = array(
                                     <?php echo $i; ?>
                                 </td>
                                 <td>
-                                    <?php $id_peserta =$i;
+                                    <!--?php $id_peserta =$i;
                                     $peserta = Peserta::model()->findByPk($id_peserta);
-                                    echo $peserta->nama;
-                                    ?>
+                                    var_dump($peserta);
+                                    ?-->
                                    
                                 </td>
                                 <td>

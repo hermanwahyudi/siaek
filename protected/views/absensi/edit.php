@@ -107,7 +107,7 @@ $this->breadcrumbs = array(
                                                 <td>
                                                     <?php $id_peserta =$item['id_peserta'];
                                                         $peserta = Peserta::model()->findByPk($id_peserta);
-                                                        echo $peserta->nama;
+                                                        echo $peserta['nama'];
                                                     ?>
                                                 </td>
                                                 <td>

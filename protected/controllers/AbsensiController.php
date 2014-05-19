@@ -99,12 +99,21 @@ class AbsensiController extends Controller {
         
         if (isset($_POST['Absensi'])) {
             //var_dump($_POST['Absensi']);
+            //UPDATE `absensi` SET `id_peserta`=[value-1],`id_kegiatan`=[value-2],`id_status`=[value-3],`alasan`=[value-4] WHERE 1
             foreach ($_POST['Absensi'] as $j => $item) {
               $id_peserta =$absensi[$j]['id_peserta'];
+              $alasan =$_POST['Absensi'][$j]['alasan'];
+              $id_status =$_POST['Absensi'][$j]['id_status'];
+              $sql ="UPDATE absensi SET id_status=$id_status,alasan='".$alasan."' WHERE id_peserta=$id_peserta and id_kegiatan=$id ";
+              $connection=Yii::app()->db;
+              $command=$connection->createCommand($sql)->execute();
+              
+              /*
               $ab= Absensi::model()->findByAttributes(array('id_peserta'=>$id_peserta,'id_kegiatan'=>$id));
               $ab->alasan = $_POST['Absensi'][$j]['alasan'];
               $ab->id_status = $_POST['Absensi'][$j]['id_status'];
               $ab->update();
+              */
             }
 
             $this->actionView($id);
