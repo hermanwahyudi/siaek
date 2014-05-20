@@ -68,7 +68,7 @@ $this->breadcrumbs = array(
                             </div>
                             <div class="form-group">
                                 <?php echo $form->labelEx($model, 'deadline'); ?>
-                                <?php echo $form->textField($model, 'deadline', array('class' => 'form-control datetimepicker')); ?>
+                                <?php echo $form->textField($model, 'deadline', array('class' => 'form-control datetimepicker2')); ?>
                             </div>
                         </form>
                     </div>
@@ -122,7 +122,7 @@ $this->breadcrumbs = array(
                 <br>
                 <?php
                     echo TbHtml::pager(array(
-                    array('label' => 'Back', 'url' => '../site/index'),
+                    array('label' => 'Back', 'url' => 'site/absensi/'),
                     ));
                 ?>
             </div> 

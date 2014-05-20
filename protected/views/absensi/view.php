@@ -11,7 +11,7 @@ $this->menu = array(
 );
 ?>
 
-<h1>View Feedback <?php echo $model->nama_kegiatan; ?></h1>
+<h1>Lihat Kegiatan <?php echo $model->nama_kegiatan; ?></h1>
 
 <div class="row clearfix">
     <div class="col-md-11 column"> <br>
@@ -21,9 +21,20 @@ $this->menu = array(
                     <td align="left"><strong>Nama Kegiatan</strong></td><td align="left">: <?php echo $model->nama_kegiatan; ?></td>
                 </tr>
                 <tr>
-                    <td align="left"><strong>Komentar</strong></td><td align="left">: <?php echo $model->status_isi; ?></td>
+                    <td align="left"><strong>Pembicara</strong></td><td align="left">: <?php echo $model->pembicara; ?></td>
                 </tr>
-
+                <tr>
+                    <td align="left"><strong>Materi</strong></td><td align="left">: <?php echo $model->materi; ?></td>
+                </tr>
+                <tr>
+                    <td align="left"><strong>Tanggal</strong></td><td align="left">: <?php echo $model->tanggal; ?></td>
+                </tr>
+                <tr>
+                    <td align="left"><strong>waktu mulai</strong></td><td align="left">: <?php echo $model->waktu_mulai; ?></td>
+                </tr>
+                <tr>
+                    <td align="left"><strong>waktu selesai</strong></td><td align="left">: <?php echo $model->waktu_selesai; ?></td>
+                </tr>
             </tbody>
         </table>
         <table class="table table-bordered">
@@ -46,7 +57,7 @@ $this->menu = array(
             </thead>
             <tbody>
 
-                <?php for ($i = 0; $i < count($absensi); $i++) { ?>
+                <?php for ($i = 0; $i < count($absensi); $i++) {; ?>
                     <tr>
                         <td>
 
@@ -61,19 +72,19 @@ $this->menu = array(
                             ?>
                         </td>
                         <td >
-    <?php echo $absensi[$i]['id_status']; ?>
+                            <?php echo $absensi[$i]['id_status']; ?>
                         </td>
 
                         <td>
-    <?php echo $absensi[$i]['alasan']; ?>
+                            <?php echo $absensi[$i]['alasan']; ?>
                         </td>
                     </tr>
-<?php } ?>
+                <?php }; ?>
             </tbody>
         </table>
     </div>
 </div>
-<p align="left">
+<?php echo CHtml::link('Back', array('site/index')); ?>
 
 
 

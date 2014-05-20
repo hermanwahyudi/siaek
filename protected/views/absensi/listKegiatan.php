@@ -22,14 +22,11 @@ $this->breadcrumbs = array(
         if (Yii::app()->user->hasFlash('successDeadline')):
             echo "<div style='color:green'>" . Yii::app()->user->getFlash('successDeadline') . "</div>";
         endif;
-        ?><br>
-
+        ?>
+        <br>
+        <?php echo CHtml::link('Tambah Absensi', array('absensi/create'),array('class'=>'btn btn-default')); ?>
         <div class="col-md-12 column">	
-            <!--</div>-->
-            <!--</div>-->
-            <!--<div class="row clearfix">-->
-            <!--<div class="col-md-12 column">-->
-            <?php echo CHtml::link('Tambah Absensi', array('absensi/create')); ?>
+            
             <table class="table">
                 <thead>
                     <tr>
