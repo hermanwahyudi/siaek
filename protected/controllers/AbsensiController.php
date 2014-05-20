@@ -2,7 +2,9 @@
 
 class AbsensiController extends Controller
 {
-
+    /*
+     * @return void
+     * */
     public function filters()
     {
         return array(
@@ -10,7 +12,9 @@ class AbsensiController extends Controller
             //'postOnly + delete', // we only allow deletion via POST request
         );
     }
-
+    /*
+     * @return void
+     * */
     public function accessRules()
     {
         return array(
@@ -20,7 +24,11 @@ class AbsensiController extends Controller
                 'actions' => array('index', 'create', 'update', 'admin', 'delete', 'deadline', 'listKegiatan', 'isiAbsensi', 'editAbsensi', 'create', 'view'),
                 'expression' => 'Yii::app()->user->getLevel() == 3',
             ),
+            array('allow', // allow authenticated user to perform 'create' and 'update' actions
 
+                'actions' => array('index', 'create', 'update', 'admin', 'delete', 'deadline', 'listKegiatan', 'isiAbsensi', 'editAbsensi', 'create', 'view'),
+                'expression' => 'Yii::app()->user->getLevel() == 2',
+            ),
             array('deny', // deny all users
                 'users' => array('*'),
             ),
@@ -34,7 +42,11 @@ class AbsensiController extends Controller
     {
         $this->actionListKegiatan();
     }
-
+    /*
+     * @param page objek dari pagination
+     * @param count jumlah kegiatan
+     * @param model kegiatan
+     * */
     public function actionListKegiatan()
     {
         $criteria = new CDbCriteria();
@@ -45,7 +57,13 @@ class AbsensiController extends Controller
         $model = Kegiatan::model()->findAll($criteria);
         $this->render("listKegiatan", array('model' => $model, 'pages' => $pages));
     }
-
+    /*
+     * @param model kegiatan
+     * @param sql statement query
+     * @param peserta peserta dari kegiatan
+     * @param absensi absensi dari masing-masing peserta
+     *
+     * */
     public function actionIsiAbsensi($id)
     {
         $model = $this->loadKegiatan($id);
@@ -80,6 +98,7 @@ class AbsensiController extends Controller
     }
 
     /*
+     * @param model kegiatan
      * @return kegiatan
      * */
     public function loadKegiatan($id)
@@ -136,7 +155,12 @@ class AbsensiController extends Controller
             throw new CHttpException(404, 'The requested Absensi does not exist.');
         return $model;
     }
-
+    /*
+     * @param model kegiatan baru
+     * @param id_user id dari user yang sedang login
+     * @param id_regional id dari regional dimana user tersebut bertanggung jawab
+     * @param absensi data absensi untuk masing-masing peserta yang ada dalam regional tersebut
+     * */
     public function actionCreate()
     {
         $model = new Kegiatan;
@@ -164,8 +188,12 @@ class AbsensiController extends Controller
             }
             $this->redirect(array('view', 'id' => $model->id_kegiatan));
         }
+        if(Yii::app()->user->getLevel()==3){
+            $sql = "SELECT id_peserta,nama FROM peserta WHERE status_aktif=1 and id_regional = '" . $id_regional . "'";
+        }else{
+            $sql = "SELECT id_peserta,nama FROM peserta WHERE status_aktif=1";
+        }
 
-        $sql = "SELECT id_peserta,nama FROM peserta WHERE status_aktif=1 and id_regional = '" . $id_regional . "'";
         $dbCommand = Yii::app()->db->createCommand($sql);
         $peserta = $dbCommand->queryAll();
 
