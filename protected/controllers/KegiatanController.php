@@ -127,9 +127,6 @@ class KegiatanController extends Controller
 	{
 		if(Yii::app()->user->getLevel() == '2') 
 			$this->actionAdmin();
-	
-
-
 	}
 	
 	public function actionDeadline() { // Nampilin list kegiatan
@@ -148,6 +145,9 @@ class KegiatanController extends Controller
 	}
 	public function actionUpdateDeadline($id) {
 		$model=$this->loadModel($id);
+		$nama_regional = "";
+		$model2 = Regional::model()->findByPk($model->id_regional);
+		if($model->id_regional == $model2->id_regional) $nama_regional = $model2->nama;
 		
 		if(isset($_POST['Kegiatan'])) { // Klik submit save
 			$model->deadline = $_POST['Kegiatan']['deadline'];
@@ -187,7 +187,7 @@ class KegiatanController extends Controller
 			}
 		} else  { // Klik Edit di list
 			$this->render("formDeadline", 
-				array('model'=>$model));
+				array('model'=>$model, 'nama_regional' => $nama_regional));
 		}
 	}
 
