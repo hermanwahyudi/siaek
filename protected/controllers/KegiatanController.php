@@ -201,15 +201,11 @@ class KegiatanController extends Controller
 		if(isset($_GET['Kegiatan']))
 			$model->attributes=$_GET['Kegiatan'];
 		
-		$jenis_kegiatan = ""; 
-		if($model->jenis_kegiatan == "1") $jenis_kegiatan = "Bulanan";
-		if($model->jenis_kegiatan == "2") $jenis_kegiatan = "Pekanan";
-		if($model->jenis_kegiatan == "3") $jenis_kegiatan = "Lokal";
-		if($model->jenis_kegiatan == "4") $jenis_kegiatan = "Khusus";
+		
 		
 		$this->render('admin',array(
 			'model'=>$model,
-			'jenis_kegiatan'=>$jenis_kegiatan,
+			
 		));
 		/*$params =array(
         'model'=>$model,
