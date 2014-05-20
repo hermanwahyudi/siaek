@@ -43,7 +43,7 @@ $this->breadcrumbs = array(
                             Jenis Kegiatan
                         </th>
                         <th>
-                            ID Regional
+                            Nama Regional
                         </th>
                         <th>
                             Tanggal Deadline
@@ -55,10 +55,26 @@ $this->breadcrumbs = array(
                 <tbody>
                     <?php $i = 0;
                     foreach ($model as $x => $y) { ?>
+						<?php $jenis_kegiatan = ""; 
+								if($y->jenis_kegiatan == "1") $jenis_kegiatan = "Bulanan";
+								if($y->jenis_kegiatan == "2") $jenis_kegiatan = "Pekanan";
+								if($y->jenis_kegiatan == "3") $jenis_kegiatan = "Lokal";
+								if($y->jenis_kegiatan == "4") $jenis_kegiatan = "Khusus";
+						?>
+						<?php
+							$nama_regional = "";
+							$model2 = Regional::model()->findByPk($y->id_regional);
+							if($y->id_regional == $model2->id_regional) $nama_regional = $model2->nama;
+						?>
+						<?php 
+							$status_isi = "";
+							if($y->status_isi == "1") $status_isi = "Sudah Diisi";
+							if($y->status_isi == "0") $status_isi = "<span style='color:red'>Belum Diisi</span>";
+						?>
                         <?php echo "<tr><td>" . ++$i . "</td><td>" . $y->nama_kegiatan . "</td>"; ?>
-                        <?php echo "<td>" . $y->pembicara . "</td><td>" . $y->jenis_kegiatan . "</td>"; ?>
-                        <?php echo "<td>" . $y->id_regional . "</td><td>" . $y->deadline . "</td>"; ?>
-                        <?php echo "<td>" . $y->status_isi . "</td>"; ?>
+                        <?php echo "<td>" . $y->pembicara . "</td><td>" . $jenis_kegiatan . "</td>"; ?>
+                        <?php echo "<td>" . $nama_regional . "</td><td>" . $y->deadline . "</td>"; ?>
+                        <?php echo "<td>" . $status_isi . "</td>"; ?>
                         <?php
                         if ($y->status_isi == 0) {
 

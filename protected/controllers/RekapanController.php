@@ -123,7 +123,7 @@
 			$bulan = ($bulan > 9) ? $bulan : "0" . $bulan;
 			$dataReader = Kegiatan::model()->getListKegiatan($bulan, $tahun);
 			$program = "";
-			$temp = "<table><tr><td>Regional<hr></td><td>Kegiatan<hr></td><td>Program<hr></td><td>Pembicara<hr></td><td>Materi<hr></td><td>Tanggal<hr></td><td>Jumlah Peserta<hr></td><td>Presentase Pelaksanaan<hr></td><td>Persentase Kehadiran<hr></td></tr>";
+			$temp = "<table><tr><td>Regional<hr></td><td>Kegiatan<hr></td><td>Program<hr></td><td>Pembicara<hr></td><td>Materi<hr></td><td>Tanggal<hr></td><td>Presentase Pelaksanaan<hr></td><td>Persentase Kehadiran<hr></td></tr>";
 			while(($row = $dataReader->read()) !== false) {
 				if($row['jenis_kegiatan'] === '1') $program = "Bulanan";
 				else if($row['jenis_kegiatan'] === '2') $program = "Pekanan";
@@ -131,40 +131,23 @@
 				else if($row['jenis_kegiatan'] === '4') $program = "Khusus";
 				
 				$row1 = Kegiatan::model()->getCountPeserta($row['id_regional'], $row['id_kegiatan'])->read();
+				$row2 = Kegiatan::model()->getCountHadir($row['id_regional'], $row['id_kegiatan'])->read();
+				$arr=explode("-", $row['tanggal']);
 				
 				$temp = $temp . "<tr><td>". $row['nama'] ."</td><td>".$row['nama_kegiatan']."</td><td>".$program."</td><td>".
-								$row['pembicara'] . "</td><td>".$row['materi']."</td><td>".$row['tanggal']
-								."</td><td align='center'>". $row1['jumlah_peserta'] .
-								"</td><td align='center'>". 100/rand(1,4)."%</td><td align='center'>". rand(10,100)."%</td></tr>";
+								$row['pembicara'] . "</td><td>".$row['materi']."</td><td>". $arr[2] ."/".$arr[1]."</td><td align='center'>". (int) (100/rand(1,4))."%</td><td align='center'>". (int)($row2['peserta_hadir']/$row1['jumlah_peserta'] * 100)."%</td></tr>";
 			}
 			$temp = $temp . "</table>";
+			//echo $temp;
 			
-			
-		   # mPDF
 			$mPDF1 = Yii::app()->ePdf->mpdf();
-	 
-			# You can easily override default constructor's params
 			$mPDF1 = Yii::app()->ePdf->mpdf('', 'A3');
-	 
-			# render (full page)
-			# $mPDF1->WriteHTML($this->render('view', array(), true));
-	 
-			# Load a stylesheet
-			# $stylesheet = file_get_contents(Yii::getPathOfAlias('webroot.css') . '/main.css');																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																																
-			# $mPDF1->WriteHTML($stylesheet, 1);
-	 
-			# renderPartial (only 'view' of current controller)
 			$mPDF1->WriteHTML($this->renderPartial('view', array(
 													'bulan' => $this->getBulan($bulan),
 													'tahun' => $tahun,
 													'data' => $temp,
 													),
 													true));
-	 
-			# Renders image
-			# $mPDF1->WriteHTML(CHtml::image(Yii::getPathOfAlias('webroot.css') . '/bg.gif' ));
-	 
-			# Outputs ready PDF
 			$mPDF1->Output();
 		}
 	}

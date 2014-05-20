@@ -22,9 +22,7 @@ $this->menu=array(
     <div class="col-md-12 column"> <br>
 		<table class="table">
             <tbody>
-                <tr>
-					<td align="left"><strong>ID Regional</strong></td><td align="left">: <?php echo $model->id_regional; ?></td>
-				</tr>
+              
 				<tr>
 					<td align="left"><strong>Nama</strong></td><td align="left">: <?php echo $model->nama; ?></td>
 				</tr>

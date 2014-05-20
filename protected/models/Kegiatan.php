@@ -113,12 +113,12 @@ class Kegiatan extends CActiveRecord
         return Yii::app()->db->createCommand($sql)->query();
     }
 
-    public function getCountHadir($id_peserta, $id_kegiatan)
+    public function getCountHadir($id_regional, $id_kegiatan)
     {
-        $sql = "SELECT count(*) AS hadir FROM Absensi
-					WHERE id_peserta = '" . $id_peserta . "'
-					AND id_status < '4' AND id_kegiatan = '" . $id_kegiatan . "'
-				";
+        $sql = " SELECT SUM(psrt1.jumlah_peserta) AS peserta_hadir FROM 
+					(SELECT count(a.id_peserta) AS jumlah_peserta FROM 
+					 Absensi a JOIN Peserta b on a.id_peserta = b.id_peserta WHERE b.id_regional='".$id_regional."' 
+					 AND a.id_kegiatan = '".$id_kegiatan."') AS psrt1";
 
         return Yii::app()->db->createCommand($sql)->query();
     }

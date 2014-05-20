@@ -22,9 +22,7 @@ $this->menu=array(
     <div class="col-md-12 column"> <br>
 		<table class="table">
             <tbody>
-                <tr>
-					<td align="left"><strong>ID Kegiatan</strong></td><td align="left">: <?php echo $model->id_kegiatan; ?></td>
-				</tr>
+                
 				<tr>
 					<td align="left"><strong>Nama Kegiatan</strong></td><td align="left">: <?php echo $model->nama_kegiatan; ?></td>
 				</tr>
@@ -35,7 +33,13 @@ $this->menu=array(
 					<td align="left"><strong>Materi</strong></td><td align="left">: <?php echo $model->materi; ?></td>
 				</tr>
 				<tr>
-					<td align="left"><strong>Jenis Kegiatan</strong></td><td align="left">: <?php echo $model->jenis_kegiatan; ?></td>
+					<td align="left"><strong>Jenis Kegiatan</strong></td><td align="left">: <?php 
+					$jenis_kegiatan = ""; 
+					if($model->jenis_kegiatan == "1") $jenis_kegiatan = "Bulanan";
+					if($model->jenis_kegiatan == "2") $jenis_kegiatan = "Pekanan";
+					if($model->jenis_kegiatan == "3") $jenis_kegiatan = "Lokal";
+					if($model->jenis_kegiatan == "4") $jenis_kegiatan = "Khusus";
+					echo $jenis_kegiatan; ?></td>
 				</tr>
 				<tr>
 					<td align="left"><strong>Hari</strong></td><td align="left">: <?php echo $model->hari; ?></td>
