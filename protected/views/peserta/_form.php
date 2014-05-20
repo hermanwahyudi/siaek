@@ -81,7 +81,7 @@
 		    'size'=>TbHtml::BUTTON_SIZE_LARGE,
 		)); ?><br>
 <br>		<?php echo TbHtml::pager(array(
-    array('label' => 'Back', 'url' => '../site/index'),
+    array('label' => 'Back', 'url' => '../index'),
 )); ?>
     </div>
 </div>

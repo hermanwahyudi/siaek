@@ -202,10 +202,8 @@ class KegiatanController extends Controller
 			$model->attributes=$_GET['Kegiatan'];
 		
 		
-		
 		$this->render('admin',array(
 			'model'=>$model,
-			
 		));
 		/*$params =array(
         'model'=>$model,

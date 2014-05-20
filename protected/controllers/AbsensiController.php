@@ -42,6 +42,7 @@ class AbsensiController extends Controller
         $pages = new CPagination($count);
         $pages->pageSize = 10;
         $pages->applyLimit($criteria);
+		
         $model = Kegiatan::model()->findAll($criteria);
         $this->render("listKegiatan", array('model' => $model, 'pages' => $pages));
     }

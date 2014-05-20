@@ -31,7 +31,7 @@ $('.search-form form').submit(function(){
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
-		'id_regional',
+		//'id_regional',
 		'nomor_peserta',
 		'nama',
 		'no_handphone',
