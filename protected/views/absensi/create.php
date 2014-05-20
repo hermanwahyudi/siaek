@@ -1,5 +1,6 @@
 <?php
 $this->breadcrumbs = array(
+    'Absensi'=>array('index'),
     'Tambah Absensi',
 );
 ?>
@@ -16,7 +17,7 @@ $this->breadcrumbs = array(
     <div class="row clearfix">
         <div class="headline">
             <h1 class="text-justify">
-                Isi Absensi
+                Tambah Absensi
             </h1>
         </div>
         <div class="col-md-12 column">
@@ -27,7 +28,6 @@ $this->breadcrumbs = array(
                         <?php echo $model->nama_kegiatan; ?>
                     </h1>
                     <div class="col-md-6 column">
-
                         <form class="form-horizontal" role="form">
                             <div class="form-group">
                                 <?php echo $form->labelEx($model, 'nama_kegiatan'); ?>
@@ -97,17 +97,17 @@ $this->breadcrumbs = array(
                                     <?php echo $i; ?>
                                 </td>
                                 <td>
-                                    <!--?php $id_peserta =$i;
+                                    <?php $id_peserta =$i;
                                     $peserta = Peserta::model()->findByPk($id_peserta);
-                                    var_dump($peserta);
-                                    ?-->
+                                    echo $peserta['nama'];
+                                    ?>
                                    
                                 </td>
                                 <td>
                                    <?php echo CHtml::activeDropDownList($item,"[$i]id_status",$item->getStatusOption(), array('class' => 'form-control')); ?> 
                                 </td>
                                 <td>
-                                    <?php echo $form->textField($item,"[$i]alasan"); ?>
+                                    <?php echo $form->textField($item,"[$i]alasan", array('class' => 'form-control')); ?>
                                 </td>
                                 </tr>
                             <?php } ?>
@@ -117,7 +117,7 @@ $this->breadcrumbs = array(
             </div>
             <div class="row clearfix">
                 <div class="col-md-12 column">
-                   <?php echo CHtml::submitButton('Submit'); ?>
+                   <?php echo CHtml::submitButton('Submit',array('class'=>'btn btn-default')); ?>
                 </div>
                 <br>
                 <?php

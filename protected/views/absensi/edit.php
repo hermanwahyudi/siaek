@@ -1,5 +1,6 @@
 <?php
 $this->breadcrumbs = array(
+     'Absensi'=>array('index'),
     'Isi Absensi',
 );
 ?>
