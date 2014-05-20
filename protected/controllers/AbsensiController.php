@@ -54,8 +54,15 @@ class AbsensiController extends Controller
         $pages = new CPagination($count);
         $pages->pageSize = 10;
         $pages->applyLimit($criteria);
-		
-        $model = Kegiatan::model()->findAll($criteria);
+		if(Yii::app()->user->getLevel()==3){
+            $id_user = Yii::app()->user->id;
+            $objRegional = Regional::model()->findByAttributes(array('id_user' => $id_user));
+            $id_regional = $objRegional['id_regional'];
+            $model = Kegiatan::model()->findAllByAttributes(array('id_regional' => $id_regional));
+        }else{
+            $model = Kegiatan::model()->findAll($criteria);
+        }
+
         $this->render("listKegiatan", array('model' => $model, 'pages' => $pages));
     }
     /*
@@ -69,7 +76,12 @@ class AbsensiController extends Controller
     {
         $model = $this->loadKegiatan($id);
         $id_regional = $model->id_regional;
-        $sql = "SELECT id_peserta,nama FROM peserta WHERE status_aktif=1 and id_regional = '" . $model->id_regional . "'";
+        if(Yii::app()->user->getLevel()==3){
+            $sql = "SELECT id_peserta,nama FROM peserta WHERE status_aktif=1 and id_regional = '" . $model->id_regional . "'";
+        }else{
+            $sql = "SELECT id_peserta,nama FROM peserta WHERE status_aktif=1";
+        }
+
         $dbCommand = Yii::app()->db->createCommand($sql);
         $peserta = $dbCommand->queryAll();
         if (isset($_POST['Absensi'])) {

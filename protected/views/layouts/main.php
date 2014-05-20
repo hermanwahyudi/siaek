@@ -200,6 +200,7 @@
 <script type="text/javascript">
     $('.datetimepicker').datetimepicker({
         timepicker: false,
+
     });
     $('.datetimepicker2').datetimepicker();
 </script>
