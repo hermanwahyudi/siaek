@@ -54,8 +54,14 @@ $this->breadcrumbs=array(
 						</thead>
 						<tbody>
 						<?php $i=0;foreach($model as $x=>$y) { ?>
+						<?php $jenis_kegiatan = ""; 
+								if($y->jenis_kegiatan == "1") $jenis_kegiatan = "Bulanan";
+								if($y->jenis_kegiatan == "2") $jenis_kegiatan = "Pekanan";
+								if($y->jenis_kegiatan == "3") $jenis_kegiatan = "Lokal";
+								if($y->jenis_kegiatan == "4") $jenis_kegiatan = "Khusus";
+						?>
 						<?php echo "<tr><td>". ++$i ."</td><td>". $y->nama_kegiatan ."</td>";?>
-						<?php echo "<td>". $y->pembicara . "</td><td>". $y->jenis_kegiatan ."</td>"; ?>
+						<?php echo "<td>". $y->pembicara . "</td><td>". $jenis_kegiatan ."</td>"; ?>
 						<?php echo "<td>". $y->regional->nama ."</td><td>". $y->deadline ."</td>"; ?>
 						<?php echo "<td>". CHtml::link('Edit', array('kegiatan/UpdateDeadline', 'id'=>$y->id_kegiatan)) ."</td></tr>"; ?>
 						

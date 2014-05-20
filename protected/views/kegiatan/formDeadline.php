@@ -33,14 +33,21 @@ $this->breadcrumbs=array(
 	<div class="form-group">
 		<label for="" class="col-sm-2 control-label"><?php echo "Jenis Kegiatan"; ?></label>
 			<div class="col-sm-4">
-				<?php echo $model->jenis_kegiatan; ?>
+			<?php
+				$jenis_kegiatan = ""; 
+					if($model->jenis_kegiatan == "1") $jenis_kegiatan = "Bulanan";
+					if($model->jenis_kegiatan == "2") $jenis_kegiatan = "Pekanan";
+					if($model->jenis_kegiatan == "3") $jenis_kegiatan = "Lokal";
+					if($model->jenis_kegiatan == "4") $jenis_kegiatan = "Khusus";
+			?>
+				<?php echo $jenis_kegiatan; ?>
 			
 			</div>
 	</div>
 	<div class="form-group">
 		<label for="" class="col-sm-2 control-label"><?php echo "Regional"; ?></label>
 			<div class="col-sm-4">
-				<?php echo $model->id_regional; ?>
+				<?php echo $nama_regional; ?>
 			
 			</div>
 	</div>
