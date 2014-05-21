@@ -84,6 +84,20 @@ $this->breadcrumbs=array(
              </div>
         </div>
     </div>
+      <div class="col-md-3 column">
+          <div class="panel panel-primary">
+              <div class="panel-body">
+                  <p class="text-center">
+                      <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/isi_absensi.png" width="100" height="100"  alt="b10" class="img-circle">
+                  </p>
+                  <a href="/siaek/absensi/index">
+                      <p class="text-center">
+                          Isi Absensi
+                      </p>
+                  </a>
+              </div>
+          </div>
+      </div>
       </div>
     <?php } else if(Yii::app()->user->getLevel() == "1") { ?>
             <!-- Menu Admin -->
@@ -125,7 +139,7 @@ $this->breadcrumbs=array(
                 </p>
                     <a href="/siaek/absensi/index">
                         <p class="text-center">
-                           Isi Absensi 
+                           Isi Absensi
                         </p>
                     </a>
             </div>
@@ -153,7 +167,7 @@ $this->breadcrumbs=array(
                 </p>
                 <a href="/siaek/feedback/index">
                     <p class="text-center">
-                        Melihat Feedback  
+                        Melihat Feedback
                     </p>
                 </a>
             </div>
