@@ -8,7 +8,11 @@ $this->breadcrumbs=array(
 );
 
 ?>
-
+			<?php 
+				if(Yii::app()->user->hasFlash('successTambah')) {
+					echo "<div style='color:green'>".Yii::app()->user->getFlash('successTambah')."</div>";
+				} 
+			?>
 <div class="headline"> <h1 class="text-justify"><?php echo $model->nama; ?></h1>  </div>
 
 <div class="row clearfix">

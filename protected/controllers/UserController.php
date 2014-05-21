@@ -85,34 +85,24 @@ class UserController extends Controller
             $uploadedFile=CUploadedFile::getInstance($model,'url_image');
             $fileName = "{$rnd}-{$uploadedFile}";  // random number + file name
             $model->url_image = $fileName;
- 
-            if($model->save())
-            {
-                $uploadedFile->saveAs(Yii::app()->basePath.'/../images/'.$fileName);  // image will uplode to rootDirectory/banner/
-                $this->redirect(array('admin'));
-            }
-        }
+			
+			if(!empty($uploadedFile)) {
+				if($model->save())
+				{
+					$uploadedFile->saveAs(Yii::app()->basePath.'/../images/'.$fileName);  // image will uplode to rootDirectory/banner/
+					$this->redirect(array('admin'));
+				}
+			} else {
+				$model->url_image = "default.jpg";
+				if($model->save()) {
+					Yii::app()->user->setFlash('successTambah', 'Pengurus telah berhasil ditambah.');
+					$this->redirect(array('view', $model->id_user));
+				}
+			}
+		}
         $this->render('create',array(
             'model'=>$model,
         ));
-
-
-
-		// $model=new User;
-
-		// // Uncomment the following line if AJAX validation is needed
-		// // $this->performAjaxValidation($model);
-
-		// if(isset($_POST['User']))
-		// {
-		// 	$model->attributes=$_POST['User'];
-		// 	if($model->save())
-		// 		$this->redirect(array('view','id'=>$model->id_user));
-		// }
-
-		// $this->render('create',array(
-		// 	'model'=>$model,
-		// ));
 	}
 
 	/**
@@ -146,26 +136,6 @@ class UserController extends Controller
         $this->render('update',array(
             'model'=>$model,
         ));
-
-
-
-
-
-		// $model=$this->loadModel($id);
-
-		// // Uncomment the following line if AJAX validation is needed
-		// // $this->performAjaxValidation($model);
-
-		// if(isset($_POST['User']))
-		// {
-		// 	$model->attributes=$_POST['User'];
-		// 	if($model->save())
-		// 		$this->redirect(array('view','id'=>$model->id_user));
-		// }
-
-		// $this->render('update',array(
-		// 	'model'=>$model,
-		// ));
 	}
 	
 	public function actionUpdateProfile() {
@@ -176,9 +146,7 @@ class UserController extends Controller
         {
             //$_POST['user']['url_image'] = $model->url_image;
             $model->attributes=$_POST['User'];
-			if($model->username === $_POST['User']['username']) {
 			
-			} {
 				$uploadedFile=CUploadedFile::getInstance($model,'url_image');
 				
 				if(!empty($uploadedFile))  // check if uploaded file is set or not
@@ -197,41 +165,9 @@ class UserController extends Controller
 						$this->redirect(array('profile'));
 					}
 				}
-            }
+            
  
         }
-            
-            
-//            
-//		$model=$this->loadModel($id);
-//		$old_image = $model->url_image;
-//		
-//        if(isset($_POST['User']))
-//        {
-//                         $model->attributes=$_POST['User'];
-//			
-//			if(!empty($_POST['User']['url_image'])) {
-//				$model->url_image = $old_image;
-//				$model->save();
-//				
-//				Yii::app()->user->setFlash('successProfile', 'Profile telah berhasil diubah.');
-//				$this->redirect(array('profile', 'id' => $model->id_user));
-//			} else {
-//			
-//				$model->url_image = rand(10000, 1000000) . ".jpg";
-//				
-//				if($model->save()) {
-//					$uploadedFile=CUploadedFile::getInstance($model,'url_image');
-//					if(!empty($uploadedFile))  { // check if uploaded file is set or not 
-//						$uploadedFile->saveAs(Yii::app()->basePath.'/../images/'.$model->url_image);
-//						Yii::app()->user->setFlash('successProfile', 'Profile telah berhasil diubah.');
-//						$this->redirect(array('profile', 'id' => $model->id_user));
-//					}
-//					
-//				}
-//			}
-// 
-//        }
 		
         $this->render('updateProfile',array(
             'model'=>$model,
@@ -247,8 +183,10 @@ class UserController extends Controller
 		$this->loadModel($id)->delete();
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-		if(!isset($_GET['ajax']))
+		if(!isset($_GET['ajax'])) {
+			Yii::app()->user->setFlash('successDelete', 'Pengurus telah berhasil dihapus.');
 			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+		}
 	}
 
 	/**
