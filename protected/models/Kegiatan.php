@@ -194,6 +194,9 @@ class Kegiatan extends CActiveRecord
             'pagination' => array(
                 'pageSize' => 10,
             ),
+			'sort'=>array(
+                'defaultOrder'=>'id_kegiatan DESC',
+            ),
         ));
 
     }
