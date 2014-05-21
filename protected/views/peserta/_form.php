@@ -80,9 +80,9 @@
 		    'color'=>TbHtml::BUTTON_COLOR_PRIMARY,
 		    'size'=>TbHtml::BUTTON_SIZE_LARGE,
 		)); ?><br>
-<br>		<?php echo TbHtml::pager(array(
-    array('label' => 'Back', 'url' => '../index'),
-)); ?>
+		<br>		<?php echo TbHtml::pager(array(
+			
+		)); ?><?php echo CHtml::link('Back', array('peserta/index')); ?>
     </div>
 </div>
 

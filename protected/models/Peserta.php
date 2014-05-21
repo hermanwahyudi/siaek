@@ -34,6 +34,8 @@ class Peserta extends CActiveRecord
 			array('id_regional, nomor_peserta, nama, no_handphone, email, jenis_kelamin, status_aktif', 'required'),
 			array('id_regional, status_aktif', 'numerical', 'integerOnly'=>true),
 			array('nomor_peserta', 'length', 'max'=>8),
+			array('no_handphone', 'numerical'),
+			array('email', 'email'),
 			array('nama, email', 'length', 'max'=>64),
 			array('no_handphone', 'length', 'max'=>20),
 			array('jenis_kelamin', 'length', 'max'=>1),
@@ -103,7 +105,10 @@ class Peserta extends CActiveRecord
 			'criteria'=>$criteria,
 			'pagination'=> array(
 				'pageSize'=> 5,
-				),
+			),
+			'sort'=>array(
+                'defaultOrder'=>'nama ASC',
+            ),
 		));
 	}
 
