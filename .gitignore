@@ -21,3 +21,4 @@ protected/data/*.db
 .idea/vcs.xml
 
 .idea/workspace.xml
+*.DS_Store

@@ -58,7 +58,7 @@ class AbsensiController extends Controller
             $id_user = Yii::app()->user->id;
             $objRegional = Regional::model()->findByAttributes(array('id_user' => $id_user));
             $id_regional = $objRegional['id_regional'];
-            $model = Kegiatan::model()->findAllByAttributes(array('id_regional' => $id_regional));
+            $model = Kegiatan::model()->findAllByAttributes(array('id_regional' => $id_regional),array('order'=>'id_kegiatan desc'));
         }else{
             $model = Kegiatan::model()->findAll($criteria);
         }
