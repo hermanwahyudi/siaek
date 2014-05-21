@@ -35,7 +35,7 @@ $('.search-form form').submit(function(){
 		'nip',
 		'role',
 		'username',
-		'password',
+		//'password',
 		'nama',
 		'jenis_kelamin',
 		'email',
