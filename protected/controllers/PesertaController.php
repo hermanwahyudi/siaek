@@ -102,14 +102,14 @@ class PesertaController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-
+		$nomor_peserta = $model->nomor_peserta;
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['Peserta']))
 		{
-		//	$model->attributes=$_POST['Peserta'];
-			if($_POST['Peserta']['nomor_peserta'] === $model->nomor_peserta) {
+			$model->attributes=$_POST['Peserta'];
+			if($model->nomor_peserta === $nomor_peserta) {
 				if($model->save()) {
 					Yii::app()->user->setFlash('successUbah', 'Peserta telah berhasil diubah.');
 					$this->redirect(array('index'));
