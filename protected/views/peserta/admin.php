@@ -32,7 +32,7 @@ $('.search-form form').submit(function(){
 			}
 		?>
 
-<?php echo CHtml::link('Tambah Peserta', array('peserta/create', 'class'=>'col-sm-1')); ?>
+<?php echo CHtml::link('Tambah Peserta', array('peserta/create')); ?>
 </div><!-- search-form -->
 
 <?php $this->widget('zii.widgets.grid.CGridView', array(

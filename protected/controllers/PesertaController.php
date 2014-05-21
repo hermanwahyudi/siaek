@@ -76,9 +76,16 @@ class PesertaController extends Controller
 		if(isset($_POST['Peserta']))
 		{
 			$model->attributes=$_POST['Peserta'];
-			if($model->save()) {
-				Yii::app()->user->setFlash('successTambah', 'Peserta telah berhasil ditambah.');
-				$this->redirect(array('index'));
+			$dataPeserta = Peserta::model()->findByAttributes(array('nomor_peserta' => $model->nomor_peserta));
+			
+			if(empty($dataPeserta)) {
+				if($model->save()) {
+					Yii::app()->user->setFlash('successTambah', 'Peserta telah berhasil ditambah.');
+					$this->redirect(array('create'));
+				}
+			} else {
+				Yii::app()->user->setFlash('errorNomorPeserta', 'Nomor peserta telah ada di database.');
+				$this->redirect(array('create'));
 			}
 		}
 
@@ -101,10 +108,23 @@ class PesertaController extends Controller
 
 		if(isset($_POST['Peserta']))
 		{
-			$model->attributes=$_POST['Peserta'];
-			if($model->save()) {
-				Yii::app()->user->setFlash('successUbah', 'Peserta telah berhasil diubah.');
-				$this->redirect(array('index'));
+		//	$model->attributes=$_POST['Peserta'];
+			if($_POST['Peserta']['nomor_peserta'] === $model->nomor_peserta) {
+				if($model->save()) {
+					Yii::app()->user->setFlash('successUbah', 'Peserta telah berhasil diubah.');
+					$this->redirect(array('index'));
+				}
+			} else {
+				$dataPeserta = Peserta::model()->findByAttributes(array('nomor_peserta' => $model->nomor_peserta));
+				if(empty($dataPeserta)) {
+					if($model->save()) {
+						Yii::app()->user->setFlash('successUbah', 'Peserta telah berhasil diubah.');
+						$this->redirect(array('index'));
+					}
+				} else {
+					Yii::app()->user->setFlash('errorNomorPeserta', 'Nomor peserta telah ada di database.');
+					$this->redirect(array('update', 'id'=>$id));
+				}
 			}
 		}
 

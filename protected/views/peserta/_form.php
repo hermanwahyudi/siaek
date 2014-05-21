@@ -14,7 +14,7 @@
 	// See class documentation of CActiveForm for details on this.
 	'enableAjaxValidation'=>false,
 )); ?>
-
+	
     <p class="help-block">Fields with <span class="required">*</span> are required.</p>
 
     
@@ -24,7 +24,11 @@
             <label for="" class="col-sm-2 control-label"><?php echo $form->labelEx($model,'nomor_peserta'); ?></label>
                 <div class="col-sm-4">
                     <?php echo $form->textField($model,'nomor_peserta',array('class'=>'form-control')); ?>
-                    <span class="error-label"><?php echo $form->error($model,'nomor_peserta'); ?></span>
+                    <span class="error-label"><?php echo $form->error($model,'nomor_peserta'); ?>
+						<?php if(Yii::app()->user->hasFlash('errorNomorPeserta')) {
+							echo "<div style='color:red'>".Yii::app()->user->getFlash('errorNomorPeserta')."</div>";
+						} ?>
+					</span>
                 </div>
         </div>
 
