@@ -23,6 +23,12 @@ $('.search-form form').submit(function(){
 
 <div class="headline"> <h1 class="text-justify">List Kegiatan</h1>  </div>
 
+		<?php 
+			if(Yii::app()->user->hasFlash('successDelete')) {
+				echo "<div style='color:green'>".Yii::app()->user->getFlash('successDelete')."</div>";
+			}
+		?>
+
 <?php echo CHtml::link('Tambah Kegiatan', array('kegiatan/create')); ?>
 
 <?php $this->widget('zii.widgets.grid.CGridView', array(
@@ -30,23 +36,20 @@ $('.search-form form').submit(function(){
 	'dataProvider'=>$model->search(),
 	'filter'=>$model,
 	'columns'=>array(
+		array(
+             'name'=>'regional',
+              'value'=>'$data->regional->nama',
+        ),
 		'nama_kegiatan',
 		'pembicara',
 		'materi',
-		'jenis_kegiatan',
+		array('name'=>'jenis_kegiatan', 
+			'value'=>'$data->jenis_kegiatan == "1" ? "Bulanan" : ($data->jenis_kegiatan == "2" ? "Pekanan" : ($data->jenis_kegiatan == "3" ? "Lokal" : "Khusus"))'),
 		'hari',
 		'tanggal',
 		'waktu_mulai',
 		'waktu_selesai',
-		array(
-                 'name'=>'nama_kegiatan',
-                 'type'=>'raw',
-                   'value'=> 'CHtml::encode($data->nama_kegiatan)'
-                ),
-		array(
-                 'name'=>'regional',
-                   'value'=>'$data->regional->nama',
-                ),
+		
 		array(
 			'class'=>'CButtonColumn',
 		),

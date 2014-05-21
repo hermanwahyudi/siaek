@@ -7,17 +7,16 @@ $this->breadcrumbs=array(
 	$model->nama_kegiatan,
 );
 
-$this->menu=array(
-	array('label'=>'List Kegiatan', 'url'=>array('index')),
-	array('label'=>'Create Kegiatan', 'url'=>array('create')),
-	array('label'=>'Update Kegiatan', 'url'=>array('update', 'id'=>$model->id_kegiatan)),
-	array('label'=>'Delete Kegiatan', 'url'=>'#', 'linkOptions'=>array('submit'=>array('delete','id'=>$model->id_kegiatan),'confirm'=>'Are you sure you want to delete this item?')),
-	array('label'=>'Manage Kegiatan', 'url'=>array('admin')),
-);
 ?>
 
 <div class="headline"> <h1 class="text-justify"><?php echo $model->nama_kegiatan; ?></h1>  </div>
-
+			<?php
+			if(Yii::app()->user->hasFlash('successTambah')) {
+				echo "<div style='color:green'>".Yii::app()->user->getFlash('successTambah')."</div>";
+			} else if(Yii::app()->user->hasFlash('successUbah')) {
+				echo "<div style='color:green'>".Yii::app()->user->getFlash('successUbah')."</div>";
+			} 
+			?>
 <div class="row clearfix">
     <div class="col-md-12 column"> <br>
 		<table class="table">

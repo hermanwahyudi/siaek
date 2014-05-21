@@ -27,19 +27,13 @@ class KegiatanController extends Controller
 	public function accessRules()
 	{
 		return array(
-			//array('allow',  // allow all users to perform 'index' and 'view' actions
-				//'actions'=>array('index','view', 'UpdateDeadline'),
-				//'users'=>array('*'),
-			//),
+			
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
 				'actions'=>array('create','update', 'admin', 'delete', 'deadline', 'index','view','UpdateDeadline'),
 				'expression'=>'Yii::app()->user->getLevel() == "2"',
 				//'users'=>array('@'),
 			),
-			//array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				//'actions'=>array('admin','delete'),
-				//'users'=>array('admin'),
-			//),
+			
 			array('deny',  // deny all users
 				'users'=>array('*'),
 			),
@@ -71,9 +65,20 @@ class KegiatanController extends Controller
 		if(isset($_POST['Kegiatan']))
 		{
 			$model->attributes=$_POST['Kegiatan'];
-                        $model->status_isi=0;
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id_kegiatan));
+            $model->status_isi=0;
+			
+			$waktu_selesai = explode(":", $_POST['Kegiatan']['waktu_selesai']);
+			$waktu_mulai = explode(":", $_POST['Kegiatan']['waktu_mulai']);
+			if($waktu_selesai[0] < $waktu_mulai[0]) {
+				Yii::app()->user->setFlash('errorWaktu', 'Waktu selesai lebih kecil dari waktu mulai!');
+				$this->redirect(array('create'));
+			} else {
+				if($model->save()) {
+					//$this->redirect(array());
+					Yii::app()->user->setFlash('successTambah', 'Kegiatan baru telah berhasil ditambah.');
+					$this->redirect(array('view','id'=>$model->id_kegiatan));
+				}
+			}
 		}
 
 		$this->render('create',array(
@@ -96,8 +101,19 @@ class KegiatanController extends Controller
 		if(isset($_POST['Kegiatan']))
 		{
 			$model->attributes=$_POST['Kegiatan'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id_kegiatan));
+			$waktu_selesai = explode(":", $_POST['Kegiatan']['waktu_selesai']);
+			$waktu_mulai = explode(":", $_POST['Kegiatan']['waktu_mulai']);
+			
+			if($waktu_selesai[0] < $waktu_mulai[0]) {
+				Yii::app()->user->setFlash('errorWaktu', 'Waktu selesai lebih kecil dari waktu mulai!');
+				$this->redirect(array('update','id'=>$model->id_kegiatan));
+			} else {
+				if($model->save()) {
+					//$this->redirect(array('view','id'=>$model->id_kegiatan));
+					Yii::app()->user->setFlash('successUbah', 'Kegiatan telah berhasil diubah.');
+					$this->redirect(array('view','id'=>$model->id_kegiatan));
+				}
+			}
 		}
 
 		$this->render('update',array(
@@ -116,8 +132,10 @@ class KegiatanController extends Controller
 		$this->loadModel($id)->delete();
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-		if(!isset($_GET['ajax']))
+		if(!isset($_GET['ajax'])) {
+			Yii::app()->user->setFlash('successDelete', 'Kegiatan telah berhasil dihapus.');
 			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+		}
 	}
 
 	/**
@@ -125,8 +143,14 @@ class KegiatanController extends Controller
 	 */
 	public function actionIndex()
 	{
-		if(Yii::app()->user->getLevel() == '2') 
-			$this->actionAdmin();
+		$model=new Kegiatan('search');
+		$model->unsetAttributes();  // clear any default values
+		if(isset($_GET['Kegiatan']))
+			$model->attributes=$_GET['Kegiatan'];
+		
+		$this->render('admin',array(
+			'model'=>$model,
+		));	
 	}
 	
 	public function actionDeadline() { // Nampilin list kegiatan
@@ -194,24 +218,9 @@ class KegiatanController extends Controller
 	/**
 	 * Manages all models.
 	 */
-	public function actionAdmin()
+	public function actionListKegiatan($model)
 	{
-		$model=new Kegiatan('search');
-		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Kegiatan']))
-			$model->attributes=$_GET['Kegiatan'];
 		
-		
-		$this->render('admin',array(
-			'model'=>$model,
-		));
-		/*$params =array(
-        'model'=>$model,
-    	);
-		 if(!isset($_GET['ajax'])) $this->render('admin', $params);
-    	else  $this->renderPartial('admin', $params);*/
-
-
 	}
 
 	/**

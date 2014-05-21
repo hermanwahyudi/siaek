@@ -3,7 +3,13 @@
 /* @var $model Kegiatan */
 /* @var $form CActiveForm */
 ?>
-
+		<?php
+			if(Yii::app()->user->hasFlash('errorWaktu')) {
+				echo "<div style='color:red'>".Yii::app()->user->getFlash('errorWaktu')."</div>";
+			} else if(Yii::app()->user->hasFlash('errorDeadline')) {
+				echo "<div style='color:red'>".Yii::app()->user->getFlash('errorDeadline')."</div>";
+			}
+		?><br>
 <div class="form-horizontal" role="form">
 
 

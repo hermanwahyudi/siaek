@@ -94,7 +94,7 @@ class Kegiatan extends CActiveRecord
         );
     }
 
-    public function getListKegiatan($bulan, $tahun, $jenis_kegiatan)
+    public function getRekapKegiatan($bulan, $tahun, $jenis_kegiatan)
     {
         $sql = "SELECT K.id_regional, K.id_kegiatan, nama, nama_kegiatan, pembicara, materi, tanggal, jenis_kegiatan FROM Regional R JOIN Kegiatan K ON R.id_regional = K.id_regional
 						WHERE tanggal LIKE '%" . $tahun . "-" . $bulan . "-%'
@@ -153,7 +153,13 @@ class Kegiatan extends CActiveRecord
             'status_isi' => 'Status',
         );
     }
-
+	public function getListKegiatan() {
+		date_default_timezone_set("Asia/Jakarta");
+		$arrDatenow = explode("-", date("Y-m-d"));
+		
+		$sql = "SELECT * FROM Kegiatan WHERE tanggal LIKE '%" . $arrDatenow[0] . "-" . $arrDatenow[1] . "-%' ORDER BY id_kegiatan DESC";
+        return Yii::app()->db->createCommand($sql)->query();
+	}
     /**
      * Retrieves a list of models based on the current search/filter conditions.
      *

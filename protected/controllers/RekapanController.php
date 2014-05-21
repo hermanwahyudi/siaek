@@ -119,7 +119,7 @@
 			}
 		}
 		public function listBulanan($bulan, $tahun, $temp) {
-			$dataReader = Kegiatan::model()->getListKegiatan($bulan, $tahun, '1');
+			$dataReader = Kegiatan::model()->getRekapKegiatan($bulan, $tahun, '1');
 			$temp = $temp . "<h4>Bulanan</h4><table><tr><td>Regional<hr></td><td>Kegiatan<hr></td><td align='center'>Pembicara<hr></td><td align='center'>Materi<hr></td><td align='center'>Tanggal Pelaksanaan<hr></td><td>Persentase Kehadiran<hr></td></tr>";
 			while(($row = $dataReader->read()) !== false) {
 				$row1 = Kegiatan::model()->getCountPeserta($row['id_regional'], $row['id_kegiatan'])->read();
@@ -133,7 +133,7 @@
 			return $temp;
 		}
 		public function listPekanan($bulan, $tahun, $temp) {
-			$dataReader = Kegiatan::model()->getListKegiatan($bulan, $tahun, '2');
+			$dataReader = Kegiatan::model()->getRekapKegiatan($bulan, $tahun, '2');
 			$temp = $temp . "<h4>Pekanan</h4><table><tr><td>Regional<hr></td><td>Kegiatan<hr></td><td align='center'>Pembicara<hr></td><td align='center'>Materi<hr></td><td align='center'>Tanggal Pelaksanaan<hr></td><td>Persentase Pelaksanaan<hr></td></tr>";
 			while(($row = $dataReader->read()) !== false) {
 				$row1 = Kegiatan::model()->getCountPekanan($row['id_regional'], $row['id_kegiatan'])->read();
@@ -146,7 +146,7 @@
 			return $temp;
 		}
 		public function listLokal($bulan, $tahun, $temp) {
-			$dataReader = Kegiatan::model()->getListKegiatan($bulan, $tahun, '3');
+			$dataReader = Kegiatan::model()->getRekapKegiatan($bulan, $tahun, '3');
 			$temp = $temp . "<h4>Lokal</h4><table><tr><td>Regional<hr></td><td>Kegiatan<hr></td><td align='center'>Pembicara<hr></td><td align='center'>Materi<hr></td><td align='center'>Tanggal Pelaksanaan<hr></td></tr>";
 			while(($row = $dataReader->read()) !== false) {
 				$arr = explode("-", $row['tanggal']);
@@ -158,7 +158,7 @@
 			return $temp;
 		}
 		public function listKhusus($bulan, $tahun, $temp) {
-			$dataReader = Kegiatan::model()->getListKegiatan($bulan, $tahun, '4');
+			$dataReader = Kegiatan::model()->getRekapKegiatan($bulan, $tahun, '4');
 			$temp = $temp . "<h4>Khusus</h4><table><tr><td>Regional<hr></td><td>Kegiatan<hr></td><td align='center'>Pembicara<hr></td><td align='center'>Materi<hr></td><td align='center'>Tanggal Pelaksanaan<hr></td></tr>";
 			while(($row = $dataReader->read()) !== false) {
 				$arr = explode("-", $row['tanggal']);
