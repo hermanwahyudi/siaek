@@ -97,7 +97,15 @@ class AbsensiController extends Controller
                     $absensi[$j]->save();
                 }
             }
-            $model->status_isi = 1;
+            $now= new CDbExpression('NOW()');
+
+            if( $now <= $model->deadline ){
+                $model->status_isi = 1;
+            }else{
+                $model->status_isi = 2;
+            }
+
+            $model->waktu_isi = $now;
             $model->save();
             $this->actionListKegiatan();
         }
@@ -138,6 +146,8 @@ class AbsensiController extends Controller
                 $connection = Yii::app()->db;
                 $command = $connection->createCommand($sql)->execute();
             }
+            $model->waktu_isi = new CDbExpression('NOW()');
+            $model->save();
             $this->actionView($id);
         }
         $absensi = $this->loadModelAbsensi($model->id_kegiatan);
@@ -186,6 +196,7 @@ class AbsensiController extends Controller
         if (isset($_POST['Absensi'])) {
             $model->attributes = $_POST['Kegiatan'];
             $model->id_regional = $id_regional;
+            $model->waktu_isi = new CDbExpression('NOW()');
             $model->status_isi = 1;
             if ($model->save()) {
                 foreach ($_POST['Absensi'] as $j => $item) {

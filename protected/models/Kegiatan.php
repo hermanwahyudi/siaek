@@ -15,6 +15,7 @@
  * @property integer $id_regional
  * @property string $nama_kegiatan
  * @property integer $status_isi
+ * * @property string $waktu_isi
  */
 class Kegiatan extends CActiveRecord
 {
@@ -151,6 +152,7 @@ class Kegiatan extends CActiveRecord
             'id_regional' => 'Id Regional',
             'nama_kegiatan' => 'Nama Kegiatan',
             'status_isi' => 'Status',
+            'waktu_isi' => 'Waktu Isi'
         );
     }
 	public function getListKegiatan() {

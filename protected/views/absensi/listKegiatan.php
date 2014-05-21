@@ -68,8 +68,11 @@ $this->breadcrumbs = array(
 						?>
 						<?php 
 							$status_isi = "";
+                            if($y->status_isi == "2") $status_isi = "<span style='color:red'>Telat Isi</span>";
 							if($y->status_isi == "1") $status_isi = "Sudah Diisi";
 							if($y->status_isi == "0") $status_isi = "<span style='color:red'>Belum Diisi</span>";
+
+
 						?>
                         <?php echo "<tr><td>" . ++$i . "</td><td>" . $y->nama_kegiatan . "</td>"; ?>
                         <?php echo "<td>" . $y->pembicara . "</td><td>" . $jenis_kegiatan . "</td>"; ?>

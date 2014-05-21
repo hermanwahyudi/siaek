@@ -11,7 +11,7 @@ $this->menu = array(
 );
 ?>
 
-<h1>Lihat Kegiatan <?php echo $model->nama_kegiatan; ?></h1>
+<h1>Absensi Kegiatan <?php echo $model->nama_kegiatan; ?></h1>
 
 <div class="row clearfix">
     <div class="col-md-11 column"> <br>
@@ -55,6 +55,7 @@ $this->menu = array(
             </th>
             </tr>
             </thead>
+            <h1>Daftar Peserta</h1>
             <tbody>
 
                 <?php for ($i = 0; $i < count($absensi); $i++) {; ?>
