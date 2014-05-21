@@ -118,26 +118,66 @@
 				case 12 : return 'Desember'; break;
 			}
 		}
+		public function listBulanan($bulan, $tahun, $temp) {
+			$dataReader = Kegiatan::model()->getListKegiatan($bulan, $tahun, '1');
+			$temp = $temp . "<h4>Bulanan</h4><table><tr><td>Regional<hr></td><td>Kegiatan<hr></td><td align='center'>Pembicara<hr></td><td align='center'>Materi<hr></td><td align='center'>Tanggal Pelaksanaan<hr></td><td>Persentase Kehadiran<hr></td></tr>";
+			while(($row = $dataReader->read()) !== false) {
+				$row1 = Kegiatan::model()->getCountPeserta($row['id_regional'], $row['id_kegiatan'])->read();
+				$row2 = Kegiatan::model()->getCountHadir($row['id_regional'], $row['id_kegiatan'])->read();
+				$arr = explode("-", $row['tanggal']);
+				
+				$temp = $temp . "<tr><td>". $row['nama'] ."</td><td align='center'>".$row['nama_kegiatan']."</td><td align='center'>".
+								$row['pembicara'] . "</td><td align='center'>".$row['materi']."</td><td align='center'>". $arr[2] ."/".$arr[1]."</td><td align='center'>". (int)($row2['peserta_hadir']/$row1['jumlah_peserta'] * 100)."%</td></tr>";
+			}
+			$temp = $temp . "</table>";
+			return $temp;
+		}
+		public function listPekanan($bulan, $tahun, $temp) {
+			$dataReader = Kegiatan::model()->getListKegiatan($bulan, $tahun, '2');
+			$temp = $temp . "<h4>Pekanan</h4><table><tr><td>Regional<hr></td><td>Kegiatan<hr></td><td align='center'>Pembicara<hr></td><td align='center'>Materi<hr></td><td align='center'>Tanggal Pelaksanaan<hr></td><td>Persentase Pelaksanaan<hr></td></tr>";
+			while(($row = $dataReader->read()) !== false) {
+				$row1 = Kegiatan::model()->getCountPekanan($row['id_regional'], $row['id_kegiatan'])->read();
+				$arr = explode("-", $row['tanggal']);
+				
+				$temp = $temp . "<tr><td>". $row['nama'] ."</td><td align='center'>".$row['nama_kegiatan']."</td><td align='center'>".
+								$row['pembicara'] . "</td><td align='center'>".$row['materi']."</td><td align='center'>". $arr[2] ."/".$arr[1]."</td><td align='center'>". (int)(($row1['jumlah_pelaksanaan']/4) * 100) ."%</td></tr>";
+			}
+			$temp = $temp . "</table>";
+			return $temp;
+		}
+		public function listLokal($bulan, $tahun, $temp) {
+			$dataReader = Kegiatan::model()->getListKegiatan($bulan, $tahun, '3');
+			$temp = $temp . "<h4>Lokal</h4><table><tr><td>Regional<hr></td><td>Kegiatan<hr></td><td align='center'>Pembicara<hr></td><td align='center'>Materi<hr></td><td align='center'>Tanggal Pelaksanaan<hr></td></tr>";
+			while(($row = $dataReader->read()) !== false) {
+				$arr = explode("-", $row['tanggal']);
+				
+				$temp = $temp . "<tr><td>". $row['nama'] ."</td><td align='center'>".$row['nama_kegiatan']."</td><td align='center'>".
+								$row['pembicara'] . "</td><td align='center'>".$row['materi']."</td><td align='center'>". $arr[2] ."/".$arr[1]."</td></tr>";
+			}
+			$temp = $temp . "</table>";
+			return $temp;
+		}
+		public function listKhusus($bulan, $tahun, $temp) {
+			$dataReader = Kegiatan::model()->getListKegiatan($bulan, $tahun, '4');
+			$temp = $temp . "<h4>Khusus</h4><table><tr><td>Regional<hr></td><td>Kegiatan<hr></td><td align='center'>Pembicara<hr></td><td align='center'>Materi<hr></td><td align='center'>Tanggal Pelaksanaan<hr></td></tr>";
+			while(($row = $dataReader->read()) !== false) {
+				$arr = explode("-", $row['tanggal']);
+				
+				$temp = $temp . "<tr><td>". $row['nama'] ."</td><td align='center'>".$row['nama_kegiatan']."</td><td align='center'>".
+								$row['pembicara'] . "</td><td align='center'>".$row['materi']."</td><td align='center'>". $arr[2] ."/".$arr[1]."</td></tr>";
+			}
+			$temp = $temp . "</table>";
+			return $temp;
+		}
 		public function actionGeneratePdf($bulan, $tahun) {
 
 			$bulan = ($bulan > 9) ? $bulan : "0" . $bulan;
-			$dataReader = Kegiatan::model()->getListKegiatan($bulan, $tahun);
-			$program = "";
-			$temp = "<table><tr><td>Regional<hr></td><td>Kegiatan<hr></td><td>Program<hr></td><td>Pembicara<hr></td><td>Materi<hr></td><td>Tanggal<hr></td><td>Presentase Pelaksanaan<hr></td><td>Persentase Kehadiran<hr></td></tr>";
-			while(($row = $dataReader->read()) !== false) {
-				if($row['jenis_kegiatan'] === '1') $program = "Bulanan";
-				else if($row['jenis_kegiatan'] === '2') $program = "Pekanan";
-				else if($row['jenis_kegiatan'] === '3') $program = "Lokal";
-				else if($row['jenis_kegiatan'] === '4') $program = "Khusus";
-				
-				$row1 = Kegiatan::model()->getCountPeserta($row['id_regional'], $row['id_kegiatan'])->read();
-				$row2 = Kegiatan::model()->getCountHadir($row['id_regional'], $row['id_kegiatan'])->read();
-				$arr=explode("-", $row['tanggal']);
-				
-				$temp = $temp . "<tr><td>". $row['nama'] ."</td><td>".$row['nama_kegiatan']."</td><td>".$program."</td><td>".
-								$row['pembicara'] . "</td><td>".$row['materi']."</td><td>". $arr[2] ."/".$arr[1]."</td><td align='center'>". (int) (100/rand(1,4))."%</td><td align='center'>". (int)($row2['peserta_hadir']/$row1['jumlah_peserta'] * 100)."%</td></tr>";
-			}
-			$temp = $temp . "</table>";
+			$temp = "";
+			$temp = $this->listBulanan($bulan, $tahun, $temp);
+			$temp = $this->listPekanan($bulan, $tahun, $temp);
+			$temp = $this->listLokal($bulan, $tahun, $temp);
+			$temp = $this->listKhusus($bulan, $tahun, $temp);
+			
 			//echo $temp;
 			
 			$mPDF1 = Yii::app()->ePdf->mpdf();
