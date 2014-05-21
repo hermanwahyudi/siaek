@@ -45,7 +45,7 @@ $('.search-form form').submit(function(){
 		'materi',
 		array('name'=>'jenis_kegiatan', 
 			'value'=>'$data->jenis_kegiatan == "1" ? "Bulanan" : ($data->jenis_kegiatan == "2" ? "Pekanan" : ($data->jenis_kegiatan == "3" ? "Lokal" : "Khusus"))'),
-		'hari',
+		//'hari',
 		'tanggal',
 		'waktu_mulai',
 		'waktu_selesai',

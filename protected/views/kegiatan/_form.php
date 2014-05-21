@@ -67,6 +67,7 @@
             </span>
         </div>
     </div>
+	<!--
     <div class="form-group">
         <label for="" class="col-sm-2 control-label"><?php echo $form->labelEx($model, 'hari'); ?></label>
         <div class="col-sm-4">
@@ -76,7 +77,7 @@
             </div>
             <span class="error-label"><?php echo $form->error($model, 'hari'); ?></span>
         </div>
-    </div>
+    </div>-->
     <div class="form-group">
         <label for="" class="col-sm-2 control-label"><?php echo $form->labelEx($model, 'tanggal'); ?></label>
         <div class="col-sm-4">
