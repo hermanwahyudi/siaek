@@ -90,13 +90,14 @@ class UserController extends Controller
 				if($model->save())
 				{
 					$uploadedFile->saveAs(Yii::app()->basePath.'/../images/'.$fileName);  // image will uplode to rootDirectory/banner/
-					$this->redirect(array('admin'));
+					Yii::app()->user->setFlash('successTambah', 'Pengurus telah berhasil ditambah.');
+					$this->redirect(array('index'));
 				}
 			} else {
 				$model->url_image = "default.jpg";
 				if($model->save()) {
 					Yii::app()->user->setFlash('successTambah', 'Pengurus telah berhasil ditambah.');
-					$this->redirect(array('view', $model->id_user));
+					$this->redirect(array('index'));
 				}
 			}
 		}
@@ -114,22 +115,28 @@ class UserController extends Controller
 	{
 
 		$model=$this->loadModel($id);
+		$old_image = $model->url_image;
 		
         if(isset($_POST['User']))
         {
-            $_POST['user']['url_image'] = $model->url_image;
             $model->attributes=$_POST['User'];
  
             $uploadedFile=CUploadedFile::getInstance($model,'url_image');
  
-            if($model->save())
-            {
-                if(!empty($uploadedFile))  // check if uploaded file is set or not
-                {
-                    $uploadedFile->saveAs(Yii::app()->basePath.'/../images/'.$model->url_image);
-                }
-                $this->redirect(array('admin'));
-            }
+			if(!empty($uploadedFile)) {
+				$model->url_image = rand(10000, 1000000) . ".jpg";
+				if($model->save())	{
+					$uploadedFile->saveAs(Yii::app()->basePath.'/../images/'.$model->url_image);
+					Yii::app()->user->setFlash('successUbah', 'Pengurus telah berhasil diubah.');
+					$this->redirect(array('index'));
+				}
+			} else {
+				$model->url_image = $old_image;
+					if($model->save()) {
+						Yii::app()->user->setFlash('successUbah', 'Pengurus telah berhasil diubah.');
+						$this->redirect(array('index'));
+					}
+			}
  
         }
  
@@ -185,7 +192,7 @@ class UserController extends Controller
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax'])) {
 			Yii::app()->user->setFlash('successDelete', 'Pengurus telah berhasil dihapus.');
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
 		}
 	}
 
@@ -195,7 +202,7 @@ class UserController extends Controller
 	public function actionIndex()
 	{
 		if(Yii::app()->user->getLevel() == '1') 
-			$this->actionAdmin();
+			$this->actionListPengurus();
 	}
 	
 	public function actionPassword() {
@@ -240,7 +247,7 @@ class UserController extends Controller
 	/**
 	 * Manages all models.
 	 */
-	public function actionAdmin()
+	public function actionListPengurus()
 	{
 		$model=new User('search');
 		$model->unsetAttributes();  // clear any default values
@@ -281,6 +288,4 @@ class UserController extends Controller
 			Yii::app()->end();
 		}
 	}
-	
-	
 }

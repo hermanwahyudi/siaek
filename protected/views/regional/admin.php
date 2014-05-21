@@ -23,7 +23,15 @@ $('.search-form form').submit(function(){
 ?>
 
 <div class="headline"> <h1 class="text-justify">List Regional</h1>  </div>
-
+		<?php 
+			if(Yii::app()->user->hasFlash('successTambah')) {
+				echo "<div style='color:green'>".Yii::app()->user->getFlash('successTambah')."</div>";
+			} else if(Yii::app()->user->hasFlash('successUbah')) {
+				echo "<div style='color:green'>".Yii::app()->user->getFlash('successUbah')."</div>";
+			} else if(Yii::app()->user->hasFlash('successDelete')) {
+				echo "<div style='color:green'>".Yii::app()->user->getFlash('successDelete')."</div>";
+			}
+		?>
 
 <?php echo CHtml::link('Tambah Regional', array('regional/create', 'class'=>'col-sm-1')); ?>
 

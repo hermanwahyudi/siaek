@@ -135,7 +135,10 @@ class User extends CActiveRecord {
             'criteria' => $criteria,
             'pagination'=> array(
                 'pageSize'=> 5,
-                ),
+               ),
+			'sort'=>array(
+                'defaultOrder'=>'id_user DESC',
+            ),
         ));
     }
 

@@ -70,8 +70,10 @@ class RegionalController extends Controller
 		if(isset($_POST['Regional']))
 		{
 			$model->attributes=$_POST['Regional'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id_regional));
+			if($model->save()) {
+				Yii::app()->user->setFlash('successTambah', 'Regional telah berhasil ditambah.');
+				$this->redirect(array('index'));
+			}
 		}
 
 		$this->render('create',array(
@@ -94,8 +96,10 @@ class RegionalController extends Controller
 		if(isset($_POST['Regional']))
 		{
 			$model->attributes=$_POST['Regional'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id_regional));
+			if($model->save()) {
+				Yii::app()->user->setFlash('successUbah', 'Regional telah berhasil diubah.');
+				$this->redirect(array('index'));
+			}	
 		}
 
 		$this->render('update',array(
@@ -113,8 +117,10 @@ class RegionalController extends Controller
 		$this->loadModel($id)->delete();
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+		if(!isset($_GET['ajax'])) {
+			Yii::app()->user->setFlash('successDelete', 'Regional telah berhasil dihapus.');
+			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
+		}
 	}
 
 	/**
@@ -123,7 +129,7 @@ class RegionalController extends Controller
 	public function actionIndex()
 	{
 		if(Yii::app()->user->getLevel() == '1') 
-			$this->actionAdmin();
+			$this->actionListRegional();
 		
 
 	}
@@ -131,7 +137,7 @@ class RegionalController extends Controller
 	/**
 	 * Manages all models.
 	 */
-	public function actionAdmin()
+	public function actionListRegional()
 	{
 		$model=new Regional('search');
 		$model->unsetAttributes();  // clear any default values
