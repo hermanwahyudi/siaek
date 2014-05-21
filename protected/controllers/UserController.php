@@ -226,6 +226,7 @@ class UserController extends Controller
 	public function actionUpdateProfile() {
         $model = $this->loadModel(Yii::app()->user->id);
 		$old_image = $model->url_image;
+		$old_username = $model->username;
 		
         if(isset($_POST['User']))
         {
@@ -233,21 +234,45 @@ class UserController extends Controller
             $model->attributes=$_POST['User'];
 			
 				$uploadedFile=CUploadedFile::getInstance($model,'url_image');
+				$dataUsername = User::model()->findByAttributes(array('username' => $model->username));
 				
 				if(!empty($uploadedFile))  // check if uploaded file is set or not
 				{
 					$model->url_image = rand(10000, 1000000) . ".jpg";
-					if($model->save()) {
-						//$this->redirect(array('admin'));
-						$uploadedFile->saveAs(Yii::app()->basePath.'/../images/'.$model->url_image);
-						Yii::app()->user->setFlash('successProfile', 'Profile telah berhasil diubah.');
-						$this->redirect(array('profile'));
+					if($model->username === $old_username) {
+						if($model->save()) {
+							//$this->redirect(array('admin'));
+							$uploadedFile->saveAs(Yii::app()->basePath.'/../images/'.$model->url_image);
+							Yii::app()->user->setFlash('successProfile', 'Profile telah berhasil diubah.');
+							$this->redirect(array('profile'));
+						}
+					} else {
+						if(empty($dataUsername)) {
+							$uploadedFile->saveAs(Yii::app()->basePath.'/../images/'.$model->url_image);
+							Yii::app()->user->setFlash('successProfile', 'Profile telah berhasil diubah.');
+							$this->redirect(array('profile'));
+						} else {
+							Yii::app()->user->setFlash('errorUsername', 'Username telah ada di database.');
+							$this->redirect(array('updateProfile'));
+						}
 					}
 				} else {
 					$model->url_image = $old_image;
-					if($model->save()) {
-						Yii::app()->user->setFlash('successProfile', 'Profile telah berhasil diubah.');
-						$this->redirect(array('profile'));
+					if($model->username === $old_username) {
+						if($model->save()) {
+							Yii::app()->user->setFlash('successProfile', 'Profile telah berhasil diubah.');
+							$this->redirect(array('profile'));
+						}
+					} else {
+						if(empty($dataUsername)) {
+							if($model->save()) {
+								Yii::app()->user->setFlash('successProfile', 'Profile telah berhasil diubah.');
+								$this->redirect(array('profile'));
+							}
+						} else {
+							Yii::app()->user->setFlash('errorUsername', 'Username telah ada di database.');
+							$this->redirect(array('updateProfile'));
+						}
 					}
 				}
             

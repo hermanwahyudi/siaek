@@ -39,6 +39,9 @@ $this->breadcrumbs=array(
 				<?php echo $form->textField($model,'username', array('class'=>'form-control')); ?>
 			<span class="error-label">
 				<?php echo $form->error($model,'username');  ?>
+				<?php if(Yii::app()->user->hasFlash('errorUsername')) {
+					echo "<div style='color:red'>".Yii::app()->user->getFlash('errorUsername')."</div>";
+			} ?>
 			</span>
 			</div>
 	</div>
