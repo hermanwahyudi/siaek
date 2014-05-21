@@ -22,7 +22,20 @@
 
 	<p class="note">Fields with <span class="required">*</span> are required.</p><br>
 
-
+	<div class="form-group">
+		<label for="" class="col-sm-2 control-label">
+		<?php echo $form->labelEx($model,'nip'); ?>
+		</label>
+			<div class="col-sm-4">
+		<?php echo $form->textField($model,'nip',array('class'=>'form-control')); ?>
+			<span class="error-label">
+			<?php echo $form->error($model,'nip'); ?>
+			<?php if(Yii::app()->user->hasFlash('errorNipPengurus')) {
+					echo "<div style='color:red'>".Yii::app()->user->getFlash('errorNipPengurus')."</div>";
+			} ?>
+			</span>
+			</div>
+	</div>
 	<div class="form-group">
 		<label for="" class="col-sm-2 control-label">
 		<?php echo $form->labelEx($model,'role'); ?>
@@ -44,7 +57,10 @@
 			<div class="col-sm-4">
 		<?php echo $form->textField($model,'username',array('class'=>'form-control')); ?>
 			<span class="error-label">
-		<?php echo $form->error($model,'username'); ?>
+			<?php echo $form->error($model,'username'); ?>
+			<?php if(Yii::app()->user->hasFlash('errorUsername')) {
+					echo "<div style='color:red'>".Yii::app()->user->getFlash('errorUsername')."</div>";
+			} ?>
 		</span>
 			</div>
 	</div>
@@ -80,8 +96,9 @@
 		</label>
 			<div class="col-sm-4">
 		<div class="controls">
-				    <?php echo CHtml::activeDropDownList($model,'jenis_kelamin', $model->getGenderOption(),array('class'=>'form-control')); ?>
-                                       </div>
+				    <?php echo "Laki-laki  " . $form->radioButton($model,'jenis_kelamin', array('value'=>'L', 'uncheckValue'=>null)); 
+					  echo "  Perempuan  " . $form->radioButton($model,'jenis_kelamin', array('value'=>'P', 'uncheckValue'=>null)); 
+				?>                      </div>
 			<span class="error-label">
 		<?php echo $form->error($model,'jenis_kelamin'); ?>
 		</span>
@@ -96,18 +113,6 @@
 		<?php echo $form->textField($model,'email',array('class'=>'form-control')); ?>
 			<span class="error-label">
 		<?php echo $form->error($model,'email'); ?>
-		</span>
-			</div>
-	</div>
-
-	<div class="form-group">
-		<label for="" class="col-sm-2 control-label">
-		<?php echo $form->labelEx($model,'nip'); ?>
-		</label>
-			<div class="col-sm-4">
-		<?php echo $form->textField($model,'nip',array('class'=>'form-control')); ?>
-			<span class="error-label">
-		<?php echo $form->error($model,'nip'); ?>
 		</span>
 			</div>
 	</div>

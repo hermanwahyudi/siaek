@@ -167,7 +167,7 @@ class User extends CActiveRecord {
     }
 
     public function getGenderOption() {
-        return array('L' => 'Laki-Laki', '2' => 'Perempuan');
+        return array('L' => 'Laki-Laki', 'P' => 'Perempuan');
     }
 
 }
