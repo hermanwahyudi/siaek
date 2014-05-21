@@ -153,7 +153,7 @@
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Tambah' : 'Save'); ?>
 		</div>
 		<div class="col-sm-1"><?php echo TbHtml::pager(array(
-    array('label' => 'Back', 'url' => '../site/index'),
+    array('label' => 'Back', 'url' => '../index'),
 )); ?></div>
 	</div>
 

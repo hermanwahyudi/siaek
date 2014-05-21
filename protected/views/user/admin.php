@@ -24,6 +24,14 @@ $('.search-form form').submit(function(){
 
 <div class="headline"> <h1 class="text-justify">List Pengurus</h1>  </div>
 
+		<?php 
+			if(Yii::app()->user->hasFlash('successTambah')) {
+				echo "<div style='color:green'>".Yii::app()->user->getFlash('successTambah')."</div>";
+			} else if(Yii::app()->user->hasFlash('successDelete')) {
+				echo "<div style='color:green'>".Yii::app()->user->getFlash('successDelete')."</div>";
+			}
+		?>
+
 <?php echo CHtml::link('Tambah Pengurus', array('user/create')); ?>
 
 <?php $this->widget('zii.widgets.grid.CGridView', array(
@@ -33,7 +41,8 @@ $('.search-form form').submit(function(){
 	'columns'=>array(
 		//'id_user',
 		'nip',
-		'role',
+		array('name'=>'role', 
+			'value'=>'$data->role == "1" ? "Administrator" : ($data->role == "2" ? "Pengurus Pusat" : "Pengurus Regional")'),
 		'username',
 		//'password',
 		'nama',
