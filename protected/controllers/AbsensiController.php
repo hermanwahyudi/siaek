@@ -146,7 +146,15 @@ class AbsensiController extends Controller
                 $connection = Yii::app()->db;
                 $command = $connection->createCommand($sql)->execute();
             }
-            $model->waktu_isi = new CDbExpression('NOW()');
+
+            $now= new CDbExpression('NOW()');
+
+            if( $now <= $model->deadline ){
+                $model->status_isi = 1;
+            }else{
+                $model->status_isi = 2;
+            }
+            $model->waktu_isi = $now;
             $model->save();
             $this->actionView($id);
         }
