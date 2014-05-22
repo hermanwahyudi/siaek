@@ -7,7 +7,7 @@ $this->breadcrumbs = array(
 <div class="form wide">
     <?php
     $form = $this->beginWidget('CActiveForm', array(
-        'id' => 'absensi-form',
+        'id' => 'kegiatan-form',
         'enableAjaxValidation' => false,
         'htmlOptions' => array(
             'enctype' => 'multipart/form-data',
@@ -31,7 +31,7 @@ $this->breadcrumbs = array(
                         <form class="form-horizontal" role="form">
                             <div class="form-group">
                                 <?php echo $form->labelEx($model, 'nama_kegiatan'); ?>
-                              <?php echo $form->textField($model, 'nama_kegiatan', array('class' => 'form-control')); ?>
+                                <?php echo $form->textField($model, 'nama_kegiatan', array('class' => 'form-control')); ?>
                                 <?php echo $form->error($model,'nama_kegiatan'); ?>
                             </div>
 

@@ -106,8 +106,11 @@ class AbsensiController extends Controller
             }
 
             $model->waktu_isi = $now;
-            $model->save();
-            $this->actionListKegiatan();
+            if($model->save()){
+                Yii::app()->user->setFlash('successIsi', 'Absensi sudah berhasil diisi.');
+                $this->actionListKegiatan();
+            }
+
         }
         $absensi = Absensi::model();
 
@@ -148,15 +151,21 @@ class AbsensiController extends Controller
             }
 
             $now= new CDbExpression('NOW()');
-
-            if( $now <= $model->deadline ){
-                $model->status_isi = 1;
-            }else{
+            var_dump($model->deadline);
+            if( $now >  $model->deadline ){
                 $model->status_isi = 2;
+            }else{
+                $model->status_isi = 1;
             }
             $model->waktu_isi = $now;
-            $model->save();
-            $this->actionView($id);
+            if($model->save()){
+                Yii::app()->user->setFlash('successEdit', 'Absensi berhasil diubah.');
+                $this->actionView($id);
+                break;
+                
+            }
+            $this->redirect(array('view', 'id' => $id));
+
         }
         $absensi = $this->loadModelAbsensi($model->id_kegiatan);
         $this->render('edit', array(
@@ -218,7 +227,9 @@ class AbsensiController extends Controller
                     }
                 }
             }
-            $this->redirect(array('view', 'id' => $model->id_kegiatan));
+
+            Yii::app()->user->setFlash('succesTambah', 'Absensi sudah ditambahkan');
+            $this->redirect(array('view', 'id' => $id));
         }
         if(Yii::app()->user->getLevel()==3){
             $sql = "SELECT id_peserta,nama FROM peserta WHERE status_aktif=1 and id_regional = '" . $id_regional . "'";
