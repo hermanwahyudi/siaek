@@ -97,7 +97,7 @@ class AbsensiController extends Controller
                     $absensi[$j]->save();
                 }
             }
-            $now= new CDbExpression('NOW()');
+            $now= date('Y-m-d H:i:s');
 
             if( $now <= $model->deadline ){
                 $model->status_isi = 1;
@@ -150,21 +150,24 @@ class AbsensiController extends Controller
                 $command = $connection->createCommand($sql)->execute();
             }
 
-            $now= new CDbExpression('NOW()');
-            var_dump($model->deadline);
-            if( $now >  $model->deadline ){
-                $model->status_isi = 2;
-            }else{
+            $now= date('Y-m-d H:i:s');
+            
+            //var_dump($model['deadline']);
+            
+            if($now <  $model['deadline'] ){
                 $model->status_isi = 1;
+            }else{
+                $model->status_isi = 2;
             }
             $model->waktu_isi = $now;
             if($model->save()){
                 Yii::app()->user->setFlash('successEdit', 'Absensi berhasil diubah.');
                 $this->actionView($id);
-                break;
-                
+                break;    
             }
-            $this->redirect(array('view', 'id' => $id));
+            else{
+
+            }
 
         }
         $absensi = $this->loadModelAbsensi($model->id_kegiatan);
@@ -230,7 +233,7 @@ class AbsensiController extends Controller
         if (isset($_POST['Absensi'])) {
             $model->attributes = $_POST['Kegiatan'];
             $model->id_regional = $id_regional;
-            $model->waktu_isi = new CDbExpression('NOW()');
+            $model->waktu_isi = date('Y-m-d H:i:s');
             $model->status_isi = 1;
             if ($model->save()) {
                 $valid = true;

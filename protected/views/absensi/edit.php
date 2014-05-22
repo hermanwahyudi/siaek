@@ -35,19 +35,19 @@ $this->breadcrumbs = array(
                         <form class="form-horizontal" role="form">
 
                             <div class="form-group">
-                                <?php echo $form->labelEx($model, 'pembicara'); ?>
+                                <?php echo $form->labelEx($model, 'pembicara'); ?>:
                                 <!--?php echo $form->textField($model, 'pembicara', array('class' => 'form-control')); ?-->
                                 <?php echo $model->pembicara; ?>
 
                             </div>
                             <div class="form-group">
-                                <?php echo $form->labelEx($model, 'materi'); ?>
+                                <?php echo $form->labelEx($model, 'materi'); ?>:
                                 <!--?php echo $form->textField($model, 'materi', array('class' => 'form-control')); ?-->
                                 <?php echo $model->materi; ?>
 
                             </div>
                            <div class="form-group">
-                                <?php echo $form->labelEx($model, 'jenis_kegiatan'); ?>
+                                <?php echo $form->labelEx($model, 'jenis_kegiatan'); ?>:
                                 <!--?php echo $form->textField($model, 'materi', array('class' => 'form-control')); ?-->
                                 <?php echo $model->jenis_kegiatan; ?>
 
@@ -58,24 +58,24 @@ $this->breadcrumbs = array(
                                 <div class="col-md-6 column">
                                     <form class="form-horizontal" role="form">
                                         <div class="form-group">
-                                            <?php echo $form->labelEx($model, 'tanggal'); ?>
+                                            <?php echo $form->labelEx($model, 'tanggal'); ?>:
                                             <!--?php echo $form->textField($model, 'tanggal', array('class' => 'form-control datetimepicker')); ?-->
                                             <?php echo $model->tanggal; ?>
                                         </div>
 
                                         <div class="form-group">
-                                            <?php echo $form->labelEx($model, 'waktu_mulai'); ?>
+                                            <?php echo $form->labelEx($model, 'waktu_mulai'); ?>:
                                             <!--?php echo $form->textField($model, 'waktu_mulai', array('class' => 'form-control')); ?-->
                                             <?php echo $model->waktu_mulai; ?>
                                         </div>
 
                                         <div class="form-group">
-                                            <?php echo $form->labelEx($model, 'waktu_selesai'); ?>
+                                            <?php echo $form->labelEx($model, 'waktu_selesai'); ?>:
                                             <!--?php echo $form->textField($model, 'waktu_selesai', array('class' => 'form-control')); ?-->
                                             <?php echo $model->waktu_selesai; ?>
                                         </div>
                                         <div class="form-group">
-                                            <?php echo $form->labelEx($model, 'deadline'); ?>
+                                            <?php echo $form->labelEx($model, 'deadline'); ?>:
                                             <!--?php echo $form->textField($model, 'waktu_selesai', array('class' => 'form-control')); ?-->
                                             <?php echo $model->deadline; ?>
                                         </div>
@@ -107,12 +107,14 @@ $this->breadcrumbs = array(
                                             ?>
                                             <tr>
                                                 <td>
-                                                    <?php echo $item['id_peserta'];?>
+                                                    <?php $id_peserta =$item['id_peserta'];
+                                                        $peserta = Peserta::model()->findByPk($id_peserta);
+
+                                                        echo $peserta['nomor_peserta'];?>
                                                 </td>
 
                                                 <td>
-                                                    <?php $id_peserta =$item['id_peserta'];
-                                                        $peserta = Peserta::model()->findByPk($id_peserta);
+                                                    <?php 
                                                         echo $peserta['nama'];
                                                     ?>
                                                 </td>

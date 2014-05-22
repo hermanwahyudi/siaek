@@ -72,18 +72,23 @@ $this->menu = array(
                     <tr>
                         <td>
 
-                            <?php echo $absensi[$i]['id_peserta']; ?>
+                            <?php 
+
+                            $id_peserta = $absensi[$i]['id_peserta'];
+                            $peserta = Peserta::model()->findByPk($id_peserta);
+                            print_r($peserta['nomor_peserta']); ?>
                         </td>
 
                         <td>
                             <?php
-                            $id_peserta = $absensi[$i]['id_peserta'];
-                            $peserta = Peserta::model()->findByPk($id_peserta);
                             print_r($peserta['nama']);
                             ?>
                         </td>
                         <td >
-                            <?php echo $absensi[$i]['id_status']; ?>
+                            <?php 
+                            $status= Status::model()->findByPk($absensi[$i]['id_status']);
+                            ?>
+                            <?php echo $status->keterangan; ?>
                         </td>
 
                         <td>

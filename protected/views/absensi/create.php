@@ -105,11 +105,14 @@ $this->breadcrumbs = array(
                             <tr>
                                 <td>
                                    
-                                    <?php echo $i; ?>
+                                    <?php
+                                    $id_peserta =$i; 
+                                    $peserta = Peserta::model()->findByPk($id_peserta);
+                                    echo $peserta['nomor_peserta']; ?>
                                 </td>
                                 <td>
-                                    <?php $id_peserta =$i;
-                                    $peserta = Peserta::model()->findByPk($id_peserta);
+                                    <?php 
+                                    
                                     echo $peserta['nama'];
                                     ?>
                                    
