@@ -192,6 +192,11 @@ class Kegiatan extends CActiveRecord
         $criteria->compare('id_regional', $this->id_regional);
         $criteria->compare('nama_kegiatan', $this->nama_kegiatan, true);
 
+		$date = date('Y-m-d');
+		$arrDate = explode("-", $date);
+		$criteria->condition = "tanggal LIKE '%".$arrDate[0]."-".$arrDate[1]."-%'";
+		
+		
         return new CActiveDataProvider($this, array(
             'criteria' => $criteria,
             'pagination' => array(

@@ -150,7 +150,7 @@ class KegiatanController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$model=new Kegiatan('search');
+		$model=new Kegiatan();
 		$model->unsetAttributes();  // clear any default values
 		if(isset($_GET['Kegiatan']))
 			$model->attributes=$_GET['Kegiatan'];
@@ -174,6 +174,7 @@ class KegiatanController extends Controller
 		$this->render("deadline", 
 				array('model'=>$model, 'pages' => $pages));
 	}
+	
 	public function actionUpdateDeadline($id) {
 		$model=$this->loadModel($id);
 		$nama_regional = "";
@@ -220,14 +221,6 @@ class KegiatanController extends Controller
 			$this->render("formDeadline", 
 				array('model'=>$model, 'nama_regional' => $nama_regional));
 		}
-	}
-
-	/**
-	 * Manages all models.
-	 */
-	public function actionListKegiatan($model)
-	{
-		
 	}
 
 	/**
