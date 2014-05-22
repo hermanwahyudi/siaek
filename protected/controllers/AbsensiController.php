@@ -216,6 +216,7 @@ class AbsensiController extends Controller
             $model->waktu_isi = new CDbExpression('NOW()');
             $model->status_isi = 1;
             if ($model->save()) {
+                $valid = true;
                 foreach ($_POST['Absensi'] as $j => $item) {
                     if (isset($_POST['Absensi'][$j])) {
                         $absensi[$j] = new Absensi;
@@ -228,8 +229,9 @@ class AbsensiController extends Controller
                 }
             }
 
-            Yii::app()->user->setFlash('succesTambah', 'Absensi sudah ditambahkan');
-            $this->redirect(array('view', 'id' => $id));
+            Yii::app()->user->setFlash('successTambah', 'Absensi sudah ditambahkan');
+            $this->actionView($model->id_kegiatan);
+            break;
         }
         if(Yii::app()->user->getLevel()==3){
             $sql = "SELECT id_peserta,nama FROM peserta WHERE status_aktif=1 and id_regional = '" . $id_regional . "'";
@@ -253,5 +255,17 @@ class AbsensiController extends Controller
             'model' => $model,
             'absensi' => $absensi,
         ));
+    }
+    /**
+     * Performs the AJAX validation.
+     * @param Absensi $model the model to be validated
+     */
+    protected function performAjaxValidation($model)
+    {
+        if(isset($_POST['ajax']) && $_POST['ajax']==='absensi-form')
+        {
+            echo CActiveForm::validate($model);
+            Yii::app()->end();
+        }
     }
 }

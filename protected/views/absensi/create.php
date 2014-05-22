@@ -7,13 +7,14 @@ $this->breadcrumbs = array(
 <div class="form wide">
     <?php
     $form = $this->beginWidget('CActiveForm', array(
-        'id' => 'kegiatan-form',
+        'id' => 'absensi-form',
         'enableAjaxValidation' => false,
         'htmlOptions' => array(
             'enctype' => 'multipart/form-data',
         ),
     ));
     ?>
+    <p class="error-msg"><?php echo $form->errorSummary($model , null , null, array('class'=>'alert alert-danger')); ?></p>
     <div class="row clearfix">
         <div class="headline">
             <h1 class="text-justify">

@@ -46,7 +46,12 @@ $this->breadcrumbs = array(
                                 <?php echo $model->materi; ?>
 
                             </div>
-                           
+                           <div class="form-group">
+                                <?php echo $form->labelEx($model, 'jenis_kegiatan'); ?>
+                                <!--?php echo $form->textField($model, 'materi', array('class' => 'form-control')); ?-->
+                                <?php echo $model->jenis_kegiatan; ?>
+
+                            </div>
                             <form>	
                                 </div>
 
@@ -68,6 +73,11 @@ $this->breadcrumbs = array(
                                             <?php echo $form->labelEx($model, 'waktu_selesai'); ?>
                                             <!--?php echo $form->textField($model, 'waktu_selesai', array('class' => 'form-control')); ?-->
                                             <?php echo $model->waktu_selesai; ?>
+                                        </div>
+                                        <div class="form-group">
+                                            <?php echo $form->labelEx($model, 'deadline'); ?>
+                                            <!--?php echo $form->textField($model, 'waktu_selesai', array('class' => 'form-control')); ?-->
+                                            <?php echo $model->deadline; ?>
                                         </div>
                                     </form>
                                 </div>

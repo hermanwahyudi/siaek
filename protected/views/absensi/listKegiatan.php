@@ -25,6 +25,8 @@ $this->breadcrumbs = array(
         ?>
         <br>
         <?php echo CHtml::link('Tambah Absensi', array('absensi/create'),array('class'=>'btn btn-default')); ?>
+        <br>
+        <br>
         <div class="col-md-12 column">	
 
             <table class="table">
