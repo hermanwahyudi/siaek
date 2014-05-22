@@ -28,11 +28,11 @@ class UserController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index', 'view', 'profile', 'password', 'updateprofile'),
+				'actions'=>array('profile', 'password', 'updateprofile'),
 				'users'=>array('@'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update', 'admin', 'delete'),
+				'actions'=>array('index', 'view', 'create','update', 'admin', 'delete'),
 				'expression'=>'Yii::app()->user->getLevel() == 1',
 			),/*
 			array('allow', // allow admin user to perform 'admin' and 'delete' actions
@@ -86,17 +86,41 @@ class UserController extends Controller
             $fileName = "{$rnd}-{$uploadedFile}";  // random number + file name
             $model->url_image = $fileName;
 			
+			$dataNip = User::model()->findByAttributes(array('nip' => $model->nip));
+			$dataUsername = User::model()->findByAttributes(array('username' => $model->username));
+				
 			if(!empty($uploadedFile)) {
-				if($model->save())
-				{
-					$uploadedFile->saveAs(Yii::app()->basePath.'/../images/'.$fileName);  // image will uplode to rootDirectory/banner/
-					$this->redirect(array('admin'));
+				if(empty($dataNip)) {
+					if(empty($dataUsername)) {
+						if($model->save())
+						{
+							$uploadedFile->saveAs(Yii::app()->basePath.'/../images/'.$fileName);  // image will uplode to rootDirectory/banner/
+							Yii::app()->user->setFlash('successTambah', 'Pengurus telah berhasil ditambah.');
+							$this->redirect(array('index'));
+						}
+					} else {
+						Yii::app()->user->setFlash('errorUsername', 'Username telah ada di database.');
+						$this->redirect(array('create'));
+					}
+				} else {
+					Yii::app()->user->setFlash('errorNipPengurus', 'NIP telah ada di database.');
+					$this->redirect(array('create'));
 				}
 			} else {
-				$model->url_image = "default.jpg";
-				if($model->save()) {
-					Yii::app()->user->setFlash('successTambah', 'Pengurus telah berhasil ditambah.');
-					$this->redirect(array('view', $model->id_user));
+				if(empty($dataNip)) {
+					if(empty($dataUsername)) {
+						$model->url_image = "default.jpg";
+						if($model->save()) {
+							Yii::app()->user->setFlash('successTambah', 'Pengurus telah berhasil ditambah.');
+							$this->redirect(array('index'));
+						}
+					} else {
+						Yii::app()->user->setFlash('errorUsername', 'Username telah ada di database.');
+						$this->redirect(array('create'));
+					} 
+				} else {
+					Yii::app()->user->setFlash('errorNipPengurus', 'NIP telah ada di database.');
+					$this->redirect(array('create'));
 				}
 			}
 		}
@@ -114,23 +138,84 @@ class UserController extends Controller
 	{
 
 		$model=$this->loadModel($id);
+		$old_image = $model->url_image;
+		$old_username = $model->username;
+		$old_nip = $model->nip;
 		
         if(isset($_POST['User']))
         {
-            $_POST['user']['url_image'] = $model->url_image;
             $model->attributes=$_POST['User'];
  
             $uploadedFile=CUploadedFile::getInstance($model,'url_image');
+			
+			$dataNip = User::model()->findByAttributes(array('nip' => $model->nip));
+			$dataUsername = User::model()->findByAttributes(array('username' => $model->username));
  
-            if($model->save())
-            {
-                if(!empty($uploadedFile))  // check if uploaded file is set or not
-                {
-                    $uploadedFile->saveAs(Yii::app()->basePath.'/../images/'.$model->url_image);
-                }
-                $this->redirect(array('admin'));
-            }
- 
+			if(!empty($uploadedFile)) {
+				$model->url_image = rand(10000, 1000000) . ".jpg";
+				if($model->nip === $old_nip) {
+					if($model->username === $old_username) {
+						if($model->save())	{
+							$uploadedFile->saveAs(Yii::app()->basePath.'/../images/'.$model->url_image);
+							Yii::app()->user->setFlash('successUbah', 'Pengurus telah berhasil diubah.');
+							$this->redirect(array('index'));
+						}
+					} else {
+						if(empty($dataUsername)) {
+							if($model->save())	{
+								$uploadedFile->saveAs(Yii::app()->basePath.'/../images/'.$model->url_image);
+								Yii::app()->user->setFlash('successUbah', 'Pengurus telah berhasil diubah.');
+								$this->redirect(array('index'));
+							}
+						} else {
+							Yii::app()->user->setFlash('errorUsername', 'Username telah ada di database.');
+							$this->redirect(array('update', 'id'=>$id));
+						}
+					}
+				} else {
+					if(empty($dataNip)) {
+						if($model->save())	{
+							$uploadedFile->saveAs(Yii::app()->basePath.'/../images/'.$model->url_image);
+							Yii::app()->user->setFlash('successUbah', 'Pengurus telah berhasil diubah.');
+							$this->redirect(array('index'));
+						}
+					} else {
+						Yii::app()->user->setFlash('errorNipPengurus', 'NIP telah ada di database.');
+						$this->redirect(array('update', 'id'=>$id));
+					}
+				} 
+			} else {
+				$model->url_image = $old_image;
+				if($model->nip === $old_nip) {
+					if($model->username === $old_username) {
+						if($model->save())	{
+							Yii::app()->user->setFlash('successUbah', 'Pengurus telah berhasil diubah.');
+							$this->redirect(array('index'));
+						}
+					} else {
+						if(empty($dataUsername)) {
+							if($model->save())	{
+								Yii::app()->user->setFlash('successUbah', 'Pengurus telah berhasil diubah.');
+								$this->redirect(array('index'));
+							}
+						} else {
+							Yii::app()->user->setFlash('errorUsername', 'Username telah ada di database.');
+							$this->redirect(array('update', 'id'=>$id));
+						}
+					}
+				} else {
+					if(empty($dataNip)) {
+						if($model->save())	{
+							$uploadedFile->saveAs(Yii::app()->basePath.'/../images/'.$model->url_image);
+							Yii::app()->user->setFlash('successUbah', 'Pengurus telah berhasil diubah.');
+							$this->redirect(array('index'));
+						}
+					} else {
+						Yii::app()->user->setFlash('errorNipPengurus', 'NIP telah ada di database.');
+						$this->redirect(array('update', 'id'=>$id));
+					}
+				} 
+			}
         }
  
         $this->render('update',array(
@@ -141,6 +226,7 @@ class UserController extends Controller
 	public function actionUpdateProfile() {
         $model = $this->loadModel(Yii::app()->user->id);
 		$old_image = $model->url_image;
+		$old_username = $model->username;
 		
         if(isset($_POST['User']))
         {
@@ -148,21 +234,45 @@ class UserController extends Controller
             $model->attributes=$_POST['User'];
 			
 				$uploadedFile=CUploadedFile::getInstance($model,'url_image');
+				$dataUsername = User::model()->findByAttributes(array('username' => $model->username));
 				
 				if(!empty($uploadedFile))  // check if uploaded file is set or not
 				{
 					$model->url_image = rand(10000, 1000000) . ".jpg";
-					if($model->save()) {
-						//$this->redirect(array('admin'));
-						$uploadedFile->saveAs(Yii::app()->basePath.'/../images/'.$model->url_image);
-						Yii::app()->user->setFlash('successProfile', 'Profile telah berhasil diubah.');
-						$this->redirect(array('profile'));
+					if($model->username === $old_username) {
+						if($model->save()) {
+							//$this->redirect(array('admin'));
+							$uploadedFile->saveAs(Yii::app()->basePath.'/../images/'.$model->url_image);
+							Yii::app()->user->setFlash('successProfile', 'Profile telah berhasil diubah.');
+							$this->redirect(array('profile'));
+						}
+					} else {
+						if(empty($dataUsername)) {
+							$uploadedFile->saveAs(Yii::app()->basePath.'/../images/'.$model->url_image);
+							Yii::app()->user->setFlash('successProfile', 'Profile telah berhasil diubah.');
+							$this->redirect(array('profile'));
+						} else {
+							Yii::app()->user->setFlash('errorUsername', 'Username telah ada di database.');
+							$this->redirect(array('updateProfile'));
+						}
 					}
 				} else {
 					$model->url_image = $old_image;
-					if($model->save()) {
-						Yii::app()->user->setFlash('successProfile', 'Profile telah berhasil diubah.');
-						$this->redirect(array('profile'));
+					if($model->username === $old_username) {
+						if($model->save()) {
+							Yii::app()->user->setFlash('successProfile', 'Profile telah berhasil diubah.');
+							$this->redirect(array('profile'));
+						}
+					} else {
+						if(empty($dataUsername)) {
+							if($model->save()) {
+								Yii::app()->user->setFlash('successProfile', 'Profile telah berhasil diubah.');
+								$this->redirect(array('profile'));
+							}
+						} else {
+							Yii::app()->user->setFlash('errorUsername', 'Username telah ada di database.');
+							$this->redirect(array('updateProfile'));
+						}
 					}
 				}
             
@@ -185,7 +295,7 @@ class UserController extends Controller
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
 		if(!isset($_GET['ajax'])) {
 			Yii::app()->user->setFlash('successDelete', 'Pengurus telah berhasil dihapus.');
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
 		}
 	}
 
@@ -195,7 +305,7 @@ class UserController extends Controller
 	public function actionIndex()
 	{
 		if(Yii::app()->user->getLevel() == '1') 
-			$this->actionAdmin();
+			$this->actionListPengurus();
 	}
 	
 	public function actionPassword() {
@@ -240,7 +350,7 @@ class UserController extends Controller
 	/**
 	 * Manages all models.
 	 */
-	public function actionAdmin()
+	public function actionListPengurus()
 	{
 		$model=new User('search');
 		$model->unsetAttributes();  // clear any default values
@@ -281,6 +391,4 @@ class UserController extends Controller
 			Yii::app()->end();
 		}
 	}
-	
-	
 }

@@ -38,13 +38,13 @@ class Kegiatan extends CActiveRecord
         // NOTE: you should only define rules for those attributes that
         // will receive user inputs.
         return array(
-            array('materi, waktu_mulai, waktu_selesai, pembicara, hari, tanggal, jenis_kegiatan, id_regional, nama_kegiatan, deadline', 'required'),
+            array('materi, waktu_mulai, waktu_selesai, pembicara, tanggal, jenis_kegiatan, id_regional, nama_kegiatan, deadline', 'required'),
             array('jenis_kegiatan, id_regional', 'numerical', 'integerOnly' => true),
             array('pembicara', 'length', 'max' => 64),
-            array('hari', 'length', 'max' => 12),
+           // array('hari', 'length', 'max' => 12),
             // The following rule is used by search().
             // @todo Please remove those attributes that should not be searched.
-            array('id_kegiatan, materi, waktu_mulai, waktu_selesai, pembicara, hari, tanggal, jenis_kegiatan, id_regional, nama_kegiatan', 'safe', 'on' => 'search'),
+            array('id_kegiatan, materi, waktu_mulai, waktu_selesai, pembicara, tanggal, jenis_kegiatan, id_regional, nama_kegiatan', 'safe', 'on' => 'search'),
         );
     }
 
@@ -92,6 +92,8 @@ class Kegiatan extends CActiveRecord
             "2013" => "2013",
             "2014" => "2014",
             "2015" => "2015",
+			"2016" => "2015",
+			"2017" => "2015",
         );
     }
 
@@ -152,7 +154,8 @@ class Kegiatan extends CActiveRecord
             'id_regional' => 'Id Regional',
             'nama_kegiatan' => 'Nama Kegiatan',
             'status_isi' => 'Status',
-            'waktu_isi' => 'Waktu Isi'
+            'waktu_isi' => 'Waktu Isi',
+			'deadline' => 'Deadline Absensi'
         );
     }
 	public function getListKegiatan() {

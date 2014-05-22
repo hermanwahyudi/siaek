@@ -27,6 +27,8 @@ $('.search-form form').submit(function(){
 		<?php 
 			if(Yii::app()->user->hasFlash('successTambah')) {
 				echo "<div style='color:green'>".Yii::app()->user->getFlash('successTambah')."</div>";
+			} else if(Yii::app()->user->hasFlash('successUbah')) {
+				echo "<div style='color:green'>".Yii::app()->user->getFlash('successUbah')."</div>";
 			} else if(Yii::app()->user->hasFlash('successDelete')) {
 				echo "<div style='color:green'>".Yii::app()->user->getFlash('successDelete')."</div>";
 			}

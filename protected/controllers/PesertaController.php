@@ -76,8 +76,17 @@ class PesertaController extends Controller
 		if(isset($_POST['Peserta']))
 		{
 			$model->attributes=$_POST['Peserta'];
-			if($model->save())
-				$this->redirect(array('index','id'=>$model->id_peserta));
+			$dataPeserta = Peserta::model()->findByAttributes(array('nomor_peserta' => $model->nomor_peserta));
+			
+			if(empty($dataPeserta)) {
+				if($model->save()) {
+					Yii::app()->user->setFlash('successTambah', 'Peserta telah berhasil ditambah.');
+					$this->redirect(array('create'));
+				}
+			} else {
+				Yii::app()->user->setFlash('errorNomorPeserta', 'Nomor peserta telah ada di database.');
+				$this->redirect(array('create'));
+			}
 		}
 
 		$this->render('create',array(
@@ -93,15 +102,30 @@ class PesertaController extends Controller
 	public function actionUpdate($id)
 	{
 		$model=$this->loadModel($id);
-
+		$nomor_peserta = $model->nomor_peserta;
 		// Uncomment the following line if AJAX validation is needed
 		// $this->performAjaxValidation($model);
 
 		if(isset($_POST['Peserta']))
 		{
 			$model->attributes=$_POST['Peserta'];
-			if($model->save())
-				$this->redirect(array('view','id'=>$model->id_peserta));
+			if($model->nomor_peserta === $nomor_peserta) {
+				if($model->save()) {
+					Yii::app()->user->setFlash('successUbah', 'Peserta telah berhasil diubah.');
+					$this->redirect(array('index'));
+				}
+			} else {
+				$dataPeserta = Peserta::model()->findByAttributes(array('nomor_peserta' => $model->nomor_peserta));
+				if(empty($dataPeserta)) {
+					if($model->save()) {
+						Yii::app()->user->setFlash('successUbah', 'Peserta telah berhasil diubah.');
+						$this->redirect(array('index'));
+					}
+				} else {
+					Yii::app()->user->setFlash('errorNomorPeserta', 'Nomor peserta telah ada di database.');
+					$this->redirect(array('update', 'id'=>$id));
+				}
+			}
 		}
 
 		$this->render('update',array(
@@ -119,22 +143,23 @@ class PesertaController extends Controller
 		$this->loadModel($id)->delete();
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
-		if(!isset($_GET['ajax']))
-			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('admin'));
+		if(!isset($_GET['ajax'])) {
+			Yii::app()->user->setFlash('successDelete', 'Peserta telah berhasil dihapus.');
+			$this->redirect(isset($_POST['returnUrl']) ? $_POST['returnUrl'] : array('index'));
+		}
 	}
 
 	/**
 	 * Lists all models.
 	 */
-	public function actionIndex()
-	{
-		$this->actionAdmin();
+	public function actionIndex() {
+		$this->actionListPeserta();
 	}
 
 	/**
 	 * Manages all models.
 	 */
-	public function actionAdmin()
+	public function actionListPeserta()
 	{
 		
 		$id_user = Yii::app()->user->id;

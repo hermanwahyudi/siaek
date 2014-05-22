@@ -25,3 +25,4 @@ $this->breadcrumbs=array(
 		'status_aktif',
 	),
 )); ?>
+<?php echo CHtml::link('Back', array('peserta/index')); ?>

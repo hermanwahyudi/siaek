@@ -79,7 +79,7 @@
         <?php if (!Yii::app()->user->isGuest) { ?>
             <p>
             <div class="login-as"><i>Logged in
-                    as <?php echo CHtml::link(Yii::app()->user->name, array('user/view', 'id' => Yii::app()->user->id)); ?></i> <?php echo CHtml::link('Logout', array('site/logout')); ?>
+                    as <?php echo CHtml::link(Yii::app()->user->name, array('user/profile')); ?></i> <?php echo CHtml::link('Logout', array('site/logout')); ?>
             </div></p>
         <?php } ?>
     </div>

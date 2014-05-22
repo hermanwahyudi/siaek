@@ -135,7 +135,10 @@ class User extends CActiveRecord {
             'criteria' => $criteria,
             'pagination'=> array(
                 'pageSize'=> 5,
-                ),
+               ),
+			'sort'=>array(
+                'defaultOrder'=>'id_user DESC',
+            ),
         ));
     }
 
@@ -164,7 +167,7 @@ class User extends CActiveRecord {
     }
 
     public function getGenderOption() {
-        return array('L' => 'Laki-Laki', '2' => 'Perempuan');
+        return array('L' => 'Laki-Laki', 'P' => 'Perempuan');
     }
 
 }

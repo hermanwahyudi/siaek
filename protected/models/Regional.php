@@ -92,7 +92,10 @@ class Regional extends CActiveRecord
 			'criteria'=>$criteria,
 			'pagination'=> array(
 				'pageSize'=> 5,
-				),
+			),
+			'sort'=>array(
+                'defaultOrder'=>'id_regional DESC',
+            ),
 		));
 	}
 

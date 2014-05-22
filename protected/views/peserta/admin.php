@@ -22,8 +22,17 @@ $('.search-form form').submit(function(){
 
 <div class="headline"> <h1 class="text-justify">List Peserta</h1>  </div>
 
+		<?php 
+			if(Yii::app()->user->hasFlash('successTambah')) {
+				echo "<div style='color:green'>".Yii::app()->user->getFlash('successTambah')."</div>";
+			} else if(Yii::app()->user->hasFlash('successUbah')) {
+				echo "<div style='color:green'>".Yii::app()->user->getFlash('successUbah')."</div>";
+			} else if(Yii::app()->user->hasFlash('successDelete')) {
+				echo "<div style='color:green'>".Yii::app()->user->getFlash('successDelete')."</div>";
+			}
+		?>
 
-<?php echo CHtml::link('Tambah Peserta', array('peserta/create', 'class'=>'col-sm-1')); ?>
+<?php echo CHtml::link('Tambah Peserta', array('peserta/create')); ?>
 </div><!-- search-form -->
 
 <?php $this->widget('zii.widgets.grid.CGridView', array(
@@ -37,7 +46,7 @@ $('.search-form form').submit(function(){
 		'no_handphone',
 		'email',
 		'jenis_kelamin',
-		'status_aktif',
+		array('name'=>'status_aktif', 'value'=>'$data->status_aktif == 1 ? "Aktif" : "Tidak Aktif"'),
 		
 		array(
 			'class'=>'CButtonColumn',
