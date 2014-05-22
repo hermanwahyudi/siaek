@@ -151,9 +151,11 @@ class KegiatanController extends Controller
 	public function actionIndex()
 	{
 		$model=new Kegiatan();
-		$model->unsetAttributes();  // clear any default values
-		if(isset($_GET['Kegiatan']))
-			$model->attributes=$_GET['Kegiatan'];
+		//$model->unsetAttributes();  // clear any default values
+		if(isset($_POST['Kegiatan'])) {
+			$model->attributes = $_POST['Kegiatan'];
+			$model = Kegiatan::model()->search2($model->jenis_kegiatan);
+		}
 		
 		$this->render('admin',array(
 			'model'=>$model,

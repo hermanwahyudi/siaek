@@ -208,6 +208,24 @@ class Kegiatan extends CActiveRecord
         ));
 
     }
+	public function search2($jenis_kegiatan)
+    {
+		$criteria = new CDbCriteria;
+		
+		$date = date('Y-m-d');
+		$arrDate = explode("-", $date);
+		$criteria->condition = "tanggal LIKE '%".$arrDate[0]."-".$arrDate[1]."-%' AND jenis_kegiatan = '".$jenis_kegiatan."'";
+		
+		return new CActiveDataProvider($this, array(
+				'criteria' => $criteria,
+				'pagination' => array(
+					'pageSize' => 10,
+				),
+				'sort'=>array(
+					'defaultOrder'=>'id_kegiatan DESC',
+				),
+			));
+	}
 
     /**
      * Returns the static model of the specified AR class.
