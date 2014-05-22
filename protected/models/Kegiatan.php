@@ -148,7 +148,6 @@ class Kegiatan extends CActiveRecord
             'waktu_mulai' => 'Waktu Mulai',
             'waktu_selesai' => 'Waktu Selesai',
             'pembicara' => 'Pembicara',
-            'hari' => 'Hari',
             'tanggal' => 'Tanggal',
             'jenis_kegiatan' => 'Jenis Kegiatan',
             'id_regional' => 'Id Regional',
@@ -188,7 +187,6 @@ class Kegiatan extends CActiveRecord
         $criteria->compare('waktu_mulai', $this->waktu_mulai, true);
         $criteria->compare('waktu_selesai', $this->waktu_selesai, true);
         $criteria->compare('pembicara', $this->pembicara, true);
-        $criteria->compare('hari', $this->hari, true);
         $criteria->compare('tanggal', $this->tanggal, true);
         $criteria->compare('jenis_kegiatan', $this->jenis_kegiatan);
         $criteria->compare('id_regional', $this->id_regional);

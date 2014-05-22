@@ -46,12 +46,7 @@ $this->breadcrumbs = array(
                                 <?php echo $model->materi; ?>
 
                             </div>
-                            <div class="form-group">
-                                <?php echo $form->labelEx($model, 'hari'); ?>
-                                <!--?php echo $form->textField($model, 'hari', array('class' => 'form-control')); ?-->
-                                <?php echo $model->hari; ?>
-
-                            </div>
+                           
                             <form>	
                                 </div>
 

@@ -42,10 +42,7 @@ $this->breadcrumbs = array(
                                 <?php echo $form->labelEx($model, 'materi'); ?>
                                <?php echo $form->textArea($model, 'materi', array('class' => 'form-control', 'rows' => 6, 'cols' => 50)); ?>
                             </div>
-                            <div class="form-group">
-                                <?php echo $form->labelEx($model, 'hari'); ?>
-                               <?php echo CHtml::activeDropDownList($model, 'hari', $model->getDayOption(), array('class' => 'form-control')); ?>
-                            </div>
+                            
                         <form>	
                     </div>
                     <div class="col-md-6 column">

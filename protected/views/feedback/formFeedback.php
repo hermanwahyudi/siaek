@@ -19,6 +19,21 @@
     <div class="headline"> 
         <h1 class="text-justify">Form Kirim Feedback</h1>  
     </div>
+	<div class="row">
+        <div class="form-group">
+            <label for="" class="col-sm-3 control-label">
+                <?php echo "Regional *"; ?>
+            </label>
+            <div align ="left" class="col-sm-5">
+                <div class="controls">
+                    <?php echo CHtml::activeDropDownList($model, 'id_regional', $model->getRegionalOption(), array('class' => 'form-control','prompt' => 'Select a Regional')); ?>
+                </div>
+                <span class="error-label">
+                    <?php echo $form->error($model, 'id_regional'); ?>
+                </span>
+            </div>
+        </div>
+    </div>
     <div class="row">
         <div class="form-group">
             <label for="" class="col-md-3 control-label">
@@ -34,21 +49,7 @@
     </div>
     <br>
 
-    <div class="row">
-        <div class="form-group">
-            <label for="" class="col-sm-3 control-label">
-                <?php echo "Regional *"; ?>
-            </label>
-            <div align ="left" class="col-sm-5">
-                <div class="controls">
-                    <?php echo CHtml::activeDropDownList($model, 'id_regional', $model->getRegionalOption(), array('class' => 'form-control','prompt' => 'Select a Regional')); ?>
-                </div>
-                <span class="error-label">
-                    <?php echo $form->error($model, 'id_regional'); ?>
-                </span>
-            </div>
-        </div>
-    </div>
+    
     <br>
     <div class="row">
         <div class="form-group">
