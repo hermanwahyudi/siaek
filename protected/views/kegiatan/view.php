@@ -40,9 +40,7 @@ $this->breadcrumbs=array(
 					if($model->jenis_kegiatan == "4") $jenis_kegiatan = "Khusus";
 					echo $jenis_kegiatan; ?></td>
 				</tr>
-				<tr>
-					<td align="left"><strong>Hari</strong></td><td align="left">: <?php echo $model->hari; ?></td>
-				</tr>
+			
 				<tr>
 					<td align="left"><strong>Tanggal</strong></td><td align="left">: <?php echo $model->tanggal; ?></td>
 				</tr>
