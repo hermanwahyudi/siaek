@@ -19,9 +19,9 @@ $this->breadcrumbs = array(
     <div class="row clearfix">
         <div class="headline"> <h1 class="text-justify">Daftar Kegiatan</h1>  </div>
         <?php
-        if (Yii::app()->user->hasFlash('successDeadline')):
-            echo "<div style='color:green'>" . Yii::app()->user->getFlash('successDeadline') . "</div>";
-        endif;
+        if (Yii::app()->user->hasFlash('successIsi')){
+            echo "<div style='color:green'>" . Yii::app()->user->getFlash('successIsi') . "</div>";
+        }
         ?>
         <br>
         <?php echo CHtml::link('Tambah Absensi', array('absensi/create'),array('class'=>'btn btn-default')); ?>

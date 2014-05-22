@@ -7,7 +7,7 @@ $this->breadcrumbs = array(
 <div class="form wide">
     <?php
     $form = $this->beginWidget('CActiveForm', array(
-        'id' => 'absensi-form',
+        'id' => 'kegiatan-form',
         'enableAjaxValidation' => false,
         'htmlOptions' => array(
             'enctype' => 'multipart/form-data',
@@ -31,16 +31,19 @@ $this->breadcrumbs = array(
                         <form class="form-horizontal" role="form">
                             <div class="form-group">
                                 <?php echo $form->labelEx($model, 'nama_kegiatan'); ?>
-                              <?php echo $form->textField($model, 'nama_kegiatan', array('class' => 'form-control')); ?>
+                                <?php echo $form->textField($model, 'nama_kegiatan', array('class' => 'form-control')); ?>
+                                <?php echo $form->error($model,'nama_kegiatan'); ?>
                             </div>
 
                             <div class="form-group">
                                 <?php echo $form->labelEx($model, 'pembicara'); ?>
                                 <?php echo $form->textField($model, 'pembicara', array('class' => 'form-control')); ?>
+                                <?php echo $form->error($model,'pembicara'); ?>
                             </div>
                             <div class="form-group">
                                 <?php echo $form->labelEx($model, 'materi'); ?>
                                <?php echo $form->textArea($model, 'materi', array('class' => 'form-control', 'rows' => 6, 'cols' => 50)); ?>
+                                <?php echo $form->error($model,'materi'); ?>
                             </div>
                             
                         <form>	
@@ -54,18 +57,22 @@ $this->breadcrumbs = array(
                             <div class="form-group">
                                 <?php echo $form->labelEx($model, 'tanggal'); ?>
                                 <?php echo $form->textField($model, 'tanggal', array('class' => 'form-control datetimepicker')); ?>
+                                <?php echo $form->error($model,'tanggal'); ?>
                             </div>
                             <div class="form-group">
                                 <?php echo $form->labelEx($model, 'waktu_mulai'); ?>
                                 <?php echo $form->textField($model, 'waktu_mulai', array('class' => 'form-control')); ?>
+                                <?php echo $form->error($model,'waktu_mulai'); ?>
                             </div>
                             <div class="form-group">
                                 <?php echo $form->labelEx($model, 'waktu_selesai'); ?>
                                 <?php echo $form->textField($model, 'waktu_selesai', array('class' => 'form-control')); ?>
+                                <?php echo $form->error($model,'waktu_selesai'); ?>
                             </div>
                             <div class="form-group">
                                 <?php echo $form->labelEx($model, 'deadline'); ?>
                                 <?php echo $form->textField($model, 'deadline', array('class' => 'form-control datetimepicker2')); ?>
+                                <?php echo $form->error($model,'deadline'); ?>
                             </div>
                         </form>
                     </div>

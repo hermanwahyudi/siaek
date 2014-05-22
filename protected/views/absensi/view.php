@@ -14,7 +14,17 @@ $this->menu = array(
 <h1>Absensi Kegiatan <?php echo $model->nama_kegiatan; ?></h1>
 
 <div class="row clearfix">
-    <div class="col-md-11 column"> <br>
+    <div class="col-md-11 column">
+        <?php
+        if (Yii::app()->user->hasFlash('successEdit')){
+            echo "<div style='color:green'>" . Yii::app()->user->getFlash('successEdit') . "</div>";
+        }else if(Yii::app()->user->hasFlash('successTambah')){
+            echo "<div style='color:green'>" . Yii::app()->user->getFlash('successTambah') . "</div>";
+        }else{
+
+        }
+        ?>
+        <br>
         <table class="table">
             <tbody>
                 <tr>
