@@ -21,6 +21,11 @@ $this->breadcrumbs = array(
                 Tambah Absensi
             </h1>
         </div>
+        <?php
+        if (Yii::app()->user->hasFlash('gagalTambah')){
+            echo "<div style='color:green'>" . Yii::app()->user->getFlash('gagalTambah') . "</div>";
+        }
+        ?>
         <div class="col-md-12 column">
             <div class="row clearfix">
                 <div class="col-md-12 column">
@@ -30,9 +35,10 @@ $this->breadcrumbs = array(
                     </h1>
                     <div class="col-md-6 column">
                         <form class="form-horizontal" role="form">
+                            
                             <div class="form-group">
                                 <?php echo $form->labelEx($model, 'nama_kegiatan'); ?>
-                                <?php echo $form->textField($model, 'nama_kegiatan', array('class' => 'form-control')); ?>
+                                <?php echo $form->textField($model, 'nama_kegiatan', array('class' => 'form-control','type'=>'text')); ?>
                                 <?php echo $form->error($model,'nama_kegiatan'); ?>
                             </div>
 

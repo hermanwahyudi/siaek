@@ -207,8 +207,25 @@ class AbsensiController extends Controller
 
         $id_user = Yii::app()->user->id;
         $objRegional = Regional::model()->findByAttributes(array('id_user' => $id_user));
-
         $id_regional = $objRegional->id_regional;
+
+        //peserta
+        if(Yii::app()->user->getLevel()==3){
+            $sql = "SELECT id_peserta,nama FROM peserta WHERE status_aktif=1 and id_regional = '" . $id_regional . "'";
+        }else{
+            $sql = "SELECT id_peserta,nama FROM peserta WHERE status_aktif=1";
+        }
+        $dbCommand = Yii::app()->db->createCommand($sql);
+        $peserta = $dbCommand->queryAll();
+        $absensi = array();
+
+        foreach ($peserta as $i => $item) {
+            $id = $item['id_peserta'];
+            $absensi[$id] = Absensi::model();
+            $absensi[$id]->id_peserta = $id;
+
+        }
+        //end peserta
 
         if (isset($_POST['Absensi'])) {
             $model->attributes = $_POST['Kegiatan'];
@@ -227,28 +244,13 @@ class AbsensiController extends Controller
                         $absensi[$j]->save();
                     }
                 }
+                Yii::app()->user->setFlash('successTambah', 'Absensi sudah ditambahkan');
+                $this->actionView($model->id_kegiatan);
+                break;
             }
-
-            Yii::app()->user->setFlash('successTambah', 'Absensi sudah ditambahkan');
-            $this->actionView($model->id_kegiatan);
-            break;
-        }
-        if(Yii::app()->user->getLevel()==3){
-            $sql = "SELECT id_peserta,nama FROM peserta WHERE status_aktif=1 and id_regional = '" . $id_regional . "'";
-        }else{
-            $sql = "SELECT id_peserta,nama FROM peserta WHERE status_aktif=1";
-        }
-
-        $dbCommand = Yii::app()->db->createCommand($sql);
-        $peserta = $dbCommand->queryAll();
-
-        $absensi = array();
-
-        foreach ($peserta as $i => $item) {
-            $id = $item['id_peserta'];
-            $absensi[$id] = Absensi::model();
-            $absensi[$id]->id_peserta = $id;
-
+            else{
+                Yii::app()->user->setFlash('gagalTambah', 'Gagal Simpan Kegiatan');
+            }
         }
 
         $this->render('create', array(
