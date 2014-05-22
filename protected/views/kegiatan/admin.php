@@ -30,7 +30,32 @@ $('.search-form form').submit(function(){
 		?>
 
 <?php echo CHtml::link('Tambah Kegiatan', array('kegiatan/create')); ?>
+<div class="form-horizontal" role="form">
 
+
+    <?php
+    $form = $this->beginWidget('CActiveForm', array(
+        'id' => 'kegiatan-form',
+        // Please note: When you enable ajax validation, make sure the corresponding
+        // controller action is handling ajax validation correctly.
+        // There is a call to performAjaxValidation() commented in generated controller code.
+        // See class documentation of CActiveForm for details on this.
+        'enableAjaxValidation' => false,
+    ));
+    ?>
+	<div class="form-group">
+        <div class="col-sm-3">
+            <div class="controls">
+                <?php echo CHtml::activeDropDownList($model, 'jenis_kegiatan', $model->getTipeOption(), array('class' => 'form-control')); ?>
+				<?php echo CHtml::submitButton("Filter", array('class' => 'btn btn-default')); ?>
+            </div>
+            <span class="error-label"><?php echo $form->error($model, 'jenis_kegiatam'); ?></span>
+			
+        </div>
+    </div>
+	<?php $this->endWidget(); ?>
+
+</div><!-- form -->
 <?php $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'kegiatan-grid',
 	'dataProvider'=>$model->search(),
