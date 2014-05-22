@@ -130,9 +130,7 @@ $this->breadcrumbs = array(
                                     </div>
                                     <br>
                                     <?php
-                                    echo TbHtml::pager(array(
-                                        array('label' => 'Back', 'url' => '../site/index'),
-                                    ));
+                                        echo CHtml::link("Back", array("absensi/index"));
                                     ?>
                                 </div> 
                                 </div>

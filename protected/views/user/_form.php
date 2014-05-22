@@ -157,9 +157,7 @@
 		<div class="col-sm-5">
 		<?php echo CHtml::submitButton($model->isNewRecord ? 'Tambah' : 'Save'); ?>
 		</div>
-		<div class="col-sm-1"><?php echo TbHtml::pager(array(
-    array('label' => 'Back', 'url' => '../index'),
-)); ?></div>
+		<div class="col-sm-1"><?php echo CHtml::link("Back", array("user/index")); ?></div>
 	</div>
 
 <?php $this->endWidget(); ?>

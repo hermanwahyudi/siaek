@@ -85,7 +85,7 @@ $this->menu = array(
         </table>
     </div>
 </div>
-<?php echo CHtml::link('Back', array('site/index')); ?>
+<?php echo CHtml::link('Back', array('absensi/index')); ?>
 
 
 
