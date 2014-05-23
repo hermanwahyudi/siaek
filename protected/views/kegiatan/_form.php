@@ -103,7 +103,7 @@
     <div class="form-group">
 
         <div class="col-sm-4">
-            <?php echo $form->hiddenField($model, 'deadline', array('class' => 'form-control datetimepicker2', 'value'=>'0000-00-00')); ?>
+            <?php echo $form->hiddenField($model, 'deadline', array('class' => 'form-control datetimepicker2')); ?>
             <span class="error-label"><?php echo $form->error($model, 'deadline'); ?></span>
         </div>
     </div>

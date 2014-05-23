@@ -66,6 +66,7 @@ class KegiatanController extends Controller
 		{
 			$model->attributes=$_POST['Kegiatan'];
             $model->status_isi=0;
+			$model->deadline = date('Y-m-t 23:59:59');
 			
 			if($model->save()) {
 				$waktu_selesai = explode(":", $_POST['Kegiatan']['waktu_selesai']);
@@ -79,6 +80,7 @@ class KegiatanController extends Controller
 					Yii::app()->user->setFlash('errorWaktu', 'Waktu selesai lebih kecil atau sama dengan dari waktu mulai!');
 					$this->redirect(array('create'));
 				} else {
+					
 					if($model->save()) {
 						//$this->redirect(array());
 						Yii::app()->user->setFlash('successTambah', 'Kegiatan baru telah berhasil ditambah.');
