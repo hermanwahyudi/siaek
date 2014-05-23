@@ -13,42 +13,21 @@ tambahkan baris dibawah ini ya setelah clone
 	+4. [hallo ini yane]
 
 	+5. [hallo kak coba masukin nama kak giri di sini]
-
-Peserat Didik
-------------
-list Peserta:
-------------
-	id_peserta kagak usah di tampilin
-	id_regional kagak usah di tampilin
-	status_aktif diganti aktif atau kagak jangan angka
-
-Tambah Peserta:
-------------
-	id_regional kagak usah di tampilin
-
-Melihat Feedback:
-------------
-	Tampilan No kurang di tengah
-
-Isi Absensi:
-------------
-	Id_regional kagak usah ditampilin
-
-Delete Peserta:
-------------
-	pake lazy deletion flag
-
-Feedback:
---------
-	pengurus pusat ditambah kata memberi
-
-Admin - Pengurus
-kode-kode role diganti makna dari kode tersebut
-password kagak usah ditampilin
-
-update pengurus password jangan ditampilin
-
-search -- belum bisa dilakuin semua
-
-Daftar kegiatan
-id_regional jangan ditampilin
+	bug kalau pengurus belum dikasih regional
+	-masalah diperserta sama feedback solve dengan check regional id-pengurus ada apa tidak
+	pengurus regional bisa punya banyak regional harus dihandle --di create regional dan update
+	delete pengurus apakah akan dihapus fk di regional
+	delete regional semua kegiatan id_regional di null,id_peserta juga null 
+	pingin lihat list kegiatan check id regional kosong apa kagak
+	pingin lihat list feedback apakah id _regional kosong apa kagak
+	list peserta check id regional
+	create pengurus baiknya rolenya hanya pengurus regional, pengurus pusat dan admin dibikin waktu install
+	nomor telephone harus dikasih min 7 karakter
+	password minimal 6 karakter
+	username minimal6 karakter
+	nama minimal 6
+	username harus unique
+	redirect setelah create peserta
+	gagal warna merah
+	buat regional kagak ada create deadline
+	deadline kegiatan akhir bulan
