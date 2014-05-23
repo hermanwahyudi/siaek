@@ -145,8 +145,13 @@ class FeedbackController extends Controller
 			$id_user = Yii::app()->user->id;
 			$objRegional = Regional::model()->findByAttributes(array('id_user'=>$id_user));
 
+            if($objRegional !=null){
+                $id_regional = $objRegional->id_regional;
+            }else{
+                throw new CHttpException(404,'Anda belum jadi admin regional tertentu');
 
-			$id_regional = $objRegional->id_regional;
+            }
+
 
 			$criteria=new CDbCriteria();
     		$count=Feedback::model()->count($criteria);
@@ -157,6 +162,9 @@ class FeedbackController extends Controller
     		$pages->applyLimit($criteria);
 
 			$dataFeedback = Feedback::model()->findAllByAttributes(array('id_regional'=>$id_regional), $criteria);
+            if($dataFeedback==null){
+                throw new CHttpException(404,'Feedback tidak ada');
+            }
 
 			$this->render('index',array(
 				'dataFeedback'=>$dataFeedback, 'pages' => $pages

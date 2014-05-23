@@ -165,7 +165,15 @@ class PesertaController extends Controller
 		$id_user = Yii::app()->user->id;
 		$objRegional = Regional::model()->findByAttributes(array('id_user'=>$id_user));
 
-		$id_regional = $objRegional->id_regional;
+        if($objRegional !=null){
+            $id_regional = $objRegional->id_regional;
+        }else{
+            throw new CHttpException(404,'Anda belum jadi admin regional tertentu');
+
+        }
+
+
+
 		//$dataPeserta = Peserta::model()->findAllByAttributes(array('id_regional'=>$id_regional));
 		
 		$model=new Peserta('search');
