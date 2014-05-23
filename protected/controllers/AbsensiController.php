@@ -233,6 +233,8 @@ class AbsensiController extends Controller
         if (isset($_POST['Absensi'])) {
             $model->attributes = $_POST['Kegiatan'];
             $model->id_regional = $id_regional;
+
+            $model->deadline = date('Y-m-t 23:59:59');
             $model->waktu_isi = date('Y-m-d H:i:s');
             $model->status_isi = 1;
             if ($model->save()) {

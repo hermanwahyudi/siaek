@@ -76,11 +76,7 @@ $this->breadcrumbs = array(
                                 <?php echo $form->textField($model, 'waktu_selesai', array('class' => 'form-control')); ?>
                                 <?php echo $form->error($model,'waktu_selesai'); ?>
                             </div>
-                            <div class="form-group">
-                                <?php echo $form->labelEx($model, 'deadline'); ?>
-                                <?php echo $form->textField($model, 'deadline', array('class' => 'form-control datetimepicker2')); ?>
-                                <?php echo $form->error($model,'deadline'); ?>
-                            </div>
+                            
                         </form>
                     </div>
                     <table class="table table-bordered">
