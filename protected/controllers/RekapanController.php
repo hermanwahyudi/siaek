@@ -179,7 +179,7 @@
 			$temp = $this->listKhusus($bulan, $tahun, $temp);
 			
 			//echo $temp;
-			
+			/*
 			$mPDF1 = Yii::app()->ePdf->mpdf();
 			$mPDF1 = Yii::app()->ePdf->mpdf('', 'A3');
 			$mPDF1->WriteHTML($this->renderPartial('view', array(
@@ -189,6 +189,15 @@
 													),
 													true));
 			$mPDF1->Output();
+			*/
+            $html2pdf = Yii::app()->ePdf->HTML2PDF();
+            $html2pdf->WriteHTML($this->renderPartial('view', array(
+                                                     'bulan'=>$this->getBulan($bulan),
+                                                    'tahun' => $tahun,
+                                                    'data' => $temp,
+                                                    ),
+                                                    true));
+            $html2pdf->Output();
 		}
 	}
 ?>
