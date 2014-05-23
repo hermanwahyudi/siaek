@@ -23,7 +23,7 @@ tambahkan baris dibawah ini ya setelah clone
 	pingin lihat list kegiatan check id regional kosong apa kagak[SELESAI]
 	pingin lihat list feedback apakah id _regional kosong apa kagak[SELESAI]
 	list peserta check id regional[SELESAI]
-	create pengurus baiknya rolenya hanya pengurus regional, pengurus pusat dan admin dibikin waktu install
+	create pengurus baiknya rolenya hanya pengurus regional, pengurus pusat dan admin dibikin waktu install [SELESAI]
 	nomor telephone harus dikasih min 7 karakter[SELESAI]
 	password minimal 6 karakter{tidak bisa karena sudah dimd5}
 	username minimal 6 karakter[SELESAI]

@@ -222,7 +222,9 @@ class UserController extends Controller
             'model'=>$model,
         ));
 	}
-	
+	/**
+	 * Update profile Pengurus
+	 */
 	public function actionUpdateProfile() {
         $model = $this->loadModel(Yii::app()->user->id);
 		$old_image = $model->url_image;
