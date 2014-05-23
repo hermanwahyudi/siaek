@@ -30,7 +30,7 @@ $('.search-form form').submit(function(){
 		?>
 
 <?php echo CHtml::link('Tambah Kegiatan', array('kegiatan/create')); ?>
-<div class="form-horizontal" role="form">
+<!--<div class="form-horizontal" role="form">
 
 
     <?php
@@ -46,7 +46,7 @@ $('.search-form form').submit(function(){
 	<div class="form-group">
         <div class="col-sm-3">
             <div class="controls">
-                <?php echo CHtml::activeDropDownList($model, 'jenis_kegiatan', $model->getTipeOption(), array('class' => 'form-control')); ?>
+                <?php echo CHtml::activeDropDownList($model, 'jenis_kegiatan', array('1' => 'Bulanan', '2' => 'Pekanan', '3' => 'Lokal', '4' => 'Khusus'), array('class' => 'form-control')); ?>
 				<?php echo CHtml::submitButton("Filter", array('class' => 'btn btn-default')); ?>
             </div>
             <span class="error-label"><?php echo $form->error($model, 'jenis_kegiatam'); ?></span>
@@ -55,7 +55,7 @@ $('.search-form form').submit(function(){
     </div>
 	<?php $this->endWidget(); ?>
 
-</div><!-- form -->
+</div><!-- form -->-->
 <?php $this->widget('zii.widgets.grid.CGridView', array(
 	'id'=>'kegiatan-grid',
 	'dataProvider'=>$model->search(),
@@ -69,7 +69,9 @@ $('.search-form form').submit(function(){
 		'pembicara',
 		'materi',
 		array('name'=>'jenis_kegiatan', 
-			'value'=>'$data->jenis_kegiatan == "1" ? "Bulanan" : ($data->jenis_kegiatan == "2" ? "Pekanan" : ($data->jenis_kegiatan == "3" ? "Lokal" : "Khusus"))'),
+			'value'=>'$data->jenis_kegiatan == "1" ? "Bulanan" : ($data->jenis_kegiatan == "2" ? "Pekanan" : ($data->jenis_kegiatan == "3" ? "Lokal" : "Khusus"))',
+			//'filter'=>array('1'=>'Bulanan', '2'=>'Pekanan', '3'=>'Lokal', '4'=>'Khusus'),
+		),
 		//'hari',
 		'tanggal',
 		'waktu_mulai',

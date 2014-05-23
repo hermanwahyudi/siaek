@@ -21,6 +21,7 @@ class Kegiatan extends CActiveRecord
 {
     public $bulan1, $bulan2;
     public $tahun1, $tahun2;
+	
 
     /**
      * @return string the associated database table name
@@ -224,6 +225,7 @@ class Kegiatan extends CActiveRecord
 				'sort'=>array(
 					'defaultOrder'=>'id_kegiatan DESC',
 				),
+				
 			));
 	}
 
