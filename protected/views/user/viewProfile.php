@@ -67,9 +67,9 @@ endif;
 </div>
 
 <div style="float:left">
-<button type="button" class="btn btn-alert active"><?php echo CHtml::link('Edit', array('user/updateprofile')); ?></button>
+<button><?php echo CHtml::link('Edit', array('user/updateprofile')); ?></button>
 
-<button type="button" class="btn btn-alert active"><?php echo CHtml::link('Edit Password', array('user/password')); ?></button>
+<button><?php echo CHtml::link('Edit Password', array('user/password')); ?></button>
 
 <?php echo CHtml::link('Back', array('site/index')); ?>
 </div>
