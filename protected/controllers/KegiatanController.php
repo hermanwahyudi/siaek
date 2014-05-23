@@ -140,6 +140,14 @@ class KegiatanController extends Controller
 	 */
 	public function actionDelete($id)
 	{       
+		$model = $this->loadModel($id);
+		$sql = "INSERT INTO _HISTORY_KEGIATAN VALUES ('', '".$model->materi."', 
+					'".$model->waktu_mulai."', '".$model->waktu_selesai."', '".$model->pembicara."',
+					'".$model->tanggal."','".$model->jenis_kegiatan."','".$model->id_regional."',
+					'".$model->nama_kegiatan."', '".$model->deadline."', '".$model->waktu_isi."',
+					'".$model->status_isi."')";
+		Yii::app()->db->createCommand($sql)->query();
+		
 		$this->loadModel($id)->delete();
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser

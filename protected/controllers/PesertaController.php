@@ -140,6 +140,12 @@ class PesertaController extends Controller
 	 */
 	public function actionDelete($id)
 	{
+		$model = $this->loadModel($id);
+		$sql = "INSERT INTO _HISTORY_PESERTA VALUES ('', '".$model->id_regional."', 
+					'".$model->nomor_peserta."', '".$model->nama."', '".$model->no_handphone."',
+					'".$model->email."','".$model->jenis_kelamin."','".$model->status_aktif."')";
+		Yii::app()->db->createCommand($sql)->query();
+		
 		$this->loadModel($id)->delete();
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser

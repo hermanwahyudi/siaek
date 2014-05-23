@@ -292,6 +292,13 @@ class UserController extends Controller
 	 */
 	public function actionDelete($id)
 	{
+		$model = $this->loadModel($id);
+		$sql = "INSERT INTO _HISTORY_USER VALUES ('', '".$model->role."', 
+					'".$model->username."', '".$model->password."', '".$model->nama."',
+					'".$model->jenis_kelamin."','".$model->email."','".$model->nip."',
+					'".$model->no_telp."', '".$model->alamat."', '".$model->url_image."')";
+		Yii::app()->db->createCommand($sql)->query();
+		
 		$this->loadModel($id)->delete();
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
@@ -360,7 +367,6 @@ class UserController extends Controller
 			$model->attributes=$_GET['User'];
 		
 		
-
 		$this->render('admin',array(
 			'model'=>$model,
 		));

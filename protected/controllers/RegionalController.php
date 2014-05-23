@@ -114,6 +114,11 @@ class RegionalController extends Controller
 	 */
 	public function actionDelete($id)
 	{
+		$model = $this->loadModel($id);
+		$sql = "INSERT INTO _HISTORY_REGIONAL VALUES ('', '".$model->nama."', 
+					'".$model->alamat."', '".$model->id_user."')";
+		Yii::app()->db->createCommand($sql)->query();
+		
 		$this->loadModel($id)->delete();
 
 		// if AJAX request (triggered by deletion via admin grid view), we should not redirect the browser
