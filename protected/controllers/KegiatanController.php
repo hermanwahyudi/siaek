@@ -67,21 +67,23 @@ class KegiatanController extends Controller
 			$model->attributes=$_POST['Kegiatan'];
             $model->status_isi=0;
 			
-			$waktu_selesai = explode(":", $_POST['Kegiatan']['waktu_selesai']);
-			$waktu_mulai = explode(":", $_POST['Kegiatan']['waktu_mulai']);
-			
-			
-			$sum_waktu_selesai = ((int) $waktu_selesai[0] . "00" + (int) $waktu_selesai[1]. "0");
-			$sum_waktu_mulai = ((int) $waktu_mulai[0] . "00" + (int) $waktu_mulai[1] ."0");
-			
-			if($sum_waktu_selesai <= $sum_waktu_mulai) {
-				Yii::app()->user->setFlash('errorWaktu', 'Waktu selesai lebih kecil atau sama dengan dari waktu mulai!');
-				$this->redirect(array('create'));
-			} else {
-				if($model->save()) {
-					//$this->redirect(array());
-					Yii::app()->user->setFlash('successTambah', 'Kegiatan baru telah berhasil ditambah.');
-					$this->redirect(array('view','id'=>$model->id_kegiatan));
+			if($model->save()) {
+				$waktu_selesai = explode(":", $_POST['Kegiatan']['waktu_selesai']);
+				$waktu_mulai = explode(":", $_POST['Kegiatan']['waktu_mulai']);
+				
+				
+				$sum_waktu_selesai = ((int) $waktu_selesai[0] . "00" + (int) $waktu_selesai[1]. "0");
+				$sum_waktu_mulai = ((int) $waktu_mulai[0] . "00" + (int) $waktu_mulai[1] ."0");
+				
+				if($sum_waktu_selesai <= $sum_waktu_mulai) {
+					Yii::app()->user->setFlash('errorWaktu', 'Waktu selesai lebih kecil atau sama dengan dari waktu mulai!');
+					$this->redirect(array('create'));
+				} else {
+					if($model->save()) {
+						//$this->redirect(array());
+						Yii::app()->user->setFlash('successTambah', 'Kegiatan baru telah berhasil ditambah.');
+						$this->redirect(array('view','id'=>$model->id_kegiatan));
+					}
 				}
 			}
 		}
@@ -106,20 +108,22 @@ class KegiatanController extends Controller
 		if(isset($_POST['Kegiatan']))
 		{
 			$model->attributes=$_POST['Kegiatan'];
-			$waktu_selesai = explode(":", $_POST['Kegiatan']['waktu_selesai']);
-			$waktu_mulai = explode(":", $_POST['Kegiatan']['waktu_mulai']);
-			
-			$sum_waktu_selesai = ((int) $waktu_selesai[0] . "00" + (int) $waktu_selesai[1]. "0");
-			$sum_waktu_mulai = ((int) $waktu_mulai[0] . "00" + (int) $waktu_mulai[1] ."0");
-			
-			if($sum_waktu_selesai <= $sum_waktu_mulai) {
-				Yii::app()->user->setFlash('errorWaktu', 'Waktu selesai lebih kecil atau sama dengan dari waktu mulai!');
-				$this->redirect(array('update','id'=>$model->id_kegiatan));
-			} else {
-				if($model->save()) {
-					//$this->redirect(array('view','id'=>$model->id_kegiatan));
-					Yii::app()->user->setFlash('successUbah', 'Kegiatan telah berhasil diubah.');
-					$this->redirect(array('view','id'=>$model->id_kegiatan));
+			if($model->save()) {
+				$waktu_selesai = explode(":", $_POST['Kegiatan']['waktu_selesai']);
+				$waktu_mulai = explode(":", $_POST['Kegiatan']['waktu_mulai']);
+				
+				$sum_waktu_selesai = ((int) $waktu_selesai[0] . "00" + (int) $waktu_selesai[1]. "0");
+				$sum_waktu_mulai = ((int) $waktu_mulai[0] . "00" + (int) $waktu_mulai[1] ."0");
+				
+				if($sum_waktu_selesai <= $sum_waktu_mulai) {
+					Yii::app()->user->setFlash('errorWaktu', 'Waktu selesai lebih kecil atau sama dengan dari waktu mulai!');
+					$this->redirect(array('update','id'=>$model->id_kegiatan));
+				} else {
+					if($model->save()) {
+						//$this->redirect(array('view','id'=>$model->id_kegiatan));
+						Yii::app()->user->setFlash('successUbah', 'Kegiatan telah berhasil diubah.');
+						$this->redirect(array('view','id'=>$model->id_kegiatan));
+					}
 				}
 			}
 		}
@@ -166,6 +170,8 @@ class KegiatanController extends Controller
 		$criteria=new CDbCriteria();
    		$count=Kegiatan::model()->count($criteria);
     	$pages=new CPagination($count);
+		
+		$criteria->condition = "tanggal ORDER BY id_kegiatan DESC";
 
     	// results per page
     	$pages->pageSize=10;
@@ -197,8 +203,8 @@ class KegiatanController extends Controller
 			$sumDatenow = $arrDatenow[0]+$arrDatenow[1]+$arrDatenow[2];
 			$sumDeadline = $arrDeadline02[0]+$arrDeadline02[1]+$arrDeadline02[2];
 			if($sumDatenow <= $sumDeadline) {
-				if($arrTimenow[0] < $arrDeadline03[0]) {
-					if($arrTimenow[1] < $arrDeadline03[1]) {
+				if($arrTimenow[0] <= $arrDeadline03[0]) {
+					if($arrTimenow[1] <= $arrDeadline03[1]) {
 						Yii::app()->user->setFlash('errorDeadline', 'Waktu menit deadline tidak boleh masa lalu.');
 						$this->redirect(array('UpdateDeadline', 'id'=>$id));
 					} else {
