@@ -23,7 +23,7 @@ $this->breadcrumbs = array(
         </div>
         <?php
         if (Yii::app()->user->hasFlash('gagalTambah')){
-            echo "<div style='color:green'>" . Yii::app()->user->getFlash('gagalTambah') . "</div>";
+            echo "<div style='color:red'>" . Yii::app()->user->getFlash('gagalTambah') . "</div>";
         }
         ?>
         <div class="col-md-12 column">
@@ -76,7 +76,7 @@ $this->breadcrumbs = array(
                                 <?php echo $form->textField($model, 'waktu_selesai', array('class' => 'form-control')); ?>
                                 <?php echo $form->error($model,'waktu_selesai'); ?>
                             </div>
-                            
+
                         </form>
                     </div>
                     <table class="table table-bordered">
