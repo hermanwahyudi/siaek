@@ -32,4 +32,4 @@ tambahkan baris dibawah ini ya setelah clone
 	redirect setelah create peserta [SELESAI]
 	gagal warna merah [SELESAI]
 	buat regional kagak ada create deadline [SELESAI]
-	deadline kegiatan akhir bulan[SELESAI untuk absensi untuk create kegiatan belum]
+	deadline kegiatan akhir bulan[SELESAI]
