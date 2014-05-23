@@ -29,7 +29,7 @@ tambahkan baris dibawah ini ya setelah clone
 	username minimal 6 karakter[SELESAI]
 	nama minimal 6[SELESAI]
 	username harus unique[SELESAI]
-	redirect setelah create peserta
+	redirect setelah create peserta [SELESAI]
 	gagal warna merah [SELESAI]
 	buat regional kagak ada create deadline [SELESAI]
 	deadline kegiatan akhir bulan[SELESAI untuk absensi untuk create kegiatan belum]

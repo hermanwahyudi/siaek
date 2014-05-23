@@ -81,7 +81,7 @@ class PesertaController extends Controller
 			if(empty($dataPeserta)) {
 				if($model->save()) {
 					Yii::app()->user->setFlash('successTambah', 'Peserta telah berhasil ditambah.');
-					$this->redirect(array('create'));
+					$this->redirect(array('index'));
 				}
 			} else {
 				Yii::app()->user->setFlash('errorNomorPeserta', 'Nomor peserta telah ada di database.');
