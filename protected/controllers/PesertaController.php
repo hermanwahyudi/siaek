@@ -156,14 +156,14 @@ class PesertaController extends Controller
 	}
 
 	/**
-	 * Lists all models.
+	 * Lists all models Peserta.
 	 */
 	public function actionIndex() {
 		$this->actionListPeserta();
 	}
 
 	/**
-	 * Manages all models.
+	 * Manages all list Peserta.
 	 */
 	public function actionListPeserta()
 	{
@@ -177,8 +177,6 @@ class PesertaController extends Controller
             throw new CHttpException(404,'Anda belum jadi admin regional tertentu');
 
         }
-
-
 
 		//$dataPeserta = Peserta::model()->findAllByAttributes(array('id_regional'=>$id_regional));
 		

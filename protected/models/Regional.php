@@ -47,6 +47,9 @@ class Regional extends CActiveRecord
 		);
 	}
 	
+	/**
+	 * @return array all of Regional.
+	 */
 	public function getRegional() {
 		$sql = "SELECT id_regional, nama FROM REGIONAL";
 		return Yii::app()->db->createCommand($sql)->query();
@@ -109,6 +112,10 @@ class Regional extends CActiveRecord
 	{
 		return parent::model($className);
 	}
+	
+	/**
+	 * @return array list of User options.
+	 */
 	public function users(){
 		return CHtml::listData(User::model()->findAll(), 'id_user', 'nama');
 	}
