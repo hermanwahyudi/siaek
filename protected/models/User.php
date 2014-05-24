@@ -17,7 +17,7 @@
  * @property string $url_image
  */
 class User extends CActiveRecord {
-
+	
     public $password_sekarang;
     public $password_baru;
     public $password_baru_repeat;
@@ -145,12 +145,22 @@ class User extends CActiveRecord {
         ));
     }
 
+	/**
+	 * Function to validate password.
+	 * @param string $password is password user.
+	 * @return boolean true if $password same by model user. 
+	 */
     public function validatePassword($password) {
         //return $password === $this->password;
         //var_dump($this->hashPassword($password, $this->saltpassword));
         return md5($password) === $this->password;
     }
-
+	
+	/**
+	 * Function to send email to send reset password.
+	 * @param string $to is email certainty user. 
+	 * @return boolean true if $password same by model user. 
+	 */
     public function sendMail($to, $message) {
         $info = "Please click here to reset your password " . Yii::app()->getBaseUrl(true) . "/site/login" ." ". $message;
         $from = "siaekb10@gmail.com";
@@ -165,10 +175,16 @@ class User extends CActiveRecord {
         }
     }
 
+	 /**
+	  * @return array role option.
+      */
     public function getRoleOption() {
         return array( '3' => 'Pengurus Regional');
     }
-
+	
+	 /**
+      * @return array gender options.
+      */
     public function getGenderOption() {
         return array('L' => 'Laki-Laki', 'P' => 'Perempuan');
     }

@@ -2,9 +2,9 @@
 
 class AbsensiController extends Controller
 {
-    /*
-     * @return void
-     * */
+    /**
+	 * @return array action filters
+	 */
     public function filters()
     {
         return array(
@@ -12,9 +12,12 @@ class AbsensiController extends Controller
             //'postOnly + delete', // we only allow deletion via POST request
         );
     }
-    /*
-     * @return void
-     * */
+	
+    /**
+	 * Specifies the access control rules.
+	 * This method is used by the 'accessControl' filter.
+	 * @return array access control rules
+	 */
     public function accessRules()
     {
         return array(
@@ -36,8 +39,8 @@ class AbsensiController extends Controller
     }
 
     /*
-     *
-     * */
+     * Displays of list Kegiatan. 
+	 */
     public function actionIndex()
     {
         $this->actionListKegiatan();
@@ -134,8 +137,9 @@ class AbsensiController extends Controller
     }
 
     /*
-     * @
-     * */
+     * Function to edit absensi
+     * @param integer $id is ID of Kegiatan model.
+	 */
     public function actionEditAbsensi($id)
     {
         $model = $this->loadKegiatan($id);
@@ -176,7 +180,11 @@ class AbsensiController extends Controller
             'absensi' => $absensi,
         ));
     }
-
+	
+	/**
+	 * Displays a particular model.
+	 * @param integer $id the ID of the model to be displayed
+	 */
     public function actionView($id)
     {
 
@@ -189,7 +197,7 @@ class AbsensiController extends Controller
     }
 
     /*
-     * @return absensi berdasarkan id kegiatan
+     * @return absensi model by $id which $id is id_kegiatan
      * */
     public function loadModelAbsensi($id)
     {
@@ -198,6 +206,7 @@ class AbsensiController extends Controller
             throw new CHttpException(404, 'The requested Absensi does not exist.');
         return $model;
     }
+	
     /*
      * @param model kegiatan baru
      * @param id_user id dari user yang sedang login
@@ -263,6 +272,7 @@ class AbsensiController extends Controller
             'absensi' => $absensi,
         ));
     }
+	
     /**
      * Performs the AJAX validation.
      * @param Absensi $model the model to be validated

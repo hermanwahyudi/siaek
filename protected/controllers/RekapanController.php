@@ -1,30 +1,37 @@
 <?php 
 	class RekapanController extends Controller {
 
-
-		 public function filters() {
-        return array(
-                'accessControl', // perform access control for CRUD operations
-                //'postOnly + delete', // we only allow deletion via POST request
-        );
-    }
-
-    public function accessRules() {
-        return array(
-            
-            array('allow', // allow authenticated user to perform 'create' and 'update' actions
-                'actions' => array('Index', 'comparerekapan', 'GeneratePdf'),
-                'expression' => 'Yii::app()->user->getLevel() == 2',
-                
-            ),
-           
-            array('deny', // deny all users
-                'users' => array('*'),
-            ),
-        );
-    }
-
+		/**
+		 * @return array action filters
+		 */
+		public function filters() {
+			return array(
+					'accessControl', // perform access control for CRUD operations
+					//'postOnly + delete', // we only allow deletion via POST request
+			);
+		}
 		
+		/**
+		 * Specifies the access control rules.
+		 * This method is used by the 'accessControl' filter.
+		 * @return array access control rules
+		 */
+		public function accessRules() {
+			return array(   
+				array('allow', // allow authenticated user to perform 'create' and 'update' actions
+					'actions' => array('Index', 'comparerekapan', 'GeneratePdf'),
+					'expression' => 'Yii::app()->user->getLevel() == 2',    
+				),  
+				array('deny', // deny all users
+					'users' => array('*'),
+				),
+			);
+		}
+
+		 /**
+		  * This is the default 'index' action that is invoked
+		  * when an action is not explicitly requested by Kegiatan.
+		  */
 		public function actionIndex() {
 			$model = new Kegiatan;
 			
@@ -37,7 +44,9 @@
 			}
 		}
 		
-		//Silahkan otak-atik fungsi ini buat dapet data dari kegiatan
+		/**
+		 * This is the actionCompareRekapan to handle Perbandingan Rekapan.
+		 */
 		public function actionCompareRekapan() {
 			$modelKegiatan = new Kegiatan;
 			
@@ -84,7 +93,11 @@
 				$this->render('compare', array('modelKegiatan' => $modelKegiatan));
 			}
 		}
-		//fungsi getNameRegional isinya ganti pake Query ngambil nama regional
+		
+		/**
+		 * This is the actionCompareRekapan to handle Perbandingan Rekapan.
+		 * @return name regional on Regional model.
+		 */
 		public function getNameRegional() {
 			$arrRegional = array();
 			$dataReader = Regional::model()->getRegional();
@@ -94,6 +107,10 @@
 			}
 			return $arrRegional;
 		}
+		
+		/**
+		 * @return array of bulan.
+         */
 		public function getArrayBulan($bulan1, $bulan2) {
 			$arrBulan = array();
 			$j=0;
@@ -102,6 +119,11 @@
 			}
 			return $arrBulan;
 		}
+		
+		/**
+		 * @param integer $i choose to bulan. 
+		 * @return of bulan.
+         */
 		public function getBulan($i) {
 			switch ($i) {
 				case 1 : return 'Januari'; break;
@@ -118,6 +140,14 @@
 				case 12 : return 'Desember'; break;
 			}
 		}
+		
+		/**
+		 * List rekap Kegiatan Bulanan
+		 * @param integer $bulan to choose bulan.
+		 * @param integer $tahun to choose $tahun.
+		 * @param string $temp to join other string. 
+         * @return array rekap Kegiatan Bulanan.
+         */
 		public function listBulanan($bulan, $tahun, $temp) {
 			$dataReader = Kegiatan::model()->getRekapKegiatan($bulan, $tahun, '1');
 			$temp = $temp . "<h4>Bulanan</h4><table><tr><td>Regional<hr></td><td>Kegiatan<hr></td><td align='center'>Pembicara<hr></td><td align='center'>Materi<hr></td><td align='center'>Tanggal Pelaksanaan<hr></td><td>Persentase Kehadiran<hr></td></tr>";
@@ -132,6 +162,14 @@
 			$temp = $temp . "</table>";
 			return $temp;
 		}
+		
+		/**
+		 * List rekap Kegiatan Pekanan.
+		 * @param integer $bulan to choose bulan.
+		 * @param integer $tahun to choose $tahun.
+		 * @param string $temp to join other string. 
+         * @return array rekap Kegiatan Pekanan.
+         */
 		public function listPekanan($bulan, $tahun, $temp) {
 			$dataReader = Kegiatan::model()->getRekapKegiatan($bulan, $tahun, '2');
 			$temp = $temp . "<h4>Pekanan</h4><table><tr><td>Regional<hr></td><td>Kegiatan<hr></td><td align='center'>Pembicara<hr></td><td align='center'>Materi<hr></td><td align='center'>Tanggal Pelaksanaan<hr></td><td>Persentase Pelaksanaan<hr></td></tr>";
@@ -145,6 +183,14 @@
 			$temp = $temp . "</table>";
 			return $temp;
 		}
+		
+		/**
+		 * List rekap Kegiatan Lokal.
+		 * @param integer $bulan to choose bulan.
+		 * @param integer $tahun to choose $tahun.
+		 * @param string $temp to join other string. 
+         * @return array rekap Kegiatan Lokal.
+         */
 		public function listLokal($bulan, $tahun, $temp) {
 			$dataReader = Kegiatan::model()->getRekapKegiatan($bulan, $tahun, '3');
 			$temp = $temp . "<h4>Lokal</h4><table><tr><td>Regional<hr></td><td>Kegiatan<hr></td><td align='center'>Pembicara<hr></td><td align='center'>Materi<hr></td><td align='center'>Tanggal Pelaksanaan<hr></td></tr>";
@@ -157,6 +203,14 @@
 			$temp = $temp . "</table>";
 			return $temp;
 		}
+		
+		/**
+		 * List rekap Kegiatan Khusus
+		 * @param integer $bulan to choose bulan.
+		 * @param integer $tahun to choose $tahun.
+		 * @param string $temp to join other string. 
+         * @return array rekap Kegiatan Khusus.
+         */
 		public function listKhusus($bulan, $tahun, $temp) {
 			$dataReader = Kegiatan::model()->getRekapKegiatan($bulan, $tahun, '4');
 			$temp = $temp . "<h4>Khusus</h4><table><tr><td>Regional<hr></td><td>Kegiatan<hr></td><td align='center'>Pembicara<hr></td><td align='center'>Materi<hr></td><td align='center'>Tanggal Pelaksanaan<hr></td></tr>";
@@ -169,6 +223,13 @@
 			$temp = $temp . "</table>";
 			return $temp;
 		}
+		
+		/**
+		 * Function to generate html to PDF.
+		 * @param integer $bulan to choose bulan.
+		 * @param integer $tahun to choose tahun.
+		 * 
+		 */
 		public function actionGeneratePdf($bulan, $tahun) {
 
 			$bulan = ($bulan > 9) ? $bulan : "0" . $bulan;

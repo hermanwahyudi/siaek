@@ -34,11 +34,7 @@ class UserController extends Controller
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
 				'actions'=>array('index', 'view', 'create','update', 'admin', 'delete'),
 				'expression'=>'Yii::app()->user->getLevel() == 1',
-			),/*
-			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin'),
-				'users'=>array('*'),
-			),*/
+			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
 			),
@@ -59,6 +55,10 @@ class UserController extends Controller
 			'model'=>$model,
 		));
 	}
+	
+	/**
+	 * Displays a particular profile.
+	 */
 	public function actionProfile() {
 		$model = $this->loadModel(Yii::app()->user->id);
 		if($model->role === '1') $model->role = 'Administrator';
@@ -73,7 +73,6 @@ class UserController extends Controller
 	 */
 	public function actionCreate()
 	{
-
 		$model=new User;  // this is my model related to table
         if(isset($_POST['User']))
         {
@@ -136,7 +135,6 @@ class UserController extends Controller
 	 */
 	public function actionUpdate($id)
 	{
-
 		$model=$this->loadModel($id);
 		$old_image = $model->url_image;
 		$old_username = $model->username;
@@ -222,8 +220,9 @@ class UserController extends Controller
             'model'=>$model,
         ));
 	}
+	
 	/**
-	 * Update profile Pengurus
+	 * Update profile users model.
 	 */
 	public function actionUpdateProfile() {
         $model = $this->loadModel(Yii::app()->user->id);
@@ -316,7 +315,10 @@ class UserController extends Controller
 		if(Yii::app()->user->getLevel() == '1') 
 			$this->actionListPengurus();
 	}
-	
+
+	/**
+	 * Function to edit password.
+	 */
 	public function actionPassword() {
 		$model = $this->loadModel(Yii::app()->user->id);
 		
@@ -357,7 +359,7 @@ class UserController extends Controller
 		
 	}
 	/**
-	 * Manages all models.
+	 * Displays all list User/Pengurus
 	 */
 	public function actionListPengurus()
 	{

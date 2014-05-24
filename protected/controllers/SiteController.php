@@ -69,7 +69,10 @@ class SiteController extends Controller {
         }
         $this->render('contact', array('model' => $model));
     }
-
+	
+	/**
+     * This is the actionForget to handle Forgot Password.
+     */
     public function actionForget() {
         $model = new LoginForm;
 
@@ -91,34 +94,15 @@ class SiteController extends Controller {
         } else
             $this->render('forget', array('model' => $model));
     }
-
+	
+	/**
+     * This is the actionReset to handle Reset Password and send to email.
+	 * @param $user is model of User
+     */
     public function actionReset($user) {
-        //$model = User::model()->find('LOWER(email)=?', array($model->email));
-       //print_r($user);
+       
         $password = "" . rand(1000000, 10000000);
         $user->password = md5($password);
-
-        /*
-          $model=new User;
-          if(isset($_POST['User']))
-          {
-          $model->attributes=$_POST['User'];
-          $user = User::model()->find('LOWER(username)=?', array($model->username));
-
-          if($user!==null){
-          //make a verifed code
-          //$verCode = $user->hashPassword($user->password);
-          //save to database
-          $connection=Yii::app()->db;
-          $sql = "REPLACE INTO user (id_user, password) VALUES ('$user->id' ,'$password);";
-          $command=$connection->createCommand($sql);
-          $rowCount=$command->execute();
-          //send to email
-          $user->sendMail($model->email, $password);
-          }
-          } */
-
-
 
         if ($user->save(false)) {
             $message = "Hi " . $user->nama . ", this is your new password. " .
