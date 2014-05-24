@@ -242,6 +242,13 @@ class AbsensiController extends Controller
         if (isset($_POST['Absensi'])) {
             $model->attributes = $_POST['Kegiatan'];
             $model->id_regional = $id_regional;
+            if($model->waktu_mulai > $model->waktu_selesai){
+                Yii::app()->user->setFlash('errorWaktu', 'Waktu selesai lebih kecil atau sama dengan dari waktu mulai!');
+                $this->redirect(array('create'),array(
+                                                    'model'=> $model,
+                                                    'absensi'=>$absensi,
+                ));
+            }
 
             $model->deadline = date('Y-m-t 23:59:59');
             $model->waktu_isi = date('Y-m-d H:i:s');

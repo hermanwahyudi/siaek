@@ -25,6 +25,9 @@ $this->breadcrumbs = array(
         if (Yii::app()->user->hasFlash('gagalTambah')){
             echo "<div style='color:red'>" . Yii::app()->user->getFlash('gagalTambah') . "</div>";
         }
+        if (Yii::app()->user->hasFlash('errorWaktu')){
+            echo "<div style='color:red'>" . Yii::app()->user->getFlash('errorWaktu') . "</div>";
+        }
         ?>
         <div class="col-md-12 column">
             <div class="row clearfix">
