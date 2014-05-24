@@ -19,9 +19,11 @@
 			<label for="" class="col-sm-2 control-label"><?php echo $form->labelEx($model,'id_user'); ?></label>
 				<div class="col-sm-4">
 				   <!--?php echo $form->textField($model,'id_user', array('class'=>'form-control')); ?-->
-                                   <div class="controls">
+                   <div class="controls">
+                   
 				    <?php echo CHtml::activeDropDownList($model,'id_user', $model->Users(),array('class'=>'form-control')); ?>
-                                       </div>
+
+                   </div>
 				   <span class="error-label"><?php echo $form->error($model,'id_user'); ?></span>
 				</div>
 		</div>
