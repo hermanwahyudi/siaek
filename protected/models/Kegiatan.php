@@ -61,14 +61,24 @@ class Kegiatan extends CActiveRecord
             'regional' => array(self::BELONGS_TO, 'Regional', 'id_regional'),
         );
     }
-
+	
+	/**
+	 * Return Perbandingan Rekapan
+	 * @param integer $id_regional the Foreign ID of the model Kegiatan to be retrieved.
+	 * @param string $exp_bulan the explode of tanggal of the model Kegiatan to be retrieved.
+	 * @param integer $tahun the tahun attribute of the model Kegiatan to be retrieved.
+     * @return array of Perbandingan Kegiatan.
+     */
     function getAktifKegiatan($id_regional, $exp_bulan, $tahun)
     {
         $sql = "SELECT COUNT(*) AS jumlah FROM KEGIATAN WHERE id_regional = '" .
             $id_regional . "' AND tanggal LIKE '%" . $tahun . "-" . $exp_bulan . "-%' AND status_isi = '1'";
         return Yii::app()->db->createCommand($sql)->query();
     }
-
+	
+	/**
+     * @return array of list bulan Kegiatan.
+     */
     public function getBulan()
     {
         return array(
@@ -86,7 +96,10 @@ class Kegiatan extends CActiveRecord
             "12" => "Desember",
         );
     }
-
+	
+	/**
+     * @return array of tahun Kegiatan.
+     */
     public function getTahun()
     {
         return array(
@@ -97,7 +110,14 @@ class Kegiatan extends CActiveRecord
 			"2017" => "2017",
         );
     }
-
+	
+	/**
+	 * Return Rekap Rekapan
+	 * @param integer $id_kegiatan the ID of the model Kegiatan to be retrieved.
+	 * @param integer $tahun the explode of tanggal of the model Kegiatan to be retrieved.
+	 * @param integer $jenis_kegiatan the tahun attribute of the model Kegiatan to be retrieved.
+     * @return array of Rekap Kegiatan.
+     */
     public function getRekapKegiatan($bulan, $tahun, $jenis_kegiatan)
     {
         $sql = "SELECT K.id_regional, K.id_kegiatan, nama, nama_kegiatan, pembicara, materi, tanggal, jenis_kegiatan FROM Regional R JOIN Kegiatan K ON R.id_regional = K.id_regional
@@ -107,7 +127,13 @@ class Kegiatan extends CActiveRecord
 
         return Yii::app()->db->createCommand($sql)->query();
     }
-
+	
+	/**
+	 * Return Count Peserta 
+     * @param integer $id_kegiatan the ID of the model Kegiatan to be retrieved.
+   	 * @param integer $id_regional the ID of the model Regional to be retrieved.
+     * @return array count of Peserta Kegiatan.
+     */
     public function getCountPeserta($id_regional, $id_kegiatan)
     {
         $sql = "SELECT count(*) AS jumlah_peserta FROM Peserta, Regional, Kegiatan
@@ -118,7 +144,13 @@ class Kegiatan extends CActiveRecord
 
         return Yii::app()->db->createCommand($sql)->query();
     }
-
+	
+	/**
+	 * Return Count Peserta Hadir
+     * @param integer $id_kegiatan the ID of the model Kegiatan to be retrieved.
+   	 * @param integer $id_regional the ID of the model Regional to be retrieved.
+     * @return array count of Peserta Hadir Kegiatan.
+     */
     public function getCountHadir($id_regional, $id_kegiatan)
     {
         $sql = " SELECT SUM(psrt1.jumlah_peserta) AS peserta_hadir FROM 
@@ -128,6 +160,13 @@ class Kegiatan extends CActiveRecord
 
         return Yii::app()->db->createCommand($sql)->query();
     }
+	
+	/**
+	 * Return Count Pelaksanaan Kegiatan Pekanan
+     * @param integer $id_kegiatan the ID of the model Kegiatan to be retrieved.
+   	 * @param integer $id_regional the ID of the model Regional to be retrieved.
+     * @return array count of Pelaksanaan Kegiatan.
+     */
 	public function getCountPekanan($id_regional, $id_kegiatan) {
 		$sql = "SELECT count(*) AS jumlah_pelaksanaan FROM Kegiatan
 					WHERE id_regional = '".$id_regional."' 
@@ -158,6 +197,10 @@ class Kegiatan extends CActiveRecord
 			'deadline' => 'Deadline Absensi'
         );
     }
+	
+	/**
+     * @return array of List Kegiatan.
+     */
 	public function getListKegiatan() {
 		date_default_timezone_set("Asia/Jakarta");
 		$arrDatenow = explode("-", date("Y-m-d"));
@@ -209,25 +252,6 @@ class Kegiatan extends CActiveRecord
         ));
 
     }
-	public function search2($jenis_kegiatan)
-    {
-		$criteria = new CDbCriteria;
-		
-		$date = date('Y-m-d');
-		$arrDate = explode("-", $date);
-		$criteria->condition = "tanggal LIKE '%".$arrDate[0]."-".$arrDate[1]."-%' AND jenis_kegiatan = '".$jenis_kegiatan."'";
-		
-		return new CActiveDataProvider($this, array(
-				'criteria' => $criteria,
-				'pagination' => array(
-					'pageSize' => 10,
-				),
-				'sort'=>array(
-					'defaultOrder'=>'id_kegiatan DESC',
-				),
-				
-			));
-	}
 
     /**
      * Returns the static model of the specified AR class.
@@ -239,17 +263,26 @@ class Kegiatan extends CActiveRecord
     {
         return parent::model($className);
     }
-
+	
+	/**
+     * @return array of Regional Name options.
+     */
     public function Regionals()
     {
         return CHtml::listData(Regional::model()->findAll(), 'id_regional', 'nama');
     }
-
+	
+	/**
+     * @return array of type Kegiatan options.
+     */
     public function getTipeOption()
     {
         return array('1' => 'Bulanan', '2' => 'Pekanan', '3' => 'Lokal', '4' => 'Khusus');
     }
 
+	/**
+     * @return array of day Kegiatan option.
+     */
     public function getDayOption()
     {
         return array('Senin' => 'Senin', 'Selasa' => 'Selasa', 'Rabu' => 'Rabu', 'Kamis' => 'Kamis', 'Jumat' => 'Jumat', 'Sabtu' => 'Sabtu', 'Minggu' => 'Minggu');

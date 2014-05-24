@@ -160,7 +160,7 @@ class KegiatanController extends Controller
 	}
 
 	/**
-	 * Lists all models.
+	 * Lists all models of kegiatan.
 	 */
 	public function actionIndex()
 	{
@@ -174,6 +174,9 @@ class KegiatanController extends Controller
 		));	
 	}
 	
+	/**
+	 * Lists all of deadline kegiatan.
+	 */
 	public function actionDeadline() { // Nampilin list kegiatan
 		$criteria=new CDbCriteria();
    		$count=Kegiatan::model()->count($criteria);
@@ -191,6 +194,11 @@ class KegiatanController extends Controller
 				array('model'=>$model, 'pages' => $pages));
 	}
 	
+	/**
+	 * Updates a particular of deadline kegiatan.
+	 * If update is successful, the browser will be redirected to the list of daedline page.
+	 * @param integer $id the ID of the model deadline kegiatan to be updated
+	 */
 	public function actionUpdateDeadline($id) {
 		$model=$this->loadModel($id);
 		$nama_regional = "";

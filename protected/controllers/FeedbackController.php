@@ -38,11 +38,6 @@ class FeedbackController extends Controller
 				//'users'=>array('*'),
 			),
 			
-			// array('allow', // allow admin user to perform 'admin' and 'delete' actions
-			//  	'actions'=>array('delete','admin'),
-			//  	'expression'=>'Yii::app()->user->getLevel() = "3"',
-			//  	//'users'=>array('admin'),
-			//  ),
 			array('deny',  // deny all users
 				'users'=>array('*'),
 			),
@@ -87,8 +82,6 @@ class FeedbackController extends Controller
 		$this->render('create',array(
 			'model'=>$model,
 		));
-                
-                
 	}
 
 	/**
@@ -130,7 +123,7 @@ class FeedbackController extends Controller
 	}
 
 	/**
-	 * Lists all models.
+	 * Lists all models of feedback.
 	 */
 	public function actionIndex()
 	{
@@ -152,12 +145,11 @@ class FeedbackController extends Controller
 
             }
 
-
 			$criteria=new CDbCriteria();
     		$count=Feedback::model()->count($criteria);
     		$pages=new CPagination($count);
 
-    			// results per page
+    		// results per page
    			$pages->pageSize=2;
     		$pages->applyLimit($criteria);
 
