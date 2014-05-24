@@ -154,10 +154,7 @@ class FeedbackController extends Controller
     		$pages->applyLimit($criteria);
 
 			$dataFeedback = Feedback::model()->findAllByAttributes(array('id_regional'=>$id_regional), $criteria);
-            if($dataFeedback==null){
-                throw new CHttpException(404,'Feedback tidak ada');
-            }
-
+            
 			$this->render('index',array(
 				'dataFeedback'=>$dataFeedback, 'pages' => $pages
 			));

@@ -20,7 +20,7 @@
 				<div class="col-sm-4">
 				   <!--?php echo $form->textField($model,'id_user', array('class'=>'form-control')); ?-->
                    <div class="controls">
-                   
+
 				    <?php echo CHtml::activeDropDownList($model,'id_user', $model->Users(),array('class'=>'form-control')); ?>
 
                    </div>
