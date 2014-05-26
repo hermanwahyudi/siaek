@@ -150,7 +150,7 @@ class FeedbackController extends Controller
     		$pages=new CPagination($count);
 
     		// results per page
-   			$pages->pageSize=2;
+   			$pages->pageSize=5;
     		$pages->applyLimit($criteria);
 
 			$dataFeedback = Feedback::model()->findAllByAttributes(array('id_regional'=>$id_regional), $criteria);
