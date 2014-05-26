@@ -88,6 +88,9 @@ class Feedback extends CActiveRecord
 			'pagination'=> array(
                 'pageSize'=> 5,
                 ),
+			'sort'=>array(
+                'defaultOrder'=>'id_feedback DESC',
+            ),
 
 		));
 	}

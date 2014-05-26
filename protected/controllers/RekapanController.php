@@ -150,14 +150,14 @@
          */
 		public function listBulanan($bulan, $tahun, $temp) {
 			$dataReader = Kegiatan::model()->getRekapKegiatan($bulan, $tahun, '1');
-			$temp = $temp . "<h4>Bulanan</h4><table><tr><td>Regional<hr></td><td>Kegiatan<hr></td><td align='center'>Pembicara<hr></td><td align='center'>Materi<hr></td><td align='center'>Tanggal Pelaksanaan<hr></td><td>Persentase Kehadiran<hr></td></tr>";
+			$temp = $temp . "<h4>Bulanan</h4><table><tr><td>Regional<hr></td><td>Kegiatan<hr></td><td align='center'>Pembicara<hr></td><td align='center'>Materi<hr></td><td align='center'>Tanggal Pelaksanaan<hr></td><td>Jumlah Hadir<hr></td><td>Jumlah Peserta<hr></td><td>Persentase Kehadiran<hr></td></tr>";
 			while(($row = $dataReader->read()) !== false) {
 				$row1 = Kegiatan::model()->getCountPeserta($row['id_regional'], $row['id_kegiatan'])->read();
 				$row2 = Kegiatan::model()->getCountHadir($row['id_regional'], $row['id_kegiatan'])->read();
 				$arr = explode("-", $row['tanggal']);
 				
 				$temp = $temp . "<tr><td>". $row['nama'] ."</td><td align='center'>".$row['nama_kegiatan']."</td><td align='center'>".
-								$row['pembicara'] . "</td><td align='center'>".$row['materi']."</td><td align='center'>". $arr[2] ."/".$arr[1]."</td><td align='center'>". (int)($row2['peserta_hadir']/$row1['jumlah_peserta'] * 100)."%</td></tr>";
+								$row['pembicara'] . "</td><td align='center'>".$row['materi']."</td><td align='center'>". $arr[2] ."/".$arr[1]."</td><td align='center'>".$row2['peserta_hadir']."</td><td align='center'>".$row1['jumlah_peserta']."</td><td align='center'>". (int)($row2['peserta_hadir']/$row1['jumlah_peserta'] * 100)."%</td></tr>";
 			}
 			$temp = $temp . "</table>";
 			return $temp;
