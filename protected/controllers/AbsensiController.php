@@ -62,9 +62,7 @@ class AbsensiController extends Controller
 
         }else{
 
-            $criteria->compare('jenis_kegiatan',1);
-
-
+            $criteria->addInCondition('jenis_kegiatan',array(1,4));
         }
 
         $criteria->order = "id_kegiatan desc";
