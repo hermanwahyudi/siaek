@@ -59,7 +59,7 @@ class AbsensiController extends Controller
         $id_regional = $objRegional->id_regional;
         if(Yii::app()->user->getLevel()==3){
             $criteria->condition = "id_regional = $id_regional";
-
+            $criteria->addInCondition('jenis_kegiatan',array(1,2,3));
         }else{
 
             $criteria->addInCondition('jenis_kegiatan',array(1,4));
