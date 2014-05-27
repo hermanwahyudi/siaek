@@ -52,21 +52,30 @@ class AbsensiController extends Controller
      * */
     public function actionListKegiatan()
     {
-        $criteria = new CDbCriteria();
-        $count = Kegiatan::model()->count($criteria);
-        $pages = new CPagination($count);
-        $pages->pageSize = 10;
-        $pages->applyLimit($criteria);
-		if(Yii::app()->user->getLevel()==3){
-            $id_user = Yii::app()->user->id;
-            $objRegional = Regional::model()->findByAttributes(array('id_user' => $id_user));
-            $id_regional = $objRegional['id_regional'];
-            $model = Kegiatan::model()->findAllByAttributes(array('id_regional' => $id_regional),array('order'=>'id_kegiatan desc'));
+        $criteria=new CDbCriteria();
+
+        $id_user = Yii::app()->user->id;
+        $objRegional = Regional::model()->findByAttributes(array('id_user' => $id_user));
+        $id_regional = $objRegional->id_regional;
+        if(Yii::app()->user->getLevel()==3){
+            $criteria->condition = "id_regional = $id_regional";
+
         }else{
-            $model = Kegiatan::model()->findAll($criteria);
+
+            $criteria->compare('jenis_kegiatan',1);
+
+
         }
 
-        $this->render("listKegiatan", array('model' => $model, 'pages' => $pages));
+        $criteria->order = "id_kegiatan desc";
+
+        $count=Kegiatan::model()->count($criteria);
+        $pages=new CPagination($count);
+        // results per page
+        $pages->pageSize=10;
+        $pages->applyLimit($criteria);
+        $models=Kegiatan::model()->findAll($criteria);
+        $this->render("listKegiatan", array('models' => $models, 'pages' => $pages));
     }
     /*
      * @param model kegiatan

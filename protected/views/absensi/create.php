@@ -62,7 +62,7 @@ $this->breadcrumbs = array(
                         <form class="form-horizontal" role="form">
                             <div class="form-group">
                                 <?php echo $form->labelEx($model, 'jenis_kegiatan'); ?>
-                                 <?php echo CHtml::activeDropDownList($model, 'jenis_kegiatan', $model->getTipeOption(), array('class' => 'form-control')); ?>
+                                 <?php echo CHtml::activeDropDownList($model, 'jenis_kegiatan', $model->getTipeOption2(), array('class' => 'form-control')); ?>
                             </div>
                             <div class="form-group">
                                 <?php echo $form->labelEx($model, 'tanggal'); ?>

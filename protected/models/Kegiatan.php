@@ -271,15 +271,18 @@ class Kegiatan extends CActiveRecord
     {
         return CHtml::listData(Regional::model()->findAll(), 'id_regional', 'nama');
     }
-	
+
 	/**
      * @return array of type Kegiatan options.
      */
     public function getTipeOption()
     {
-        return array('1' => 'Bulanan', '2' => 'Pekanan', '3' => 'Lokal', '4' => 'Khusus');
+        return array('1' => 'Bulanan','4' => 'Khusus');
     }
-
+    public function getTipeOption2()
+    {
+        return array('2' => 'Pekanan', '3' => 'Lokal');
+    }
 	/**
      * @return array of day Kegiatan option.
      */
