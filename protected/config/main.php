@@ -19,11 +19,11 @@ return array(
 	'import'=>array(
 		'application.models.*',
 		'application.components.*',
-		'bootstrap.helpers.TbHtml',
-        'bootstrap.helpers.TbArray',
-        'bootstrap.behaviors.TbWidget',
-        'bootstrap.widgets.TbDataColumn',
-		'bootstrap.widgets.TbActiveForm',
+		'bootstrap.helpers.*',
+        
+        'bootstrap.behaviors.*',
+        'bootstrap.widgets.*',
+
 	),
 
 	'modules'=>array(
