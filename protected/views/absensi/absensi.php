@@ -81,6 +81,9 @@ $this->breadcrumbs = array(
                                                 Nama Peserta
                                             </th>
                                             <th>
+                                                Regional
+                                            </th>
+                                            <th>
                                                 Keterangan
                                             </th>
                                             <th>
@@ -99,6 +102,9 @@ $this->breadcrumbs = array(
 
                                                 <td>
                                                     <?php echo $peserta[$i]['nama']; ?>
+                                                </td>
+                                                <td>
+                                                    <?php echo $peserta[$i]['id_regional']; ?>
                                                 </td>
                                                 <td >
                                                     <?php echo CHtml::activeDropDownList($absensi, "[$i]id_status", $absensi->getStatusOption(), array('class' => 'form-control')); ?>

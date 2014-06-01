@@ -87,9 +87,9 @@ class AbsensiController extends Controller
         $model = $this->loadKegiatan($id);
         $id_regional = $model->id_regional;
         if(Yii::app()->user->getLevel()==3){
-            $sql = "SELECT id_peserta,nama FROM peserta WHERE status_aktif=1 and id_regional = '" . $model->id_regional . "'";
+            $sql = "SELECT id_peserta,nama FROM peserta WHERE status_aktif=1 and id_regional = '" . $model->id_regional . "' order by nama";
         }else{
-            $sql = "SELECT id_peserta,nama FROM peserta WHERE status_aktif=1";
+            $sql = "SELECT id_peserta,nama,id_regional FROM peserta WHERE status_aktif=1 order by id_regional,nama";
         }
 
         $dbCommand = Yii::app()->db->createCommand($sql);

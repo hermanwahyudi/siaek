@@ -54,6 +54,7 @@ class Peserta extends CActiveRecord
 		// class name for the relations automatically generated below.
 		return array(
                     'absensi'   => array(self::HAS_MANY,'Absensi','id_peserta'),
+                    'regional'   => array(self::HAS_MANY,'Regional','regional'),
 		);
 	}
 
