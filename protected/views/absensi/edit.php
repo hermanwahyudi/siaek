@@ -92,6 +92,9 @@ $this->breadcrumbs = array(
                                         Nama Peserta
                                     </th>
                                     <th>
+                                        Regional
+                                    </th>
+                                    <th>
                                         Keterangan
                                     </th>
                                     <th>
@@ -116,6 +119,11 @@ $this->breadcrumbs = array(
                                                 <td>
                                                     <?php 
                                                         echo $peserta['nama'];
+                                                    ?>
+                                                </td>
+                                                <td>
+                                                    <?php 
+                                                        echo $peserta['id_regional'];
                                                     ?>
                                                 </td>
                                                 <td>

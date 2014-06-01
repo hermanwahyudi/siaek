@@ -230,9 +230,9 @@ class AbsensiController extends Controller
 
         //peserta
         if(Yii::app()->user->getLevel()==3){
-            $sql = "SELECT id_peserta,nama FROM peserta WHERE status_aktif=1 and id_regional = '" . $id_regional . "'";
+            $sql = "SELECT id_peserta,nama FROM peserta WHERE status_aktif=1 and id_regional = '" . $id_regional . "' order by nama";
         }else{
-            $sql = "SELECT id_peserta,nama FROM peserta WHERE status_aktif=1";
+            $sql = "SELECT id_peserta,nama FROM peserta WHERE status_aktif=1 order by id_regional, nama";
         }
         $dbCommand = Yii::app()->db->createCommand($sql);
         $peserta = $dbCommand->queryAll();
