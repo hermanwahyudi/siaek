@@ -24,11 +24,8 @@ $this->breadcrumbs=array(
 			?><br>
 			
 				<div class="col-md-12 column">	
-				<!--</div>-->
-				<!--</div>-->
-			<!--<div class="row clearfix">-->
-				<!--<div class="col-md-12 column">-->
-					<table class="table">
+				
+					<table class="table table-striped table-bordered">
 						<thead>
 							<tr>
 								<th>
@@ -70,9 +67,7 @@ $this->breadcrumbs=array(
 						</tbody>
 					</table> 
 
-					<?php foreach($model as $model): ?>
-    
-					<?php endforeach; ?>
+					
 
 					<?php $this->widget('CLinkPager', array(
     				'pages' => $pages,
