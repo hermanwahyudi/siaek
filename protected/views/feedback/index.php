@@ -14,16 +14,17 @@ $this->breadcrumbs=array(
 
 <div class="row clearfix">
     <div class="col-md-11 column"> <br>
-		<table class="table" aling="center">
+		<table class="table table-striped table-bordered" aling="center">
 			<thead>
 				
-					<td align="center"><strong>No.</strong></td>
+					<td align="center"><h3><b>No.</b></h3></td>
 				
 				
 					<td align="center"><strong>Nama Kegiatan</strong></td>
 				
 			
 					<td align="center"><strong>Komentar</strong></td>
+					<td align="center"><strong>Action</strong></td>
 				
 			</thead>
             <tbody>

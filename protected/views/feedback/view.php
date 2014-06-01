@@ -35,6 +35,7 @@ $this->menu=array(
 	</div>
 </div>
 <p align="left">
-<?php echo CHtml::link('Back', array('feedback/index')); ?></p>
+<?php echo CHtml::link('Back', array('feedback/index'),array(
+    'class' =>'btn btn-primary')); ?></p>
 
 

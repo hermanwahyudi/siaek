@@ -93,8 +93,10 @@ $this->breadcrumbs = array(
     </tbody>
 </table>
 
-
-
 <?php $this->widget('CLinkPager', array(
     'pages' => $pages,
 )) ?>
+
+<?php echo TbHtml::pager(array(
+    array('label' => 'Back', 'url' => '../site/index'),
+)); ?>

@@ -146,11 +146,12 @@ class FeedbackController extends Controller
             }
 
 			$criteria=new CDbCriteria();
+			$criteria->order = "id_feedback desc";
     		$count=Feedback::model()->count($criteria);
     		$pages=new CPagination($count);
 
     		// results per page
-   			$pages->pageSize=5;
+   			$pages->pageSize=10;
     		$pages->applyLimit($criteria);
 
 			$dataFeedback = Feedback::model()->findAllByAttributes(array('id_regional'=>$id_regional), $criteria);
