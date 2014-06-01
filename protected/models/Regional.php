@@ -28,6 +28,7 @@ class Regional extends CActiveRecord
 		// will receive user inputs.
 		return array(
 			array('nama, alamat, id_user', 'required'),
+			 array('nama','unique', 'message'=>'Nama sudah kepake.'),
 			array('id_user', 'numerical', 'integerOnly'=>true),
 			array('nama', 'length', 'max'=>64),
 			// The following rule is used by search().
