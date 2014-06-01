@@ -24,11 +24,11 @@ endif;
                 <div class="panel-body">
                     <div class="form-group">
                         <?php echo $form->labelEx($model, 'email') . "*"; ?>
-                        <?php echo $form->textField($model, 'email'); ?>
+                        <?php echo $form->textField($model, 'email',array('class'=>'form-control')); ?>
                         <span style="color:red"><?php echo $form->error($model, 'email'); ?></span>
                     </div>
                     <div class="form-group">
-                        <?php echo CHtml::submitButton('Reset Password'); ?>
+                        <?php echo CHtml::submitButton('Reset Password',array('class'=>'btn btn-primary')); ?>
                         <br>
                         <?php
                         echo TbHtml::pager(array(
