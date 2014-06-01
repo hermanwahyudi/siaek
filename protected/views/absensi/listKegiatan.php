@@ -16,7 +16,9 @@ $this->breadcrumbs = array(
             echo CHtml::link('Tambah Absensi', array('absensi/create'),array('class'=>'btn btn-default'));
         }
     ?>
-<table class="table">
+    <br>
+    <br>
+<table class="table table-striped table-bordered">
     <thead>
     <tr>
         <th>
@@ -78,12 +80,20 @@ $this->breadcrumbs = array(
             <?php echo "<td>" . $status_isi . "</td>"; ?>
             <?php
             if ($model->status_isi == 0) {
+                if(Yii::app()->user->getLevel()==2 && $model->jenis_kegiatan==1){
 
-                echo "<td>" . CHtml::link('Isi Absensi', array('absensi/isiAbsensi', 'id' => $model->id_kegiatan)) . "</td></tr>";
-
-
+                }else{
+                    echo "<td>" . CHtml::link('Isi Absensi', array('absensi/isiAbsensi', 'id' => $model->id_kegiatan)) . "</td></tr>";        
+                }
+                
+                
             } else {
-                echo "<td>" . CHtml::link('Edit Absensi', array('absensi/editAbsensi', 'id' => $model->id_kegiatan)) . "</td>";
+                if(Yii::app()->user->getLevel()==2 && $model->jenis_kegiatan==1){
+
+                }else{
+                    echo "<td>" . CHtml::link('Edit Absensi', array('absensi/editAbsensi', 'id' => $model->id_kegiatan)) . "</td>";    
+                }
+                
                 echo "<td>" . CHtml::link('Lihat', array('absensi/view', 'id' => $model->id_kegiatan)) . "</td></tr>";
 
             }
