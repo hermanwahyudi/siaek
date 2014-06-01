@@ -120,6 +120,7 @@ class AbsensiController extends Controller
             if($model->save()){
                 Yii::app()->user->setFlash('successIsi', 'Absensi sudah berhasil diisi.');
                 $this->actionListKegiatan();
+                break;
             }
 
         }
@@ -158,7 +159,7 @@ class AbsensiController extends Controller
                 $alasan = $_POST['Absensi'][$j]['alasan'];
                 $id_status = $_POST['Absensi'][$j]['id_status'];
                 $now= date('Y-m-d H:i:s');
-                $sql = "UPDATE absensi SET id_status=$id_status,alasan='" . $alasan . "' WHERE id_peserta=$id_peserta and id_kegiatan=$id ";
+                $sql = "UPDATE absensi SET last_modified='".$now."',id_status=$id_status,alasan='" . $alasan . "' WHERE id_peserta=$id_peserta and id_kegiatan=$id ";
                 $connection = Yii::app()->db;
                 $command = $connection->createCommand($sql)->execute();
             }
@@ -212,7 +213,7 @@ class AbsensiController extends Controller
     {
          $criteria=new CDbCriteria();
          $criteria->order ="last_modified asc";
-        $model = Absensi::model()->findAllByAttributes(array('id_kegiatan' => $id));
+        $model = Absensi::model()->findAllByAttributes(array('id_kegiatan' => $id),$criteria);
         if ($model === null)
             throw new CHttpException(404, 'The requested Absensi does not exist.');
         return $model;
