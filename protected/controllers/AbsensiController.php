@@ -103,6 +103,7 @@ class AbsensiController extends Controller
                     $absensi[$j]->alasan = $_POST['Absensi'][$j]['alasan'];
                     $absensi[$j]->id_status = (int)$_POST['Absensi'][$j]['id_status'];
                     $absensi[$j]->id_kegiatan = $model->id_kegiatan;
+                    $absensi[$j]->last_modified = date('Y-m-d H:i:s');
                     $absensi[$j]->id_peserta = (int)$peserta[$j]['id_peserta'];
                     $absensi[$j]->save();
                 }
@@ -156,6 +157,7 @@ class AbsensiController extends Controller
                 $id_peserta = $absensi[$j]['id_peserta'];
                 $alasan = $_POST['Absensi'][$j]['alasan'];
                 $id_status = $_POST['Absensi'][$j]['id_status'];
+                $now= date('Y-m-d H:i:s');
                 $sql = "UPDATE absensi SET id_status=$id_status,alasan='" . $alasan . "' WHERE id_peserta=$id_peserta and id_kegiatan=$id ";
                 $connection = Yii::app()->db;
                 $command = $connection->createCommand($sql)->execute();
@@ -208,6 +210,8 @@ class AbsensiController extends Controller
      * */
     public function loadModelAbsensi($id)
     {
+         $criteria=new CDbCriteria();
+         $criteria->order ="last_modified asc";
         $model = Absensi::model()->findAllByAttributes(array('id_kegiatan' => $id));
         if ($model === null)
             throw new CHttpException(404, 'The requested Absensi does not exist.');
@@ -266,6 +270,7 @@ class AbsensiController extends Controller
                     if (isset($_POST['Absensi'][$j])) {
                         $absensi[$j] = new Absensi;
                         $absensi[$j]->id_peserta = $j;
+                        $absensi[$j]->last_modified= date('Y-m-d H:i:s');
                         $absensi[$j]->id_status = $_POST['Absensi'][$j]['id_status'];
                         $absensi[$j]->alasan = $_POST['Absensi'][$j]['alasan'];
                         $absensi[$j]->id_kegiatan = $model->id_kegiatan;

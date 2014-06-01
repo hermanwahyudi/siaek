@@ -63,6 +63,7 @@ class Absensi extends CActiveRecord
 			'id_kegiatan' => 'Id Kegiatan',
 			'id_status' => 'Id Status',
 			'alasan' => 'Alasan',
+			'last_modified'=>'Last_Modified',
 		);
 	}
 
