@@ -134,7 +134,7 @@ $this->breadcrumbs=array(
         <div class="panel panel-primary">
             <div class="panel-body">
                 <p class="text-center">
-                    <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/regional.png" width="100" height="100"  alt="b10" class="img-circle">
+                    <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/regional.png" width="100" height="100"  alt="b10" class="img-rounded">
                 </p>
                 
                     <p class="text-center">
