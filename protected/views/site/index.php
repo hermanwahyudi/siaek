@@ -29,7 +29,7 @@ $this->breadcrumbs=array(
      </a>
 </div>
     <div class="col-md-3 column">
-         <a href="/siaek/feedback/index">
+         <a href="/siaek/rekapan/index">
         <div class="panel panel-primary">
             <div class="panel-body">
                 <p class="text-center">
