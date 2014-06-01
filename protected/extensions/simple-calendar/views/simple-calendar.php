@@ -1,4 +1,4 @@
-<table id="calendar">
+<table id="calendar" style="margin:auto;">
     <thead>
         <tr class="month-year-row">
             <th class="previous-month"><?php echo CHtml::link('<<', $this->previousLink); ?></th>
