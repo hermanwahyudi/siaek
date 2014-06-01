@@ -57,7 +57,7 @@
                 <?php echo $form->labelEx($model, 'komentar'); ?>
             </label>
             <div class="col-md-5">
-                <?php echo $form->textArea($model, 'komentar', array('class' => 'form-control')); ?>
+                <?php echo $form->textArea($model, 'komentar', array('class' => 'form-control','rows'=>10,'cols'=>100)); ?>
                 <span class="error-label">
                     <?php echo $form->error($model, 'komentar'); ?>
                 </span>
