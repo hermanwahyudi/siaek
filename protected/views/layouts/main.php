@@ -66,7 +66,7 @@
 <div class="container">
 
     <div class="row clearfix">
-        <div class="col-md-12 column">
+        <div class="col-md-12 column" style="border-radius:5px;">
             <div class="page-header">
                 <!--h2 class="text-center">Sistem Informasi Absensi dan Evaluasi Kegiatan</h2-->
                 <div class="row">
