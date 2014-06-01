@@ -17,7 +17,7 @@ $this->breadcrumbs=array(
     <div class="panel panel-primary">
         <div class="panel-body">
             <p class="text-center">
-                <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/Feedback.png" width="100" height="100"  alt="b10" class="img-circle">
+                <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/Feedback.png" width="100" height="100"  alt="b10" class="img-rounded">
             </p>
                 
                     <p class="text-center">
@@ -33,7 +33,7 @@ $this->breadcrumbs=array(
         <div class="panel panel-primary">
             <div class="panel-body">
                 <p class="text-center">
-                    <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/Rekapan.png" width="100" height="100"  alt="b10" class="img-circle">
+                    <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/Rekapan.png" width="100" height="100"  alt="b10" class="img-rounded">
                 </p>
           
                     <p class="text-center">
@@ -49,7 +49,7 @@ $this->breadcrumbs=array(
         <div class="panel panel-primary">
             <div class="panel-body">
                 <p class="text-center">
-                        <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/Perbandingan Rekapan.png" width="100" height="100"  alt="b10" class="img-circle">
+                        <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/Perbandingan Rekapan.png" width="100" height="100"  alt="b10" class="img-rounded">
                     </p>
                         
                             <p class="text-center">
@@ -83,7 +83,7 @@ $this->breadcrumbs=array(
          <div class="panel panel-primary">
             <div class="panel-body">
                 <p class="text-center">
-                    <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/kegiatan.png" width="100" height="100"  alt="b10" class="img-circle">
+                    <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/kegiatan.png" width="100" height="100"  alt="b10" class="img-rounded">
                 </p>
                 
                     <p class="text-center">
@@ -99,7 +99,7 @@ $this->breadcrumbs=array(
           <div class="panel panel-primary">
               <div class="panel-body">
                   <p class="text-center">
-                      <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/isi_absensi.png" width="100" height="100"  alt="b10" class="img-circle">
+                      <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/isi_absensi.png" width="100" height="100"  alt="b10" class="img-rounded">
                   </p>
                   
                       <p class="text-center">
@@ -152,7 +152,7 @@ $this->breadcrumbs=array(
         <div class="panel panel-primary">
             <div class="panel-body">
                  <p class="text-center">
-                    <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/isi_absensi.png" width="100" height="100"  alt="b10" class="img-circle">
+                    <img src="<?php echo Yii::app()->request->baseUrl; ?>/images/isi_absensi.png" width="100" height="100"  alt="b10" class="img-rounded">
                 </p>
                     
                         <p class="text-center">
