@@ -155,6 +155,7 @@ class UserController extends Controller
 					if($model->username === $old_username) {
 						if($model->save())	{
 							$uploadedFile->saveAs(Yii::app()->basePath.'/../images/'.$model->url_image);
+							unlink(Yii::app()->basePath.'/../images/'.$old_image);
 							Yii::app()->user->setFlash('successUbah', 'Pengurus telah berhasil diubah.');
 							$this->redirect(array('index'));
 						}
@@ -162,6 +163,7 @@ class UserController extends Controller
 						if(empty($dataUsername)) {
 							if($model->save())	{
 								$uploadedFile->saveAs(Yii::app()->basePath.'/../images/'.$model->url_image);
+								unlink(Yii::app()->basePath.'/../images/'.$old_image);
 								Yii::app()->user->setFlash('successUbah', 'Pengurus telah berhasil diubah.');
 								$this->redirect(array('index'));
 							}
@@ -174,6 +176,7 @@ class UserController extends Controller
 					if(empty($dataNip)) {
 						if($model->save())	{
 							$uploadedFile->saveAs(Yii::app()->basePath.'/../images/'.$model->url_image);
+							unlink(Yii::app()->basePath.'/../images/'.$old_image);
 							Yii::app()->user->setFlash('successUbah', 'Pengurus telah berhasil diubah.');
 							$this->redirect(array('index'));
 						}
@@ -244,12 +247,14 @@ class UserController extends Controller
 						if($model->save()) {
 							//$this->redirect(array('admin'));
 							$uploadedFile->saveAs(Yii::app()->basePath.'/../images/'.$model->url_image);
+							unlink(Yii::app()->basePath.'/../images/'.$old_image);
 							Yii::app()->user->setFlash('successProfile', 'Profile telah berhasil diubah.');
 							$this->redirect(array('profile'));
 						}
 					} else {
 						if(empty($dataUsername)) {
 							$uploadedFile->saveAs(Yii::app()->basePath.'/../images/'.$model->url_image);
+							unlink(Yii::app()->basePath.'/../images/'.$old_image);
 							Yii::app()->user->setFlash('successProfile', 'Profile telah berhasil diubah.');
 							$this->redirect(array('profile'));
 						} else {
